@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #efefef;
+    font-family: 'Times New Roman', Times, serif;
+    overflow-x: hidden;
+}
+
+.topnav a:hover {
+    border-bottom: 1px solid darkblue;
+}
+
+.topnav a.active {
+    border-bottom: 3px solid darkblue;
+    color: blue;
+    font-weight: bold;
+}
+
+.btn2 {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #efefef;
+    border: none;
+    background: url("../images/pic1.jpg") center/cover no-repeat;
+}
+
+.btn3 {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #efefef;
+    border: none;
+    background: url("../images/pic2.jpg") center/cover no-repeat;
+}
+
+.btn4 {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #efefef;
+    border: none;
+    background: url("../images/pic3.jpg") center/cover no-repeat;
+}
+
+.text {
+    font-size: 14px;
+    color: #bebebe;
+    font-weight: bold;
+}
+
+.name {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.btn {
+    width: 60px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 7px;
+    border: 2px solid #efefef;
+    background: #efefef;
+    padding: 2px;
+}
+
+.btn:hover {
+    background: slategray;
+    color: var(--black);
+    opacity: 0.8;
+}
+
+.btn22 {
+    width: 80px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 7px;
+    border: 2px solid #efefef;
+    background: #efefef;
+    padding: 2px;
+}
+
+.btn22:hover {
+    background: slategray;
+    color: var(--black);
+    opacity: 0.8;
+}
+
+.koment {
+    width: 570px;
+    height: 37px;
+    color: gray;
+    background-color: #efefef;
+    font-size: 14px;
+    font-weight: 520;
+    border: none;
+    border-radius: 16px;
+}
+
+.post {
+    width: 510px;
+    height: 37px;
+    background-color: #efefef;
+    color: gray;
+    font-size: 14px;
+    font-weight: 590;
+    border: none;
+    border-radius: 16px;
+}
+
+@media (max-width:1200px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+@media (max-width:800px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+@media (max-width:1024px) {
+    html {
+        font-size: 55%;
+    }
+}

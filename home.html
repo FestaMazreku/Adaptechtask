@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> Home </title>
+        <meta charset="UTF-8"/>
+        <meta name="keywords" content="adaptech">
+        <meta name="description" content="adaptech">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='shortcut icon' type='image/x-icon'
+            href='images/adaptech_logo.png'/>
+        <!-- Bootstrap -->
+        <link rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous">
+        <!-- Font Awesome -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- jQuery -->
+        <link rel="stylesheet"
+            href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
+        <!-- css -->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script defer
+            src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+        <!-- javascript -->
+        <script src="javascript/script.js"></script>
+    </head>
+    <header>
+
+        <!-- Navigation bar -->
+        <div class="topnav">
+            <nav class="navbar" style="background-color: lightgray">
+                <div class="p-6 col-lg-8 col-md-8 col-sm-12">
+                    <img src="images/Logo-redesign-06.png" alt="..."
+                        style="width: 10%; margin-right: 40px">
+                    <a href="home.html" style="color: black; font-size: 13px;
+                        font-weight: bold; padding-right: 15px"> Ballina </a>
+                    <a href="#" style="color: black; font-size: 13px;
+                        font-weight: bold; padding-right: 15px"> Rreth nesh </a>
+                    <a href="#" style="color: black; font-size: 13px;
+                        font-weight: bold; padding-right: 15px"> Projektet tona
+                    </a>
+                    <a href="post.html" style="color: black; font-size: 13px;
+                        font-weight: bold; padding-right: 15px"> Postimet </a>
+                </div>
+            </nav>
+        </header>
+
+        <body>
+            <div class="mt-5 mb-3 d-flex justify-content-center row">
+                <div class="card p-3 col-lg-6 col-md-6 col-sm-12">
+                    <div class="row">
+                        <div class="float-start col-lg-1 col-sm-1">
+                            <button class="btn2 btn-secondary"></button>
+                        </div>
+                        <div class="float-end pt-2 col-lg-11 col-sm-11">
+                            <p id="user3"></p>
+                            <input type="text" class="post p-3" id="new_title"
+                                name="new_title" value="" placeholder="Posto një artikull">
+                            <button id="add_btn2" class="btn" onclick="New()">Posto</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-5 mb-3 d-flex justify-content-center row">
+                <div class="card p-3 col-lg-6 col-md-6 col-sm-12">
+                    <h5> Posts </h5>
+                    <br>
+                    <div class="row">
+                        <div class="float-start col-lg-1 col-sm-1">
+                            <button class="btn3 btn-secondary"></button>
+                        </div>
+                        <div class="float-end pt-2 col-lg-11 col-sm-11">
+                            <p id="user1"></p>
+                            <p id="nick1"></p>
+                        </div>
+                        <div class="ml-3 mt-3">
+                            <p id="email1"></p>
+                            <p id="post1"></p>
+                            <p id="title1"></p>
+                            <p id="comment1"></p>
+                        </div>
+                        <br>
+                        <div class="ml-3 mt-3">
+                            <input type="text" class="post p-3" id="new_title"
+                                name="new_title" value="" placeholder="Komento në këtë postim">
+                            <button id="add_btn2" class="btn22" onclick="New()">Komento</button>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="row">
+                        <div class="float-start col-lg-1 col-sm-1">
+                            <button class="btn4 btn-secondary"></button>
+                        </div>
+                        <div class="float-end pt-2 col-lg-11 col-sm-11">
+                            <p id="user2"></p>
+                            <p id="nick2"></p>
+                        </div>
+                        <div class="ml-3 mt-3">
+                            <p id="email2"></p>
+                            <p id="post2"></p>
+                            <p id="title2"></p>
+                            <p id="comment2"></p>
+                        </div>
+                        <br>
+                        <div class="ml-3 mt-3">
+                            <input type="text" class="post p-3" id="new_title"
+                                name="new_title" value="" placeholder="Komento në këtë postim">
+                            <button id="add_btn2" class="btn22" onclick="New()">Komento</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </html>
