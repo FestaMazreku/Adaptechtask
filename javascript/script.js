@@ -30,15 +30,15 @@ $(function () {
     $.ajax({
         type: 'GET',
         url: 'https://jsonplaceholder.typicode.com/users',
-        success: function (user) {
-            $user1.append('<p>' + user[0].name + '</p>');
-            $nick1.append('<p> @' + user[0].username + '</p>');
-            $user2.append('<p>' + user[1].name + '</p>');
-            $nick2.append('<p> @' + user[1].username + '</p>');
-            $user3.append('<p>' + user[2].name + '</p>');
-            $nick3.append('<p> @' + user[2].username + '</p>');
-            $user4.append('<p>' + user[3].name + '</p>');
-            $nick4.append('<p> @' + user[3].username + '</p>');
+        success: function (users) {
+            $user1.append('<p>' + users[0].name + '</p>');
+            $nick1.append('<p> @' + users[0].username + '</p>');
+            $user2.append('<p>' + users[1].name + '</p>');
+            $nick2.append('<p> @' + users[1].username + '</p>');
+            $user3.append('<p>' + users[2].name + '</p>');
+            $nick3.append('<p> @' + users[2].username + '</p>');
+            $user4.append('<p>' + users[3].name + '</p>');
+            $nick4.append('<p> @' + users[3].username + '</p>');
         }
     });
 
@@ -52,13 +52,13 @@ $(function () {
     $.ajax({
         type: 'GET',
         url: 'https://jsonplaceholder.typicode.com/posts',
-        success: function (post) {
-            $title1.append('<p>' + post[0].title + '</p>');
-            $post1.append('<p>' + post[0].body + '</p>');
-            $title2.append('<p>' + post[10].title + '</p>');
-            $post2.append('<p>' + post[10].body + '</p>');
-            $title3.append('<p>' + post[20].title + '</p>');
-            $post3.append('<p>' + post[20].body + '</p>');
+        success: function (posts) {
+            $title1.append('<p>' + posts[0].title + '</p>');
+            $post1.append('<p>' + posts[0].body + '</p>');
+            $title2.append('<p>' + posts[10].title + '</p>');
+            $post2.append('<p>' + posts[10].body + '</p>');
+            $title3.append('<p>' + posts[20].title + '</p>');
+            $post3.append('<p>' + posts[20].body + '</p>');
         }
     });
 
@@ -74,23 +74,27 @@ $(function () {
     var $comment5 = $('#comment5');
     var $email6 = $('#email6');
     var $comment6 = $('#comment6');
+    var $email7 = $('#email7');
+    var $comment7 = $('#comment7');
 
     $.ajax({
         type: 'GET',
         url: 'https://jsonplaceholder.typicode.com/comments',
-        success: function (comment) {
-            $email1.append('<p>' + comment[0].email + '</p>');
-            $comment1.append('<p>' + comment[0].body + '</p>');
-            $email2.append('<p>' + comment[1].email + '</p>');
-            $comment2.append('<p>' + comment[1].body + '</p>');
-            $email3.append('<p>' + comment[50].email + '</p>');
-            $comment3.append('<p>' + comment[50].body + '</p>');
-            $email4.append('<p>' + comment[51].email + '</p>');
-            $comment4.append('<p>' + comment[51].body + '</p>');
-            $email5.append('<p>' + comment[100].email + '</p>');
-            $comment5.append('<p>' + comment[100].body + '</p>');
-            $email6.append('<p>' + comment[101].email + '</p>');
-            $comment6.append('<p>' + comment[101].body + '</p>');
+        success: function (comments) {
+            $email1.append('<p>' + comments[0].email + '</p>');
+            $comment1.append('<p>' + comments[0].body + '</p>');
+            $email2.append('<p>' + comments[1].email + '</p>');
+            $comment2.append('<p>' + comments[1].body + '</p>');
+            $email3.append('<p>' + comments[50].email + '</p>');
+            $comment3.append('<p>' + comments[50].body + '</p>');
+            $email4.append('<p>' + comments[51].email + '</p>');
+            $comment4.append('<p>' + comments[51].body + '</p>');
+            $email5.append('<p>' + comments[100].email + '</p>');
+            $comment5.append('<p>' + comments[100].body + '</p>');
+            $email6.append('<p>' + comments[101].email + '</p>');
+            $comment6.append('<p>' + comments[101].body + '</p>');
+            $email7.append('<p>' + comments[150].email + '</p>');
+            $comment7.append('<p>' + comments[151].body + '</p>');
         }
     });
 });
