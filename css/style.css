@@ -19,6 +19,21 @@ body {
     font-weight: bold;
 }
 
+.btn {
+    width: 60px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 7px;
+    border: 2px solid #efefef;
+    background: #efefef;
+    padding: 2px;
+}
+
+.btn:hover {
+    background: slategray;
+    color: var(--black);
+    opacity: 0.8;
+}
+
 .btn2 {
     height: 50px;
     width: 50px;
@@ -64,32 +79,7 @@ body {
     background: url("../images/pic3.jpg") center/cover no-repeat;
 }
 
-.text {
-    font-size: 14px;
-    color: #bebebe;
-    font-weight: bold;
-}
-
-.name {
-    font-family: 'Times New Roman', Times, serif;
-}
-
-.btn {
-    width: 60px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    border-radius: 7px;
-    border: 2px solid #efefef;
-    background: #efefef;
-    padding: 2px;
-}
-
-.btn:hover {
-    background: slategray;
-    color: var(--black);
-    opacity: 0.8;
-}
-
-.btn22 {
+.btn5 {
     width: 80px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     border-radius: 7px;
@@ -98,10 +88,35 @@ body {
     padding: 2px;
 }
 
-.btn22:hover {
+.btn5:hover {
     background: slategray;
     color: var(--black);
     opacity: 0.8;
+}
+
+.btn6 {
+    width: 80px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 7px;
+    border: 2px solid #efefef;
+    background: rgb(4, 30, 156);
+    padding: 2px;
+}
+
+.btn6:hover {
+    background: rgb(177, 187, 223);
+    color: var(--black);
+    opacity: 0.8;
+}
+
+.text {
+    font-size: 14px;
+    color: #bebebe;
+    font-weight: bold;
+}
+
+.name {
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .koment {
