@@ -35,8 +35,8 @@ body {
 }
 
 .btn2 {
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
     background-color: #efefef;
     border: none;
@@ -53,8 +53,8 @@ body {
 }
 
 .btn3 {
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
     background-color: #efefef;
     border: none;
@@ -71,12 +71,21 @@ body {
 }
 
 .btn4 {
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
     background-color: #efefef;
     border: none;
     background: url("../images/pic3.jpg") center/cover no-repeat;
+}
+
+.btn-4 {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: #efefef;
+    border: none;
+    background: url("../images/pic4.jpg") center/cover no-repeat;
 }
 
 .btn5 {
@@ -139,6 +148,20 @@ body {
     font-weight: 590;
     border: none;
     border-radius: 16px;
+}
+
+.mb-8{
+    width: 600px;
+    color: darkblue;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.mb-9{
+    width: 600px;
+    color: darkblue;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .footer-clean {

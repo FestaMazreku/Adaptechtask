@@ -12,7 +12,7 @@ function New() {
     })
         .then(response => response.json())
         .then(json => {
-            console.log('Te dhenat: ' + JSON.stringify(json));
+            console.log('Të dhënat: ' + JSON.stringify(json));
             alert("Artikulli i shtua me sukses! Shikoni në console.");
         })
 }
