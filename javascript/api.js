@@ -53,7 +53,7 @@ function getall() {
       data.forEach(post => {
         // {
         //   //request to https://jsonplaceholder.typicode.com/users/{post.userId}
-        //   $("#user_" + post.username).innerHTML(newdata) = `<p> Username: ${post.username}</p>`
+        //   $("#user_" + post.id).innerHTML(newdata)
         // }
         const postDiv = document.createElement('div');
         postDiv.innerHTML = `<a href="?post=${post.id}"  style="font-size: 18px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> Title: ${post.title + "..."} </a> 
