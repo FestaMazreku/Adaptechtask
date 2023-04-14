@@ -23,20 +23,22 @@ function getPost(id) {
     .then(data => {
       const jsonDataDiv = document.getElementById('posts');
       const postDiv = document.createElement('div');
-      postDiv.innerHTML = `<p style="font-size: 15px; color: darkblue; font-weight: bold"> ID: ${data.id}</p> <h6> Message: ${data.body}</h6> <h6 style="color: darkgray"> 
-      <a href="#" class="#"
-      onclick="getall()"> Show more... </a>`;
+      postDiv.innerHTML = `<p style="font-size: 15px; color: darkblue; font-weight: bold"> ID: ${data.id}</p> <h6> Message: ${data.body} </h6> 
+      <a href="file:///C:/Users/adaptech/Desktop/Adaptechtask/post.html"> <button class="btn1"> Go back </button> </a>`
       jsonDataDiv.appendChild(postDiv);
+      getComment(id);
       $("#comments").show();
     });
+}
 
+function getComment(id) {
   fetch('https://jsonplaceholder.typicode.com/comments?postId=' + id)
     .then(response => response.json())
     .then(data => {
       const jsonDataDiv = document.getElementById('comments');
       data.forEach(post => {
         const postDiv = document.createElement('div');
-        postDiv.innerHTML = `<p style="font-weight: bold"> Id: ${post.id} </p> <h6 style="color: darkblue"> Email: ${post.email} </h6> <p> Comment: ${post.body}</p>`;
+        postDiv.innerHTML = `<h6 style="font-weight: bold"> Email: ${post.email} </h6> <p style="color: darkblue; font-size: 15px"> ID: ${post.id} </p> <p style="color: darkblue"> <p> Comment: ${post.body}</p>`;
         jsonDataDiv.appendChild(postDiv);
         $("#comments").show();
       });
@@ -49,9 +51,14 @@ function getall() {
     .then(data => {
       const jsonDataDiv = document.getElementById('posts');
       data.forEach(post => {
+        // {
+        //   //request to https://jsonplaceholder.typicode.com/users/{post.userId}
+        //   $("#user_" + post.username).innerHTML(newdata) = `<p> Username: ${post.username}</p>`
+        // }
         const postDiv = document.createElement('div');
-        postDiv.innerHTML = `<a href="?post=${post.id}" onclick="OpenTab()" style="font-size: 18px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> Title: ${post.title + "..."} </a> 
-      <p style="color: darkblue" font-size: 25px"> Message: ${post.body} </p>`;
+        postDiv.innerHTML = `<a href="?post=${post.id}"  style="font-size: 18px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> Title: ${post.title + "..."} </a> 
+      <p style="color: darkblue" font-size: 25px"> Message: ${post.body} </p>
+      <p id="user_${post.id}"></p>`;
         jsonDataDiv.appendChild(postDiv);
         $("#comments").hide();
       });
@@ -59,14 +66,13 @@ function getall() {
 }
 
 $(document).ready(function () {
-  getPost(5);
+  const currentUrl = window.location.href;
+  const searchParams = new URLSearchParams(new URL(currentUrl).search);
+  const post = searchParams.get('post');
+  if (post == null) {
+    getall();
+  }
+  else {
+    getPost(post);
+  }
 });
-
-$(document).ready(function () {
-  getall();
-});
-
-function OpenTab() {
-  getPost()
-  window.open("file:///C:/Users/adaptech/Desktop/Adaptechtask/postt.html", target="_blank");
-}

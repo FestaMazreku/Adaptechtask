@@ -34,6 +34,21 @@ body {
     opacity: 0.8;
 }
 
+.btn1 {
+    width: 80px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 7px;
+    border: 2px solid #efefef;
+    background: #efefef;
+    padding: 2px;
+}
+
+.btn1:hover {
+    background: slategray;
+    color: var(--black);
+    opacity: 0.8;
+}
+
 .btn2 {
     height: 60px;
     width: 60px;
@@ -43,27 +58,9 @@ body {
     background: url("../images/pic1.jpg") center/cover no-repeat;
 }
 
-.btn-2 {
-    height: 70px;
-    width: 70px;
-    border-radius: 50%;
-    background-color: #efefef;
-    border: none;
-    background: url("../images/pic1.jpg") center/cover no-repeat;
-}
-
 .btn3 {
     height: 60px;
     width: 60px;
-    border-radius: 50%;
-    background-color: #efefef;
-    border: none;
-    background: url("../images/pic2.jpg") center/cover no-repeat;
-}
-
-.btn-3 {
-    height: 70px;
-    width: 70px;
     border-radius: 50%;
     background-color: #efefef;
     border: none;
@@ -122,10 +119,6 @@ body {
     font-size: 14px;
     color: #bebebe;
     font-weight: bold;
-}
-
-.name {
-    font-family: 'Times New Roman', Times, serif;
 }
 
 .koment {
@@ -197,19 +190,6 @@ body {
 
 .footer-clean .item.social {
     text-align: right;
-}
-
-@media (max-width:767px) {
-    .footer-clean .item {
-        text-align: center;
-        padding-bottom: 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    .footer-clean .item.social {
-        text-align: center;
-    }
 }
 
 .footer-clean .item.social>a {
