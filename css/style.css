@@ -90,14 +90,9 @@ body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     border-radius: 7px;
     border: 2px solid #efefef;
-    background: #efefef;
+    background: #111111;
+    color: #efefef;
     padding: 2px;
-}
-
-.btn5:hover {
-    background: slategray;
-    color: var(--black);
-    opacity: 0.8;
 }
 
 .btn6 {
@@ -143,14 +138,14 @@ body {
     border-radius: 16px;
 }
 
-.mb-8{
+.mb-8 {
     width: 600px;
     color: darkblue;
     font-size: 20px;
     font-weight: bold;
 }
 
-.mb-9{
+.mb-9 {
     width: 600px;
     color: darkblue;
     font-size: 20px;
