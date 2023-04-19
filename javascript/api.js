@@ -25,33 +25,21 @@ function getPost(id) {
         type: "GET",
         url: 'https://jsonplaceholder.typicode.com/users',
         dataType: 'json',
-        data: { id: data.id },
-        success: function (data) {
-          $("#user" + data.id).append(data);
-        }
+      }).then(userData => {
+        const jsonDataDiv = document.getElementById('posts');
+        const postDiv = document.createElement('div');
+        postDiv.innerHTML = `<p style="font-size: 15px; color: darkblue; font-weight: bold"> ID: ${data.id}</p> 
+          <h6> Message: ${data.body} </h6>
+          <p style="font-weight: bold"> Name: ${userData[data.id - 1].name} </p> 
+          <h6 style="color: #0F52BA"> Email: ${userData[data.id - 1].email} </h6> 
+          <p> Username: ${userData[data.id - 1].username} </p> 
+          <p> Phone: ${userData[data.id - 1].phone} </p>
+          <p> Website: ${userData[data.id - 1].website} </p>
+          <a href="post.html" onclick="getPost()"> <button class="btn1"> Go back </button> </a>`
+        jsonDataDiv.appendChild(postDiv);
+        getComment(id);
+        $("#comments").show();
       });
-      // $.ajax({
-      //   type: "POST",
-      //   url: 'https://jsonplaceholder.typicode.com/users',
-      //   dataType: 'json',
-      //   data: {name: data.name},
-      //   success: function (data) {
-      //     $("#user" + data.name).append(data);
-      //     console.log(data.name);
-      //   }
-      // });
-      // {
-      //   //request to https://jsonplaceholder.typicode.com/users/{post.userId}
-      //   $("#user" + post.id).innerHTML(newdata)
-      // }
-      const jsonDataDiv = document.getElementById('posts');
-      const postDiv = document.createElement('div');
-      postDiv.innerHTML = `<p style="font-size: 15px; color: darkblue; font-weight: bold"> ID: ${data.id}</p> <h6> Message: ${data.body} </h6>
-      <p id="user_${data.id}"> </p> <p style="font-weight: bold"> Name: ${data.name} </p> <h6 style="color: #0F52BA"> Email: ${data.email} </h6> <p> Username: ${data.username} </p> <p> Phone: ${data.phone} </p>
-      <a href="post.html" onclick="getPost()"> <button class="btn1"> Go back </button> </a>`
-      jsonDataDiv.appendChild(postDiv);
-      getComment(id);
-      $("#comments").show();
     });
 };
 
@@ -76,12 +64,19 @@ function getall() {
     .then(data => {
       const jsonDataDiv = document.getElementById('posts');
       data.forEach(post => {
-        const postDiv = document.createElement('div');
-        postDiv.innerHTML = `<a href="?post=${post.id}" style="font-size: 18px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> 
+        $.ajax({
+          type: "GET",
+          url: 'https://jsonplaceholder.typicode.com/users',
+          dataType: 'json',
+        }).then(userData => {
+          const postDiv = document.createElement('div');
+          postDiv.innerHTML = `<p style="font-weight: bold"> Name: ${userData[post.id - 1].name} </p> 
+        <a href="?post=${post.id}" style="font-size: 18px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> 
         Title: ${post.title + "..."} </a> 
       <p style="color: darkblue" font-size: 25px"> Message: ${post.body} </p>`;
-        jsonDataDiv.appendChild(postDiv);
-        $("#comments").hide();
+          jsonDataDiv.appendChild(postDiv);
+          $("#comments").hide();
+        });
       });
     });
 }
