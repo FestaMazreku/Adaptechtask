@@ -17,44 +17,20 @@ function New() {
     })
 }
 
-// function getPost(id) {
-//   fetch('https://jsonplaceholder.typicode.com/posts/' + id)
-//     .then(response => response.json())
-//     .then(data => {
-//       $.ajax({
-//         type: "GET",
-//         url: 'https://jsonplaceholder.typicode.com/users',
-//         dataType: 'json',
-//       }).then(userData => {
-//         const jsonDataDiv = document.getElementById('posts');
-//         const postDiv = document.createElement('div');
-//         postDiv.innerHTML = `<p style="font-size: 15px; color: darkblue; font-weight: bold"> ID: ${data.id}</p> 
-//           <h6> Message: ${data.body} </h6>
-//           <p style="font-weight: bold"> Name: ${userData[data.id - 1].name} </p> 
-//           <h6 style="color: #0F52BA"> Email: ${userData[data.id - 1].email} </h6> 
-//           <p> Username: ${userData[data.id - 1].username} </p> 
-//           <p> Phone: ${userData[data.id - 1].phone} </p>
-//           <p> Website: ${userData[data.id - 1].website} </p>
-//           <a href="post.html" onclick="getPost()"> <button class="btn1"> Go back </button> </a>`
-//         jsonDataDiv.appendChild(postDiv);
-//         getComment(id);
-//         $("#comments").show();
-//       });
-//     });
-// };
-
 function getPost(id) {
-  fetch('https://jsonplaceholder.typicode.com/posts/' + id)
+  fetch('http://adaptechtask.test/database/posts.php?posts'+ id)
     .then(response => response.json())
     .then(data => {
       $.ajax({
         type: "GET",
-        url: 'http://adaptechtask.test/database/users.php',
+        url: 'http://adaptechtask.test/database/users.php?users',
         dataType: 'json',
       }).then(userData => {
         const jsonDataDiv = document.getElementById('posts');
         const postDiv = document.createElement('div');
-        postDiv.innerHTML = `<p style="font-size: 15px; color: darkblue; font-weight: bold"> ID: ${data.id}</p> 
+        postDiv.innerHTML = `<p style="font-size: 15px; color: darkblue; font-weight: bold"> Post Id: ${data.postsid} </p> 
+          <p style="font-size: 15px; color: darkblue; font-weight: bold"> Id: ${data.id} </p> 
+          <p> Title: ${data.title} </p>
           <h6> Message: ${data.body} </h6>
           <p style="font-weight: bold"> Name: ${userData[data.id - 1].name} </p> 
           <h6 style="color: #0F52BA"> Email: ${userData[data.id - 1].email} </h6> 
@@ -71,13 +47,15 @@ function getPost(id) {
 };
 
 function getComment(id) {
-  fetch('https://jsonplaceholder.typicode.com/comments?postId=' + id)
+  fetch('http://adaptechtask.test/database/comments.php?comments' + id)
     .then(response => response.json())
     .then(data => {
       const jsonDataDiv = document.getElementById('comments');
       data.forEach(post => {
         const postDiv = document.createElement('div');
-        postDiv.innerHTML = `<h6 style="font-weight: bold"> Email: ${post.email} </h6> <p style="color: darkblue; font-size: 15px"> ID: ${post.id} </p> 
+        postDiv.innerHTML = `<p style="color: darkblue; font-size: 15px"> Comment Id: ${post.commentsid} </p> 
+        <p style="color: darkblue; font-size: 15px"> ID: ${post.id} </p> 
+        <h6 style="font-weight: bold"> Email: ${post.email} </h6> 
         <p style="color: darkblue"> <p> Comment: ${post.body}</p>`;
         jsonDataDiv.appendChild(postDiv);
         $("#comments").show();
@@ -85,38 +63,15 @@ function getComment(id) {
     });
 }
 
-// function getall() {
-//   fetch('https://jsonplaceholder.typicode.com/posts')
-//     .then(response => response.json())
-//     .then(data => {
-//       const jsonDataDiv = document.getElementById('posts');
-//       data.forEach(post => {
-//         $.ajax({
-//           type: "GET",
-//           url: 'https://jsonplaceholder.typicode.com/users',
-//           dataType: 'json',
-//         }).then(userData => {
-//           const postDiv = document.createElement('div');
-//           postDiv.innerHTML = `<p style="font-weight: bold"> Name: ${userData[post.id - 1].name} </p> 
-//         <a href="?post=${post.id}" style="font-size: 18px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> 
-//         Title: ${post.title + "..."} </a> 
-//       <p style="color: darkblue" font-size: 25px"> Message: ${post.body} </p>`;
-//           jsonDataDiv.appendChild(postDiv);
-//           $("#comments").hide();
-//         });
-//       });
-//     });
-// }
-
 function getall() {
-  fetch('https://jsonplaceholder.typicode.com/posts')
+  fetch('http://adaptechtask.test/database/posts.php?posts')
     .then(response => response.json())
     .then(data => {
       const jsonDataDiv = document.getElementById('posts');
       data.forEach(post => {
         $.ajax({
           type: "GET",
-          url: 'http://adaptechtask.test/database/users.php',
+          url: 'http://adaptechtask.test/database/users.php?users',
           dataType: 'json',
         }).then(userData => {
           const postDiv = document.createElement('div');
