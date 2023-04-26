@@ -18,7 +18,7 @@ function New() {
 }
 
 function getPost(id) {
-  fetch('http://adaptechtask.test/database/posts.php?posts'+ id)
+  fetch('http://adaptechtask.test/database/posts.php?posts' + id)
     .then(response => response.json())
     .then(data => {
       $.ajax({
@@ -54,7 +54,7 @@ function getComment(id) {
       data.forEach(post => {
         const postDiv = document.createElement('div');
         postDiv.innerHTML = `<p style="color: darkblue; font-size: 15px"> Comment Id: ${post.commentsid} </p> 
-        <p style="color: darkblue; font-size: 15px"> ID: ${post.id} </p> 
+        <p style="color: darkblue; font-size: 15px"> Name: ${post.name} </p> 
         <h6 style="font-weight: bold"> Email: ${post.email} </h6> 
         <p style="color: darkblue"> <p> Comment: ${post.body}</p>`;
         jsonDataDiv.appendChild(postDiv);
@@ -75,7 +75,8 @@ function getall() {
           dataType: 'json',
         }).then(userData => {
           const postDiv = document.createElement('div');
-          postDiv.innerHTML = `<p style="font-weight: bold"> Name: ${userData[post.id - 1].name} </p> 
+          postDiv.innerHTML = `<p style="font-weight: bold"> Name: ${userData[post.id].name} </p> 
+        <p> Email: ${userData[post.id].email} </p> <h6>  </h6>
         <a href="?post=${post.id}" style="font-size: 18px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> 
         Title: ${post.title + "..."} </a> 
       <p style="color: darkblue" font-size: 25px"> Message: ${post.body} </p>`;
