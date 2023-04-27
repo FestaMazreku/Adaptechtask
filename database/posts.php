@@ -21,17 +21,18 @@ if ($con) {
         }
     }
 
-    if (isset($_GET['postsid'])) {
-        $id = $_GET['postsid'];
+    if (isset($_GET['post'])) {
+        $id = $_GET['post'];
         $sql = "select * from posts where id = " . $id;
         $result = mysqli_query($con, $sql);
         if ($result) {
             header("Content-Type: JSON");
-            if ($row = mysqli_fetch_assoc($result))
-            $response['postsid'] = $row['postsid'];
-            $response['id'] = $row['id'];
-            $response['title'] = $row['title'];
-            $response['body'] = $row['body'];
+            if ($row = mysqli_fetch_assoc($result)) {
+                $response['postsid'] = $row['postsid'];
+                $response['id'] = $row['id'];
+                $response['title'] = $row['title'];
+                $response['body'] = $row['body'];
+            }
         }
         echo json_encode($response, JSON_PRETTY_PRINT);
     }
