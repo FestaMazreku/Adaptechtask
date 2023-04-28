@@ -11,7 +11,7 @@ if ($con) {
             $i = 0;
             while ($row = mysqli_fetch_assoc($result)) {
                 $response[$i]['postsid'] = $row['postsid'];
-                $response[$i]['id'] = $row['id'];
+                $response[$i]['userid'] = $row['userid'];
                 $response[$i]['title'] = $row['title'];
                 $response[$i]['body'] = $row['body'];
 
@@ -23,13 +23,13 @@ if ($con) {
 
     if (isset($_GET['post'])) {
         $id = $_GET['post'];
-        $sql = "select * from posts where id = " . $id;
+        $sql = "select * from posts where postsid = " . $id;
         $result = mysqli_query($con, $sql);
         if ($result) {
             header("Content-Type: JSON");
             if ($row = mysqli_fetch_assoc($result)) {
                 $response['postsid'] = $row['postsid'];
-                $response['id'] = $row['id'];
+                $response['userid'] = $row['userid'];
                 $response['title'] = $row['title'];
                 $response['body'] = $row['body'];
             }

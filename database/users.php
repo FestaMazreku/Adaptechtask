@@ -17,7 +17,6 @@ if ($con) {
         $response[$i]['email'] = $row['email'];
         $response[$i]['phone'] = $row['phone'];
         $response[$i]['city'] = $row['city'];
-        $response[$i]['comment'] = $row['comment'];
 
         $i++;
       }
@@ -25,8 +24,8 @@ if ($con) {
     }
   }
 
-  if (isset($_GET['userid'])) {
-    $id = $_GET['userid'];
+  if (isset($_GET['user'])) {
+    $id = $_GET['user'];
     $sql = "select * from users where id = " . $id;
     $result = mysqli_query($con, $sql);
     if ($result) {
@@ -39,7 +38,6 @@ if ($con) {
         $response['email'] = $row['email'];
         $response['phone'] = $row['phone'];
         $response['city'] = $row['city']; 
-        $response['comment'] = $row['comment'];
       }
     }
     echo json_encode($response, JSON_PRETTY_PRINT);

@@ -11,11 +11,10 @@ if (isset($_POST['update'])) {
     $email1 = $_POST['email'];
     $phone1 = $_POST['phone'];
     $city1 = $_POST['city'];
-    $comment1 = $_POST['comment'];
 
     if ($name1 != '' or $username1 != '' or $age1 != '') {
 
-        $update_query = "UPDATE users SET name='$name1', username='$username1', age='$age1', email='$email1', phone='$phone1', city='$city1', comment='$comment1'
+        $update_query = "UPDATE users SET name='$name1', username='$username1', age='$age1', email='$email1', phone='$phone1', city='$city1'
         WHERE
         id='$id1'";
 

@@ -111,12 +111,6 @@ if (isset($_GET['edit'])) {
                             <input type="text" name="city" size="30" value="<?php echo $erow['city']; ?>">
                         </td>
                     </tr>
-                     <tr>
-                        <td align="middle">Comment:</td>
-                        <td>
-                            <input type="text" name="comment" size="30" value="<?php echo $erow['comment']; ?>">
-                        </td>
-                    </tr>
                     <div class="input-group">
                         <tr>
                             <td align="center" colspan="8">

@@ -53,14 +53,14 @@ session_start();
                 <a href="tablepost.php" style="color: black; font-size: 17px;
                         font-weight: bold; padding-right: 15px"> Table Post
                 </a>
-            </div>
+            </div>z
         </nav>
 </header>
 
 <!-- Tabela -->
 <table class="table">
     <thead class="thead-dark">
-         <tr>
+        <tr>
             <th scope="col" style="font-size: 17px; color: lightgray; font-weight: bold">ID</th>
             <th scope="col" style="font-size: 17px; color: lightgray; font-weight: bold">Name</th>
             <th scope="col" style="font-size: 17px; color: lightgray; font-weight: bold">Username</th>
@@ -68,13 +68,11 @@ session_start();
             <th scope="col" style="font-size: 17px; color: lightgray; font-weight: bold">Email</th>
             <th scope="col" style="font-size: 17px; color: lightgray; font-weight: bold">Phone</th>
             <th scope="col" style="font-size: 17px; color: lightgray; font-weight: bold">City</th>
-            <th scope="col" style="font-size: 17px; color: lightgray; font-weight: bold">Comment</th>
             <th> </th>
             <th> </th>
         </tr>
     </thead>
 
-    <!--php-->
     <tbody>
         <?php
         $con = mysqli_connect("localhost", "root", "", "adaptechtask");
@@ -93,7 +91,6 @@ session_start();
             $email = $row['email'];
             $phone = $row['phone'];
             $city = $row['city'];
-            $comment = $row['comment'];
             ?>
             <tr>
                 <th scope="row">
@@ -116,9 +113,6 @@ session_start();
                 </td>
                 <td>
                     <?php echo $city ?>
-                </td>
-                <td>
-                    <?php echo $comment ?>
                 </td>
                 <td><button class="btn7"><a href="editPost.php?edit=<?php echo $id; ?>">Update</a></button></td>
                 <td><button class="btn7"><a href="deletePost.php?delete=<?php echo $id; ?>">Delete</a></button></td>
