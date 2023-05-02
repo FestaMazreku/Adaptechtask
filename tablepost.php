@@ -31,30 +31,30 @@ session_start();
 </head>
 
 <header>
-    <!-- Navigation bar -->
-    <div class="topnav">
-        <nav class="navbar" style="background-color: #f9f9f9;">
-            <div class="p-6 col-lg-8 col-md-8 col-sm-12">
-                <img src="images/Logo-redesign-06.png" alt="..." style="width: 13%; margin-right: 40px">
-                <a href="#" style="color: black; font-size: 17px;
-                        font-weight: bold; padding-right: 15px"> Home </a>
-                <a href="#" style="color: black; font-size: 17px;
-                        font-weight: bold; padding-right: 15px"> About Us </a>
-                <a href="#" style="color: black; font-size: 17px;
-                        font-weight: bold; padding-right: 15px"> Our Projects
-                </a>
-                <a href="contactus.html" style="color: black; font-size:17px;
-                        font-weight: bold; padding-right: 15px"> Contact Us </a>
-                <a href="post.html" style="color: black; font-size: 17px;
-                        font-weight: bold; padding-right: 15px"> Posts </a>
-                <a href="otherposts.html" style="color: black; font-size:17px;
-                        font-weight: bold; padding-right: 15px"> Other Posts
-                </a>
-                <a href="tablepost.php" style="color: black; font-size: 17px;
-                        font-weight: bold; padding-right: 15px"> Table Post
-                </a>
-            </div>z
-        </nav>
+<!-- Navigation bar -->
+<div class="topnav">
+    <nav class="navbar" style="background-color: #f9f9f9;">
+    <div class="p-6 col-lg-8 col-md-8 col-sm-12">
+        <img src="images/Logo-redesign-06.png" alt="..." style="width: 13%; margin-right: 40px">
+        <a href="#" style="color: black; font-size: 17px;
+        font-weight: bold; padding-right: 15px"> Home </a>
+        <a href="#" style="color: black; font-size: 17px;
+        font-weight: bold; padding-right: 15px"> About Us </a>
+        <a href="#" style="color: black; font-size: 17px;
+        font-weight: bold; padding-right: 15px"> Our Projects
+        </a>
+        <a href="contactus.html" style="color: black; font-size:17px;
+        font-weight: bold; padding-right: 15px"> Contact Us </a>
+        <a href="post.html" style="color: black; font-size: 17px;
+        font-weight: bold; padding-right: 15px"> Posts </a>
+        <a href="otherposts.html" style="color: black; font-size:17px;
+        font-weight: bold; padding-right: 15px"> Other Posts
+        </a>
+        <a href="tablepost.php" style="color: black; font-size: 17px;
+        font-weight: bold; padding-right: 15px"> Table Post
+        </a>
+    </div>
+</nav>
 </header>
 
 <!-- Tabela -->
@@ -104,6 +104,7 @@ session_start();
                 </td>
                 <td>
                     <?php echo $age ?>
+
                 </td>
                 <td>
                     <?php echo $email ?>
