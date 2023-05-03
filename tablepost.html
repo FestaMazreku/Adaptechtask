@@ -63,40 +63,115 @@
             </nav>
         </header>
 
+        <!-- <table class="table table-striped table-bordered table-responsive-lg">
+            <div class="container">
+                <div class="mb-5">
+                    <div class="row">
+                        <div class="form-group col-md-8 mb-3">
+                            <label for="id"> ID: </label>
+                            <input type="text" name="id" class="form-control"
+                                id="id" placeholder="">
+                        </div>
+                        <div class="form-group col-md-8 mb-3">
+                            <label for="name"> Name: </label>
+                            <input type="text" name="name" class="form-control"
+                                id="name" placeholder="">
+                        </div>
+                        <div class="form-group col-md-8 mb-3">
+                            <label for="username"> Username: </label>
+                            <input type="text" name="username"
+                                class="form-control"
+                                id="username" placeholder="">
+                        </div>
+                        <div class="form-group col-md-8 mb-3">
+                            <label for="age"> Age </label>
+                            <input type="number" name="age" class="form-control"
+                                id="age" placeholder="">
+                        </div>
+                        <div class="form-group col-md-8 mb-3">
+                            <label for="email"> Email: </label>
+                            <input type="text" name="email" class="form-control"
+                                id="email" placeholder="">
+                        </div>
+                        <div class="form-group col-md-8 mb-3">
+                            <label for="phone"> Phone: </label>
+                            <input type="tel" name="phone" class="form-control"
+                                id="phone" placeholder="">
+                        </div>
+                        <div class="form-group col-md-8 mb-3">
+                            <label for="city"> City: </label>
+                            <input type="tel" name="city" class="form-control"
+                                id="city" placeholder="">
+                        </div>
+
+                        <div class="col-lg-8">
+                            <button class="btn5" id="submit"
+                                onclick="addPost()"> Add </button>
+                            <button class="btn7" id="update"
+                                onclick="updatePost()"> Edit </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </table> -->
+
         <!-- Tabela -->
-        <table class="table table-striped table-bordered table-responsive-lg"
+        <table class="table table-striped table-bordered
+            table-responsive-lg"
             id="table">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col" style="font-size: 17px; color: rgb(8,
-                        31,165); font-weight: bold; font-family:'Trebuchet MS',
-                        'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans',
+                    <th scope="col" style="font-size: 17px;
+                        color: rgb(8,
+                        31,165); font-weight: bold;
+                        font-family:'Trebuchet MS',
+                        'Lucida Sans Unicode', 'Lucida Grande',
+                        'Lucida Sans',
                         Arial, sans-serif">ID</th>
-                    <th scope="col" style="font-size: 17px; color: rgb(8, 31,
-                        165); font-weight: bold; font-family: 'Trebuchet MS',
-                        'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans',
+                    <th scope="col" style="font-size: 17px;
+                        color: rgb(8, 31,
+                        165); font-weight: bold; font-family:
+                        'Trebuchet MS',
+                        'Lucida Sans Unicode', 'Lucida Grande',
+                        'Lucida Sans',
                         Arial, sans-serif">Name</th>
-                    <th scope="col" style="font-size: 17px; color: rgb(8, 31,
-                        165); font-weight: bold; font-family: 'Trebuchet MS',
-                        'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans',
+                    <th scope="col" style="font-size: 17px;
+                        color: rgb(8, 31,
+                        165); font-weight: bold; font-family:
+                        'Trebuchet MS',
+                        'Lucida Sans Unicode', 'Lucida Grande',
+                        'Lucida Sans',
                         Arial, sans-serif">Username</th>
-                    <th scope="col" style="font-size: 17px; color: rgb(8, 31,
-                        165); font-weight: bold; font-family: 'Trebuchet MS',
-                        'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans',
+                    <th scope="col" style="font-size: 17px;
+                        color: rgb(8, 31,
+                        165); font-weight: bold; font-family:
+                        'Trebuchet MS',
+                        'Lucida Sans Unicode', 'Lucida Grande',
+                        'Lucida Sans',
                         Arial, sans-serif">Age</th>
-                    <th scope="col" style="font-size: 17px; color: rgb(8, 31,
-                        165); font-weight: bold; font-family: 'Trebuchet MS',
-                        'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans',
+                    <th scope="col" style="font-size: 17px;
+                        color: rgb(8, 31,
+                        165); font-weight: bold; font-family:
+                        'Trebuchet MS',
+                        'Lucida Sans Unicode', 'Lucida Grande',
+                        'Lucida Sans',
                         Arial, sans-serif">Email</th>
-                    <th scope="col" style="font-size: 17px; color: rgb(8, 31,
-                        165); font-weight: bold; font-family: 'Trebuchet MS',
-                        'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans',
+                    <th scope="col" style="font-size: 17px;
+                        color: rgb(8, 31,
+                        165); font-weight: bold; font-family:
+                        'Trebuchet MS',
+                        'Lucida Sans Unicode', 'Lucida Grande',
+                        'Lucida Sans',
                         Arial, sans-serif">Phone</th>
-                    <th scope="col" style="font-size: 17px; color: rgb(8, 31,
-                        165); font-weight: bold; font-family: 'Trebuchet MS',
-                        'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans',
+                    <th scope="col" style="font-size: 17px;
+                        color: rgb(8, 31,
+                        165); font-weight: bold; font-family:
+                        'Trebuchet MS',
+                        'Lucida Sans Unicode', 'Lucida Grande',
+                        'Lucida Sans',
                         Arial, sans-serif">City</th>
-                    <th> </th>
+
                 </tr>
             </thead>
 
@@ -122,13 +197,9 @@
                 <td>
                     <div id="city"> </div>
                 </td>
-                <td>
-                    <button onclick="addPost();" class="btn7">Add</button>
-                    <button onclick="updatePost();" class="btn7">Update</button>
-                    <button onclick="deletePost();" class="btn7">Delete</button>
-                </td>
             </tr>
         </table>
+        <br>
 
         <!-- Previous and Next -->
         <nav aria-label="Page navigation">
