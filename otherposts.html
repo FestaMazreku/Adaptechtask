@@ -33,126 +33,124 @@
 
     <header>
         <!-- Navigation bar -->
-        <div class="topnav">
-            <nav class="navbar" style="background-color: #f9f9f9;">
-                <div class="p-6 col-lg-8 col-md-8 col-sm-12">
-                    <img src="images/Logo-redesign-06.png" alt="..."
-                        style="width: 13%; margin-right: 40px">
-                    <a href="#" style="color: black; font-size: 17px;
-                        font-weight: bold; padding-right: 15px"> Home </a>
-                    <a href="#" style="color: black; font-size: 17px;
-                        font-weight: bold; padding-right: 15px"> About Us </a>
-                    <a href="#" style="color: black; font-size: 17px;
-                        font-weight: bold; padding-right: 15px"> Our Projects
-                    </a>
-                    <a href="contactus.html" style="color: black;
-                        font-size:17px;
-                        font-weight: bold; padding-right: 15px"> Contact Us </a>
-                    <a href="post.html" style="color: black; font-size: 17px;
-                        font-weight: bold; padding-right: 15px"> Posts </a>
-                    <a href="otherposts.html" style="color: black;
-                        font-size:17px;
-                        font-weight: bold; padding-right: 15px"> Other Posts
-                    </a>
-                    <a href="tablepost.html" style="color: black; font-size:
-                        17px;
-                        font-weight: bold; padding-right: 15px"> Table Post
-                    </a>
-                </div>
-            </nav>
-        </header>
+        <div class="topnav" id="myTopnav">
+            <a href="#" style="color: black; font-size: 17px; font-weight: bold;
+                padding-right: 15px"> Home </a>
+            <a href="#" style="color: black; font-size: 17px; font-weight: bold;
+                padding-right: 15px"> About Us </a>
+            <a href="#" style="color: black; font-size: 17px; font-weight: bold;
+                padding-right: 15px"> Our Projects </a>
+            <a href="contactus.html" style="color: black; font-size:17px;
+                font-weight: bold; padding-right: 15px"> Contact Us </a>
+            <a href="post.html" style="color: black; font-size: 17px;
+                font-weight: bold; padding-right: 15px"> Posts </a>
+            <a href="otherposts.html" style="color: black;font-size:17px;
+                font-weight: bold; padding-right: 15px" class="active"> Other
+                Posts </a>
+            <a href="tablepost.html" style="color: black; font-size: 17px;
+                font-weight: bold; padding-right: 15px"> Table Post </a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i> </a>
+        </div>
+    </header>
 
-        <body>
-            <div class="mt-5 mb-3 d-flex justify-content-center row">
-                <div class="card p-3 col-lg-6 col-md-6 col-sm-12">
-                    <center>
-                        <h4 style="font-weight: bold;"> Posts </h4>
-                    </center>
+    <body>
+        <div class="mt-5 mb-2 d-flex justify-content-center row">
+            <div class="card p-3 col-lg-6 col-md-6 col-sm-12" style="border: 3px solid rgb(250, 250, 252); border-radius: 10px; box-shadow: 5px 5px 7px 4px lightgray;">
+                <center>
+                    <h4 style="font-weight: bold;"> Posts </h4>
                     <br>
-                    <div class="row">
-                        <div class="float-start col-lg-1 col-sm-1">
-                            <button class="btn3 btn-secondary"></button>
-                        </div>
-                        <div class="float-end pt-2 col-lg-11 col-sm-11">
-                            <p style="font-weight: bold; color: darkblue"
-                                id="user1"></p>
-                            <p id="nick1"></p>
-                        </div>
-                        <div class="ml-3 mt-3">
-                            <p id="email1"></p>
-                            <p id="post1"></p>
-                            <p id="title1"></p>
-                            <p id="comment1"></p>
-                        </div>
-                        <br>
-                        <div class="ml-3 mt-3">
-                            <input type="text" class="post p-3" id="new_title"
-                                name="new_title" value="" placeholder="Komento në këtë postim">
-                            <button id="add_btn2" class="btn5" onclick="New()">
-                                Komento </button>
-                        </div>
+                    <div class="float-start col-lg-1 col-sm-1">
+                        <button class="btn3 btn-secondary"></button>
                     </div>
+                    <div class="float-end pt-2 col-lg-11 col-sm-11">
+                        <p style="font-weight: bold; color: darkblue"
+                            id="user1"></p>
+                        <p id="nick1"></p>
+                    </div>
+                    <div class="ml-3 mt-3">
+                        <p id="email1"></p>
+                        <p id="post1"></p>
+                        <p id="title1"></p>
+                        <p id="comment1"></p>
+                    </div>
+                    <div class="ml-3 mt-3">
+                        <input type="text" class="post p-3"
+                            id="new_title"
+                            name="new_title" value=""
+                            placeholder="Komento në këtë postim">
+                        <button id="add_btn2" class="btn8"
+                            onclick="New()">
+                            Komento </button>
+                    </div>
+                </center>
+            </div>
+        </div>
 
-                    <br>
-                    <div class="row">
-                        <div class="float-start col-lg-1 col-sm-1">
-                            <button class="btn4 btn-secondary"></button>
+        <div class="mt-5 mb-2 d-flex justify-content-center row">
+            <div class="card p-3 col-lg-6 col-md-6 col-sm-12" style="border: 3px solid rgb(250, 250, 252); border-radius: 10px; box-shadow: 5px 5px 7px 4px lightgray;">
+                <center>
+                    <div class="float-start col-lg-1 col-sm-1">
+                        <button class="btn4 btn-secondary"></button>
+                    </div>
+                    <div class="float-end pt-2 col-lg-11 col-sm-11">
+                        <p style="font-weight: bold; color: darkblue"
+                            id="user2"></p>
+                        <p id="nick2"></p>
+                    </div>
+                    <div class="ml-3 mt-3">
+                        <p id="email2"></p>
+                        <p id="post2"></p>
+                        <p id="title2"></p>
+                        <p id="comment2"></p>
+                    </div>
+                    <div class="ml-3 mt-3">
+                        <input type="text" class="post p-3"
+                            id="new_title"
+                            name="new_title" value=""
+                            placeholder="Komento në këtë postim">
+                        <button id="add_btn2" class="btn8"
+                            onclick="New()">
+                            Komento </button>
+                    </div>
+                </center>
+            </div>
+        </div>
+        <br>
+
+        <!-- Footer -->
+        <div class="footer-clean">
+            <footer>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-4 col-md-3 item">
+                            <h3>Services</h3>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="post.html">Posts</a></li>
+                            </ul>
                         </div>
-                        <div class="float-end pt-2 col-lg-11 col-sm-11">
-                            <p style="font-weight: bold; color: darkblue"
-                                id="user2"></p>
-                            <p id="nick2"></p>
+                        <div class="col-sm-4 col-md-3 item">
+                            <h3>About</h3>
+                            <ul>
+                                <li><a href="otherposts.html">Other posts</a></li>
+                                <li><a href="contactus.html">Contact us</a></li>
+                                <li><a href="#">Team</a></li>
+                            </ul>
                         </div>
-                        <div class="ml-3 mt-3">
-                            <p id="email2"></p>
-                            <p id="post2"></p>
-                            <p id="title2"></p>
-                            <p id="comment2"></p>
+                        <div class="col-sm-4 col-md-3 item">
+                            <h3>Careers</h3>
+                            <ul>
+                                <li><a href="#">Job openings</a></li>
+                                <li><a href="#">Employee success</a></li>
+                                <li><a href="#">Benefits</a></li>
+                            </ul>
                         </div>
-                        <br>
-                        <div class="ml-3 mt-3">
-                            <input type="text" class="post p-3" id="new_title"
-                                name="new_title" value="" placeholder="Komento në këtë postim">
-                            <button id="add_btn2" class="btn5" onclick="New()">
-                                Komento </button>
-                        </div>
+                        <p class="copyright"> Adaptech LLC © 2023 </p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Footer -->
-            <div class="footer-clean">
-                <footer>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-sm-4 col-md-3 item">
-                                <h3>Services</h3>
-                                <ul>
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="post.html">Posts</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-4 col-md-3 item">
-                                <h3>About</h3>
-                                <ul>
-                                    <li><a href="otherposts.html">Other posts</a></li>
-                                    <li><a href="contactus.html">Contact us</a></li>
-                                    <li><a href="#">Team</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-4 col-md-3 item">
-                                <h3>Careers</h3>
-                                <ul>
-                                    <li><a href="#">Job openings</a></li>
-                                    <li><a href="#">Employee success</a></li>
-                                    <li><a href="#">Benefits</a></li>
-                                </ul>
-                            </div>
-                            <p class="copyright"> Adaptech LLC © 2023 </p>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </body>
-    </html>
+            </footer>
+        </div>
+    </body>
+</html>

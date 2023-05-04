@@ -20,7 +20,7 @@ if ($con) {
             echo json_encode($response, JSON_PRETTY_PRINT);
         }
     }
-
+    
     if (isset($_GET['post'])) {
         $id = $_GET['post'];
         $sql = "select * from posts where postsid = " . $id;

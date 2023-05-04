@@ -1,3 +1,12 @@
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
 function New() {
   var new_title = document.getElementById("new_title").value;
   console.log("Titulli i ri: " + new_title);
@@ -31,13 +40,14 @@ function getPost(id) {
         postDiv.innerHTML = `<p style="font-size: 15px; color: darkblue; font-weight: bold"> ID: ${data.userid} </p> 
           <p style="font-size: 20px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> Title: ${data.title} </p>
           <h6> Message: ${data.body} </h6>
+          <hr>
           <p style="font-weight: bold"> Name: ${userData[data.postsid - 1].name} </p> 
           <p> Username: ${userData[data.postsid - 1].username} </p> 
-          <h6 style="color: #0F52BA"> Email: ${userData[data.postsid - 1].email} </h6> 
+          <h6 style="color: darkblue"> Email: ${userData[data.postsid - 1].email} </h6> 
           <p> Age: ${userData[data.postsid - 1].age} </p>
           <p> Phone: ${userData[data.postsid - 1].phone} </p>
           <p> City: ${userData[data.postsid - 1].city} </p>
-          <a href="post.html" onclick="getPost()"> <button class="btn1"> Go back </button> </a>`
+          <a href="post.html" onclick="getPost()"> <button class="btn1"> &laquo; Go back </button> </a>`
         jsonDataDiv.appendChild(postDiv);
         getComment(id);
         $("#comments").show();
@@ -47,27 +57,24 @@ function getPost(id) {
 
 function getComment(id) {
   fetch('http://adaptechtask.test/database/comments.php?comment=' + id)
-  .then(response => response.json())
-  .then(data => {
-    const jsonDataDiv = document.getElementById('posts');
-    data.forEach(post => {
+    .then(response => response.json())
+    .then(data => {
       $.ajax({
         type: "GET",
-        url: 'http://adaptechtask.test/database/comments.php?comment=',
+        url: 'http://adaptechtask.test/database/users.php?users',
         dataType: 'json',
-      }).then(post => {
+      }).then(commentData => {
+        const jsonDataDiv = document.getElementById('comments');
         const postDiv = document.createElement('div');
-        postDiv.innerHTML = `<p style="color: darkblue; font-size: 15px"> Comment ID: ${post.commentsid} </p> 
-        <p style="color: darkblue; font-size: 15px"> ID: ${post.postsid} </p> 
-        <p style="color: darkblue; font-size: 15px"> Name: ${post.name} </p> 
-        <p style="color: darkblue"> <p> Comment: ${post.body}</p>`;
+        postDiv.innerHTML = `<hr>
+        <p style="font-weight:bold"> Name: ${commentData[data.postid - 1].name} </p> 
+        <p style="color: darkblue"> <p> Comment nr.${data.postid}: ${data.body} </p>`;
         jsonDataDiv.appendChild(postDiv);
         $("#comments").show();
       });
     });
-  });
-}
-  
+};
+
 function getall() {
   fetch('http://adaptechtask.test/database/posts.php?posts')
     .then(response => response.json())
@@ -80,12 +87,13 @@ function getall() {
           dataType: 'json',
         }).then(userData => {
           const postDiv = document.createElement('div');
-          postDiv.innerHTML = `<p> ID: ${userData[post.postsid - 1.].id} </p>
+          postDiv.innerHTML = `<p style="font-weight: bold"> ID: ${userData[post.postsid - 1.].id} </p>
           <p style="font-weight: bold"> Name: ${userData[post.postsid - 1].name} </p> 
-          <p> Email: ${userData[post.postsid - 1].email} </p> 
+          <p style="color: darkblue"> Email: ${userData[post.postsid - 1].email} </p> 
           <a href="?post=${post.postsid}" style="font-size: 17px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> 
           Title: ${post.title + "..."} </a>
-          <p style="color: darkblue" font-size: 25px"> Message: ${post.body} </p>`;
+          <p style="color: black" font-size: 25px"> Message: ${post.body} </p>
+          <hr>`;
           jsonDataDiv.appendChild(postDiv);
           $("#comments").hide();
         });
@@ -120,11 +128,11 @@ $(document).ready(function () {
 $(document).ready(function () {
   const currentUrl = window.location.href;
   const searchParams = new URLSearchParams(new URL(currentUrl).search);
-  const post = searchParams.get('comments');
-  if (post == null) {
+  const data = searchParams.get('comments');
+  if (data == null) {
     null;
   }
   else {
-    getComment(post);
+    getComment(data);
   }
 });

@@ -1,3 +1,12 @@
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+
 function New() {
     var new_title = document.getElementById("new_title").value;
     console.log("Titulli i ri: " + new_title);

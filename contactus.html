@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title> Contact us </title>
+        <title> Contact Us </title>
         <meta charset="UTF-8"/>
         <meta name="keywords" content="adaptech">
         <meta name="description" content="adaptech">
@@ -33,39 +33,32 @@
 
     <header>
         <!-- Navigation bar -->
-        <div class="topnav">
-            <nav class="navbar" style="background-color: #f9f9f9;">
-                <div class="p-6 col-lg-8 col-md-8 col-sm-12">
-                    <img src="images/Logo-redesign-06.png" alt="..."
-                        style="width: 13%; margin-right: 40px">
-                    <a href="#" style="color: black; font-size: 17px;
-                        font-weight: bold; padding-right: 15px"> Home </a>
-                    <a href="#" style="color: black; font-size: 17px;
-                        font-weight: bold; padding-right: 15px"> About Us </a>
-                    <a href="#" style="color: black; font-size: 17px;
-                        font-weight: bold; padding-right: 15px"> Our Projects
-                    </a>
-                    <a href="contactus.html" style="color: black;
-                        font-size:17px;
-                        font-weight: bold; padding-right: 15px"> Contact Us </a>
-                    <a href="post.html" style="color: black; font-size: 17px;
-                        font-weight: bold; padding-right: 15px"> Posts </a>
-                    <a href="otherposts.html" style="color: black;
-                        font-size:17px;
-                        font-weight: bold; padding-right: 15px"> Other Posts
-                    </a>
-                    <a href="tablepost.html" style="color: black; font-size:
-                        17px;
-                        font-weight: bold; padding-right: 15px"> Table Post
-                    </a>
-                </div>
-            </nav>
-        </header>
+        <div class="topnav" id="myTopnav">
+            <a href="#" style="color: black; font-size: 17px; font-weight: bold;
+                padding-right: 15px"> Home </a>
+            <a href="#" style="color: black; font-size: 17px; font-weight: bold;
+                padding-right: 15px"> About Us </a>
+            <a href="#" style="color: black; font-size: 17px; font-weight: bold;
+                padding-right: 15px"> Our Projects </a>
+            <a href="contactus.html" style="color: black; font-size:17px;
+                font-weight: bold; padding-right: 15px" class="active"> Contact
+                Us </a>
+            <a href="post.html" style="color: black; font-size: 17px;
+                font-weight: bold; padding-right: 15px"> Posts </a>
+            <a href="otherposts.html" style="color: black;font-size:17px;
+                font-weight: bold; padding-right: 15px"> Other Posts </a>
+            <a href="tablepost.html" style="color: black; font-size: 17px;
+                font-weight: bold; padding-right: 15px"> Table Post </a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i> </a>
+        </div>
+    </header>
 
-        <body>
-            <!-- Contact Us -->
-            <center>
-                <br>
+    <body>
+        <!-- Contact Us -->
+        <center>
+            <br>
+            <div class="col-sm-4 col-md-3 item">
                 <div class="contact">
                     <h3 style="font-weight: bold"> Contact Us </h3>
                     <br>
@@ -141,7 +134,39 @@
                                     </button>
                                 </div>
                             </form>
+                        </div>
+                    </center>
+
+                    <!-- Map-->
+                    <center>
+                        <section id="contact" class="py-5">
+                            <h1 class="location"> OUR LOCATION
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24"
+                                    fill="currentColor"
+                                    class="bi bi-geo-alt-fill" viewBox="0 0
+                                    16 16">
+                                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2
+                                        6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1
+                                        0-6 3 3 0 0 1 0 6z"/></svg>
+                                </h1>
+                                <br>
+                                <div class="row">
+                                    <div class="mapouter"><div
+                                            class="gmap_canvas"><iframe
+                                                class="gmap_iframe"
+                                                width="100%" frameborder="0"
+                                                scrolling="no"
+                                                marginheight="0"
+                                                marginwidth="0"
+                                                src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=prizren
+                                                &amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a
+                                                href="https://www.embedmymap.com/">Embed
+                                                My Map</a></div><style>.mapouter{position:relative;text-align:right;width:100%;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:400px;}.gmap_iframe {height:400px!important;}</style></div>
+                                </div>
+                            </section>
                         </center>
+                        <br>
 
                         <!-- Footer -->
                         <div class="footer-clean">

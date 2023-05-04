@@ -1,3 +1,12 @@
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+}
+
 function getId() {
     fetch('http://adaptechtask.test/database/posts.php?posts')
         .then(response => response.json())
@@ -16,7 +25,7 @@ function getId() {
                 });
             });
         });
-}
+    }
 
 function getName() {
     fetch('http://adaptechtask.test/database/posts.php?posts')
@@ -36,7 +45,7 @@ function getName() {
                 });
             });
         });
-}
+    }
 
 function getUsername() {
     fetch('http://adaptechtask.test/database/posts.php?posts')
@@ -56,7 +65,7 @@ function getUsername() {
                 });
             });
         });
-}
+    }
 
 function getAge() {
     fetch('http://adaptechtask.test/database/posts.php?posts')
@@ -76,7 +85,7 @@ function getAge() {
                 });
             });
         });
-}
+    }
 
 function getEmail() {
     fetch('http://adaptechtask.test/database/posts.php?posts')
@@ -96,7 +105,7 @@ function getEmail() {
                 });
             });
         });
-}
+    }
 
 function getPhone() {
     fetch('http://adaptechtask.test/database/posts.php?posts')
@@ -116,7 +125,7 @@ function getPhone() {
                 });
             });
         });
-}
+    }
 
 function getCity() {
     fetch('http://adaptechtask.test/database/posts.php?posts')
@@ -136,7 +145,7 @@ function getCity() {
                 });
             });
         });
-}
+    }
 
 $(document).ready(function () {
     const currentUrl = window.location.href;
