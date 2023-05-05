@@ -10,6 +10,7 @@ if (isset($_GET['edit'])) {
 
     <!DOCTYPE html>
     <html lang="en">
+
     <head>
         <title> Update a Post </title>
         <meta charset="UTF-8" />
@@ -49,8 +50,8 @@ if (isset($_GET['edit'])) {
                 font-weight: bold; padding-right: 15px"> Posts </a>
             <a href="otherposts.html" style="color: black;font-size:17px;
                 font-weight: bold; padding-right: 15px"> Other Posts </a>
-            <a href="tablepost.php" style="color: black; font-size: 17px;
-                font-weight: bold; padding-right: 15px" class="active"> Table Post </a>
+            <a href="tableusers.php" style="color: black; font-size: 17px;
+                font-weight: bold; padding-right: 15px" class="active"> Table Users </a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i> </a>
         </div>
@@ -158,4 +159,5 @@ if (isset($_GET['edit'])) {
         </footer>
     </div>
 </body>
+
 </html>

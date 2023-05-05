@@ -45,8 +45,8 @@ session_start();
                 font-weight: bold; padding-right: 15px"> Posts </a>
         <a href="otherposts.html" style="color: black;font-size:17px;
                 font-weight: bold; padding-right: 15px"> Other Posts </a>
-        <a href="tablepost.php" style="color: black; font-size: 17px;
-                font-weight: bold; padding-right: 15px" class="active"> Table Post </a>
+        <a href="tableusers.php" style="color: black; font-size: 17px;
+                font-weight: bold; padding-right: 15px" class="active"> Table Users </a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i> </a>
     </div>

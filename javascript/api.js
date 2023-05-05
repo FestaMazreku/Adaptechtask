@@ -9,7 +9,7 @@ function myFunction() {
 
 function New() {
   var new_title = document.getElementById("new_title").value;
-  console.log("Titulli i ri: " + new_title);
+  console.log("Komenti: " + new_title);
   fetch('https://jsonplaceholder.typicode.com/posts', {
     method: 'POST',
     body: JSON.stringify({
@@ -24,7 +24,7 @@ function New() {
       console.log('Të dhënat: ' + JSON.stringify(json));
       alert("Artikulli i shtua me sukses! Shikoni në console.");
     })
-}
+  }
 
 function getPost(id) {
   fetch('http://adaptechtask.test/database/posts.php?post=' + id)

@@ -47,8 +47,8 @@
             </a>
             <a href="otherposts.html" style="color: black;font-size:17px;
                 font-weight: bold; padding-right: 15px"> Other Posts </a>
-            <a href="tablepost.html" style="color: black; font-size: 17px;
-                font-weight: bold; padding-right: 15px"> Table Post </a>
+            <a href="users.html" style="color: black; font-size: 17px;
+                font-weight: bold; padding-right: 15px"> Users </a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i> </a>
         </div>
@@ -70,9 +70,17 @@
                         <div id="posts"></div>
                         <div id="user"></div>
                     </div>
-                    <div class="row ml-3 mt-3 mr-3">
-                        <div id="comments">
-                            <h2 style="font-weight: bold"> Comment </h2>
+                    <br>
+                    <div id="comments">
+                        <h2 style="font-weight: bold"> Comment </h2>
+                        <div class="ml-3 mt-3">
+                            <input type="text" class="post1 p-3"
+                                id="new_title"
+                                name="new_title" placeholder="Comment">
+                            <br> <br>
+                            <button id="add_btn2" class="btn8"
+                                onclick="New()">
+                                Submit </button>
                         </div>
                     </div>
                 </div>

@@ -8,7 +8,7 @@ if (isset($_GET['delete'])) {
 
 	if (mysqli_query($con, $sql)) {
 		echo "<script> alert('The post has been deleted!')</script>";
-		echo "<script> window.open ('../../tablepost.php','_self');</script>";
+		echo "<script> window.open ('../../tableusers.php','_self');</script>";
 	} else {
 		echo "Error deleting post: " . mysqli_error($con);
 	}

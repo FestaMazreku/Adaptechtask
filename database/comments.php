@@ -12,8 +12,7 @@ if ($con) {
             while ($row = mysqli_fetch_assoc($result)) {
                 $response[$i]['commentsid'] = $row['commentsid'];
                 $response[$i]['postid'] = $row['postid'];
-                $response[$i]['name'] = $row['name'];
-                $response[$i]['email'] = $row['email'];
+                $response[$i]['userid'] = $row['userid'];
                 $response[$i]['body'] = $row['body'];
 
                 $i++;
@@ -31,8 +30,7 @@ if ($con) {
             if ($row = mysqli_fetch_assoc($result)) {
                 $response['commentsid'] = $row['commentsid'];
                 $response['postid'] = $row['postid'];
-                $response['name'] = $row['name'];
-                $response['email'] = $row['email'];
+                $response['userid'] = $row['userid'];
                 $response['body'] = $row['body'];
             }
         }

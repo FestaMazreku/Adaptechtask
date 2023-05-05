@@ -88,7 +88,7 @@ if (isset($_POST['submit'])) {
 
         if (mysqli_query($con, $insert_query)) {
             echo "<script>alert ('The post is completed successfully!')</script>";
-            echo "<script>window.open('tablepost.php','_self')</script>";
+            echo "<script>window.open('tableusers.php','_self')</script>";
         }
     }
 }

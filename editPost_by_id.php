@@ -21,7 +21,7 @@ if (isset($_POST['update'])) {
         if (mysqli_query($con, $update_query)) {
 
             echo "<script>alert('The post has been updated!')</script>";
-            echo "<script> window.open ('../../tablepost.php','_self');</script>";
+            echo "<script> window.open ('../../tableusers.php','_self');</script>";
         }
     } else {
         echo "<script>alert('Ndonjera prej fushave eshte e zbrazet')</script>";

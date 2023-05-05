@@ -24,7 +24,7 @@ function New() {
             console.log('Të dhënat: ' + JSON.stringify(json));
             alert("Artikulli i shtua me sukses! Shikoni në console.");
         })
-}
+    }
 
 $(function () {
     var $user1 = $('#user1');

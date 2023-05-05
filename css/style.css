@@ -220,6 +220,18 @@ body {
     box-shadow: 3px 3px lightgray;
 }
 
+.post1 {
+    width: 420px;
+    height: 50px;
+    background-color: #efefef;
+    color: gray;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 3px 3px 3px lightgray;
+}
+
 .mb-8 {
     width: 600px;
     color: darkblue;
@@ -228,7 +240,7 @@ body {
 }
 
 .mb-9 {
-    width: 600px;
+    width: 700px;
     color: darkblue;
     font-size: 20px;
     font-weight: bold;
