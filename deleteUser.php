@@ -7,7 +7,7 @@ if (isset($_GET['delete'])) {
 	$sql = "DELETE FROM users WHERE id ='$delete'";
 
 	if (mysqli_query($con, $sql)) {
-		echo "<script> alert('The post has been deleted!')</script>";
+		echo "<script> alert('The user has been deleted!')</script>";
 		echo "<script> window.open ('../../tableusers.php','_self');</script>";
 	} else {
 		echo "Error deleting post: " . mysqli_error($con);

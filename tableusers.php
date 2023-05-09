@@ -7,7 +7,7 @@ session_start();
 <html lang="en">
 
 <head>
-    <title> Table Post </title>
+    <title> Users </title>
     <meta charset="UTF-8" />
     <meta name="keywords" content="adaptech">
     <meta name="description" content="adaptech">
@@ -46,7 +46,7 @@ session_start();
         <a href="otherposts.html" style="color: black;font-size:17px;
                 font-weight: bold; padding-right: 15px"> Other Posts </a>
         <a href="tableusers.php" style="color: black; font-size: 17px;
-                font-weight: bold; padding-right: 15px" class="active"> Table Users </a>
+                font-weight: bold; padding-right: 15px" class="active"> Users </a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i> </a>
     </div>
@@ -63,6 +63,7 @@ session_start();
             <th scope="col" style="font-size: 17px; color: lightgray; font-weight: bold">Email</th>
             <th scope="col" style="font-size: 17px; color: lightgray; font-weight: bold">Phone</th>
             <th scope="col" style="font-size: 17px; color: lightgray; font-weight: bold">City</th>
+            <th> </th>
             <th> </th>
             <th> </th>
         </tr>
@@ -109,8 +110,9 @@ session_start();
                 <td>
                     <?php echo $city ?>
                 </td>
-                <td><button class="btn7"><a href="editPost.php?edit=<?php echo $id; ?>">Update</a></button></td>
-                <td><button class="btn7"><a href="deletePost.php?delete=<?php echo $id; ?>">Delete</a></button></td>
+                <td><button class="btn9"><a href="addUser.php?submit=<?php echo $id; ?>">Add</a></button></td>
+                <td><button class="btn10"><a href="editUser.php?edit=<?php echo $id; ?>">Update</a></button></td>
+                <td><button class="btn7"><a href="deleteUser.php?delete=<?php echo $id; ?>">Delete</a></button></td>
             </tr>
         <?php } ?>
     </tbody>

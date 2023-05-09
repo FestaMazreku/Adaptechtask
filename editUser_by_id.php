@@ -20,7 +20,7 @@ if (isset($_POST['update'])) {
 
         if (mysqli_query($con, $update_query)) {
 
-            echo "<script>alert('The post has been updated!')</script>";
+            echo "<script>alert('The user has been updated!')</script>";
             echo "<script> window.open ('../../tableusers.php','_self');</script>";
         }
     } else {

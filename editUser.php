@@ -7,12 +7,11 @@ if (isset($_GET['edit'])) {
     $edit_query = "SELECT * FROM users WHERE id='$edit_id'";
     $run_edit = mysqli_query($con, $edit_query);
     ?>
-
+    
     <!DOCTYPE html>
     <html lang="en">
-
     <head>
-        <title> Update a Post </title>
+        <title> Update </title>
         <meta charset="UTF-8" />
         <meta name="keywords" content="adaptech">
         <meta name="description" content="adaptech">
@@ -51,23 +50,23 @@ if (isset($_GET['edit'])) {
             <a href="otherposts.html" style="color: black;font-size:17px;
                 font-weight: bold; padding-right: 15px"> Other Posts </a>
             <a href="tableusers.php" style="color: black; font-size: 17px;
-                font-weight: bold; padding-right: 15px" class="active"> Table Users </a>
+                font-weight: bold; padding-right: 15px" class="active"> Users </a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i> </a>
         </div>
     </header>
     <br>
-
+    
     <body>
         <?php
         while ($erow = mysqli_fetch_array($run_edit)) {
             ?>
             <center>
-                <form method="post" enctype="multipart/form-data" action="editPost_by_id.php">
+                <form method="post" enctype="multipart/form-data" action="editUser_by_id.php">
                     <table width="600" bgcolor="lightgray" align="center" border="6">
                         <tr>
                             <td align="center" bgcolor="white" colspan="6">
-                                <h1>Update the post here:</h1>
+                                <h1>Update the user here:</h1>
                             </td>
                         </tr>
                         <input type="hidden" name="id" size="30" value="<?php echo $erow['id']; ?>">
@@ -118,11 +117,11 @@ if (isset($_GET['edit'])) {
                             </tr>
                         </div>
                     <?php } ?>
-        </center>
-    <?php } ?>
-    </table>
-    </form>
-    <br>
+                </center>
+                <?php } ?>
+            </table>
+        </form>
+        <br>
 
     <!-- Footer -->
     <div class="footer-clean">
@@ -159,5 +158,4 @@ if (isset($_GET['edit'])) {
         </footer>
     </div>
 </body>
-
 </html>

@@ -157,15 +157,15 @@ if (isset($_POST["send"])) {
 </body>
 
 <?php
-$conn = mysqli_connect("localhost", "root", "", "adaptechtask");
-mysqli_select_db($conn, 'adaptechtask');
+$con = mysqli_connect("localhost", "root", "", "adaptechtask");
+mysqli_select_db($con, 'adaptechtask');
 
 $errors = array();
 
 if (isset($_POST['send'])) {
 
-    $title = mysqli_real_escape_string($conn, $_POST['title']);
-    $message = mysqli_real_escape_string($conn, $_POST['message']);
+    $title = mysqli_real_escape_string($con, $_POST['title']);
+    $message = mysqli_real_escape_string($con, $_POST['message']);
 
     if (empty($title)) {
         array_push($errors, "Title is required");
@@ -178,7 +178,7 @@ if (isset($_POST['send'])) {
 
     $query = "SELECT * FROM comment WHERE title='$title' OR message='$message' LIMIT 1";
 
-    $result = mysqli_query($conn, $query);
+    $result = mysqli_query($con, $query);
     $user = mysqli_fetch_assoc($result);
     // if user exists
     if ($user) {
@@ -195,11 +195,11 @@ if (isset($_POST['send'])) {
 
         $rows = "SELECT * FROM comment WHERE title='$title' AND message='$message'";
 
-        $run = mysqli_query($conn, $rows);
+        $run = mysqli_query($con, $rows);
 
         if (mysqli_num_rows($run) < 10) {
 
-            mysqli_query($conn, $regist);
+            mysqli_query($con, $regist);
 
             echo "<script>alert('The message has been sent successfully!');</script>";
         }

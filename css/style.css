@@ -191,6 +191,36 @@ body {
     opacity: 0.9;
 }
 
+.btn9 {
+    width: 80px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 7px;
+    border: 2px solid rgb(236, 190, 122);
+    background: rgb(236, 190, 122);
+    padding: 2px;
+    margin-left: 5px;
+}
+
+.btn9:hover {
+    background: rgb(219, 153, 67);
+    opacity: 0.9;
+}
+
+.btn10 {
+    width: 80px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 7px;
+    border: 2px solid rgb(177, 191, 238);
+    background: rgb(177, 191, 238);
+    padding: 2px;
+    margin-left: 5px;
+}
+
+.btn10:hover {
+    background: rgb(140, 155, 189);
+    opacity: 0.9;
+}
+
 .text {
     font-size: 14px;
     color: #bebebe;
