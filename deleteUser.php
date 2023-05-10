@@ -14,4 +14,5 @@ if (isset($_GET['delete'])) {
 	}
 	mysqli_close($con);
 }
+
 ?>

@@ -19,7 +19,6 @@ if (isset($_POST['update'])) {
         id='$id1'";
 
         if (mysqli_query($con, $update_query)) {
-
             echo "<script>alert('The user has been updated!')</script>";
             echo "<script> window.open ('../../tableusers.php','_self');</script>";
         }

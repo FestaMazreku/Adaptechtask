@@ -1,12 +1,8 @@
-<?php
-session_start();
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title> Add </title>
+    <title> Other Posts </title>
     <meta charset="UTF-8" />
     <meta name="keywords" content="adaptech">
     <meta name="description" content="adaptech">
@@ -26,14 +22,14 @@ session_start();
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <!-- javascript -->
-    <script src="javascript/api.js"></script>
+    <script src="javascript/script.js"></script>
 </head>
 
 <header>
     <!-- Navigation bar -->
     <div class="topnav" id="myTopnav">
         <a href="#" style="color: black; font-size: 17px; font-weight: bold;
-        padding-right: 15px"> Home </a>
+                padding-right: 15px"> Home </a>
         <a href="#" style="color: black; font-size: 17px; font-weight: bold;
                 padding-right: 15px"> About Us </a>
         <a href="#" style="color: black; font-size: 17px; font-weight: bold;
@@ -43,82 +39,75 @@ session_start();
         <a href="post.php" style="color: black; font-size: 17px;
                 font-weight: bold; padding-right: 15px"> Posts </a>
         <a href="otherposts.php" style="color: black;font-size:17px;
-                font-weight: bold; padding-right: 15px"> Other Posts </a>
+                font-weight: bold; padding-right: 15px" class="active"> Other
+            Posts </a>
         <a href="tableusers.php" style="color: black; font-size: 17px;
-                font-weight: bold; padding-right: 15px" class="active"> Users </a>
+                font-weight: bold; padding-right: 15px"> Users </a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i> </a>
     </div>
 </header>
-<br>
 
 <body>
-    <center>
-        <form method="post" action="addUserDB.php" enctype="multipart/form-data">
-
-            <table width="600" bgcolor="lightgray" align="center" border="6">
-                <tr>
-                    <td align="center" bgcolor="white" colspan="6">
-                        <h1>Add a new user here:</h1>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="middle">Id:</td>
-                    <td>
-                        <input type="text" name="id" size="30">
-                    </td>
-                </tr>
-                <tr>
-                    <td align="middle">Name & Surname:</td>
-                    <td>
-                        <input type="text" name="name" size="30">
-                    </td>
-                </tr>
-                <tr>
-                    <td align="middle">Username:</td>
-                    <td>
-                        <input type="text" name="username" size="30">
-                    </td>
-                </tr>
-                <tr>
-                    <td align="middle">Age:</td>
-                    <td>
-                        <input type="text" name="age" size="30">
-                    </td>
-                </tr>
-                <tr>
-                    <td align="middle">Email:</td>
-                    <td>
-                        <input type="text" name="email" size="30">
-                    </td>
-                </tr>
-                <tr>
-                    <td align="middle">Phone:</td>
-                    <td>
-                        <input type="tel" name="phone" size="30">
-                    </td>
-                </tr>
-                <tr>
-                    <td align="middle">City:</td>
-                    <td>
-                        <input type="text" name="city" size="30">
-                    </td>
-                </tr>
-                <div class="input-group">
-                    <tr>
-                        <td align="center" colspan="8">
-                            <br>
-                            <input type="submit"
-                                style="padding: 6px; background: black; opacity: 0.7; color: white; font-weight: bold; border: 2px; border-radius: 2px; font-size: 20px; width: 40%"
-                                name="submit" value="Add now">
-                        </td>
-                    </tr>
+    <div class="mt-5 mb-2 d-flex justify-content-center row">
+        <div class="card p-3 col-lg-6 col-md-6 col-sm-12" style="border: 3px
+                solid rgb(250, 250, 252); border-radius: 10px; box-shadow: 5px
+                5px 7px 4px lightgray;">
+            <center>
+                <h4 style="font-weight: bold;"> Posts </h4>
+                <br>
+                <div class="float-start col-lg-1 col-sm-1">
+                    <button class="btn3 btn-secondary"></button>
                 </div>
-            </table>
-        </form>
-    </center>
+                <div class="float-end pt-2 col-lg-11 col-sm-11">
+                    <p style="font-weight: bold; color: darkblue" id="user1"></p>
+                    <p id="nick1"></p>
+                </div>
+                <div class="ml-3 mt-3">
+                    <p id="email1"></p>
+                    <p id="post1"></p>
+                    <p id="title1"></p>
+                    <p id="comment1"></p>
+                </div>
+                <div class="ml-3 mt-3">
+                    <input type="text" class="post p-3" id="new_title" name="new_title" value=""
+                        placeholder="Comment on this post">
+                    <button id="add_btn2" class="btn8" onclick="New()">
+                        Comment </button>
+                </div>
+            </center>
+        </div>
+    </div>
 
+    <div class="mt-5 mb-2 d-flex justify-content-center row">
+        <div class="card p-3 col-lg-6 col-md-6 col-sm-12" style="border: 3px
+                solid rgb(250, 250, 252); border-radius: 10px; box-shadow: 5px
+                5px 7px 4px lightgray;">
+            <center>
+                <div class="float-start col-lg-1 col-sm-1">
+                    <button class="btn4 btn-secondary"></button>
+                </div>
+                <div class="float-end pt-2 col-lg-11 col-sm-11">
+                    <p style="font-weight: bold; color: darkblue" id="user2"></p>
+                    <p id="nick2"></p>
+                </div>
+                <div class="ml-3 mt-3">
+                    <p id="email2"></p>
+                    <p id="post2"></p>
+                    <p id="title2"></p>
+                    <p id="comment2"></p>
+                </div>
+                <div class="ml-3 mt-3">
+                    <input type="text" class="post p-3" id="new_title" name="new_title" value=""
+                        placeholder="Comment on this post">
+                    <button id="add_btn2" class="btn8" onclick="New()">
+                        Comment </button>
+                </div>
+            </center>
+        </div>
+    </div>
     <br>
+
     <!-- Footer -->
     <div class="footer-clean">
         <footer>

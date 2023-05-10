@@ -1,9 +1,9 @@
 function myFunction() {
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
-      x.className += " responsive";
+        x.className += " responsive";
     } else {
-      x.className = "topnav";
+        x.className = "topnav";
     }
 }
 
@@ -19,13 +19,13 @@ function getId() {
                     dataType: 'json',
                 }).then(userData => {
                     const postDiv = document.createElement('div');
-                    postDiv.innerHTML = `<p style="color:rgb(55, 82, 233); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"> ${userData[post.postsid - 1.].id} </p>`;
+                    postDiv.innerHTML = `<p style="color: rgb(55, 82, 233); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"> ${userData[post.postsid - 1.].id} </p>`;
                     jsonDataDiv.appendChild(postDiv);
                     $("#comments").hide();
                 });
             });
         });
-    }
+}
 
 function getName() {
     fetch('http://adaptechtask.test/database/posts.php?posts')
@@ -45,7 +45,7 @@ function getName() {
                 });
             });
         });
-    }
+}
 
 function getUsername() {
     fetch('http://adaptechtask.test/database/posts.php?posts')
@@ -65,7 +65,7 @@ function getUsername() {
                 });
             });
         });
-    }
+}
 
 function getAge() {
     fetch('http://adaptechtask.test/database/posts.php?posts')
@@ -85,7 +85,7 @@ function getAge() {
                 });
             });
         });
-    }
+}
 
 function getEmail() {
     fetch('http://adaptechtask.test/database/posts.php?posts')
@@ -105,7 +105,7 @@ function getEmail() {
                 });
             });
         });
-    }
+}
 
 function getPhone() {
     fetch('http://adaptechtask.test/database/posts.php?posts')
@@ -125,7 +125,7 @@ function getPhone() {
                 });
             });
         });
-    }
+}
 
 function getCity() {
     fetch('http://adaptechtask.test/database/posts.php?posts')
@@ -145,7 +145,7 @@ function getCity() {
                 });
             });
         });
-    }
+}
 
 $(document).ready(function () {
     const currentUrl = window.location.href;
@@ -231,8 +231,8 @@ $(document).ready(function () {
     }
 });
 
-$(document).ready(function(){
-    $("#show").click(function(){
+$(document).ready(function () {
+    $("#show").click(function () {
         $("#divPost").toggle(1000);
     });
 });

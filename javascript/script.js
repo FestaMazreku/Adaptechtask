@@ -9,7 +9,7 @@ function myFunction() {
 
 function New() {
     var new_title = document.getElementById("new_title").value;
-    console.log("Titulli i ri: " + new_title);
+    console.log("New title: " + new_title);
     fetch('https://jsonplaceholder.typicode.com/posts', {
         method: 'POST',
         body: JSON.stringify({
@@ -21,10 +21,10 @@ function New() {
     })
         .then(response => response.json())
         .then(json => {
-            console.log('Të dhënat: ' + JSON.stringify(json));
-            alert("Artikulli i shtua me sukses! Shikoni në console.");
+            console.log('Data: ' + JSON.stringify(json));
+            alert("Article successfully added! Look at the console.");
         })
-    }
+}
 
 $(function () {
     var $user1 = $('#user1');

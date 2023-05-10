@@ -39,11 +39,11 @@ session_start();
                 padding-right: 15px"> About Us </a>
         <a href="#" style="color: black; font-size: 17px; font-weight: bold;
                 padding-right: 15px"> Our Projects </a>
-        <a href="contactus.html" style="color: black; font-size:17px;
+        <a href="contactus.php" style="color: black; font-size:17px;
                 font-weight: bold; padding-right: 15px"> Contact Us </a>
-        <a href="post.html" style="color: black; font-size: 17px;
+        <a href="post.php" style="color: black; font-size: 17px;
                 font-weight: bold; padding-right: 15px"> Posts </a>
-        <a href="otherposts.html" style="color: black;font-size:17px;
+        <a href="otherposts.php" style="color: black;font-size:17px;
                 font-weight: bold; padding-right: 15px"> Other Posts </a>
         <a href="tableusers.php" style="color: black; font-size: 17px;
                 font-weight: bold; padding-right: 15px" class="active"> Users </a>
@@ -57,7 +57,7 @@ session_start();
     <thead class="thead-dark">
         <tr>
             <th scope="col" style="font-size: 17px; color: lightgray; font-weight: bold">ID</th>
-            <th scope="col" style="font-size: 17px; color: lightgray; font-weight: bold">Name</th>
+            <th scope="col" style="font-size: 17px; color: lightgray; font-weight: bold">Name & Surname</th>
             <th scope="col" style="font-size: 17px; color: lightgray; font-weight: bold">Username</th>
             <th scope="col" style="font-size: 17px; color: lightgray; font-weight: bold">Age</th>
             <th scope="col" style="font-size: 17px; color: lightgray; font-weight: bold">Email</th>
@@ -152,4 +152,5 @@ session_start();
         </div>
     </footer>
 </div>
+
 </html>

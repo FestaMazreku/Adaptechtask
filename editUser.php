@@ -7,9 +7,10 @@ if (isset($_GET['edit'])) {
     $edit_query = "SELECT * FROM users WHERE id='$edit_id'";
     $run_edit = mysqli_query($con, $edit_query);
     ?>
-    
+
     <!DOCTYPE html>
     <html lang="en">
+
     <head>
         <title> Update </title>
         <meta charset="UTF-8" />
@@ -43,11 +44,11 @@ if (isset($_GET['edit'])) {
                 padding-right: 15px"> About Us </a>
             <a href="#" style="color: black; font-size: 17px; font-weight: bold;
                 padding-right: 15px"> Our Projects </a>
-            <a href="contactus.html" style="color: black; font-size:17px;
+            <a href="contactus.php" style="color: black; font-size:17px;
                 font-weight: bold; padding-right: 15px"> Contact Us </a>
-            <a href="post.html" style="color: black; font-size: 17px;
+            <a href="post.php" style="color: black; font-size: 17px;
                 font-weight: bold; padding-right: 15px"> Posts </a>
-            <a href="otherposts.html" style="color: black;font-size:17px;
+            <a href="otherposts.php" style="color: black;font-size:17px;
                 font-weight: bold; padding-right: 15px"> Other Posts </a>
             <a href="tableusers.php" style="color: black; font-size: 17px;
                 font-weight: bold; padding-right: 15px" class="active"> Users </a>
@@ -56,7 +57,7 @@ if (isset($_GET['edit'])) {
         </div>
     </header>
     <br>
-    
+
     <body>
         <?php
         while ($erow = mysqli_fetch_array($run_edit)) {
@@ -71,7 +72,7 @@ if (isset($_GET['edit'])) {
                         </tr>
                         <input type="hidden" name="id" size="30" value="<?php echo $erow['id']; ?>">
                         <tr>
-                            <td align="middle">Name:</td>
+                            <td align="middle">Name & Surname:</td>
                             <td>
                                 <input type="text" name="name" size="30" value="<?php echo $erow['name']; ?>">
                             </td>
@@ -117,11 +118,11 @@ if (isset($_GET['edit'])) {
                             </tr>
                         </div>
                     <?php } ?>
-                </center>
-                <?php } ?>
-            </table>
-        </form>
-        <br>
+        </center>
+    <?php } ?>
+    </table>
+    </form>
+    <br>
 
     <!-- Footer -->
     <div class="footer-clean">
@@ -158,4 +159,5 @@ if (isset($_GET['edit'])) {
         </footer>
     </div>
 </body>
+
 </html>

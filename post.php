@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 $message = '';
 
 if (isset($_POST["send"])) {
@@ -61,14 +60,14 @@ if (isset($_POST["send"])) {
                 padding-right: 15px"> About Us </a>
         <a href="#" style="color: black; font-size: 17px; font-weight: bold;
                 padding-right: 15px"> Our Projects </a>
-        <a href="contactus.html" style="color: black; font-size:17px;
+        <a href="contactus.php" style="color: black; font-size:17px;
                 font-weight: bold; padding-right: 15px"> Contact Us </a>
-        <a href="post.html" style="color: black; font-size: 17px;
+        <a href="post.php" style="color: black; font-size: 17px;
                 font-weight: bold; padding-right: 15px" class="active"> Posts
         </a>
-        <a href="otherposts.html" style="color: black;font-size:17px;
+        <a href="otherposts.php" style="color: black;font-size:17px;
                 font-weight: bold; padding-right: 15px"> Other Posts </a>
-        <a href="users.html" style="color: black; font-size: 17px;
+        <a href="tableusers.php" style="color: black; font-size: 17px;
                 font-weight: bold; padding-right: 15px"> Users </a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i> </a>
@@ -80,39 +79,34 @@ if (isset($_POST["send"])) {
     <center>
         <div class="mt-5 mb-2 d-flex justify-content-center row" style="cursor: pointer" id="show">
             <div class="card p-3 col-lg-5 col-md-5 col-sm-12" style="border: 3px solid rgb(250, 250, 252); border-radius: 10px;
-            box-shadow: 5px 5px 7px 4px lightgray; background-color: rgb(247, 247, 247);">
+        box-shadow: 5px 5px 7px 4px lightgray; background-color: rgb(247, 247, 247);">
                 <img src="images/Logo-redesign-06.png" alt="..." style="width: 20%; height: 20%" ;>
                 <h2 style="font-weight: bold"> Posts </h2>
                 <div class="row ml-3 mt-3 mr-3">
                     <div id="posts"></div>
                     <div id="user"></div>
                 </div>
-                <div class="row ml-6 mt-6 mr-8">
-                    <br>
-                    <div id="comments">
-                        <h2 style="font-weight: bold"> Comment </h2>
-
-                        <div class="ml-3 mt-3">
-                            <form method="post">
-                                <div class="mb-9">
-                                    <label for="exampleFormControlInput1" class="form-label">
-                                    </label>
-                                    <input type="text" class="form-control" id="title" placeholder="Write a title."
-                                        name="title">
-                                </div>
-                                <div class="mb-9">
-                                    <label for="exampleFormControlTextarea1" class="form-label">
-                                    </label>
-                                    <textarea class="form-control" id="message" placeholder="Write a comment." rows="3"
-                                        name="message"></textarea>
-                                </div>
-                                <br>
-                                <div class="send">
-                                    <input type="submit" class="btn8" name="send" value="Send">
-                                </div>
-                                <br>
-                            </form>
-                        </div>
+                <br>
+                <div id="comments">
+                    <h2 style="font-weight: bold"> Comment </h2>
+                    <div class="ml-3 mt-3">
+                        <form method="post">
+                            <div class="mb-9">
+                                <label for="exampleFormControlInput1" class="form-label"></label>
+                                <input type="text" class="form-control" id="title" placeholder="Write a title."
+                                    name="title">
+                            </div>
+                            <div class="mb-9">
+                                <label for="exampleFormControlTextarea1" class="form-label"></label>
+                                <textarea class="form-control" id="message" placeholder="Write a comment." rows="3"
+                                    name="message"></textarea>
+                            </div>
+                            <br>
+                            <div class="send">
+                                <input type="submit" class="btn8" name="send" value="Send">
+                            </div>
+                            <br>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -206,4 +200,5 @@ if (isset($_POST['send'])) {
     }
 }
 ?>
+
 </html>
