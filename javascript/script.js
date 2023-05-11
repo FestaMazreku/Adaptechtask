@@ -9,7 +9,7 @@ function myFunction() {
 
 function New() {
     var new_title = document.getElementById("new_title").value;
-    console.log("New title: " + new_title);
+    console.log("Comment: " + new_title);
     fetch('https://jsonplaceholder.typicode.com/posts', {
         method: 'POST',
         body: JSON.stringify({
