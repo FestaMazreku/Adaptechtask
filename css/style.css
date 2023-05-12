@@ -162,16 +162,17 @@ body {
 }
 
 .btn7 {
-    width: 80px;
+    width: 70px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     border-radius: 7px;
     border: 2px solid #efefef;
     background: rgb(195, 198, 218);
     padding: 2px;
+    margin-left: 5px;
 }
 
 .btn7:hover {
-    background: rgb(177, 187, 223);
+    background: rgb(114, 130, 153);
     color: var(--black);
     opacity: 0.8;
 }
@@ -192,22 +193,22 @@ body {
 }
 
 .btn9 {
-    width: 80px;
+    width: 70px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     border-radius: 7px;
-    border: 2px solid rgb(230, 172, 97);
-    background: rgb(238, 175, 81);
+    border: 2px solid rgb(83, 85, 90);
+    background: rgb(125, 126, 129);
     padding: 2px;
     margin-left: 5px;
 }
 
 .btn9:hover {
-    background: rgb(219, 153, 67);
+    background: rgb(114, 130, 153);
     opacity: 0.9;
 }
 
 .btn10 {
-    width: 80px;
+    width: 70px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     border-radius: 7px;
     border: 2px solid rgb(177, 191, 238);
@@ -217,8 +218,38 @@ body {
 }
 
 .btn10:hover {
-    background: rgb(140, 155, 189);
+    background: rgb(114, 130, 153);
     opacity: 0.9;
+}
+
+.table-element1{
+    font-weight: bold;
+}
+
+.table-element2{
+    color: 
+    darkblue;
+}
+
+.table-element3{
+    color: rgb(153, 157, 168);
+}
+
+.table-element4{
+    color: rgb(68, 72, 73);
+}
+
+.table-element5{
+    color: rgb(105, 146, 160);
+}
+
+.table-element6{
+    color: rgb(135, 150, 236);
+    font-weight: bold;
+}
+
+.table-element7{
+    color: rgba(12, 41, 119, 0.664);
 }
 
 .text {

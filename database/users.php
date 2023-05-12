@@ -37,10 +37,22 @@ if ($con) {
         $response['age'] = $row['age'];
         $response['email'] = $row['email'];
         $response['phone'] = $row['phone'];
-        $response['city'] = $row['city']; 
+        $response['city'] = $row['city'];
       }
     }
     echo json_encode($response, JSON_PRETTY_PRINT);
   }
+
+  if (isset($_POST['deleteid'])) {
+    $delete = $_POST['deleteid'];
+    $sql = "DELETE FROM users WHERE id = '" . $delete . "' ";
+
+    if (mysqli_query($con, $sql))
+      echo "1";
+    else
+      echo "0";
+  }
+  mysqli_close($con);
+  
 }
 ?>

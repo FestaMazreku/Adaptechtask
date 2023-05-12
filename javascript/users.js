@@ -8,119 +8,35 @@ function myFunction() {
 }
 
 //update User
-function updateUser(id) {
-
-    const updatedName = prompt('Enter the updated name:');
-    const updatedUsername = prompt('Enter the updated username:');
-    const updatedAge = prompt('Enter the updated age:');
-    const updatedEmail = prompt('Enter the updated email:');
-    const updatedPhone = prompt('Enter the updated phone number:');
-    const updatedCity = prompt('Enter the updated city:');
-
-    const updatedUserData = {
-        name: updatedName,
-        username: updatedUsername,
-        age: updatedAge,
-        email: updatedEmail,
-        phone: updatedPhone,
-        city: updatedCity
-    };
-
-    $.ajax({
-        url: `http://adaptechtask.test/database/users.php?user=` + id,
-        type: 'POST',
-        data: updatedUserData,
-        success: function (response) {
-            alert('User information has been updated successfully!');
-        },
-        error: function (xhr, status, error) {
-            console.error('Error updating user:', error);
-        }
-    });
-}
-
-// <?php
-// // Check if the request is a POST request
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//   // Retrieve the user ID from the query string
-//   $id = $_GET['user'];
-
-//   // Retrieve the updated user data from the request body
-//   $updatedUserData = $_POST;
-
-//   // TODO: Implement database update logic here
-//   // Update the user with the specified ID using the $updatedUserData
-
-//   // Return a success response
-//   echo json_encode(['message' => 'User information has been updated successfully!']);
-// } else {
-//   // Return an error response for unsupported request method
-//   http_response_code(405); // Method Not Allowed
-//   echo json_encode(['error' => 'Invalid request method']);
+// function updateUser(id) {
 // }
-// ?>
 
-
-// delete User
 function deleteUser(id, button) {
+    //confirm dialog 
+
     $.ajax({
-        url: `http://adaptechtask.test/database/users.php?user=` + id,
-        type: 'DELETE',
+        url: 'http://adaptechtask.test/database/users.php',
+        type: "POST",
+        data: "deleteid=" + id,
         success: function (response) {
-            alert('The user has been deleted!');
-            $(button).closest('tr').remove();
+            console.log(response);
+            if (response == "1") {
+                $(button).closest('tr').remove();
+                alert("User is deleted successfully!");
+            }
+            else {
+                alert("User is not deleted.");
+            }
         },
-        error: function (xhr, status, error) {
-            console.error('Error deleting user:', error);
-        }
+        error: function (error) {
+            console.log(error);
+            alert("Error: User is not deleted! " + error);
+        },
     });
 }
-
-// function deleteUser(id) {
-//     $.ajax({
-//         url: `http://adaptechtask.test/database/users.php?user=${id}`,
-//         type: 'DELETE',
-//         success: function (response) {
-//             alert('The user has been deleted!');
-//             // Perform any additional actions or refresh the user list
-//         },
-//         error: function (xhr, status, error) {
-//             console.error('Error deleting user:', error);
-//         }
-//     });
-// }
-
-//"row-id-"id bul emsil 
 
 // add User
-function addUser() {
-
-}
-
-// function GetAll(from, count) {
-//     $.ajax({
-//         type: "GET",
-//         url: 'http://adaptechtask.test/database/users.php?users',
-//         dataType: 'json',
-//     }).then(userData => {
-//         userData.forEach(post => {
-//             const postDiv = document.createElement('tr');
-//             postDiv.innerHTML = `
-//           <td> <p class="table-element">${post.id} </p> </td>
-//           <td> <p class="table-element">${post.name} </p> </td>
-//           <td> <p class="table-element">${post.username} </p> </td>
-//           <td> <p class="table-element">${post.age} </p> </td>
-//           <td> <p class="table-element">${post.email} </p> </td>
-//           <td> <p class="table-element">${post.phone} </p> </td>
-//           <td> <p class="table-element">${post.city} </p> </td>
-//           <td>
-//             <input type="button" value="Update" onclick="updateUser()">
-//             <input type="button" value="Delete" onclick="deleteUser(${post.id})">
-//           </td>
-//           <td><input type="button" value="Add" onclick="addUser()"></input></td>`;
-//             $("table").append(postDiv);
-//         });
-//     });
+// function addUser(id) {
 // }
 
 function GetAll(from, count) {
@@ -132,18 +48,19 @@ function GetAll(from, count) {
         userData.forEach(post => {
             const postDiv = document.createElement('tr');
             postDiv.innerHTML = `
-          <td> <p class="table-element">${post.id} </p> </td>
-          <td> <p class="table-element">${post.name} </p> </td>
-          <td> <p class="table-element">${post.username} </p> </td>
-          <td> <p class="table-element">${post.age} </p> </td>
-          <td> <p class="table-element">${post.email} </p> </td>
-          <td> <p class="table-element">${post.phone} </p> </td>
-          <td> <p class="table-element">${post.city} </p> </td>
-          <td>
-            <input type="button" value="Update" onclick="updateUser(${post.id})">
-            <input type="button" value="Delete" onclick="deleteUser(${post.id}, this)">
-          </td>
-          <td><input type="button" value="Add" onclick="addUser(${post.id})"></input></td>`;
+                <tr id="row-${post.id}">
+                    <td> <p class="table-element1">${post.id} </p> </td>
+                    <td> <p class="table-element2">${post.name} </p> </td>
+                    <td> <p class="table-element3">${post.username} </p> </td>
+                    <td> <p class="table-element4">${post.age} </p> </td>
+                    <td> <p class="table-element5">${post.email} </p> </td>
+                    <td> <p class="table-element6">${post.phone} </p> </td>
+                    <td> <p class="table-element7">${post.city} </p> </td>
+                    <td>
+                        <input type="button" value="Update" class="btn10" onclick="updateUser(${post.id})">
+                        <input type="button" value="Delete" class="btn7" onclick="deleteUser(${post.id}, this)">
+                    </td>
+                </tr>`;
             $("table").append(postDiv);
         });
     });
@@ -163,6 +80,6 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#show").click(function () {
-        $("#divPost").toggle(1000);
+        $("#div").toggle(1000);
     });
 });
