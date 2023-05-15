@@ -53,6 +53,12 @@ if ($con) {
       echo "0";
   }
   mysqli_close($con);
-  
+
+  //update
+  if (isset($_POST['action']) && $_POST['action'] === 'edit') {
+    $edit = $_POST['edit'];
+    $sql = "UPDATE users SET id = '" . $_POST['id'] . "', name = '" . $_POST['name'] . "', username = '" . $_POST['username'] . "', age = '" . $_POST['age'] . "', email = '" . $_POST['email'] . "', phone = '" . $_POST['phone'] . "', city = '" . $_POST['city'] . "' WHERE id = '" . $edit . "' ";
+
+  }
 }
 ?>
