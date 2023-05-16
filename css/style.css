@@ -222,6 +222,22 @@ body {
     opacity: 0.9;
 }
 
+.btn11 {
+    width: 120px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 7px;
+    border: 2px solid rgb(114, 124, 143);
+    background: rgb(142, 149, 165);
+    padding: 2px;
+    margin-left: 5px;
+}
+
+.btn11:hover {
+    background: rgb(174, 182, 194);
+    opacity: 0.9;
+}
+
+
 .table-element1{
     font-weight: bold;
 }
@@ -318,7 +334,7 @@ body {
 
 .footer-clean {
     padding: 50px 0;
-    background-color: rgb(140, 153, 167);
+    background-color: #708090;
     color: black;
 }
 

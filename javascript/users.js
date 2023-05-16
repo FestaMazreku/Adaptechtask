@@ -8,29 +8,26 @@ function myFunction() {
 }
 
 //edit
-function updateUser(id, name, username, age, email, phone, city,) {
-    $.ajax({
-        url: "http://adaptechtask.test/database/users.php",
-        method: "POST",
-        data: {
-            id: id,
-            name: name,
-            username: username,
-            age: age,
-            email: email,
-            phone: phone,
-            city: city,
-            action: "edit"
-        },
-        success: function (data) {
-            alert(data);
-        },
-        error: function (error) {
-            console.log(error);
-            alert("Error: User is not edited! " + error);
-        }
-    });
-}
+// function editUser() {
+//     $.ajax({
+//         url: 'http://adaptechtask.test/database/users.php',
+//         type: "POST",
+//         data: "updateid=" + id,
+//         success: function (response) {
+//             console.log(response);
+//             if (response == "1") {
+//                 alert("User is updated successfully!");
+//             }
+//             else {
+//                 alert("User is not updated.");
+//             }
+//         },
+//         error: function (error) {
+//             console.log(error);
+//             alert("Error: User is not updated! " + error);
+//         },
+//     });
+// }
 
 //delete
 function deleteUser(id, button) {
@@ -57,10 +54,6 @@ function deleteUser(id, button) {
     }
 }
 
-// add 
-// function addUser(id) {
-// }
-
 function GetAll(from, count) {
     $.ajax({
         type: "GET",
@@ -79,8 +72,8 @@ function GetAll(from, count) {
                     <td> <p class="table-element6">${post.phone} </p> </td>
                     <td> <p class="table-element7">${post.city} </p> </td>
                     <td>
-                        <input type="button" value="Edit" class="btn10" onclick="updateUser(${post.id})">
-                        <input type="button" value="Delete" class="btn7" onclick="deleteUser(${post.id}, this)">
+                    <input type="button" value="Edit" class="btn10" onclick="editUser(${post.id}, this)">
+                    <input type="button" value="Delete" class="btn7" onclick="deleteUser(${post.id}, this)">
                     </td>
                 </tr>`;
             $("table").append(postDiv);
