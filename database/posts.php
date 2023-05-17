@@ -23,7 +23,7 @@ if ($con) {
     
     if (isset($_GET['post'])) {
         $id = $_GET['post'];
-        $sql = "select * from posts where postsid = " . $id;
+        $sql = "SELECT * from posts where postsid = " . $id;
         $result = mysqli_query($con, $sql);
         if ($result) {
             header("Content-Type: JSON");

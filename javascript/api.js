@@ -26,6 +26,28 @@ function New() {
     })
 }
 
+//add user
+function addUser(id, button) {
+  $.ajax({
+    url: 'http://adaptechtask.test/database/users.php',
+    type: "POST",
+    data: { submit: id },
+    success: function (response) {
+      console.log(response);
+      if (response == "User is added!") {
+        $(button).closest('tr').insert();
+        alert("User is added successfully!");
+      } else {
+        alert("User is not added.");
+      }
+    },
+    error: function (error) {
+      console.log(error);
+      alert("Error: User is not added! " + error);
+    }
+  });
+}
+
 function getPost(id) {
   fetch('http://adaptechtask.test/database/posts.php?post=' + id)
     .then(response => response.json())

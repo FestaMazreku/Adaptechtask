@@ -223,20 +223,20 @@ body {
 }
 
 .btn11 {
-    width: 120px;
+    width: 130px;
+    height: 40px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     border-radius: 7px;
-    border: 2px solid rgb(114, 124, 143);
-    background: rgb(142, 149, 165);
+    border: 2px solid rgb(151, 190, 235);
+    background: #bcd4f7;
     padding: 2px;
     margin-left: 5px;
 }
 
 .btn11:hover {
-    background: rgb(174, 182, 194);
+    background: rgb(194, 205, 224);
     opacity: 0.9;
 }
-
 
 .table-element1{
     font-weight: bold;

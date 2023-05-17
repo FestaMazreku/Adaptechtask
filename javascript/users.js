@@ -7,29 +7,7 @@ function myFunction() {
     }
 }
 
-//edit
-// function editUser() {
-//     $.ajax({
-//         url: 'http://adaptechtask.test/database/users.php',
-//         type: "POST",
-//         data: "updateid=" + id,
-//         success: function (response) {
-//             console.log(response);
-//             if (response == "1") {
-//                 alert("User is updated successfully!");
-//             }
-//             else {
-//                 alert("User is not updated.");
-//             }
-//         },
-//         error: function (error) {
-//             console.log(error);
-//             alert("Error: User is not updated! " + error);
-//         },
-//     });
-// }
-
-//delete
+//delete user
 function deleteUser(id, button) {
     if (confirm("Are you sure you want to delete this user?")) {
         $.ajax({
@@ -72,7 +50,8 @@ function GetAll(from, count) {
                     <td> <p class="table-element6">${post.phone} </p> </td>
                     <td> <p class="table-element7">${post.city} </p> </td>
                     <td>
-                    <input type="button" value="Edit" class="btn10" onclick="editUser(${post.id}, this)">
+                    <button class="btn10"><a href="editUser.html"
+                    id="update">Edit</a></button></th>
                     <input type="button" value="Delete" class="btn7" onclick="deleteUser(${post.id}, this)">
                     </td>
                 </tr>`;
