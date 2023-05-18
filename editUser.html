@@ -51,7 +51,8 @@
                 Users
             </a>
             <a href="editUser.html" style="color: black; font-size: 17px;
-                font-weight: bold; padding-right: 15px" class="active"> Edit/Update the user
+                font-weight: bold; padding-right: 15px" class="active"> Update
+                the user
             </a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i> </a>
@@ -62,73 +63,88 @@
 
     <body>
         <center>
-            <form method="post" enctype="multipart/form-data"
-                action="/database/editUser.php">
-                <table width="500" bgcolor="#8A9A5B" align="center"
+            <form name="updateuserform" id="updateuserform" method="post">
+                <table width="500" bgcolor="#a9adbd" align="center"
                     border="3">
                     <tr>
-                        <td align="center" bgcolor="white" colspan="6">
-                            <h1>Update the user here:</h1>
+                        <td align="center" bgcolor="white"
+                            style="font-size:15px" colspan="6">
+                            <h1>Update the user:</h1>
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle" style="font-weight: bold">ID:</td>
+                        <td align="middle" style="font-weight: bold; color:
+                            rgb(19, 18, 18); font-family: 'Times New Roman',
+                            Times, serif">ID:</td>
                         <td>
-                            <input type="text" name="id" size="30" id="id">
+                            <input type="text" name="id" size="30">
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle" style="font-weight: bold">Name & Surname:</td>
+                        <td align="middle" style="font-weight: bold; color:
+                            rgb(19, 18, 18); font-family: 'Times New Roman',
+                            Times, serif">Name & Surname:</td>
                         <td>
-                            <input type="text" name="name" size="30" id="name">
+                            <input type="text" name="name" size="30">
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle" style="font-weight: bold">Username:</td>
+                        <td align="middle" style="font-weight: bold; color:
+                            rgb(19, 18, 18); font-family: 'Times New Roman',
+                            Times, serif">Username:</td>
                         <td>
-                            <input type="text" name="username" size="30" id="username">
+                            <input type="text" name="username" size="30">
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle" style="font-weight: bold">Age:</td>
+                        <td align="middle" style="font-weight: bold; color:
+                            rgb(19, 18, 18); font-family: 'Times New Roman',
+                            Times, serif">Age:</td>
                         <td>
-                            <input type="text" name="age" size="30" id="age">
+                            <input type="text" name="age" size="30">
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle" style="font-weight: bold">Email:</td>
+                        <td align="middle" style="font-weight: bold; color:
+                            rgb(19, 18, 18); font-family: 'Times New Roman',
+                            Times, serif">Email:</td>
                         <td>
-                            <input type="text" name="email" size="30" id="email">
+                            <input type="text" name="email" size="30">
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle" style="font-weight: bold">Phone:</td>
+                        <td align="middle" style="font-weight: bold; color:
+                            rgb(19, 18, 18); font-family: 'Times New Roman',
+                            Times, serif">Phone:</td>
                         <td>
-                            <input type="tel" name="phone" size="30" id="phone">
+                            <input type="tel" name="phone" size="30">
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle" style="font-weight: bold">City:</td>
+                        <td align="middle" style="font-weight: bold; color:
+                            rgb(19, 18, 18); font-family: 'Times New Roman',
+                            Times, serif">City:</td>
                         <td>
-                            <input type="text" name="city" size="30" id="city">
+                            <input type="text" name="city" size="30">
                         </td>
                     </tr>
                     <div class="input-group">
                         <tr>
                             <td align="center" colspan="8">
                                 <br>
-                                <input type="submit"
+                                <input type="button"
                                     style="padding: 6px; background: black;
                                     opacity: 0.7; color: white; font-weight:
                                     bold; border: 2px; border-radius: 2px;
                                     font-size: 20px; width: 40%"
-                                    name="update" value="Update now">
+                                    name="updateuserform" value="Update now"
+                                    onclick="updateUser()">
                             </td>
                         </tr>
                     </div>
-                </center>
-            </table>
-        </form>
+                </table>
+            </form>
+        </center>
         <br>
 
         <!-- Footer -->

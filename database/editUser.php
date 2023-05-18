@@ -12,20 +12,26 @@ if (isset($_POST['update'])) {
     $phone1 = $_POST['phone'];
     $city1 = $_POST['city'];
 
-    if ($name1 != '' or $username1 != '' or $age1 != '') {
+    if ($name1 != '' || $username1 != '' || $age1 != '') {
 
         $update_query = "UPDATE users SET name='$name1', username='$username1', age='$age1', email='$email1', phone='$phone1', city='$city1'
-        WHERE
-        id='$id1'";
+        WHERE id='$id1'";
 
         if (mysqli_query($con, $update_query)) {
-            echo "<script>alert('The user has been updated!')</script>";
-            echo "<script> window.open ('../../users.html','_self');</script>";
+            $response['success'] = true;
+            $response['message'] = "The user has been updated!";
+        } else {
+            $response['success'] = false;
+            $response['message'] = "Error: User update failed.";
         }
     } else {
-        echo "<script>alert('Ndonjera prej fushave eshte e zbrazet')</script>";
-        echo "<script> window.open ('../../users.html','_self');</script>";
-        exit();
+        $response['success'] = false;
+        $response['message'] = "Error: One or more fields are empty.";
     }
+} else {
+    $response['success'] = false;
+    $response['message'] = "Error: Invalid request.";
 }
+
+echo json_encode($response);
 ?>

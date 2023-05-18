@@ -27,23 +27,49 @@ function New() {
 }
 
 //add user
-function addUser(id, button) {
+function addUser() {
+  var formdata = $('#adduserform').serialize();
   $.ajax({
-    url: 'http://adaptechtask.test/database/users.php',
+    url: 'http://adaptechtask.test/database/addUser.php',
     type: "POST",
-    data: { submit: id },
+    data: formdata,
     success: function (response) {
       console.log(response);
-      if (response == "User is added!") {
-        $(button).closest('tr').insert();
+      var result = JSON.parse(response);
+      if (result.success) {
         alert("User is added successfully!");
+        window.location.href = "users.html";
       } else {
         alert("User is not added.");
       }
     },
     error: function (error) {
       console.log(error);
-      alert("Error: User is not added! " + error);
+      alert("Error: User is not added! " + error.responseText);
+    }
+  });
+}
+
+//edit/update user
+function updateUser() {
+  var formdata = $('#updateuserform').serialize();
+  $.ajax({
+    url: 'http://adaptechtask.test/database/editUser.php',
+    type: "GET",
+    data: formdata,
+    success: function (response) {
+      console.log(response);
+      var result = JSON.parse(response);
+      if (result.success) {
+        alert("User is updated successfully!");
+        window.location.href = "users.html";
+      } else {
+        alert("User is not updated.");
+      }
+    },
+    error: function (error) {
+      console.log(error);
+      alert("Error: User is not updated! " + error.responseText);
     }
   });
 }

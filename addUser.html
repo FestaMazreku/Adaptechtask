@@ -62,15 +62,13 @@
 
     <body>
         <center>
-            <form method="post" action="database/addUser.php"
-                enctype="multipart/form-data">
-
-                <table width="500" bgcolor="#818f9e" align="center"
+            <form name="adduserform" id="adduserform" method="post">
+                <table width="500" bgcolor="#a9adbd" align="center"
                     border="3">
                     <tr>
                         <td align="center" bgcolor="white"
                             style="font-size:15px" colspan="6">
-                            <h1>Add a new user here:</h1>
+                            <h1>Add a new user:</h1>
                         </td>
                     </tr>
                     <tr>
@@ -133,12 +131,13 @@
                         <tr>
                             <td align="center" colspan="8">
                                 <br>
-                                <input type="submit"
+                                <input type="button"
                                     style="padding: 6px; background: black;
                                     opacity: 0.7; color: white; font-weight:
                                     bold; border: 2px; border-radius: 2px;
                                     font-size: 20px; width: 40%"
-                                    name="submit" value="Add now" onclick="addUser()">
+                                    name="adduserform" value="Add now"
+                                    onclick="addUser()">
                             </td>
                         </tr>
                     </div>
@@ -146,7 +145,6 @@
             </form>
         </center>
 
-        <!-- onclick="addUser()"-->
         <br>
         <!-- Footer -->
         <div class="footer-clean">

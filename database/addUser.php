@@ -1,9 +1,8 @@
 <?php
-
 $con = mysqli_connect("localhost", "root", "", "adaptechtask");
 mysqli_select_db($con, "adaptechtask");
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['name']) && isset($_POST['username']) && isset($_POST['age']) && isset($_POST['email'])) {
     $id = mysqli_real_escape_string($con, $_POST['id']);
     $name = mysqli_real_escape_string($con, $_POST['name']);
     $username = mysqli_real_escape_string($con, $_POST['username']);
@@ -12,20 +11,33 @@ if (isset($_POST['submit'])) {
     $phone = mysqli_real_escape_string($con, $_POST['phone']);
     $city = mysqli_real_escape_string($con, $_POST['city']);
 
-    if ($name != '' || $username != '' || $age != '' || $email != '') {
+    if (!empty($name) && !empty($username) && !empty($age) && !empty($email)) {
+        $sql = $con->prepare("INSERT INTO users (id, name, username, age, email, phone, city)  VALUES ('$id','$name','$username','$age','$email','$phone','$city')");
+        // $sql->bind_param("sssssss", $id, $name, $username, $age, $email, $phone, $city);
+        $sql->execute();
 
-        $stmt = $con->prepare("INSERT INTO users (id, name, username, age, email, phone, city) VALUES ('$id','$name','$username','$age','$email','$phone','$city')");
-        $stmt->execute();
-
-        if ($stmt->affected_rows > 0) {
-            echo "User is added!";
-            echo "<script> window.open ('../../users.html','_self');</script>";
+        $response = array();
+        if ($sql->affected_rows > 0) {
+            $response['success'] = true;
+            $response['message'] = "User is added successfully!";
+            echo json_encode($response);
         } else {
-            echo "User is not added.";
-            echo "<script> window.open ('../../users.html','_self');</script>";
+            $response['success'] = false;
+            $response['message'] = "User is not added.";
+            echo json_encode($response);
         }
-        $stmt->close();
-        $con->close();
+
+        $sql->close();
+    } else {
+        $response['success'] = false;
+        $response['message'] = "Required fields are missing.";
+        echo json_encode($response);
     }
+} else {
+    $response['success'] = false;
+    $response['message'] = "Invalid request.";
+    echo json_encode($response);
 }
+
+$con->close();
 ?>

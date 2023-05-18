@@ -51,7 +51,7 @@ function GetAll(from, count) {
                     <td> <p class="table-element7">${post.city} </p> </td>
                     <td>
                     <button class="btn10"><a href="editUser.html"
-                    id="update">Edit</a></button></th>
+                    id="update">Update</a></button>
                     <input type="button" value="Delete" class="btn7" onclick="deleteUser(${post.id}, this)">
                     </td>
                 </tr>`;
