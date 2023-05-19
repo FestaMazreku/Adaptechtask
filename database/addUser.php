@@ -13,7 +13,6 @@ if (isset($_POST['name']) && isset($_POST['username']) && isset($_POST['age']) &
 
     if (!empty($name) && !empty($username) && !empty($age) && !empty($email)) {
         $sql = $con->prepare("INSERT INTO users (id, name, username, age, email, phone, city)  VALUES ('$id','$name','$username','$age','$email','$phone','$city')");
-        // $sql->bind_param("sssssss", $id, $name, $username, $age, $email, $phone, $city);
         $sql->execute();
 
         $response = array();

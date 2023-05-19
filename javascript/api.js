@@ -52,27 +52,78 @@ function addUser() {
 
 //edit/update user
 function updateUser() {
-  var formdata = $('#updateuserform').serialize();
+  var id = $('#id').val();
+  var name = $('#name').val();
+  var username = $('#username').val();
+  var age = $('#age').val();
+  var email = $('#email').val();
+  var phone = $('#phone').val();
+  var city = $('#city').val();
+
+  // Create an object with the form data
+  var formData = {
+    id: id,
+    name: name,
+    username: username,
+    age: age,
+    email: email,
+    phone: phone,
+    city: city
+  };
+
   $.ajax({
-    url: 'http://adaptechtask.test/database/editUser.php',
-    type: "GET",
-    data: formdata,
+    url: 'http://adaptechtask.test/database/updateUser.php',
+    type: 'GET',
+    data: formData,
     success: function (response) {
-      console.log(response);
       var result = JSON.parse(response);
       if (result.success) {
         alert("User is updated successfully!");
         window.location.href = "users.html";
       } else {
-        alert("User is not updated.");
+        alert("Failed to update user.");
       }
     },
-    error: function (error) {
-      console.log(error);
-      alert("Error: User is not updated! " + error.responseText);
+    error: function (xhr, status, error) {
+      console.log(xhr.responseText);
+      alert("Error: Failed to update user.");
     }
   });
 }
+
+// function fetchUser(id) {
+//   $.ajax({
+//     url: 'http://adaptechtask.test/database/getUser.php',
+//     type: 'GET',
+//     data: { id: id },
+//     success: function (response) {
+//       var result = JSON.parse(response);
+//       if (result.success) {
+//         var user = result.user;
+//         $('#id').val(user.id);
+//         $('#name').val(user.name);
+//         $('#username').val(user.username);
+//         $('#age').val(user.age);
+//         $('#email').val(user.email);
+//         $('#phone').val(user.phone);
+//         $('#city').val(user.city);
+//       } else {
+//         alert("Failed to fetch user data.");
+//       }
+//     },
+//     error: function (xhr, status, error) {
+//       console.log(xhr.responseText);
+//       alert("Error: Failed to fetch user data.");
+//     }
+//   });
+// }
+
+// // Get the user ID from the query string or other sources
+// var id = id; // Obtain the user ID from your source
+
+// // Call the fetchUser function with the user ID
+// fetchUser(id);
+
 
 function getPost(id) {
   fetch('http://adaptechtask.test/database/posts.php?post=' + id)
