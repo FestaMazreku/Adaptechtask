@@ -117,7 +117,8 @@
                         <td align="middle"
                             style="font-weight: bold; color: rgb(19, 18, 18); font-family: 'Times New Roman', Times, serif">Phone:</td>
                         <td>
-                            <input type="text" name="phone" id="phone" size="30">
+                            <input type="text" name="phone" id="phone"
+                                size="30">
                         </td>
                     </tr>
                     <tr>
@@ -127,14 +128,20 @@
                             <input type="text" name="city" id="city" size="30">
                         </td>
                     </tr>
-                    <tr>
-                        <td align="center" colspan="2">
-                            <br>
-                            <input type="button"
-                                style="padding: 6px; background: black; opacity: 0.7; color: white; font-weight: bold; border: 2px; border-radius: 2px; font-size: 20px; width: 40%"
-                                name="update" value="Update" onclick="updateUser()">
-                        </td>
-                    </tr>
+                    <div class="input-group">
+                        <tr>
+                            <td align="center" colspan="8">
+                                <br>
+                                <input type="button"
+                                    style="padding: 6px; background: black;
+                                    opacity: 0.7; color: white; font-weight:
+                                    bold; border: 2px; border-radius: 2px;
+                                    font-size: 20px; width: 40%"
+                                    name="updateuserform" value="Update"
+                                    onclick="updateUser()">
+                            </td>
+                        </tr>
+                    </div>
                 </table>
             </form>
         </center>
