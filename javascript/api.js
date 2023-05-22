@@ -50,30 +50,6 @@ function addUser() {
   });
 }
 
-//edit/update user
-function updateUser() {
-  var formdata = $('#updateuserform').serialize();
-  $.ajax({
-    url: 'http://adaptechtask.test/database/editUser.php',
-    type: "GET",
-    data: formdata,
-    success: function (response) {
-      console.log(response);
-      var result = JSON.parse(response);
-      if (result.success) {
-        alert("User is updated successfully!");
-        window.location.href = "users.html";
-      } else {
-        alert("User is not updated.");
-      }
-    },
-    error: function (error) {
-      console.log(error);
-      alert("Error: User is not updated! " + error.responseText);
-    }
-  });
-}
-
 function getPost(id) {
   fetch('http://adaptechtask.test/database/posts.php?post=' + id)
     .then(response => response.json())
@@ -159,28 +135,20 @@ $(document).ready(function () {
   else {
     getPost(post);
   }
-});
 
-$(document).ready(function () {
-  const currentUrl = window.location.href;
-  const searchParams = new URLSearchParams(new URL(currentUrl).search);
-  const data = searchParams.get('user');
-  if (data == null) {
+  const user = searchParams.get('user');
+  if (user == null) {
     null;
   }
   else {
-    getPost(data);
+    getPost(user);
   }
-});
 
-$(document).ready(function () {
-  const currentUrl = window.location.href;
-  const searchParams = new URLSearchParams(new URL(currentUrl).search);
-  const data = searchParams.get('comments');
-  if (data == null) {
+  const comment = searchParams.get('comments');
+  if (comment == null) {
     null;
   }
   else {
-    getComment(data);
+    getComment(comment);
   }
 });

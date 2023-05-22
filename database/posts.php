@@ -4,7 +4,7 @@ mysqli_select_db($con, 'adaptechtask');
 $response = array();
 if ($con) {
     if (isset($_GET['posts'])) {
-        $sql = "select * from posts";
+        $sql = "SELECT * from posts";
         $result = mysqli_query($con, $sql);
         if ($result) {
             header("Content-Type: JSON");
@@ -20,7 +20,7 @@ if ($con) {
             echo json_encode($response, JSON_PRETTY_PRINT);
         }
     }
-    
+
     if (isset($_GET['post'])) {
         $id = $_GET['post'];
         $sql = "SELECT * from posts where postsid = " . $id;

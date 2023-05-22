@@ -55,5 +55,30 @@ if ($con) {
   }
   mysqli_close($con);
 
+  //update
+  if (isset($_POST['update'])) {
+    $id1 = $_POST['id'];
+    $name1 = $_POST['name'];
+    $username1 = $_POST['username'];
+    $age1 = $_POST['age'];
+    $email1 = $_POST['email'];
+    $phone1 = $_POST['phone'];
+    $city1 = $_POST['city'];
+
+    if ($name1 != '' or $username1 != '' or $age1 != '') {
+
+      $update_query = "UPDATE users SET name='$name1', username='$username1', age='$age1', email='$email1', phone='$phone1', city='$city1'
+        WHERE
+        id='$id1'";
+
+      if (mysqli_query($con, $update_query)) {
+        echo "<script>alert('The user has been updated!')</script>";
+        echo "<script> window.open ('../users.html','_self');</script>";
+      }
+    } else {
+      echo "<script>alert('Ndonjera prej fushave eshte e zbrazet')</script>";
+      exit();
+    }
+  }
 }
 ?>
