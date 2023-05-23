@@ -4,7 +4,7 @@ mysqli_select_db($con, 'adaptechtask');
 $response = array();
 if ($con) {
   if (isset($_GET['users'])) {
-    $sql = "select * from users";
+    $sql = "SELECT * from users";
     $result = mysqli_query($con, $sql);
     if ($result) {
       header("Content-Type: JSON");
@@ -26,7 +26,7 @@ if ($con) {
 
   if (isset($_GET['user'])) {
     $id = $_GET['user'];
-    $sql = "select * from users where id = " . $id;
+    $sql = "SELECT * from users where id = " . $id;
     $result = mysqli_query($con, $sql);
     if ($result) {
       header("Content-Type: JSON");
@@ -55,8 +55,8 @@ if ($con) {
   }
   mysqli_close($con);
 
-  //update
-  if (isset($_POST['update'])) {
+  // Update the user
+  if (isset($_POST['user'])) {
     $id1 = $_POST['id'];
     $name1 = $_POST['name'];
     $username1 = $_POST['username'];
