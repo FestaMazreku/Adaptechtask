@@ -29,7 +29,7 @@
         <script defer
             src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
         <!-- javascript -->
-        <script src="javascript/users.js"></script>
+        <script src="javascript/updateuser.js"></script>
     </head>
 
     <header>
@@ -67,7 +67,7 @@
 
     <body>
         <center>
-            <form name="updateuserform" id="updateuserform" method="post">
+            <form name="updateuserform" id="updateuserform" method="POST">
                 <table width="500" bgcolor="#a9adbd" align="center" border="3">
                     <tr>
                         <td align="center" bgcolor="white"
@@ -77,9 +77,9 @@
                     </tr>
                     <tr>
                         <td align="middle"
-                            style="font-weight: bold; color: rgb(19, 18, 18); font-family: 'Times New Roman', Times, serif">ID:</td>
+                            style="font-weight: bold; color: rgb(19, 18, 18); font-family: 'Times New Roman', Times, serif"></td>
                         <td>
-                            <input type="text" name="id" id="id" size="30">
+                            <input type="hidden" name="id" id="id" size="30">
                         </td>
                     </tr>
                     <tr>
