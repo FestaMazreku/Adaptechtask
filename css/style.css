@@ -238,33 +238,33 @@ body {
     opacity: 0.9;
 }
 
-.table-element1{
+.table-element1 {
     font-weight: bold;
 }
 
-.table-element2{
-    color: 
-    darkblue;
+.table-element2 {
+    color:
+        darkblue;
 }
 
-.table-element3{
+.table-element3 {
     color: rgb(153, 157, 168);
 }
 
-.table-element4{
+.table-element4 {
     color: rgb(68, 72, 73);
 }
 
-.table-element5{
+.table-element5 {
     color: rgb(105, 146, 160);
 }
 
-.table-element6{
+.table-element6 {
     color: rgb(135, 150, 236);
     font-weight: bold;
 }
 
-.table-element7{
+.table-element7 {
     color: rgba(12, 41, 119, 0.664);
 }
 
