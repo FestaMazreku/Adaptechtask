@@ -56,30 +56,30 @@ if ($con) {
     exit();
   }
 
-  // Update the user
-  if (isset($_POST['updateuserform'])) {
-    $id1 = $_POST['id'];
-    $name1 = $_POST['name'];
-    $username1 = $_POST['username'];
-    $age1 = $_POST['age'];
-    $email1 = $_POST['email'];
-    $phone1 = $_POST['phone'];
-    $city1 = $_POST['city'];
+  // Update user
+  if (isset($_POST['update'])) {
+    $id = $_POST['id'];
+    $name = $_POST['name'];
+    $username = $_POST['username'];
+    $age = $_POST['age'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $city = $_POST['city'];
 
-    if ($name1 != '' || $username1 != '' || $age1 != '') {
-      $update_query = "UPDATE users SET name='$name1', username='$username1', age='$age1', email='$email1', phone='$phone1', city='$city1'
-        WHERE id='$id1'";
+    if ($name != '' or $username != '' or $age != '') {
+
+      $update_query = "UPDATE users SET name='$name', username='$username', age='$age', email='$email', phone='$phone', city='$city'
+      WHERE
+      id='$id'";
 
       if (mysqli_query($con, $update_query)) {
         echo "<script>alert('The user has been updated!')</script>";
         echo "<script> window.open ('../users.html','_self');</script>";
       }
     } else {
-      echo "<script>alert('One or more fields are empty')</script>";
+      echo "<script>alert('Required fields are missing.')</script>";
+      exit();
     }
   }
-
-  mysqli_close($con);
-
 }
 ?>

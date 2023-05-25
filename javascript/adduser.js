@@ -29,4 +29,4 @@ function addUser() {
         alert("Error: User is not added! " + error.responseText);
       }
     });
-}
+  }

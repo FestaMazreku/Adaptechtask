@@ -32,31 +32,71 @@ function deleteUser(id, button) {
     }
 }
 
-//updateuser
-// function updateUser(id) {
-//     var formdata = $('#updateuserform').serialize();
-//     $.ajax({
-//         type: "POST",
-//         data: formdata,
-//         url: 'http://adaptechtask.test/database/users.php?user=' + id,
-//         dataType: 'json'
-//     }).then(post => {
-//         $("#id").val(post.id);
-//         $("#name").val(post.name);
-//         $("#username").val(post.username);
-//         $("#age").val(post.age);
-//         $("#email").val(post.email);
-//         $("#phone").val(post.phone);
-//         $("#city").val(post.city);
-//     });
-// }
+// //update user
+function updateUser(userid) {
+    if (userid == null) {
+        window.location.href = "users.html";
+    }
+    else {
+        $.ajax({
+            type: "GET",
+            url: `http://adaptechtask.test/database/users.php?user=${userid}`,
+            dataType: 'json',
+        }).then(post => {
+            $("#id").val(post.id);
+            $("#name").val(post.name);
+            $("#username").val(post.username);
+            $("#age").val(post.age);
+            $("#email").val(post.email);
+            $("#phone").val(post.phone);
+            $("#city").val(post.city);
+        });
+    }
+
+    
+    $('#updateuserform').on('submit', function (event) {
+        event.preventDefault();
+
+        var id = $('#id').val();
+        var name = $('#name').val();
+        var username = $('#username').val();
+        var age = $('#age').val();
+        var email = $('#email').val();
+        var phone = $('#phone').val();
+        var city = $('#city').val();
+
+        var formData = {
+            id: id,
+            name: name,
+            username: username,
+            age: age,
+            email: email,
+            phone: phone,
+            city: city
+        };
+
+        $.ajax({
+            url: 'http://adaptechtask.test/database/users.php',
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                console.log(response);
+                // Handle the response and perform necessary actions
+                alert("User has been updated successfully!");
+                window.location.href = "users.html"; // Redirect to users.html
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+                alert("Error: User update failed!");
+            }
+        });
+    });
+}
 
 $(document).ready(function () {
     const currentUrl = window.location.href;
     const searchParams = new URLSearchParams(new URL(currentUrl).search);
-
-    const editinguser = searchParams.get('editUser.html');
-    if (editinguser != null) {
+    if (currentUrl.indexOf("editUser.html") > 0) {
         const userid = searchParams.get('userid');
         if (userid == null)
             window.location.href = "users.html";
@@ -64,25 +104,12 @@ $(document).ready(function () {
             updateUser(userid);
     }
 
-    const users = searchParams.get('users.html');
-    if (users != null) {
+    if (currentUrl.indexOf("users.html") > 0) {
         const page = searchParams.get('page');
         if (page == null)
-            GetAll(1, 20)
+            GetAll(1, 20);
         else
-            GetAll(page, 20)
-    }
-});
-
-$(document).ready(function () {
-    const currentUrl = window.location.href;
-    const searchParams = new URLSearchParams(new URL(currentUrl).search);
-    const page = searchParams.get('page');
-    if (page == null) {
-        GetAll(1, 20);
-    }
-    else {
-        GetAll(page, 20)
+            GetAll(page, 20);
     }
 });
 
@@ -104,7 +131,7 @@ function GetAll(from, count) {
                     <td> <p class="table-element6">${post.phone} </p> </td>
                     <td> <p class="table-element7">${post.city} </p> </td>
                     <td>
-                        <button class="btn10"> <a href="editUser.html?userid=${post.id}"> Update </a></button>
+                        <button class="btn10"><a href="editUser.html?userid=${post.id}"> Update </a></button>
                         <button class="btn7" onclick="deleteUser(${post.id}, this)"> Delete </button>
                     </td>
                 </tr>`;

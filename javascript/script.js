@@ -10,21 +10,22 @@ function myFunction() {
 function New() {
     var new_title = document.getElementById("new_title").value;
     console.log("Comment: " + new_title);
-    fetch('https://jsonplaceholder.typicode.com/posts', {
-        method: 'POST',
-        body: JSON.stringify({
-            title: new_title,
-        }),
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
-        }
-    })
+    fetch('https://jsonplaceholder.typicode.com/posts',
+        {
+            method: 'POST',
+            body: JSON.stringify({
+                title: new_title,
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
         .then(response => response.json())
         .then(json => {
             console.log('Data: ' + JSON.stringify(json));
             alert("Article successfully added! Look at the console.");
         })
-    }
+}
 
 $(function () {
     var $user1 = $('#user1');
