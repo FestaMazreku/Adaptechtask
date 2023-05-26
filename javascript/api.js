@@ -24,7 +24,7 @@ function New() {
       console.log('Data: ' + JSON.stringify(json));
       alert("Article successfully added! Look at the console.");
     })
-  }
+}
 
 function getPost(id) {
   fetch('http://adaptechtask.test/database/posts.php?post=' + id)
@@ -53,7 +53,7 @@ function getPost(id) {
         $("#comments").show();
       });
     });
-  }
+}
 
 function getComment(id) {
   fetch('http://adaptechtask.test/database/comments.php?comment=' + id)
@@ -73,7 +73,7 @@ function getComment(id) {
         $("#comments").show();
       });
     });
-  }
+}
 
 function getall() {
   fetch('http://adaptechtask.test/database/posts.php?posts')
@@ -99,7 +99,7 @@ function getall() {
         });
       });
     });
-  }
+}
 
 $(document).ready(function () {
   const currentUrl = window.location.href;

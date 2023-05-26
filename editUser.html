@@ -67,7 +67,8 @@
 
     <body>
         <center>
-            <form name="update" id="update" method="POST">
+            <form name="update" id="update" method="POST"
+                action="/database/users.php">
                 <table width="500" bgcolor="#a9adbd" align="center" border="3">
                     <tr>
                         <td align="center" bgcolor="white"
@@ -117,8 +118,7 @@
                         <td align="middle"
                             style="font-weight: bold; color: rgb(19, 18, 18); font-family: 'Times New Roman', Times, serif">Phone:</td>
                         <td>
-                            <input type="text" name="phone" id="phone"
-                                size="30">
+                            <input type="text" name="phone" id="phone" size="30">
                         </td>
                     </tr>
                     <tr>
@@ -128,18 +128,15 @@
                             <input type="text" name="city" id="city" size="30">
                         </td>
                     </tr>
-                    <div class="input-group">
-                        <tr>
-                            <td align="center" colspan="8">
-                                <br>
-                                <input type="button"
-                                    style="padding: 6px; background: black; opacity: 0.7; color: white; font-weight: bold; border: 2px; border-radius: 2px;
-                                font-size: 20px; width: 40%"
-                                    name="update" value="Update"
-                                    onclick="updateUser()">
-                            </td>
-                        </tr>
-                    </div>
+                    <tr>
+                        <td align="center" colspan="8">
+                            <br>
+                            <button type="submit"
+                                style="padding: 6px; background: black; opacity: 0.7; color: white; font-weight: bold; border: 2px; border-radius: 2px; font-size: 20px; width: 40%"
+                                name="update" onclick="updateUser()"> Update
+                            </button>
+                        </td>
+                    </tr>
                 </table>
             </form>
         </center>
