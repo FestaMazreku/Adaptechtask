@@ -43,7 +43,7 @@ if ($con) {
     exit();
   }
 
-  // Delete user
+  //Delete user
   if (isset($_POST['deleteid'])) {
     $delete = $_POST['deleteid'];
     $sql = "DELETE FROM users WHERE id = '" . $delete . "' ";
@@ -56,7 +56,7 @@ if ($con) {
     exit();
   }
 
-  // Update user
+  //Update user
   if (isset($_POST['update'])) {
     $id = $_POST['id'];
     $name = $_POST['name'];

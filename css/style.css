@@ -87,15 +87,15 @@ body {
     width: 90px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     border-radius: 7px;
-    border: 2px solid rgb(186, 190, 206);
-    background: rgb(190, 198, 211);
+    border: 2px solid rgb(160, 182, 212);
+    background: rgb(174, 201, 224);
     color: white;
     padding: 3px;
     margin-left: 5px;
 }
 
 .btn1:hover {
-    background: rgb(206, 209, 216);
+    background: rgb(146, 170, 190);
     color: var(--black);
     opacity: 0.8;
 }
@@ -181,14 +181,14 @@ body {
     width: 85px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     border-radius: 7px;
-    border: 2px solid rgb(194, 198, 202);
-    background: rgb(215, 217, 226);
+    border: 2px solid rgb(143, 200, 233);
+    background: rgb(157, 208, 238);
     padding: 3px;
     margin-left: 5px;
 }
 
 .btn8:hover {
-    background: rgb(171, 175, 185);
+    background: rgb(127, 172, 209);
     opacity: 0.9;
 }
 
@@ -227,14 +227,14 @@ body {
     height: 40px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     border-radius: 7px;
-    border: 2px solid rgb(151, 190, 235);
-    background: #bcd4f7;
+    border: 2px solid rgb(94, 116, 141);
+    background: rgb(169, 180, 201);
     padding: 2px;
     margin-left: 5px;
 }
 
 .btn11:hover {
-    background: rgb(194, 205, 224);
+    background: #7a8ca8;
     opacity: 0.9;
 }
 
@@ -310,14 +310,7 @@ body {
 }
 
 .mb-8 {
-    width: 600px;
-    color: darkblue;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.mb-9 {
-    width: 700px;
+    width: 520px;
     color: darkblue;
     font-size: 20px;
     font-weight: bold;

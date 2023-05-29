@@ -53,6 +53,58 @@ function updateUser(userid) {
     }
 }
 
+//add user
+function addUser() {
+    var formdata = $('#adduserform').serialize();
+    $.ajax({
+        type: "POST",
+        url: 'http://adaptechtask.test/database/addUser.php',
+        data: formdata,
+        success: function (response) {
+            console.log(response);
+            var result = JSON.parse(response);
+            if (result.success) {
+                alert("User is added successfully!");
+                window.location.href = "users.html";
+            } else {
+                alert("User is not added! Required fields are missing.");
+            }
+        },
+        error: function (error) {
+            console.log(error);
+            alert("Error: User is not added! " + error.responseText);
+        }
+    });
+}
+
+function GetAll(from, count) {
+    from = 0;
+    count = 100;
+    $.ajax({
+        type: "GET",
+        url: 'http://adaptechtask.test/database/users.php?users',
+        dataType: 'json',
+    }).then(userData => {
+        userData.forEach(post => {
+            const postDiv = document.createElement('tr');
+            postDiv.innerHTML = `<tr id="row-${post.id}">
+            <td> <p class="table-element1">${post.id} </p> </td>
+            <td> <p class="table-element2">${post.name} </p> </td>
+            <td> <p class="table-element3">${post.username} </p> </td>
+            <td> <p class="table-element4">${post.age} </p> </td>
+            <td> <p class="table-element5">${post.email} </p> </td>
+            <td> <p class="table-element6">${post.phone} </p> </td>
+            <td> <p class="table-element7">${post.city} </p> </td>
+            <td>
+            <button class="btn10"><a href="editUser.html?userid=${post.id}"> Update </a></button>
+            <button class="btn7" onclick="deleteUser(${post.id}, this)"> Delete </button>
+            </td>
+            </tr>`;
+            $("table").append(postDiv);
+        });
+    });
+}
+
 $(document).ready(function () {
     const currentUrl = window.location.href;
     const searchParams = new URLSearchParams(new URL(currentUrl).search);
@@ -74,30 +126,3 @@ $(document).ready(function () {
         }
     }
 });
-
-function GetAll(from, count) {
-    $.ajax({
-        type: "GET",
-        url: 'http://adaptechtask.test/database/users.php?users',
-        dataType: 'json',
-    }).then(userData => {
-        userData.forEach(post => {
-            const postDiv = document.createElement('tr');
-            postDiv.innerHTML = `
-          <tr id="row-${post.id}">
-              <td> <p class="table-element1">${post.id} </p> </td>
-              <td> <p class="table-element2">${post.name} </p> </td>
-              <td> <p class="table-element3">${post.username} </p> </td>
-              <td> <p class="table-element4">${post.age} </p> </td>
-              <td> <p class="table-element5">${post.email} </p> </td>
-              <td> <p class="table-element6">${post.phone} </p> </td>
-              <td> <p class="table-element7">${post.city} </p> </td>
-              <td>
-                  <button class="btn10"><a href="editUser.html?userid=${post.id}"> Update </a></button>
-                  <button class="btn7" onclick="deleteUser(${post.id}, this)"> Delete </button>
-              </td>
-          </tr>`;
-            $("table").append(postDiv);
-        });
-    });
-}
