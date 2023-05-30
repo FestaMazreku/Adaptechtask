@@ -78,8 +78,8 @@ function addUser() {
 }
 
 function GetAll(from, count) {
-    from = 0;
-    count = 100;
+    // from = 0;
+    // count = 100;
     $.ajax({
         type: "GET",
         url: 'http://adaptechtask.test/database/users.php?users',

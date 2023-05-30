@@ -37,5 +37,19 @@ if ($con) {
         }
         echo json_encode($response, JSON_PRETTY_PRINT);
     }
+
+    
+  //Delete post
+  if (isset($_POST['deleteid'])) {
+    $delete = $_POST['deleteid'];
+    $sql = "DELETE FROM posts WHERE postsid = '" . $delete . "' ";
+
+    if (mysqli_query($con, $sql)) {
+      echo "1";
+    } else {
+      echo "0";
+    }
+    exit();
+  }
 }
 ?>
