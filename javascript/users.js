@@ -53,6 +53,46 @@ function updateUser(userid) {
     }
 }
 
+// update user
+// function updateUser(userid) {
+//     if (userid == null) {
+//         window.location.href = "users.html";
+//     } else {
+//         var formdata = $('#update').serialize();
+//         formdata += '&update=true'; // Add the update parameter as a POST parameter
+//         $.ajax({
+//             type: "POST",
+//             url: `http://adaptechtask.test/database/users.php?user=${userid}`,
+//             dataType: 'json',
+//             data: formdata,
+//             success: function (response) {
+//                 console.log(response);
+//                 if (response.message === "The user has been updated!") {
+//                     alert("The user has been updated!");
+//                     window.location.href = "../users.html";
+//                 } else if (response.message === "No changes were made to the user.") {
+//                     alert("No changes were made to the user.");
+//                     window.location.href = "../users.html";
+//                 } else {
+//                     alert("Failed to update the user.");
+//                 }
+//             },
+//             error: function (error) {
+//                 console.log("Error:", error);
+//                 alert("Failed to update the user.");
+//             }
+//         }).then(function (post) {
+//             $("#id").val(post.id);
+//             $("#name").val(post.name);
+//             $("#username").val(post.username);
+//             $("#age").val(post.age);
+//             $("#email").val(post.email);
+//             $("#phone").val(post.phone);
+//             $("#city").val(post.city);
+//         });
+//     }
+// }
+
 //add user
 function addUser() {
     var formdata = $('#adduserform').serialize();

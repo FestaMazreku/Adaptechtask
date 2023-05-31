@@ -107,4 +107,52 @@ if ($con) {
   }
 }
 
+// Update user
+//   if (isset($_POST['update'])) {
+//     $id = $_POST['id'];
+//     $name = $_POST['name'];
+//     $username = $_POST['username'];
+//     $age = $_POST['age'];
+//     $email = $_POST['email'];
+//     $phone = $_POST['phone'];
+//     $city = $_POST['city'];
+
+//     $update_query = "UPDATE users SET ";
+
+//     $fields = array();
+//     if (!empty($name)) {
+//       $fields[] = "name='$name'";
+//     }
+//     if (!empty($username)) {
+//       $fields[] = "username='$username'";
+//     }
+//     if (!empty($age)) {
+//       $fields[] = "age='$age'";
+//     }
+//     if (!empty($email)) {
+//       $fields[] = "email='$email'";
+//     }
+//     if (!empty($phone)) {
+//       $fields[] = "phone='$phone'";
+//     }
+//     if (!empty($city)) {
+//       $fields[] = "city='$city'";
+//     }
+
+//     if (!empty($fields)) {
+//       $update_query .= implode(", ", $fields);
+//       $update_query .= " WHERE id='$id'";
+
+//       if (mysqli_query($con, $update_query)) {
+//         if (mysqli_affected_rows($con) > 0) {
+//           echo json_encode(array("message" => "The user has been updated!"));
+//         } else {
+//           echo json_encode(array("message" => "No changes were made to the user."));
+//         }
+//       } else {
+//         echo json_encode(array("message" => "Failed to update the user."));
+//       }
+//     }
+//   }
+// }
 ?>

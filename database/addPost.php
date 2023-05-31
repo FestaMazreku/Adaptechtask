@@ -8,7 +8,7 @@ if (isset($_POST['postsid']) && isset($_POST['userid']) && isset($_POST['title']
     $title = mysqli_real_escape_string($con, $_POST['title']);
     $body = mysqli_real_escape_string($con, $_POST['body']);
 
-    if (!empty($postsid) && !empty($title) && !empty($body)) {
+    if (!empty($postsid) && !empty($userid) && !empty($title) && !empty($body)) {
         $sql = $con->prepare("INSERT INTO posts (postsid, userid, title, body)  VALUES ('$postsid','$userid','$title','$body')");
         $sql->execute();
 

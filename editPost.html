@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title> Add a new post </title>
+        <title> Edit/Update post </title>
         <meta charset="UTF-8" />
         <meta name="keywords" content="adaptech">
         <meta name="description" content="adaptech">
@@ -48,79 +48,71 @@
             <a href="otherposts.html" style="color: black;font-size:17px;
                 font-weight: bold; padding-right: 15px"> Other Posts </a>
             <a href="users.html" style="color: black; font-size: 17px;
-                font-weight: bold; padding-right: 15px">
-                Users
+                font-weight: bold; padding-right: 15px"> Users
             </a>
             <a href="posts.html" style="color: black; font-size: 17px;
             font-weight: bold; padding-right: 15px"> Table Posts
             </a>
-            <a href="addPost.html" style="color: black; font-size: 17px;
-                font-weight: bold; padding-right: 15px" class="active"> Add a
-                new post
+            <a href="editPost.html" style="color: black; font-size: 17px;
+            font-weight: bold; padding-right: 15px" class="active"> Update post
             </a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i> </a>
         </div>
     </header>
     <br>
+    <br>
 
     <body>
         <center>
-            <form name="addpostform" id="addpostform" method="POST">
-                <table width="500" bgcolor="#a9adbd" align="center"
-                    border="3">
+            <form name="editpost" id="editpost" method="POST"
+                action="/database/posts.php">
+                <table width="500" bgcolor="#a9adbd" align="center" border="3">
                     <tr>
                         <td align="center" bgcolor="white"
                             style="font-size:15px" colspan="6">
-                            <h1>Add a new post:</h1>
+                            <h1>Update post:</h1>
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle" style="font-weight: bold; color:
-                            rgb(19, 18, 18); font-family: 'Times New Roman',
-                            Times, serif">ID:</td>
+                        <td align="middle"
+                            style="font-weight: bold; color: rgb(19, 18, 18); font-family: 'Times New Roman', Times, serif"></td>
                         <td>
-                            <input type="text" name="postsid" size="30">
+                            <input type="hidden" name="postsid" id="postsid"
+                                size="30">
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle" style="font-weight: bold; color:
-                            rgb(19, 18, 18); font-family: 'Times New Roman',
-                            Times, serif">User ID:</td>
+                        <td align="middle"
+                            style="font-weight: bold; color: rgb(19, 18, 18); font-family: 'Times New Roman', Times, serif">ID:</td>
                         <td>
-                            <input type="text" name="userid" size="30">
+                            <input type="text" name="userid" id="userid"
+                                size="30">
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle" style="font-weight: bold; color:
-                            rgb(19, 18, 18); font-family: 'Times New Roman',
-                            Times, serif">Title</td>
+                        <td align="middle"
+                            style="font-weight: bold; color: rgb(19, 18, 18); font-family: 'Times New Roman', Times, serif">Title:</td>
                         <td>
-                            <input type="text" name="title" size="30">
+                            <input type="text" name="title" id="title" size="30">
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle" style="font-weight: bold; color:
-                            rgb(19, 18, 18); font-family: 'Times New Roman',
-                            Times, serif">Message:</td>
+                        <td align="middle"
+                            style="font-weight: bold; color: rgb(19, 18, 18); font-family: 'Times New Roman', Times, serif">Message:</td>
                         <td>
-                            <input type="text" name="body" size="30">
+                            <input type="text" name="body" id="body" size="30">
                         </td>
                     </tr>
-                    <div class="input-group">
-                        <tr>
-                            <td align="center" colspan="8">
-                                <br>
-                                <input type="button"
-                                    style="padding: 6px; background: black;
-                                opacity: 0.7; color: white; font-weight:
-                                bold; border: 2px; border-radius: 2px;
-                                font-size: 20px; width: 40%"
-                                    name="addpostform" value="Add"
-                                    onclick="addPost()">
-                            </td>
-                        </tr>
-                    </div>
+                    <tr>
+                        <td align="center" colspan="8">
+                            <br>
+                            <input type="button"
+                                style="padding: 6px; background: black; opacity: 0.7; color: white; font-weight: bold; border: 2px; border-radius: 2px; font-size: 20px; width: 40%"
+                                name="editpost" onclick="updatePost()"
+                                value="Update">
+                        </td>
+                    </tr>
                 </table>
             </form>
         </center>
