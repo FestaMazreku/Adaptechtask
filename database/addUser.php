@@ -18,14 +18,13 @@ if (isset($_POST['name']) && isset($_POST['username']) && isset($_POST['age']) &
         $response = array();
         if ($sql->affected_rows > 0) {
             $response['success'] = true;
-            $response['message'] = "User is added successfully!";
+            $response['message'] = "New user has been added successfully!";
             echo json_encode($response);
         } else {
             $response['success'] = false;
-            $response['message'] = "User is not added.";
+            $response['message'] = "New user is not added!";
             echo json_encode($response);
         }
-
         $sql->close();
     } else {
         $response['success'] = false;

@@ -19,6 +19,7 @@ if ($con) {
         $response[$i]['userid'] = $row['userid'];
         $response[$i]['title'] = $row['title'];
         $response[$i]['body'] = $row['body'];
+        $response[$i]['date'] = $row['date'];
 
         $i++;
       }
@@ -37,6 +38,7 @@ if ($con) {
         $response['userid'] = $row['userid'];
         $response['title'] = $row['title'];
         $response['body'] = $row['body'];
+        $response['date'] = $row['date'];
       }
     }
     echo json_encode($response, JSON_PRETTY_PRINT);
@@ -55,37 +57,43 @@ if ($con) {
     exit();
   }
 
-  //Update user
-  if (isset($_POST['editpost'])) {
-    $postsid = $_POST['postsid'];
+  //Update post
+  if (isset($_POST['editpostsid'])) {
+    $postsid = $_POST['editpostsid'];
     $userid = $_POST['userid'];
     $title = $_POST['title'];
     $body = $_POST['body'];
-  
+    // $date = $_POST['date'];
+
     $update_query = "UPDATE posts SET ";
     $fields = array();
 
-    if (!empty($name)) {
+    if (!empty($userid)) {
+      $fields[] = "userid='$userid'";
+    }
+    if (!empty($title)) {
       $fields[] = "title='$title'";
     }
-    if (!empty($username)) {
+    if (!empty($body)) {
       $fields[] = "body='$body'";
     }
+    // if (!empty($date)) {
+    //   $fields[] = "date='$date'";
+    // }
 
     if (!empty($fields)) {
       $update_query .= implode(", ", $fields);
-      $update_query .= " WHERE postsid='$postsid'";
+      $update_query .= " WHERE postsid ='$postsid'";
 
       if (mysqli_query($con, $update_query)) {
-        if (mysqli_affected_rows($con) > 0) {
-          echo "<script>alert('The post has been updated!')</script>";
-          echo "<script>window.open ('../posts.html','_self');</script>";
-        } else {
-          echo "<script>alert('No changes were made to the post.')</script>";
-          echo "<script>window.open ('../posts.html','_self');</script>";
-        }
+        $response['status'] = 1;
+        $response['message'] = "The post has been updated!";
+        echo json_encode($response);
+
       } else {
-        echo "<script>alert('Failed to update the post.')</script>";
+        $response['status'] = 0;
+        $response['message'] = "Failed to update the post.";
+        echo json_encode($response);
       }
     }
   }

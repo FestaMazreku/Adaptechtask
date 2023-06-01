@@ -18,22 +18,22 @@ function deleteUser(id, button) {
                 console.log(response);
                 if (response == "1") {
                     $(button).closest('tr').remove();
-                    alert("User is deleted successfully!");
+                    alert("The user is deleted successfully!");
                 }
                 else {
-                    alert("User is not deleted.");
+                    alert("The user is not deleted.");
                 }
             },
             error: function (error) {
                 console.log(error);
-                alert("Error: User is not deleted! " + error);
+                alert("Error: The user is not deleted. " + error);
             },
         });
     }
 }
 
-//update user
-function updateUser(userid) {
+//get user data
+function getuserdata(userid) {
     if (userid == null) {
         window.location.href = "users.html";
     } else {
@@ -42,7 +42,7 @@ function updateUser(userid) {
             url: `http://adaptechtask.test/database/users.php?user=${userid}`,
             dataType: 'json',
         }).then(post => {
-            $("#id").val(post.id);
+            $("#editid").val(post.id);
             $("#name").val(post.name);
             $("#username").val(post.username);
             $("#age").val(post.age);
@@ -53,45 +53,26 @@ function updateUser(userid) {
     }
 }
 
-// update user
-// function updateUser(userid) {
-//     if (userid == null) {
-//         window.location.href = "users.html";
-//     } else {
-//         var formdata = $('#update').serialize();
-//         formdata += '&update=true'; // Add the update parameter as a POST parameter
-//         $.ajax({
-//             type: "POST",
-//             url: `http://adaptechtask.test/database/users.php?user=${userid}`,
-//             dataType: 'json',
-//             data: formdata,
-//             success: function (response) {
-//                 console.log(response);
-//                 if (response.message === "The user has been updated!") {
-//                     alert("The user has been updated!");
-//                     window.location.href = "../users.html";
-//                 } else if (response.message === "No changes were made to the user.") {
-//                     alert("No changes were made to the user.");
-//                     window.location.href = "../users.html";
-//                 } else {
-//                     alert("Failed to update the user.");
-//                 }
-//             },
-//             error: function (error) {
-//                 console.log("Error:", error);
-//                 alert("Failed to update the user.");
-//             }
-//         }).then(function (post) {
-//             $("#id").val(post.id);
-//             $("#name").val(post.name);
-//             $("#username").val(post.username);
-//             $("#age").val(post.age);
-//             $("#email").val(post.email);
-//             $("#phone").val(post.phone);
-//             $("#city").val(post.city);
-//         });
-//     }
-// }
+//update user
+function updateUser() {
+    var formdata = $('#edituserform').serialize();  
+    $.ajax({
+        type: "POST",
+        url: 'http://adaptechtask.test/database/users.php',
+        data: formdata,
+        success: function (response) {
+            console.log(response);
+            var result = JSON.parse(response);
+            alert(result.message);
+            if (result.status == 1)
+                window.location.href = "users.html";
+        },
+        error: function (error) {
+            console.log(error);
+            alert("Error: Failed to update the user." + error.responseText);
+        }
+    });
+}
 
 //add user
 function addUser() {
@@ -104,15 +85,15 @@ function addUser() {
             console.log(response);
             var result = JSON.parse(response);
             if (result.success) {
-                alert("User is added successfully!");
+                alert("New user has been added successfully!");
                 window.location.href = "users.html";
             } else {
-                alert("User is not added! Required fields are missing.");
+                alert("New user is not added!");
             }
         },
         error: function (error) {
             console.log(error);
-            alert("Error: User is not added! " + error.responseText);
+            alert("Error: New user is not added! " + error.responseText);
         }
     });
 }
@@ -153,7 +134,7 @@ $(document).ready(function () {
         if (userid == null) {
             window.location.href = "users.html";
         } else {
-            updateUser(userid);
+            getuserdata(userid);
         }
     }
 

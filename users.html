@@ -17,7 +17,7 @@
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
             integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"/>
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!-- jQuery -->
         <link rel="stylesheet"
             href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -46,8 +46,6 @@
                 font-weight: bold; padding-right: 15px"> Contact Us </a>
             <a href="post.html" style="color: black; font-size: 17px;
                 font-weight: bold; padding-right: 15px"> Posts </a>
-            <a href="otherposts.html" style="color: black;font-size:17px;
-                font-weight: bold; padding-right: 15px"> Other Posts </a>
             <a href="users.html" style="color: black; font-size: 17px;
                 font-weight: bold; padding-right: 15px" class="active"> Users
             </a>
@@ -95,23 +93,74 @@
 
         <!-- Previous and Next -->
         <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link" href="#">&laquo;
-                        Previous </a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#">6</a></li>
-                <li class="page-item"><a class="page-link" href="#">7</a></li>
-                <li class="page-item"><a class="page-link" href="#">8</a></li>
-                <li class="page-item"><a class="page-link" href="#">9</a></li>
-                <li class="page-item"><a class="page-link" href="#">10</a></li>
-                <li class="page-item"><a class="page-link" href="#"> Next
-                        &raquo;</a></li>
+            <ul id="pagination" class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="#">&laquo;Previous</a></li>
+                <li class="page-item"><a class="page-link"
+                        href="http://adaptechtask.test/users.html?page=1">1</a></li>
+                <li class="page-item"><a class="page-link"
+                        href="http://adaptechtask.test/users.html?page=2">2</a></li>
+                <li class="page-item"><a class="page-link"
+                        href="http://adaptechtask.test/users.html?page=3">3</a></li>
+                <li class="page-item"><a class="page-link"
+                        href="http://adaptechtask.test/users.html?page=4">4</a></li>
+                <li class="page-item"><a class="page-link"
+                        href="http://adaptechtask.test/users.html?page=5">5</a></li>
+                <li class="page-item"><a class="page-link"
+                        href="http://adaptechtask.test/users.html?page=6">6</a></li>
+                <li class="page-item"><a class="page-link"
+                        href="http://adaptechtask.test/users.html?page=7">7</a></li>
+                <li class="page-item"><a class="page-link"
+                        href="http://adaptechtask.test/users.html?page=8">8</a></li>
+                <li class="page-item"><a class="page-link"
+                        href="http://adaptechtask.test/users.html?page=9">9</a></li>
+                <li class="page-item"><a class="page-link"
+                        href="http://adaptechtask.test/users.html?page=10">10</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next &raquo;</a></li>
             </ul>
         </nav>
+
+        <!--JS-->
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var currentPage = 1;
+            var totalPages = 10;
+            var pagination = document.getElementById("pagination");
+            var pageItems = [...pagination.getElementsByClassName("page-item")];
+            
+            function updateActivePage() {
+                for (var i = 0; i < pageItems.length; i++) {
+                    pageItems[i].classList.remove("active");
+                }
+                pageItems[currentPage].classList.add("active");
+            }
+            
+            function previousPage() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    navigateToPage(currentPage);
+                    updateActivePage();
+                }
+            }
+            
+            function nextPage() {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    navigateToPage(currentPage);
+                    updateActivePage();
+                }
+            }
+            
+            function navigateToPage(page) {
+                var url = "http://adaptechtask.test/users.html?page=" + page;
+                window.location.href = url;
+            }
+            
+            pageItems[0].addEventListener("click", previousPage);
+            pageItems[pageItems.length - 1].addEventListener("click", nextPage);
+            
+            updateActivePage();
+        });
+        </script>
 
         <!-- Footer -->
         <div class="footer-clean">
@@ -123,15 +172,15 @@
                             <ul>
                                 <li><a href="#">Home</a></li>
                                 <li><a href="#">About us</a></li>
-                                <li><a href="contactus.html">Contact us</a></li>
+                                <li><a href="contactus.html">Contact Us</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-4 col-md-3 item">
                             <h3>About</h3>
                             <ul>
                                 <li><a href="post.html">Posts</a></li>
-                                <li><a href="otherposts.html">Other posts</a></li>
                                 <li><a href="users.html">Users</a></li>
+                                <li><a href="posts.html">Table Posts </a></li>
                             </ul>
                         </div>
                         <div class="col-sm-4 col-md-3 item">

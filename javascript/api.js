@@ -24,7 +24,7 @@ function New() {
       console.log('Data: ' + JSON.stringify(json));
       alert("Article successfully added! Look at the console.");
     })
-  }
+}
 
 function getPost(id) {
   fetch('http://adaptechtask.test/database/posts.php?post=' + id)
@@ -37,9 +37,9 @@ function getPost(id) {
       }).then(userData => {
         const jsonDataDiv = document.getElementById('posts');
         const postDiv = document.createElement('div');
-        postDiv.innerHTML = `<p style="font-size: 15px; color: darkblue; font-weight: bold"> ID: ${data.userid} </p> 
+        postDiv.innerHTML = `
           <p style="font-size: 20px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> Title: ${data.title} </p>
-          <h6> Message: ${data.body} </h6>
+          <h6> Description: ${data.body} </h6>
           <hr>
           <p style="font-weight: bold"> Name: ${userData[data.postsid - 1].name} </p> 
           <p> Username: ${userData[data.postsid - 1].username} </p> 
@@ -53,7 +53,45 @@ function getPost(id) {
         $("#comments").show();
       });
     });
-  }
+}
+
+// function truncateText(text, maxLength) {
+//   if (text.length <= maxLength) {
+//     return text;
+//   } else {
+//     return text.substring(0, maxLength - 3) + "...";
+//   }
+// }
+
+// function getPost(id) {
+//   fetch('http://adaptechtask.test/database/posts.php?post=' + id)
+//     .then(response => response.json())
+//     .then(data => {
+//       $.ajax({
+//         type: "GET",
+//         url: 'http://adaptechtask.test/database/users.php?users',
+//         dataType: 'json',
+//       }).then(userData => {
+//         const jsonDataDiv = document.getElementById('posts');
+//         const postDiv = document.createElement('div');
+//         const truncatedBody = truncateText(data.body, 100); // Adjust the maxLength as per your requirements
+//         postDiv.innerHTML = `
+//           <p style="font-size: 20px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> Title: ${data.title} </p>
+//           <h6> Description: ${truncatedBody} </h6>
+//           <hr>
+//           <p style="font-weight: bold"> Name: ${userData[data.postsid - 1].name} </p> 
+//           <p> Username: ${userData[data.postsid - 1].username} </p> 
+//           <h6 style="color: darkblue"> Email: ${userData[data.postsid - 1].email} </h6> 
+//           <p> Age: ${userData[data.postsid - 1].age} </p>
+//           <p> Phone: ${userData[data.postsid - 1].phone} </p>
+//           <p> City: ${userData[data.postsid - 1].city} </p>
+//           <a href="post.html" onclick="getPost()"> <button class="btn1"> &laquo; Go back </button> </a>`
+//         jsonDataDiv.appendChild(postDiv);
+//         getComment(id);
+//         $("#comments").show();
+//       });
+//     });
+// }
 
 function getComment(id) {
   fetch('http://adaptechtask.test/database/comments.php?comment=' + id)
@@ -68,12 +106,12 @@ function getComment(id) {
         const postDiv = document.createElement('div');
         postDiv.innerHTML = `<hr>
         <p style="font-weight:bold"> Name: ${commentData[data.postid - 1].name} </p> 
-        <p style="color: darkblue"> <p> Comment nr.${data.postid}: ${data.body} </p>`;
+        <p style="color: darkblue"> <p> Comment: ${data.body} </p>`;
         jsonDataDiv.appendChild(postDiv);
         $("#comments").show();
       });
     });
-  }
+}
 
 function getall() {
   fetch('http://adaptechtask.test/database/posts.php?posts')
@@ -87,19 +125,20 @@ function getall() {
           dataType: 'json',
         }).then(userData => {
           const postDiv = document.createElement('div');
-          postDiv.innerHTML = `<p style="font-weight: bold"> ID: ${userData[post.postsid - 1.].id} </p>
+          postDiv.innerHTML = `
           <p style="font-weight: bold"> Name: ${userData[post.postsid - 1].name} </p> 
           <p style="color: darkblue"> Email: ${userData[post.postsid - 1].email} </p> 
           <a href="?post=${post.postsid}" style="font-size: 17px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> 
           Title: ${post.title + "..."} </a>
-          <p style="color: black" font-size: 25px"> Message: ${post.body} </p>
+          <p style="color: black" font-size: 25px"> Description: ${post.body} </p>
+          <p style="color: black" font-size: 25px"> Date: ${post.date} </p>
           <hr>`;
           jsonDataDiv.appendChild(postDiv);
           $("#comments").hide();
         });
       });
     });
-  }
+}
 
 $(document).ready(function () {
   const currentUrl = window.location.href;
