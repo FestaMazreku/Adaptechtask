@@ -63,7 +63,6 @@ if ($con) {
     $userid = $_POST['userid'];
     $title = $_POST['title'];
     $body = $_POST['body'];
-    // $date = $_POST['date'];
 
     $update_query = "UPDATE posts SET ";
     $fields = array();
@@ -77,9 +76,6 @@ if ($con) {
     if (!empty($body)) {
       $fields[] = "body='$body'";
     }
-    // if (!empty($date)) {
-    //   $fields[] = "date='$date'";
-    // }
 
     if (!empty($fields)) {
       $update_query .= implode(", ", $fields);

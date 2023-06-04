@@ -46,7 +46,6 @@ function getpostdata(postid) {
             $("#userid").val(post.userid);
             $("#title").val(post.title);
             $("#body").val(post.body);
-            // $("#date").val(post.date);
         });
     }
 }
@@ -104,23 +103,43 @@ function GetAll() {
     }).then(postData => {
         postData.forEach(post => {
             const postDiv = document.createElement('tr');
+            const fullBody = post.body;
+            const maxLength = 100; // Maximum length of the truncated body
+
+            let truncatedBody = fullBody;
+            let showFullBody = false;
+
+            if (fullBody.length > maxLength) {
+                truncatedBody = fullBody.substring(0, maxLength) + '...';
+                showFullBody = true;
+            }
+
             postDiv.innerHTML = `<tr id="row-${post.postsid}">
-          <td> <p class="table-element1">${post.postsid} </p> </td>
-          <td> <p class="table-element2">${post.userid} </p> </td>
-          <td> <p class="table-element3">${post.title} </p> </td>
-          <td> <p class="table-element4">${post.body} </p> </td>
-       
+          <td><p class="table-element1">${post.postsid}</p></td>
+          <td><p class="table-element2">${post.userid}</p></td>
+          <td><p class="table-element3">${post.title}</p></td>
           <td>
-          <button class="btn10"><a href="editPost.html?postid=${post.postsid}"> Update </a></button>
-          <button class="btn7" onclick="deletePost(${post.postsid}, this)"> Delete </button>
+            <p class="table-element4" id="body-${post.postsid}" style="cursor: pointer;">
+              ${truncatedBody}
+            </p>
           </td>
-          </tr>`;
+          <td>
+            <button class="btn10"><a href="editPost.html?postid=${post.postsid}">Update</a></button>
+            <button class="btn7" onclick="deletePost(${post.postsid}, this)">Delete</button>
+          </td>
+        </tr>`;
+
             $("table").append(postDiv);
+
+            if (showFullBody) {
+                const bodyElement = document.getElementById(`body-${post.postsid}`);
+                bodyElement.addEventListener('click', () => {
+                    bodyElement.textContent = fullBody;
+                });
+            }
         });
     });
 }
-
-//  <td> <p class="table-element5">${post.date} </p> </td> 
 
 $(document).ready(function () {
     const currentUrl = window.location.href;

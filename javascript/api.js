@@ -38,7 +38,7 @@ function getPost(id) {
         const jsonDataDiv = document.getElementById('posts');
         const postDiv = document.createElement('div');
         postDiv.innerHTML = `
-          <p style="font-size: 20px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> Title: ${data.title} </p>
+          <p style="font-size: 18px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> Title: ${data.title} </p>
           <h6> Description: ${data.body} </h6>
           <hr>
           <p style="font-weight: bold"> Name: ${userData[data.postsid - 1].name} </p> 
@@ -54,44 +54,6 @@ function getPost(id) {
       });
     });
 }
-
-// function truncateText(text, maxLength) {
-//   if (text.length <= maxLength) {
-//     return text;
-//   } else {
-//     return text.substring(0, maxLength - 3) + "...";
-//   }
-// }
-
-// function getPost(id) {
-//   fetch('http://adaptechtask.test/database/posts.php?post=' + id)
-//     .then(response => response.json())
-//     .then(data => {
-//       $.ajax({
-//         type: "GET",
-//         url: 'http://adaptechtask.test/database/users.php?users',
-//         dataType: 'json',
-//       }).then(userData => {
-//         const jsonDataDiv = document.getElementById('posts');
-//         const postDiv = document.createElement('div');
-//         const truncatedBody = truncateText(data.body, 100); // Adjust the maxLength as per your requirements
-//         postDiv.innerHTML = `
-//           <p style="font-size: 20px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> Title: ${data.title} </p>
-//           <h6> Description: ${truncatedBody} </h6>
-//           <hr>
-//           <p style="font-weight: bold"> Name: ${userData[data.postsid - 1].name} </p> 
-//           <p> Username: ${userData[data.postsid - 1].username} </p> 
-//           <h6 style="color: darkblue"> Email: ${userData[data.postsid - 1].email} </h6> 
-//           <p> Age: ${userData[data.postsid - 1].age} </p>
-//           <p> Phone: ${userData[data.postsid - 1].phone} </p>
-//           <p> City: ${userData[data.postsid - 1].city} </p>
-//           <a href="post.html" onclick="getPost()"> <button class="btn1"> &laquo; Go back </button> </a>`
-//         jsonDataDiv.appendChild(postDiv);
-//         getComment(id);
-//         $("#comments").show();
-//       });
-//     });
-// }
 
 function getComment(id) {
   fetch('http://adaptechtask.test/database/comments.php?comment=' + id)
@@ -125,15 +87,40 @@ function getall() {
           dataType: 'json',
         }).then(userData => {
           const postDiv = document.createElement('div');
+          const fullDescription = post.body;
+          const maxLength = 100;
+
+          let shortenedDescription = fullDescription;
+          let showFullDescription = false;
+
+          if (fullDescription.length > maxLength) {
+            shortenedDescription = fullDescription.substring(0, maxLength) + '...';
+            showFullDescription = true;
+          }
+
           postDiv.innerHTML = `
-          <p style="font-weight: bold"> Name: ${userData[post.postsid - 1].name} </p> 
-          <p style="color: darkblue"> Email: ${userData[post.postsid - 1].email} </p> 
-          <a href="?post=${post.postsid}" style="font-size: 17px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> 
-          Title: ${post.title + "..."} </a>
-          <p style="color: black" font-size: 25px"> Description: ${post.body} </p>
-          <p style="color: black" font-size: 25px"> Date: ${post.date} </p>
-          <hr>`;
+            <p style="font-weight: bold">Name: ${userData[post.postsid - 1].name}</p> 
+            <p style="color: darkblue">Email: ${userData[post.postsid - 1].email}</p> 
+            <a href="?post=${post.postsid}" style="font-size: 17px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> 
+              Title: ${post.title}
+            </a>
+            <p style="color: black; font-size: 18px">Description: 
+              <span id="description-${post.postsid}" style="cursor: pointer;">
+                ${shortenedDescription}
+              </span>
+            </p>
+            <p style="color: black; font-size: 17px; font-weight: bold">Date: ${post.date}</p>
+            <hr>`;
+
           jsonDataDiv.appendChild(postDiv);
+
+          if (showFullDescription) {
+            const descriptionElement = document.getElementById(`description-${post.postsid}`);
+            descriptionElement.addEventListener('click', () => {
+              descriptionElement.textContent = fullDescription;
+            });
+          }
+
           $("#comments").hide();
         });
       });

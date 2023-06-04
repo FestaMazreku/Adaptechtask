@@ -55,7 +55,7 @@ function getuserdata(userid) {
 
 //update user
 function updateUser() {
-    var formdata = $('#edituserform').serialize();  
+    var formdata = $('#edituserform').serialize();
     $.ajax({
         type: "POST",
         url: 'http://adaptechtask.test/database/users.php',
@@ -99,8 +99,6 @@ function addUser() {
 }
 
 function GetAll(from, count) {
-    // from = 0;
-    // count = 100;
     $.ajax({
         type: "GET",
         url: 'http://adaptechtask.test/database/users.php?users',
