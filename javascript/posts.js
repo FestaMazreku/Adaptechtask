@@ -95,16 +95,68 @@ function addPost() {
     });
 }
 
-function GetAll() {
+// function GetAll() {
+//     $.ajax({
+//         type: "GET",
+//         url: 'http://adaptechtask.test/database/posts.php?posts',
+//         dataType: 'json',
+//     }).then(postData => {
+//         postData.forEach(post => {
+//             const postDiv = document.createElement('tr');
+//             const fullBody = post.body;
+//             const maxLength = 100; 
+
+//             let truncatedBody = fullBody;
+//             let showFullBody = false;
+
+//             if (fullBody.length > maxLength) {
+//                 truncatedBody = fullBody.substring(0, maxLength) + '...';
+//                 showFullBody = true;
+//             }
+//             postDiv.innerHTML = `<tr id="row-${post.postsid}">
+//           <td><p class="table-element1">${post.postsid}</p></td>
+//           <td><p class="table-element2">${post.userid}</p></td>
+//           <td><p class="table-element3">${post.title}</p></td>
+//           <td>
+//             <p class="table-element4" id="body-${post.postsid}" style="cursor: pointer;">
+//               ${truncatedBody}
+//             </p>
+//           </td>
+//           <td>
+//             <button class="btn10"><a href="editPost.html?postid=${post.postsid}">Update</a></button>
+//             <button class="btn7" onclick="deletePost(${post.postsid}, this)">Delete</button>
+//           </td>
+//         </tr>`;
+
+//             $("table").append(postDiv);
+
+//             if (showFullBody) {
+//                 const bodyElement = document.getElementById(`body-${post.postsid}`);
+//                 bodyElement.addEventListener('click', () => {
+//                     bodyElement.textContent = fullBody;
+//                 });
+//             }
+//         });
+//     });
+// }
+
+let currentPage = 1;
+
+function GetAll(page, perPage) {
+    const from = (page - 1) * perPage;
+    const to = page * perPage;
+    const tableBody = document.getElementById('table-body');
+    tableBody.innerHTML = '';
+    history.pushState({}, '', `?page=${page}`);
+
     $.ajax({
-        type: "GET",
+        type: 'GET',
         url: 'http://adaptechtask.test/database/posts.php?posts',
         dataType: 'json',
-    }).then(postData => {
-        postData.forEach(post => {
-            const postDiv = document.createElement('tr');
+    }).then((postData) => {
+        const tableRows = postData.slice(from, to).map((post) => {
             const fullBody = post.body;
-            const maxLength = 100; // Maximum length of the truncated body
+            const maxLength = 100;
 
             let truncatedBody = fullBody;
             let showFullBody = false;
@@ -114,27 +166,41 @@ function GetAll() {
                 showFullBody = true;
             }
 
-            postDiv.innerHTML = `<tr id="row-${post.postsid}">
-          <td><p class="table-element1">${post.postsid}</p></td>
-          <td><p class="table-element2">${post.userid}</p></td>
-          <td><p class="table-element3">${post.title}</p></td>
-          <td>
-            <p class="table-element4" id="body-${post.postsid}" style="cursor: pointer;">
-              ${truncatedBody}
-            </p>
-          </td>
-          <td>
-            <button class="btn10"><a href="editPost.html?postid=${post.postsid}">Update</a></button>
-            <button class="btn7" onclick="deletePost(${post.postsid}, this)">Delete</button>
-          </td>
-        </tr>`;
+            return `<tr id="row-${post.postsid}">
+                <td><p class="table-element1">${post.postsid}</p></td>
+                <td><p class="table-element2">${post.userid}</p></td>
+                <td><p class="table-element3">${post.title}</p></td>
+                <td>
+                    <p class="table-element4" id="body-${post.postsid}" style="cursor: pointer;">
+                        ${truncatedBody}
+                    </p>
+                </td>
+                <td>
+                    <button class="btn10"><a href="editPost.html?postid=${post.postsid}">Update</a></button>
+                    <button class="btn7" onclick="deletePost(${post.postsid}, this)">Delete</button>
+                </td>
+            </tr>`;
+        });
 
-            $("table").append(postDiv);
+        tableBody.innerHTML = tableRows.join('');
 
-            if (showFullBody) {
+        const paginationLinks = document.querySelectorAll('#pagination li.page-item');
+        paginationLinks.forEach((link) => {
+            link.classList.remove('active');
+        });
+
+        const currentPageLink = document.querySelector(`#pagination li.page-item:nth-child(${page + 1})`);
+        currentPageLink.classList.add('active');
+
+        postData.slice(from, to).forEach((post) => {
+            if (post.body.length > maxLength) {
                 const bodyElement = document.getElementById(`body-${post.postsid}`);
                 bodyElement.addEventListener('click', () => {
-                    bodyElement.textContent = fullBody;
+                    if (bodyElement.textContent === truncatedBody) {
+                        bodyElement.textContent = fullBody;
+                    } else {
+                        bodyElement.textContent = truncatedBody;
+                    }
                 });
             }
         });
@@ -156,9 +222,9 @@ $(document).ready(function () {
     if (currentUrl.indexOf("posts.html") > 0) {
         const page = searchParams.get('page');
         if (page == null) {
-            GetAll(1, 20);
+            GetAll(1, 10);
         } else {
-            GetAll(page, 20);
+            GetAll(page, 10);
         }
     }
 });

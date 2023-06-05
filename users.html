@@ -58,64 +58,73 @@
     </header>
 
     <body>
-        <!--Tabela-->
-        <table class="table table-striped table-bordered
-            table-responsive-lg" id="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col" style="font-size: 17px;
-                        color: rgb(202, 205, 219); font-weight: bold;
+        <!-- Tabela -->
+        <div class="table-responsive-lg">
+            <table class="table table-striped table-bordered" id="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" style="font-size: 17px;
+                        color: rgb(157, 182, 219); font-weight: bold;
                         font-family:'Times New Roman', Times, serif">ID</th>
-                    <th scope="col" style="font-size: 17px;
-                        color: rgb(202, 205, 219); font-weight: bold;
+                        <th scope="col" style="font-size: 17px;
+                        color: rgb(157, 182, 219); font-weight: bold;
                         font-family:'Times New Roman', Times, serif">Name &
-                        Surname </th>
-                    <th scope="col" style="font-size: 17px;
-                        color: rgb(202, 205, 219); font-weight: bold;
+                            Surname</th>
+                        <th scope="col" style="font-size: 17px;
+                         color: rgb(157, 182, 219); font-weight: bold;
                         font-family:'Times New Roman', Times, serif">Username</th>
-                    <th scope="col" style="font-size: 17px;
-                        color: rgb(202, 205, 219); font-weight: bold;
+                        <th scope="col" style="font-size: 17px;
+                        color: rgb(157, 182, 219); font-weight: bold;
                         font-family:'Times New Roman', Times, serif">Age</th>
-                    <th scope="col" style="font-size: 17px;
-                        color: rgb(202, 205, 219); font-weight: bold;
+                        <th scope="col" style="font-size: 17px;
+                         color: rgb(157, 182, 219); font-weight: bold;
                         font-family:'Times New Roman', Times, serif">Email</th>
-                    <th scope="col" style="font-size: 17px;
-                        color: rgb(202, 205, 219); font-weight: bold;
+                        <th scope="col" style="font-size: 17px;
+                         color: rgb(157, 182, 219); font-weight: bold;
                         font-family:'Times New Roman', Times, serif">Phone</th>
-                    <th scope="col" style="font-size: 17px;
-                        color: rgb(202, 205, 219); font-weight: bold;
+                        <th scope="col" style="font-size: 17px;
+                        color: rgb(157, 182, 219); font-weight: bold;
                         font-family:'Times New Roman', Times, serif">City</th>
-                    <th><button class="btn11"><a href="addUser.html">Add a new
-                                user</a></button></th>
-                </tr>
-            </thead>
-        </table>
+                        <th scope="col">
+                            <button class="btn11"><a href="addUser.html">Add a
+                                    new user</a></button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="table-body"></tbody>
+            </table>
+        </div>
 
-        <!-- Previous and Next -->
+        <!-- Page navigation -->
         <nav aria-label="Page navigation">
             <ul id="pagination" class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link" href="#">&laquo;Previous</a></li>
                 <li class="page-item"><a class="page-link"
-                        href="http://adaptechtask.test/users.html?page=1">1</a></li>
+                        href="javascript:void(0);"
+                        onclick="GetAll(currentPage = 1, 10)">&laquo; Previous</a></li>
+                <li class="page-item">
+                    <a class="page-link"
+                        href="javascript:GetAll(1, 10)">1</a></li>
                 <li class="page-item"><a class="page-link"
-                        href="http://adaptechtask.test/users.html?page=2">2</a></li>
+                        href="javascript:GetAll(2, 10)">2</a></li>
                 <li class="page-item"><a class="page-link"
-                        href="http://adaptechtask.test/users.html?page=3">3</a></li>
+                        href="javascript:GetAll(3, 10)">3</a></li>
                 <li class="page-item"><a class="page-link"
-                        href="http://adaptechtask.test/users.html?page=4">4</a></li>
+                        href="javascript:GetAll(4, 10)">4</a></li>
                 <li class="page-item"><a class="page-link"
-                        href="http://adaptechtask.test/users.html?page=5">5</a></li>
+                        href="javascript:GetAll(5, 10)">5</a></li>
                 <li class="page-item"><a class="page-link"
-                        href="http://adaptechtask.test/users.html?page=6">6</a></li>
+                        href="javascript:GetAll(6, 10)">6</a></li>
                 <li class="page-item"><a class="page-link"
-                        href="http://adaptechtask.test/users.html?page=7">7</a></li>
+                        href="javascript:GetAll(7, 10)">7</a></li>
                 <li class="page-item"><a class="page-link"
-                        href="http://adaptechtask.test/users.html?page=8">8</a></li>
+                        href="javascript:GetAll(8, 10)">8</a></li>
                 <li class="page-item"><a class="page-link"
-                        href="http://adaptechtask.test/users.html?page=9">9</a></li>
+                        href="javascript:GetAll(9, 10)">9</a></li>
                 <li class="page-item"><a class="page-link"
-                        href="http://adaptechtask.test/users.html?page=10">10</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next &raquo;</a></li>
+                        href="javascript:GetAll(10, 10)">10</a></li>
+                <li class="page-item"><a class="page-link"
+                        href="javascript:void(0);"
+                        onclick="GetAll(currentPage + 1, 10)">Next &raquo;</a></li>
             </ul>
         </nav>
 

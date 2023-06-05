@@ -98,29 +98,45 @@ function addUser() {
     });
 }
 
-function GetAll(from, count) {
+let currentPage = 1;
+
+function GetAll(page, perPage) {
+    const from = (page - 1) * perPage;
+    const to = page * perPage;
+    const tableBody = document.getElementById('table-body');
+    tableBody.innerHTML = '';
+    history.pushState({}, '', `?page=${page}`);
+
     $.ajax({
-        type: "GET",
+        type: 'GET',
         url: 'http://adaptechtask.test/database/users.php?users',
         dataType: 'json',
-    }).then(userData => {
-        userData.forEach(post => {
-            const postDiv = document.createElement('tr');
-            postDiv.innerHTML = `<tr id="row-${post.id}">
-            <td> <p class="table-element1">${post.id} </p> </td>
-            <td> <p class="table-element2">${post.name} </p> </td>
-            <td> <p class="table-element3">${post.username} </p> </td>
-            <td> <p class="table-element4">${post.age} </p> </td>
-            <td> <p class="table-element5">${post.email} </p> </td>
-            <td> <p class="table-element6">${post.phone} </p> </td>
-            <td> <p class="table-element7">${post.city} </p> </td>
-            <td>
-            <button class="btn10"><a href="editUser.html?userid=${post.id}"> Update </a></button>
-            <button class="btn7" onclick="deleteUser(${post.id}, this)"> Delete </button>
-            </td>
-            </tr>`;
-            $("table").append(postDiv);
+    }).then((userData) => {
+        const tableRows = userData.slice(from, to).map((post) => {
+            return `<tr id="row-${post.id}">
+          <td><p class="table-element1">${post.id}</p></td>
+          <td><p class="table-element2">${post.name}</p></td>
+          <td><p class="table-element3">${post.username}</p></td>
+          <td><p class="table-element4">${post.age}</p></td>
+          <td><p class="table-element5">${post.email}</p></td>
+          <td><p class="table-element6">${post.phone}</p></td>
+          <td><p class="table-element7">${post.city}</p></td>
+          <td>
+            <button class="btn10"><a href="editUser.html?userid=${post.id}">Update</a></button>
+            <button class="btn7" onclick="deleteUser(${post.id}, this)">Delete</button>
+          </td>
+        </tr>`;
         });
+
+        tableBody.innerHTML = tableRows.join('');
+
+        const paginationLinks = document.querySelectorAll('#pagination li.page-item');
+        paginationLinks.forEach((link) => {
+            link.classList.remove('active');
+        });
+
+        const currentPageLink = document.querySelector(`#pagination li.page-item:nth-child(${page + 1})`);
+        currentPageLink.classList.add('active');
     });
 }
 
@@ -139,9 +155,9 @@ $(document).ready(function () {
     if (currentUrl.indexOf("users.html") > 0) {
         const page = searchParams.get('page');
         if (page == null) {
-            GetAll(1, 20);
+            GetAll(1, 10);
         } else {
-            GetAll(page, 20);
+            GetAll(page, 10);
         }
     }
 });
