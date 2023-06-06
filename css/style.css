@@ -238,6 +238,21 @@ body {
     opacity: 0.9;
 }
 
+.btn12 {
+    width: 70px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 7px;
+    border: 2px solid rgb(119, 158, 226);
+    background: rgb(121, 154, 216);
+    padding: 2px;
+    margin-left: 5px;
+}
+
+.btn12:hover {
+    background: rgb(87, 125, 182);
+    opacity: 0.9;
+}
+
 .table-element1 {
     font-weight: bold;
 }

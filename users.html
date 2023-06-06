@@ -47,10 +47,15 @@
             <a href="post.html" style="color: black; font-size: 17px;
                 font-weight: bold; padding-right: 15px"> Posts </a>
             <a href="users.html" style="color: black; font-size: 17px;
-                font-weight: bold; padding-right: 15px" class="active"> Users
+                font-weight: bold; padding-right: 15px" class="active"> Table
+                Users
             </a>
             <a href="posts.html" style="color: black; font-size: 17px;
             font-weight: bold; padding-right: 15px"> Table Posts
+            </a>
+            <a href="login.html" style="color: black; font-size: 17px;
+            font-weight: bold; padding-right: 15px"> Log in/Sign
+                up
             </a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i> </a>
@@ -98,33 +103,16 @@
         <!-- Page navigation -->
         <nav aria-label="Page navigation">
             <ul id="pagination" class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link"
-                        href="javascript:void(0);"
-                        onclick="GetAll(currentPage = 1, 10)">&laquo; Previous</a></li>
-                <li class="page-item">
-                    <a class="page-link"
-                        href="javascript:GetAll(1, 10)">1</a></li>
-                <li class="page-item"><a class="page-link"
-                        href="javascript:GetAll(2, 10)">2</a></li>
-                <li class="page-item"><a class="page-link"
-                        href="javascript:GetAll(3, 10)">3</a></li>
-                <li class="page-item"><a class="page-link"
-                        href="javascript:GetAll(4, 10)">4</a></li>
-                <li class="page-item"><a class="page-link"
-                        href="javascript:GetAll(5, 10)">5</a></li>
-                <li class="page-item"><a class="page-link"
-                        href="javascript:GetAll(6, 10)">6</a></li>
-                <li class="page-item"><a class="page-link"
-                        href="javascript:GetAll(7, 10)">7</a></li>
-                <li class="page-item"><a class="page-link"
-                        href="javascript:GetAll(8, 10)">8</a></li>
-                <li class="page-item"><a class="page-link"
-                        href="javascript:GetAll(9, 10)">9</a></li>
-                <li class="page-item"><a class="page-link"
-                        href="javascript:GetAll(10, 10)">10</a></li>
-                <li class="page-item"><a class="page-link"
-                        href="javascript:void(0);"
-                        onclick="GetAll(currentPage + 1, 10)">Next &raquo;</a></li>
+                <li class="page-item"><a class="page-link" href="#"
+                        onclick="GetAll(1, 10)">&laquo;</a></li>
+                <li class="page-item"><a class="page-link" href="?page=1"
+                        onclick="GetAll(1, 10)">1</a></li>
+                <li class="page-item"><a class="page-link" href="?page=2"
+                        onclick="GetAll(2, 10)">2</a></li>
+                <li class="page-item"><a class="page-link" href="?page=3"
+                        onclick="GetAll(3, 10)">3</a></li>
+                <li class="page-item"><a class="page-link" href="#"
+                        onclick="GetAll(currentPage + 1, 10)">&raquo;</a></li>
             </ul>
         </nav>
 

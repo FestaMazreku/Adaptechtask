@@ -97,7 +97,7 @@ function getall() {
             shortenedDescription = fullDescription.substring(0, maxLength) + '...';
             showFullDescription = true;
           }
-
+          
           postDiv.innerHTML = `
             <p style="font-weight: bold">Name: ${userData[post.postsid - 1].name}</p> 
             <p style="color: darkblue">Email: ${userData[post.postsid - 1].email}</p> 
@@ -120,7 +120,6 @@ function getall() {
               descriptionElement.textContent = fullDescription;
             });
           }
-
           $("#comments").hide();
         });
       });

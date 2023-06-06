@@ -98,11 +98,7 @@ function addUser() {
     });
 }
 
-let currentPage = 1;
-
 function GetAll(page, perPage) {
-    const from = (page - 1) * perPage;
-    const to = page * perPage;
     const tableBody = document.getElementById('table-body');
     tableBody.innerHTML = '';
     history.pushState({}, '', `?page=${page}`);
@@ -112,6 +108,11 @@ function GetAll(page, perPage) {
         url: 'http://adaptechtask.test/database/users.php?users',
         dataType: 'json',
     }).then((userData) => {
+        const totalUsers = userData.length;
+        const totalPages = Math.ceil(totalUsers / perPage);
+
+        const from = (page - 1) * perPage;
+        const to = page * perPage;
         const tableRows = userData.slice(from, to).map((post) => {
             return `<tr id="row-${post.id}">
           <td><p class="table-element1">${post.id}</p></td>
@@ -122,8 +123,9 @@ function GetAll(page, perPage) {
           <td><p class="table-element6">${post.phone}</p></td>
           <td><p class="table-element7">${post.city}</p></td>
           <td>
-            <button class="btn10"><a href="editUser.html?userid=${post.id}">Update</a></button>
-            <button class="btn7" onclick="deleteUser(${post.id}, this)">Delete</button>
+          <button class="btn12"><a href="http://adaptechtask.test/post.html?post=${post.id}">View</a></button>
+          <button class="btn10"><a href="editUser.html?userid=${post.id}">Update</a></button>
+          <button class="btn7" onclick="deleteUser(${post.id}, this)">Delete</button>
           </td>
         </tr>`;
         });
@@ -135,9 +137,57 @@ function GetAll(page, perPage) {
             link.classList.remove('active');
         });
 
-        const currentPageLink = document.querySelector(`#pagination li.page-item:nth-child(${page + 1})`);
+        const currentPageLink = document.querySelector(`#pagination li.page-item:nth-child(${page})`);
         currentPageLink.classList.add('active');
+
+        updatePagination(totalPages, page);
+
+    }).catch((error) => {
+        console.error('Error retrieving user data:', error);
     });
+}
+
+function updatePagination(totalPages, currentPage) {
+    const pagination = document.getElementById('pagination');
+    pagination.innerHTML = '';
+
+
+    //Previous page
+    const prevPageLink = document.createElement('li');
+    prevPageLink.classList.add('page-item');
+    const prevPageButton = document.createElement('a');
+    prevPageButton.classList.add('page-link');
+    prevPageButton.href = 'javascript:void(0);';
+    prevPageButton.onclick = () => GetAll(currentPage - 1, 10);
+    prevPageButton.innerHTML = '&laquo;';
+    prevPageLink.appendChild(prevPageButton);
+    pagination.appendChild(prevPageLink);
+
+    for (let i = 1; i <= totalPages; i++) {
+        const pageLink = document.createElement('li');
+        pageLink.classList.add('page-item');
+        const pageButton = document.createElement('a');
+        pageButton.classList.add('page-link');
+        pageButton.href = 'javascript:GetAll(' + i + ', 10)';
+        pageButton.innerHTML = i;
+        pageLink.appendChild(pageButton);
+        pagination.appendChild(pageLink);
+
+        if (i === currentPage) {
+            pageLink.classList.add('active');
+        }
+    }
+
+    //Next page
+    const nextPageLink = document.createElement('li');
+    nextPageLink.classList.add('page-item');
+    const nextPageButton = document.createElement('a');
+    nextPageButton.classList.add('page-link');
+    nextPageButton.href = 'javascript:void(0);';
+    nextPageButton.onclick = () => GetAll(currentPage + 1, 10);
+    nextPageButton.innerHTML = '&raquo;';
+    nextPageLink.appendChild(nextPageButton);
+    pagination.appendChild(nextPageLink);
 }
 
 $(document).ready(function () {

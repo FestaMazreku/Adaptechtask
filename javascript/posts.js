@@ -95,56 +95,10 @@ function addPost() {
     });
 }
 
-// function GetAll() {
-//     $.ajax({
-//         type: "GET",
-//         url: 'http://adaptechtask.test/database/posts.php?posts',
-//         dataType: 'json',
-//     }).then(postData => {
-//         postData.forEach(post => {
-//             const postDiv = document.createElement('tr');
-//             const fullBody = post.body;
-//             const maxLength = 100; 
-
-//             let truncatedBody = fullBody;
-//             let showFullBody = false;
-
-//             if (fullBody.length > maxLength) {
-//                 truncatedBody = fullBody.substring(0, maxLength) + '...';
-//                 showFullBody = true;
-//             }
-//             postDiv.innerHTML = `<tr id="row-${post.postsid}">
-//           <td><p class="table-element1">${post.postsid}</p></td>
-//           <td><p class="table-element2">${post.userid}</p></td>
-//           <td><p class="table-element3">${post.title}</p></td>
-//           <td>
-//             <p class="table-element4" id="body-${post.postsid}" style="cursor: pointer;">
-//               ${truncatedBody}
-//             </p>
-//           </td>
-//           <td>
-//             <button class="btn10"><a href="editPost.html?postid=${post.postsid}">Update</a></button>
-//             <button class="btn7" onclick="deletePost(${post.postsid}, this)">Delete</button>
-//           </td>
-//         </tr>`;
-
-//             $("table").append(postDiv);
-
-//             if (showFullBody) {
-//                 const bodyElement = document.getElementById(`body-${post.postsid}`);
-//                 bodyElement.addEventListener('click', () => {
-//                     bodyElement.textContent = fullBody;
-//                 });
-//             }
-//         });
-//     });
-// }
-
 let currentPage = 1;
+let totalPosts = 0;
 
 function GetAll(page, perPage) {
-    const from = (page - 1) * perPage;
-    const to = page * perPage;
     const tableBody = document.getElementById('table-body');
     tableBody.innerHTML = '';
     history.pushState({}, '', `?page=${page}`);
@@ -154,35 +108,54 @@ function GetAll(page, perPage) {
         url: 'http://adaptechtask.test/database/posts.php?posts',
         dataType: 'json',
     }).then((postData) => {
+        totalPosts = postData.length;
+        const totalPages = Math.ceil(totalPosts / perPage);
+
+        const from = (page - 1) * perPage;
+        const to = page * perPage;
         const tableRows = postData.slice(from, to).map((post) => {
-            const fullBody = post.body;
-            const maxLength = 100;
-
-            let truncatedBody = fullBody;
-            let showFullBody = false;
-
-            if (fullBody.length > maxLength) {
-                truncatedBody = fullBody.substring(0, maxLength) + '...';
-                showFullBody = true;
-            }
-
             return `<tr id="row-${post.postsid}">
                 <td><p class="table-element1">${post.postsid}</p></td>
                 <td><p class="table-element2">${post.userid}</p></td>
                 <td><p class="table-element3">${post.title}</p></td>
                 <td>
-                    <p class="table-element4" id="body-${post.postsid}" style="cursor: pointer;">
-                        ${truncatedBody}
-                    </p>
+                <p class="table-element4" id="body-${post.postsid}" style="cursor: pointer;">
+                ${post.body}
+                </p>
                 </td>
                 <td>
-                    <button class="btn10"><a href="editPost.html?postid=${post.postsid}">Update</a></button>
-                    <button class="btn7" onclick="deletePost(${post.postsid}, this)">Delete</button>
+                <button class="btn12"><a href="http://adaptechtask.test/post.html?post=${post.postsid}">View</a></button>
+                <br>
+                <br>
+                <button class="btn10"><a href="editPost.html?postid=${post.postsid}">Update</a></button>
+                <br>
+                <br>
+                <button class="btn7" onclick="deletePost(${post.postsid}, this)">Delete</button>
                 </td>
-            </tr>`;
+                </tr>`;
         });
 
         tableBody.innerHTML = tableRows.join('');
+
+        const pagination = document.getElementById('pagination');
+        pagination.innerHTML = '';
+
+        const prevPageLink = document.createElement('li');
+        prevPageLink.classList.add('page-item');
+        prevPageLink.innerHTML = `<a class="page-link" href="#" onclick="prevPage()">&laquo;</a>`;
+        pagination.appendChild(prevPageLink);
+
+        for (let i = 1; i <= totalPages; i++) {
+            const pageLink = document.createElement('li');
+            pageLink.classList.add('page-item');
+            pageLink.innerHTML = `<a class="page-link" href="#" onclick="getPage(${i})">${i}</a>`;
+            pagination.appendChild(pageLink);
+        }
+
+        const nextPageLink = document.createElement('li');
+        nextPageLink.classList.add('page-item');
+        nextPageLink.innerHTML = `<a class="page-link" href="#" onclick="nextPage()">&raquo;</a>`;
+        pagination.appendChild(nextPageLink);
 
         const paginationLinks = document.querySelectorAll('#pagination li.page-item');
         paginationLinks.forEach((link) => {
@@ -193,18 +166,48 @@ function GetAll(page, perPage) {
         currentPageLink.classList.add('active');
 
         postData.slice(from, to).forEach((post) => {
-            if (post.body.length > maxLength) {
-                const bodyElement = document.getElementById(`body-${post.postsid}`);
-                bodyElement.addEventListener('click', () => {
-                    if (bodyElement.textContent === truncatedBody) {
-                        bodyElement.textContent = fullBody;
-                    } else {
-                        bodyElement.textContent = truncatedBody;
-                    }
-                });
-            }
+            const bodyElement = document.getElementById(`body-${post.postsid}`);
+            bodyElement.textContent = truncateString(post.body, 100);
+            bodyElement.addEventListener('click', () => {
+                if (bodyElement.textContent === truncateString(post.body, 100)) {
+                    bodyElement.textContent = post.body;
+                } else {
+                    bodyElement.textContent = truncateString(post.body, 100);
+                }
+            });
         });
+    }).catch((error) => {
+        console.error('Error retrieving post data:', error);
     });
+}
+
+function truncateString(str, maxLength) {
+    if (str.length <= maxLength) {
+        return str;
+    }
+    return str.substring(0, maxLength) + '...';
+}
+
+//Previous page
+function prevPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        GetAll(currentPage, 10);
+    }
+}
+
+//Next page
+function nextPage() {
+    const totalPages = Math.ceil(totalPosts / 10);
+    if (currentPage < totalPages) {
+        currentPage++;
+        GetAll(currentPage, 10);
+    }
+}
+
+function getPage(page) {
+    currentPage = page;
+    GetAll(currentPage, 10);
 }
 
 $(document).ready(function () {
