@@ -2,15 +2,15 @@
 $con = mysqli_connect("localhost", "root", "", "adaptechtask");
 mysqli_select_db($con, 'adaptechtask');
 
-// Check if the submitted username and password are valid
-if ($username === $validUsername && $password === $validPassword) {
-    // Login success
-    $response = array('success' => true);
-} else {
-    // Login failed
-    $response = array('success' => false);
-}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Retrieve form data
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-header('Content-Type: application/json');
+    if ($email === 'user@example.com' && $password === 'password123') {
+
+header('contactus.html');
 echo json_encode($response);
+    }
+}
 ?>

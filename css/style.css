@@ -226,15 +226,20 @@ body {
     width: 130px;
     height: 40px;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    border-radius: 7px;
-    border: 2px solid rgb(94, 116, 141);
-    background: rgb(169, 180, 201);
+    border-radius: 4px;
+    border: 0;
+    outline: 0;
+    background: #7a8ca8;
     padding: 2px;
     margin-left: 5px;
 }
 
+.btn11 a {
+    color: whitesmoke;
+}
+
 .btn11:hover {
-    background: #7a8ca8;
+    background: #93a5c2;
     opacity: 0.9;
 }
 
@@ -242,14 +247,15 @@ body {
     width: 70px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     border-radius: 7px;
-    border: 2px solid rgb(119, 158, 226);
-    background: rgb(121, 154, 216);
+    border: 2px solid rgb(217, 218, 228);
+    background: rgb(217, 218, 228);
     padding: 2px;
     margin-left: 5px;
+    color: whitesmoke;
 }
 
 .btn12:hover {
-    background: rgb(87, 125, 182);
+    background: rgb(167, 174, 185);
     opacity: 0.9;
 }
 
@@ -275,8 +281,7 @@ body {
 }
 
 .table-element6 {
-    color: rgb(135, 150, 236);
-    font-weight: bold;
+    color: rgb(53, 67, 143);
 }
 
 .table-element7 {
