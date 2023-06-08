@@ -1,38 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
 * {
     margin: 0;
     padding: 0;
 }
 
 body {
-    background-color: #efefef;
-    font-family: 'Times New Roman', Times, serif;
+    background-color: #eceaeaef;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
     overflow-x: hidden;
 }
 
 .topnav {
     overflow: hidden;
-    background-color: #708090;
-    font-family: initial;
+    background-color: #222;
+    color: #f0f0f0;
 }
 
 .topnav a {
     float: left;
     display: block;
-    color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
 }
 
 .topnav a:hover {
-    background-color: rgb(178, 185, 199);
-    color: black;
+    background-color: rgb(106, 108, 112);
+    color: #f0f0f0;
 }
 
 .topnav a.active {
-    background-color: rgb(140, 153, 167);
-    color: white;
+    background-color: rgb(74, 76, 78);
+    color: #f0f0f0;
 }
 
 .topnav .icon {
@@ -70,7 +71,6 @@ body {
 
 .btn {
     width: 60px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
     border-radius: 7px;
     border: 2px solid #efefef;
     background: #efefef;
@@ -85,17 +85,19 @@ body {
 
 .btn1 {
     width: 90px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    border-radius: 7px;
-    border: 2px solid rgb(160, 182, 212);
-    background: rgb(174, 201, 224);
+    height: 40px;
+    border-radius: 2px;
+    background: #444;
+    border: 0;
+    outline: 0;
+    font-size: 15px;
     color: white;
     padding: 3px;
     margin-left: 5px;
 }
 
 .btn1:hover {
-    background: rgb(146, 170, 190);
+    background: rgb(0, 0, 0);
     color: var(--black);
     opacity: 0.8;
 }
@@ -138,7 +140,6 @@ body {
 
 .btn5 {
     width: 80px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
     border-radius: 7px;
     border: 2px solid #efefef;
     background: #111111;
@@ -148,7 +149,6 @@ body {
 
 .btn6 {
     width: 80px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
     border-radius: 7px;
     border: 2px solid #efefef;
     background: rgb(4, 30, 156);
@@ -162,39 +162,43 @@ body {
 }
 
 .btn7 {
-    width: 70px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 72px;
+    height: 30px;
     border-radius: 7px;
-    border: 2px solid #efefef;
-    background: rgb(195, 198, 218);
+    border: 0;
+    outline: 0;
+    background: rgb(211, 214, 224);
     padding: 2px;
     margin-left: 5px;
+    box-shadow: 3px 3px 7px 3px gray;
 }
 
 .btn7:hover {
-    background: rgb(114, 130, 153);
+    background: rgb(184, 185, 187);
     color: var(--black);
     opacity: 0.8;
 }
 
 .btn8 {
-    width: 85px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 90px;
+    height: 35px;
     border-radius: 7px;
-    border: 2px solid rgb(143, 200, 233);
-    background: rgb(157, 208, 238);
+    background: #444;
+    border: 0;
+    outline: 0;
+    font-size: 15px;
+    color: white;
     padding: 3px;
     margin-left: 5px;
 }
 
 .btn8:hover {
-    background: rgb(127, 172, 209);
+    background: rgb(0, 0, 0);
     opacity: 0.9;
 }
 
 .btn9 {
     width: 70px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
     border-radius: 7px;
     border: 2px solid rgb(83, 85, 90);
     background: rgb(125, 126, 129);
@@ -208,55 +212,71 @@ body {
 }
 
 .btn10 {
-    width: 70px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 72px;
+    height: 30px;
     border-radius: 7px;
-    border: 2px solid rgb(177, 191, 238);
-    background: rgb(177, 191, 238);
+    background: rgb(121, 121, 121);
     padding: 2px;
     margin-left: 5px;
+    border: 0;
+    box-shadow: 3px 3px 7px 3px gray;
+    color: whitesmoke;
+}
+
+.btn10 a {
+    color: #333;
 }
 
 .btn10:hover {
-    background: rgb(114, 130, 153);
+    background: rgb(175, 179, 185);
     opacity: 0.9;
 }
 
 .btn11 {
-    width: 130px;
+    width: 140px;
     height: 40px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
     border-radius: 4px;
     border: 0;
     outline: 0;
-    background: #7a8ca8;
+    background: #1c1c1d;
     padding: 2px;
     margin-left: 5px;
+    box-shadow: 3px 3px 7px 3px black;
 }
 
 .btn11 a {
-    color: whitesmoke;
+    color: rgb(196, 196, 196);
 }
 
 .btn11:hover {
-    background: #93a5c2;
+    background: #494949;
     opacity: 0.9;
 }
 
 .btn12 {
-    width: 70px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 72px;
+    height: 30px;
     border-radius: 7px;
-    border: 2px solid rgb(217, 218, 228);
-    background: rgb(217, 218, 228);
+    background: rgb(160, 161, 161);
     padding: 2px;
     margin-left: 5px;
+    border: 0;
+    box-shadow: 3px 3px 7px 3px gray;
     color: whitesmoke;
 }
 
+.btn12 a {
+    color: #333;
+}
+
 .btn12:hover {
-    background: rgb(167, 174, 185);
+    background: rgb(203, 203, 204);
     opacity: 0.9;
+}
+
+.add {
+    color: rgb(197, 196, 196);
+    font-weight: 50%;
 }
 
 .table-element1 {
@@ -319,21 +339,31 @@ body {
 
 .post1 {
     width: 420px;
-    height: 50px;
-    background-color: #efefef;
-    color: gray;
+    height: 90px;
+    background-color: #f0f0f0;
     font-size: 15px;
     font-weight: 500;
     border-radius: 5px;
     border: none;
-    box-shadow: 3px 3px 3px lightgray;
+    outline: 0;
+    box-shadow: 3px 3px 3px 3px lightgray;
+}
+
+.contactus {
+    font-size: 19px;
 }
 
 .mb-8 {
     width: 520px;
-    color: darkblue;
+    color: black;
     font-size: 20px;
+    border: 0;
+    outline: 0;
     font-weight: bold;
+}
+
+.form-control {
+    box-shadow: 3px 3px 6px 3px #bebebe;
 }
 
 #table {
@@ -346,8 +376,8 @@ body {
 
 .footer-clean {
     padding: 50px 0;
-    background-color: #708090;
-    color: black;
+    background-color: #222;
+    color: #f0f0f0;
 }
 
 .footer-clean h3 {

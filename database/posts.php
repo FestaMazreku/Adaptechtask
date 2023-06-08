@@ -44,7 +44,7 @@ if ($con) {
     echo json_encode($response, JSON_PRETTY_PRINT);
   }
 
-  //Delete post
+  //Delete Post
   if (isset($_POST['deleteid'])) {
     $delete = $_POST['deleteid'];
     $sql = "DELETE FROM posts WHERE postsid = '" . $delete . "' ";
@@ -57,7 +57,7 @@ if ($con) {
     exit();
   }
 
-  //Update post
+  //Update Post
   if (isset($_POST['editpostsid'])) {
     $postsid = $_POST['editpostsid'];
     $userid = $_POST['userid'];

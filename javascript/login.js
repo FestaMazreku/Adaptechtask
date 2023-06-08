@@ -10,7 +10,6 @@ function myFunction() {
 $(document).ready(function () {
     $('#login-form').submit(function (e) {
         e.preventDefault();
-
         const username = $('#username').val();
         const password = $('#password').val();
 
@@ -21,6 +20,7 @@ $(document).ready(function () {
                 username: username,
                 password: password
             },
+
             dataType: 'json',
             success: function (response) {
                 if (response.success) {
@@ -32,7 +32,7 @@ $(document).ready(function () {
                 }
             },
             error: function () {
-               
+
                 $('#login-error').text('An error occurred while logging in.');
             }
         });

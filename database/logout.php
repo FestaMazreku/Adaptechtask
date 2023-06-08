@@ -4,6 +4,6 @@ session_start();
 
 session_destroy();
 
-header("Location: ../contactus.html");
+header("Location: ../users.html");
 
 ?>

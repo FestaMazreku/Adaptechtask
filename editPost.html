@@ -36,71 +36,70 @@
         <!-- Navigation bar -->
         <div class="topnav" id="myTopnav">
             <a href="#"
-                style="color: black; font-size: 17px; font-weight: bold;
-                padding-right: 15px"> Home </a>
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Home </a>
             <a href="#"
-                style="color: black; font-size: 17px; font-weight: bold;
-                padding-right: 15px"> About Us </a>
-            <a href="contactus.html" style="color: black; font-size:17px;
-                font-weight: bold; padding-right: 15px"> Contact Us </a>
-            <a href="post.html" style="color: black; font-size: 17px;
-                font-weight: bold; padding-right: 15px"> Posts </a>
-            <a href="users.html" style="color: black; font-size: 17px;
-                font-weight: bold; padding-right: 15px"> Table Users
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> About Us </a>
+            <a href="contactus.html"
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Contact Us </a>
+            <a href="post.html"
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Posts </a>
+            <a href="users.html"
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Table Users
             </a>
-            <a href="posts.html" style="color: black; font-size: 17px;
-            font-weight: bold; padding-right: 15px"> Table Posts
+            <a href="posts.html"
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Table Posts
             </a>
-            <a href="editPost.html" style="color: black; font-size: 17px;
-            font-weight: bold; padding-right: 15px" class="active"> Update Post
+            <a href="editPost.html"
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px" class="active"> Update Post
             </a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i> </a>
-            </div>
-        </header>
-        <br>
-        <br>
+        </div>
+    </header>
+    <br>
+    <br>
 
     <body>
         <center>
             <form name="editpostform" id="editpostform" method="POST">
-                <table width="500" bgcolor="#a9adbd" align="center" border="3">
+                <table width="500" bgcolor="#333" align="center" border="2"
+                    style="box-shadow: 3px 3px 3px gray;">
                     <tr>
-                        <td align="center" bgcolor="white"
-                            style="font-size:15px" colspan="6">
-                            <h1>Update post:</h1>
+                        <td align="center" bgcolor="#DCDCDC" colspan="6">
+                            <h4>Update post:</h4>
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle"
-                            style="font-weight: bold; color: rgb(19, 18, 18); font-family: 'Times New Roman', Times, serif"></td>
+                        <td align="middle" class="add"></td>
                         <td>
                             <input type="hidden" name="editpostsid"
-                                id="editpostsid"
-                                size="50">
+                                id="editpostsid">
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle"
-                            style="font-weight: bold; color: rgb(19, 18, 18); font-family: 'Times New Roman', Times, serif"></td>
+                        <td align="middle" class="add"></td>
                         <td>
-                            <input type="hidden" name="userid" id="userid"
-                                size="50">
+                            <input type="hidden" name="userid" id="userid">
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle"
-                            style="font-weight: bold; color: rgb(19, 18, 18); font-family: 'Times New Roman', Times, serif">Title:</td>
+                        <td align="middle" class="add">Title:</td>
                         <td>
                             <input type="text" name="title" id="title"
                                 size="55">
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle"
-                            style="font-weight: bold; color: rgb(19, 18, 18); font-family: 'Times New Roman', Times, serif">Description:</td>
+                        <td align="middle" class="add">Description:</td>
                         <td>
-                            <textarea name="body" id="body" cols="57" rows="4"
+                            <textarea name="body" id="body" cols="58" rows="4"
                                 style="resize: vertical; vertical-align: top;"></textarea>
                         </td>
                     </tr>

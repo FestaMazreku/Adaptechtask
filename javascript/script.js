@@ -25,7 +25,7 @@ function New() {
             console.log('Data: ' + JSON.stringify(json));
             alert("Article successfully added! Look at the console.");
         })
-    }
+}
 
 $(function () {
     var $user1 = $('#user1');

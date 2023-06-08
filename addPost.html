@@ -36,23 +36,28 @@
         <!-- Navigation bar -->
         <div class="topnav" id="myTopnav">
             <a href="#"
-                style="color: black; font-size: 17px; font-weight: bold;
-                padding-right: 15px"> Home </a>
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Home </a>
             <a href="#"
-                style="color: black; font-size: 17px; font-weight: bold;
-                padding-right: 15px"> About Us </a>
-            <a href="contactus.html" style="color: black; font-size:17px;
-                font-weight: bold; padding-right: 15px"> Contact Us </a>
-            <a href="post.html" style="color: black; font-size: 17px;
-                font-weight: bold; padding-right: 15px"> Posts </a>
-            <a href="users.html" style="color: black; font-size: 17px;
-                font-weight: bold; padding-right: 15px"> Table Users
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> About Us </a>
+            <a href="contactus.html"
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Contact Us </a>
+            <a href="post.html"
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Posts </a>
+            <a href="users.html"
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Table Users
             </a>
-            <a href="posts.html" style="color: black; font-size: 17px;
-            font-weight: bold; padding-right: 15px"> Table Posts
+            <a href="posts.html"
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Table Posts
             </a>
-            <a href="addPost.html" style="color: black; font-size: 17px;
-                font-weight: bold; padding-right: 15px" class="active"> Add a
+            <a href="addPost.html"
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px" class="active"> Add a
                 new post
             </a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -64,43 +69,35 @@
     <body>
         <center>
             <form name="addpostform" id="addpostform" method="POST">
-                <table width="500" bgcolor="#a9adbd" align="center"
-                    border="3">
+                <table width="500" bgcolor="#333" align="center" border="2"
+                    style="box-shadow: 3px 3px 3px gray;">
                     <tr>
-                        <td align="center" bgcolor="white"
-                            style="font-size:15px" colspan="6">
-                            <h1>Add a new post:</h1>
+                        <td align="center" bgcolor="#DCDCDC" colspan="6">
+                            <h4>Add a new post:</h4>
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle" style="font-weight: bold; color:
-                            rgb(19, 18, 18); font-family: 'Times New Roman',
-                            Times, serif">ID:</td>
+                        <td align="middle" class="add">ID:</td>
                         <td>
                             <input type="text" name="postsid" size="50">
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle" style="font-weight: bold; color:
-                            rgb(19, 18, 18); font-family: 'Times New Roman',
-                            Times, serif">User ID:</td>
+                        <td align="middle" class="add">User ID:</td>
                         <td>
                             <input type="text" name="userid" size="50">
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle" style="font-weight: bold; color:
-                            rgb(19, 18, 18); font-family: 'Times New Roman',
-                            Times, serif">Title</td>
+                        <td align="middle" class="add">Title</td>
                         <td>
                             <input type="text" name="title" size="50">
                         </td>
                     </tr>
                     <tr>
-                        <td align="middle"
-                            style="font-weight: bold; color: rgb(19, 18, 18); font-family: 'Times New Roman', Times, serif">Description:</td>
+                        <td align="middle" class="add">Description:</td>
                         <td>
-                            <textarea name="body" cols="52" rows="10"
+                            <textarea name="body" cols="53" rows="10"
                                 style="resize: vertical; vertical-align: top;"></textarea>
                         </td>
                     </tr>

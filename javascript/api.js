@@ -38,8 +38,8 @@ function getPost(id) {
         const jsonDataDiv = document.getElementById('posts');
         const postDiv = document.createElement('div');
         postDiv.innerHTML = `
-          <p style="font-size: 18px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> Title: ${data.title} </p>
-          <h6> Description: ${data.body} </h6>
+          <p style="font-size: 16px; font-weight: bold; color: #222"> Title: ${data.title} </p>
+          <p style="color: black; font-size: 15px"> Description: ${data.body} </p>
           <hr>
           <p style="font-weight: bold"> Name: ${userData[data.postsid - 1].name} </p> 
           <p> Username: ${userData[data.postsid - 1].username} </p> 
@@ -68,7 +68,7 @@ function getComment(id) {
         const postDiv = document.createElement('div');
         postDiv.innerHTML = `<hr>
         <p style="font-weight:bold"> Name: ${commentData[data.postid - 1].name} </p> 
-        <p style="color: darkblue"> <p> Comment: ${data.body} </p>`;
+        <p> Comment: ${data.body} </p>`;
         jsonDataDiv.appendChild(postDiv);
         $("#comments").show();
       });
@@ -97,19 +97,19 @@ function getall() {
             shortenedDescription = fullDescription.substring(0, maxLength) + '...';
             showFullDescription = true;
           }
-          
+
           postDiv.innerHTML = `
             <p style="font-weight: bold">Name: ${userData[post.postsid - 1].name}</p> 
             <p style="color: darkblue">Email: ${userData[post.postsid - 1].email}</p> 
-            <a href="?post=${post.postsid}" style="font-size: 17px; font-weight: bold; color: black; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> 
-              Title: ${post.title}
+            <p style="color: #333; font-size: 14px; font-weight: bold"> Date: ${post.date}</p>
+            <a href="?post=${post.postsid}" style="font-size: 16px; font-weight: bold; color: #222"> 
+            Title: ${post.title}
             </a>
-            <p style="color: black; font-size: 18px">Description: 
-              <span id="description-${post.postsid}" style="cursor: pointer;">
-                ${shortenedDescription}
-              </span>
+            <p style="color: black; font-size: 15px"> Description: 
+            <span id="description-${post.postsid}" style="cursor: pointer;">
+            ${shortenedDescription}
+            </span>
             </p>
-            <p style="color: black; font-size: 17px; font-weight: bold">Date: ${post.date}</p>
             <hr>`;
 
           jsonDataDiv.appendChild(postDiv);

@@ -30,30 +30,35 @@
         <script defer
             src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
         <!-- javascript -->
-        <script src="javascript/users.js"></script>
+        <script src="javascript/login.js"></script>
     </head>
 
     <header>
         <!-- Navigation bar -->
         <div class="topnav" id="myTopnav">
             <a href="#"
-                style="color: black; font-size: 17px; font-weight: bold;
-                padding-right: 15px"> Home </a>
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Home </a>
             <a href="#"
-                style="color: black; font-size: 17px; font-weight: bold;
-                padding-right: 15px"> About Us </a>
-            <a href="contactus.html" style="color: black; font-size:17px;
-                font-weight: bold; padding-right: 15px"> Contact Us </a>
-            <a href="post.html" style="color: black; font-size: 17px;
-                font-weight: bold; padding-right: 15px"> Posts </a>
-            <a href="users.html" style="color: black; font-size: 17px;
-                font-weight: bold; padding-right: 15px"> Table Users
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> About Us </a>
+            <a href="contactus.html"
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Contact Us </a>
+            <a href="post.html"
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Posts </a>
+            <a href="users.html"
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Table Users
             </a>
-            <a href="posts.html" style="color: black; font-size: 17px;
-            font-weight: bold; padding-right: 15px"> Table Posts
+            <a href="posts.html"
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Table Posts
             </a>
-            <a href="login.html" style="color: black; font-size: 17px;
-            font-weight: bold; padding-right: 15px" class="active"> Log In/Sign
+            <a href="login.html"
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px" class="active"> Log In/Sign
                 Up
             </a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -64,33 +69,46 @@
     <body>
         <!-- Sign up -->
         <div class="card">
-            <div class="form-box">
-                <h1 id="title">Sign Up</h1>
-                <form>
-                    <div class="input-group">
-                        <div class="input-field" id="nameField">
-                            <i class="fa-solid fa-user"></i>
-                            <input type="text" id="name" placeholder="Name">
-                        </div>
+            <div
+                class="mt-5 col-lg-12 col-md-12 col-sm-12 justify-content-center row">
+                <div class="form-box">
+                    <h1 id="title">Sign Up</h1>
+                    <form name="signupform" id="signupform" method="POST">
+                        <div class="input-group">
+                            <div class="input-field" id="nameField">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" name="name" id="name"
+                                    placeholder="Name">
+                            </div>
 
-                        <div class="input-field">
-                            <i class="fa-solid fa-at"></i>
-                            <input type="text" id="email" placeholder="Email">
-                        </div>
+                            <div class="input-field">
+                                <i class="fa-solid fa-at"></i>
+                                <input type="text" name="email" id="email"
+                                    placeholder="Email">
+                            </div>
 
-                        <div class="input-field">
-                            <i class="fa-solid fa-lock"></i>
-                            <input type="text" id="password"
-                                placeholder="Password">
+                            <div class="input-field">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" name="password"
+                                    id="password"
+                                    placeholder="Password">
+                            </div>
+                            
+                            <p> Forgot password? <a href="#"> Click here!
+                                </a></p>
                         </div>
-                        <p> Forgot password? <a href="#"> Click here! </a></p>
-                    </div>
-                    <br>
-                    <div class="btn-field">
-                        <button type="button" id="signupBtn" onclick="SignUp()"> Sign Up </button>
-                        <button type="button" id="loginBtn" class="disable"> Log In </button>
-                    </div>
-                </form>
+                        <br>
+                        <div class="btn-field">
+                            <button type="button" name="signupBtn"
+                                id="signupBtn"
+                                onclick="SignUp()"> Sign Up </button>
+                            <button type="button" name="loginBtn" id="loginBtn"
+                                onclick="LogIn()"
+                                class="disable">
+                                Log In </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
@@ -113,7 +131,6 @@
                 signupBtn.classList.remove("disable");
                 loginBtn.classList.add("disable");
             }
-
         </script>
 
         <!-- Footer -->
