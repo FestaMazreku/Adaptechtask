@@ -98,29 +98,6 @@ function addUser() {
     });
 }
 
-function SignUp() {
-    var formdata = $('#signupform').serialize();
-    $.ajax({
-        type: "POST",
-        url: 'http://adaptechtask.test/database/login.php',
-        data: formdata,
-        success: function (response) {
-            console.log(response);
-            var result = JSON.parse(response);
-            if (result.success) {
-                alert("The user has been signed in!");
-                window.location.href = "contact.html";
-            } else {
-                alert("The user is not signed in!");
-            }
-        },
-        error: function (error) {
-            console.log(error);
-            alert("Error: The user is not signed in! " + error.responseText);
-        }
-    });
-}
-
 function GetAll(page, perPage) {
     const tableBody = document.getElementById('table-body');
     tableBody.innerHTML = '';
