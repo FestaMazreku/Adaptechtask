@@ -42,7 +42,6 @@ function getPost(id) {
           <p style="color: black; font-size: 15px"> Description: ${data.body} </p>
           <hr>
           <p style="font-weight: bold"> Name: ${userData[data.postsid - 1].name} </p> 
-          <p> Username: ${userData[data.postsid - 1].username} </p> 
           <h6 style="color: darkblue"> Email: ${userData[data.postsid - 1].email} </h6> 
           <p> Age: ${userData[data.postsid - 1].age} </p>
           <p> Phone: ${userData[data.postsid - 1].phone} </p>

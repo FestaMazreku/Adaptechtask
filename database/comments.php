@@ -19,7 +19,7 @@ if ($con) {
             }
             echo json_encode($response, JSON_PRETTY_PRINT);
         }
-    }
+     }
 
     if (isset($_GET['comment'])) {
         $id = $_GET['comment'];
@@ -37,5 +37,4 @@ if ($con) {
         echo json_encode($response, JSON_PRETTY_PRINT);
     }
 }
-
 ?>

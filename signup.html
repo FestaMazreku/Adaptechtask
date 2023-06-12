@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title> Log In </title>
+        <title> Sign Up </title>
         <meta charset="UTF-8" />
         <meta name="keywords" content="adaptech">
         <meta name="description" content="adaptech">
@@ -58,11 +58,11 @@
             </a>
             <a href="login.html"
                 style="color: #f0f0f0; font-size: 16px; font-weight: 400;
-                padding-right: 16px" class="active"> Log In
+            padding-right: 16px"> Log In
             </a>
             <a href="signup.html"
                 style="color: #f0f0f0; font-size: 16px; font-weight: 400;
-                padding-right: 16px"> Sign Up
+            padding-right: 16px" class="active"> Sign Up
             </a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i> </a>
@@ -74,9 +74,15 @@
             <div
                 class="mt-5 col-lg-12 col-md-12 col-sm-12 justify-content-center row">
                 <div class="form-box">
-                    <h1 id="title">Log In</h1>
-                    <form name="loginform" id="loginform" method="POST">
+                    <h1 id="title">Sign Up</h1>
+                    <form name="signupform" id="signupform" method="POST">
                         <div class="input-group">
+                            <div class="input-field">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" name="name" id="name"
+                                    placeholder="Name & Surname">
+                            </div>
+
                             <div class="input-field">
                                 <i class="fa-solid fa-at"></i>
                                 <input type="text" name="email" id="email"
@@ -89,13 +95,15 @@
                                     id="password" placeholder="Password">
                             </div>
 
-                            <p class="member"> Don't have an account?
-                                <a href="signup.html"> Sign up. </a></p>
+                            <p class="member"> Already a member?
+                                <a href="login.html"> Log in. </a></p>
                         </div>
+                        <br>
+                        <br>
 
                         <div class="btn-field">
-                            <button type="button" name="loginBtn" id="loginBtn"
-                                onclick="LogIn()"> Log In
+                            <button type="button" name="signupBtn"
+                                id="signupBtn" onclick="SignUp()"> Sign Up
                             </button>
                         </div>
                     </form>

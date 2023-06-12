@@ -12,7 +12,6 @@ if ($con) {
       while ($row = mysqli_fetch_assoc($result)) {
         $response[$i]['id'] = $row['id'];
         $response[$i]['name'] = $row['name'];
-        $response[$i]['username'] = $row['username'];
         $response[$i]['age'] = $row['age'];
         $response[$i]['email'] = $row['email'];
         $response[$i]['phone'] = $row['phone'];
@@ -32,7 +31,6 @@ if ($con) {
       if ($row = mysqli_fetch_assoc($result)) {
         $response['id'] = $row['id'];
         $response['name'] = $row['name'];
-        $response['username'] = $row['username'];
         $response['age'] = $row['age'];
         $response['email'] = $row['email'];
         $response['phone'] = $row['phone'];
@@ -43,7 +41,7 @@ if ($con) {
     exit();
   }
 
-  //Delete User
+  //Delete user
   if (isset($_POST['deleteid'])) {
     $delete = $_POST['deleteid'];
     $sql = "DELETE FROM users WHERE id = '" . $delete . "' ";
@@ -60,7 +58,6 @@ if ($con) {
   if (isset($_POST['editid'])) {
     $id = $_POST['editid'];
     $name = $_POST['name'];
-    $username = $_POST['username'];
     $age = $_POST['age'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
@@ -71,9 +68,6 @@ if ($con) {
 
     if (!empty($name)) {
       $fields[] = "name='$name'";
-    }
-    if (!empty($username)) {
-      $fields[] = "username='$username'";
     }
     if (!empty($age)) {
       $fields[] = "age='$age'";

@@ -176,7 +176,7 @@ function GetAll(page, perPage) {
                 }
             });
         });
-        
+
     }).catch((error) => {
         console.error('Error retrieving post data:', error);
     });

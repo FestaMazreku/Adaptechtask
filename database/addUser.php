@@ -2,17 +2,16 @@
 $con = mysqli_connect("localhost", "root", "", "adaptechtask");
 mysqli_select_db($con, "adaptechtask");
 
-if (isset($_POST['name']) && isset($_POST['username']) && isset($_POST['age']) && isset($_POST['email'])) {
+if (isset($_POST['name']) && isset($_POST['age']) && isset($_POST['email'])) {
     $id = mysqli_real_escape_string($con, $_POST['id']);
     $name = mysqli_real_escape_string($con, $_POST['name']);
-    $username = mysqli_real_escape_string($con, $_POST['username']);
     $age = mysqli_real_escape_string($con, $_POST['age']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $phone = mysqli_real_escape_string($con, $_POST['phone']);
     $city = mysqli_real_escape_string($con, $_POST['city']);
 
-    if (!empty($name) && !empty($username) && !empty($age) && !empty($email)) {
-        $sql = $con->prepare("INSERT INTO users (id, name, username, age, email, phone, city)  VALUES ('$id','$name','$username','$age','$email','$phone','$city')");
+    if (!empty($name) && !empty($age) && !empty($email)) {
+        $sql = $con->prepare("INSERT INTO users (id, name, age, email, phone, city)  VALUES ('$id','$name', '$age','$email','$phone','$city')");
         $sql->execute();
 
         $response = array();

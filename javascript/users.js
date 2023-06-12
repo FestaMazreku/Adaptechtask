@@ -44,7 +44,6 @@ function getuserdata(userid) {
         }).then(post => {
             $("#editid").val(post.id);
             $("#name").val(post.name);
-            $("#username").val(post.username);
             $("#age").val(post.age);
             $("#email").val(post.email);
             $("#phone").val(post.phone);
@@ -117,7 +116,6 @@ function GetAll(page, perPage) {
             return `<tr id="row-${post.id}">
           <td><p class="table-element1">${post.id}</p></td>
           <td><p class="table-element2">${post.name}</p></td>
-          <td><p class="table-element3">${post.username}</p></td>
           <td><p class="table-element4">${post.age}</p></td>
           <td><p class="table-element5">${post.email}</p></td>
           <td><p class="table-element6">${post.phone}</p></td>

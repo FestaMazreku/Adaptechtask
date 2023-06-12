@@ -7,40 +7,48 @@ function myFunction() {
     }
 }
 
-function signUp() {
-    // Retrieve form data
-    var formData = new FormData(document.getElementById("signupform"));
-
-    // Make an Ajax request to the PHP file for sign-up
-    fetch("signup.php", {
-        method: "POST",
-        body: formData
-    })
-        .then(response => response.text())
-        .then(data => {
-            // Handle the response from PHP (e.g., display success or error messages)
-            console.log(data);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+function SignUp() {
+    var formdata = $('#signupform').serialize();
+    $.ajax({
+        type: "POST",
+        url: 'http://adaptechtask.test/database/signup.php',
+        data: formdata,
+        success: function (response) {
+            console.log(response);
+            var result = JSON.parse(response);
+            if (result.success) {
+                alert("User is signed up successfully!");
+                window.location.href = "contactus.html";
+            } else {
+                alert("User is not signed up!");
+            }
+        },
+        error: function (error) {
+            console.log(error);
+            alert("Error: User is not signed up! " + error.responseText);
+        }
+    });
 }
 
-function logIn() {
-    // Retrieve form data
-    var formData = new FormData(document.getElementById("signupform"));
 
-    // Make an Ajax request to the PHP file for login
-    fetch("login.php", {
-        method: "POST",
-        body: formData
-    })
-        .then(response => response.text())
-        .then(data => {
-            // Handle the response from PHP (e.g., redirect to a new page or display an error message)
-            console.log(data);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+function LogIn() {
+    var formdata = $('#loginform').serialize();
+    $.ajax({
+        type: "POST",
+        url: 'http://adaptechtask.test/database/login.php',
+        data: formdata,
+        success: function (response) {
+            console.log(response);
+            if (response.trim() === 'success') {
+                alert("User is logged in!");
+                window.location.href = "contactus.html";
+            } else {
+                alert("User is not logged in!");
+            }
+        },
+        error: function (error) {
+            console.log(error);
+            alert("Error: User is not logged in! " + error.responseText);
+        }
+    });
 }

@@ -22,7 +22,7 @@ if (isset($_POST['userid']) && isset($_POST['title'])) {
             $response['message'] = "New post is not added!";
             echo json_encode($response);
         }
-
+        
         $sql->close();
     } else {
         $response['success'] = false;
