@@ -64,6 +64,7 @@
                 style="color: #f0f0f0; font-size: 16px; font-weight: 400;
                 padding-right: 16px"> Sign Up
             </a>
+            <!-- <a href="database/logout.php" style="color: #f0f0f0;"> Log Out </a> -->
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i> </a>
         </div>
@@ -71,8 +72,9 @@
 
     <body>
         <div class="card">
+            <br>
             <div
-                class="mt-5 col-lg-12 col-md-12 col-sm-12 justify-content-center row">
+                class="col-lg-12 col-md-12 col-sm-12 col-xs-12 justify-content-center row">
                 <div class="form-box">
                     <h1 id="title">Log In</h1>
                     <form name="loginform" id="loginform" method="POST">
@@ -82,21 +84,17 @@
                                 <input type="text" name="email" id="email"
                                     placeholder="Email">
                             </div>
-
                             <div class="input-field">
                                 <i class="fa-solid fa-lock"></i>
                                 <input type="password" name="password"
                                     id="password" placeholder="Password">
                             </div>
-
-                            <p class="member"> Don't have an account?
-                                <a href="signup.html"> Sign up. </a></p>
+                            <p class="member">Don't have an account? <a
+                                    href="signup.html">Sign up.</a></p>
                         </div>
-
                         <div class="btn-field">
-                            <button type="button" name="loginBtn" id="loginBtn"
-                                onclick="LogIn()"> Log In
-                            </button>
+                            <button type="button" name="loginform"
+                                onclick="LogIn()">Log In</button>
                         </div>
                     </form>
                 </div>

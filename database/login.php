@@ -1,4 +1,5 @@
 <?php
+session_start();
 $con = mysqli_connect("localhost", "root", "", "adaptechtask");
 mysqli_select_db($con, 'adaptechtask');
 
@@ -6,51 +7,40 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 $login = true;
+$error_code = "";
+$error_message = "";
 
-if (empty($email) && empty($password)) {
+if (empty($email) || empty($password)) {
     $login = false;
+    echo "error:empty ";
+    $error_message = "User can't log in! Please enter email and password!";
 } else {
-    if (empty($email)) {
-        $errorEmail = "The email field must be filled!";
-        $login = false;
-    } else {
-        $query1 = "SELECT * FROM users WHERE email = '$email';";
-        $query1Res = mysqli_query($connect, $query1);
-        $count1 = mysqli_num_rows($query1Res);
+    $query = "SELECT * FROM users WHERE email = '$email'";
+    $queryRes = mysqli_query($con, $query);
+    $count = mysqli_num_rows($queryRes);
 
-        if ($count1 == 0) {
-            $errorEmail = "This user does not exist!";
-            $login = false;
-        }
-    }
-
-    if (empty($password)) {
-        $errorPassword = "The password field must be filled!";
+    if ($count == 0) {
         $login = false;
+        echo "error:nonexistent ";
+        $error_message = "This user does not exist!";
     } else {
-        $query2 = "SELECT password FROM users WHERE email = '$email';";
-        $query2Res = mysqli_query($connect, $query2);
-        $query2Row = mysqli_fetch_array($query2Res);
-        $passwordDB = $query2Row['password'];
+        $row = mysqli_fetch_assoc($queryRes);
+        $passwordDB = $row['password'];
 
         if ($passwordDB != $password) {
-            $errorPassword = "The password is not correct!";
             $login = false;
+            echo "error:incorrect ";
+            $error_message = "The password is incorrect!";
         }
     }
 
-    if ($login == true) {
-
-        $query3 = "SELECT isadmin FROM perdoruesi WHERE email = '$email';";
-        $query3Res = mysqli_query($connect, $query3);
-        $query3Row = mysqli_fetch_array($query3Res);
-        $roli = $query3Row['isadmin'];
-
+    if ($login) {
         $_SESSION['email'] = $email;
-        $_SESSION['isadmin'] = $roli;
+        $_SESSION['password'] = $row['password'];
 
-
-        header("Location: contactus.html");
+        echo "success";
+    } else {
+        echo $error_code . $error_message;
     }
 }
 ?>
