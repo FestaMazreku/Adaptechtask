@@ -56,13 +56,13 @@
             padding-right: 16px"> Table Posts
             </a>
             <a href="login.html"
-            style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
             padding-right: 16px"> Log In
-        </a>
-        <a href="signup.html"
-            style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            </a>
+            <a href="signup.html"
+                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
             padding-right: 16px"> Sign Up
-        </a>
+            </a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i> </a>
         </div>
@@ -84,17 +84,30 @@
                     </div>
                     <br>
                     <div id="comments">
-                        <div class="card-title"
-                            style="font-weight: bold; font-size: 25px; color: black">
-                            Comment </div>
-                        <div class="ml-3 mt-3">
-                            <textarea class="post1 p-2"
-                                id="new_title"
-                                name="new_title"> </textarea>
-                            <br> <br>
-                            <button id="add_btn2" class="btn8"
-                                onclick="New()"> Submit </button>
-                        </div>
+                        <form name="addcommentform" id="addcommentform"
+                            method="POST">
+                            <div
+                                style="font-weight: bold; font-size: 20px; color: black">
+                                Email: </div>
+                            <div class="mt-3">
+                                <input class="post2 p-2"
+                                    id="email"
+                                    name="email">
+                                <br> <br>
+                                <div class="card-title"
+                                    style="font-weight: bold; font-size: 20px; color: black">
+                                    Comment: </div>
+                                <div class="mt-3">
+                                    <textarea class="post1 p-2"
+                                        id="comment"
+                                        name="comment"> </textarea>
+                                    <br> <br>
+                                    <input type="button" class="btn8"
+                                        name="addcommentform" value="Submit"
+                                        onclick="addComment()">
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
