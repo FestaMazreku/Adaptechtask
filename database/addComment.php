@@ -2,6 +2,8 @@
 $con = mysqli_connect("localhost", "root", "", "adaptechtask");
 mysqli_select_db($con, "adaptechtask");
 
+require '.../database/loggedin.php';
+
 if (isset($_POST['email']) && isset($_POST['comment'])) {
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $comment = mysqli_real_escape_string($con, $_POST['comment']);

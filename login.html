@@ -48,50 +48,23 @@
             <a href="post.html"
                 style="color: #f0f0f0; font-size: 16px; font-weight: 400;
             padding-right: 16px"> Posts </a>
-            <!-- <a href="users.html"
+            <a href="users.html"
                 style="color: #f0f0f0; font-size: 16px; font-weight: 400;
             padding-right: 16px"> Table Users
             </a>
             <a href="posts.html"
                 style="color: #f0f0f0; font-size: 16px; font-weight: 400;
             padding-right: 16px"> Table Posts
-            </a> -->
+            </a>
             <a href="login.html"
                 style="color: #f0f0f0; font-size: 16px; font-weight: 400;
                 padding-right: 16px" class="active"> Log In
             </a>
-            <!-- <a href="signup.html"
-                style="color: #f0f0f0; font-size: 16px; font-weight: 400;
-                padding-right: 16px"> Sign Up
-            </a> -->
-            <!-- <a href="database/logout.php" style="color: #f0f0f0;"> Log Out </a> -->
+             <!-- <a href="database/logout.php" style="color: #f0f0f0;"> Log Out </a> -->
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i> </a>
         </div>
     </header>
-
-    <!-- //nese perdoruesi nuk eshte kycur ne sistem
-    if (($_SESSION['email'])) {
-    echo '<a href="login.html"> LOG IN </a>
-    <a href="signup.html"> SIGN UP </a>';
-    }
-
-    //nese perdoruesi eshte kycur ne sistem
-    else {
-    if (($_SESSION['isadmin'])) {
-    //admin
-    if ($_SESSION['isadmin'] == 1) {
-    echo '<a href="posts.html"> Table Posts </a>
-    <a href="users.html"> Table Users </a>';
-    }
-
-    //user
-    else if ($_SESSION['isadmin'] == 0) {
-    echo '<a href="contactus.html"> Contact Us </a>';
-    }
-    }
-    echo '<a href="database/logout.php"> Log Out </a>';
-    } -->
 
     <body>
         <div class="card">
@@ -162,3 +135,38 @@
         </div>
     </body>
 </html>
+
+<!-- <?php //startimi i sesionit
+session_start();
+
+//nese perdoruesi nuk eshte kycur ne sistem
+if (!isset($_SESSION['email'])) {
+    echo '<a href="login.html"> Log In </a>
+          <a href="signup.html"> Sign Up </a>';
+}
+//nese perdoruesi eshte kycur ne sistem
+else {
+    if (isset($_SESSION['isadmin'])) {
+        //administrator
+        if ($_SESSION['isadmin'] == 1) {
+            echo '<a href="users.html"
+            style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Table Users
+            </a>
+            <a href="posts.html"
+            style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Table Posts
+            </a>';
+        }
+
+        //klient
+        else if ($_SESSION['isadmin'] == 0) {
+            echo '<a href="post.html"
+            style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px"> Posts </a>';
+        }
+    }
+
+    echo '<a href = "database/logout.php"> Log Out </a>';
+}
+?> -->

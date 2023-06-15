@@ -2,6 +2,8 @@
 $con = mysqli_connect("localhost", "root", "", "adaptechtask");
 mysqli_select_db($con, "adaptechtask");
 
+require '.../database/loggedin.php';
+
 if (isset($_POST['userid']) && isset($_POST['title'])) {
     $postsid = mysqli_real_escape_string($con, $_POST['postsid']);
     $userid = mysqli_real_escape_string($con, $_POST['userid']);
