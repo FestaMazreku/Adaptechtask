@@ -2,8 +2,6 @@
 $con = mysqli_connect("localhost", "root", "", "adaptechtask");
 mysqli_select_db($con, "adaptechtask");
 
-require '.../database/loggedin.php';
-
 if (isset($_POST['userid']) && isset($_POST['title'])) {
     $postsid = mysqli_real_escape_string($con, $_POST['postsid']);
     $userid = mysqli_real_escape_string($con, $_POST['userid']);
@@ -24,7 +22,7 @@ if (isset($_POST['userid']) && isset($_POST['title'])) {
             $response['message'] = "New post is not added!";
             echo json_encode($response);
         }
-        
+
         $sql->close();
     } else {
         $response['success'] = false;

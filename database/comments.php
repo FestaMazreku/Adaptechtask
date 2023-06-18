@@ -2,8 +2,6 @@
 $con = mysqli_connect("localhost", "root", "", "adaptechtask");
 mysqli_select_db($con, 'adaptechtask');
 
-require '.../database/loggedin.php';
-
 $response = array();
 if ($con) {
     if (isset($_GET['comments'])) {
@@ -22,7 +20,7 @@ if ($con) {
             }
             echo json_encode($response, JSON_PRETTY_PRINT);
         }
-     }
+    }
 
     if (isset($_GET['comment'])) {
         $id = $_GET['comment'];

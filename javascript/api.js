@@ -10,23 +10,23 @@ function myFunction() {
 function addComment() {
   var formdata = $('#addcommentform').serialize();
   $.ajax({
-      type: "POST",
-      url: 'http://adaptechtask.test/database/addComment.php',
-      data: formdata,
-      success: function (response) {
-          console.log(response);
-          var result = JSON.parse(response);
-          if (result.success) {
-              alert("The comment has been added successfully!");
-              window.location.href = "post.html";
-          } else {
-              alert("The comment is not added!");
-          }
-      },
-      error: function (error) {
-          console.log(error);
-          alert("Error: The comment is not added! " + error.responseText);
+    type: "POST",
+    url: 'http://adaptechtask.test/database/addComment.php',
+    data: formdata,
+    success: function (response) {
+      console.log(response);
+      var result = JSON.parse(response);
+      if (result.success) {
+        alert("The comment has been added successfully!");
+        window.location.href = "post.html";
+      } else {
+        alert("The comment is not added!");
       }
+    },
+    error: function (error) {
+      console.log(error);
+      alert("Error: The comment is not added! " + error.responseText);
+    }
   });
 }
 
