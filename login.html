@@ -35,7 +35,7 @@
 
     <header>
         <!-- Navigation bar -->
-        <div class="topnav" id="myTopnav">
+        <!-- <div class="topnav" id="myTopnav">
             <a href="#"
                 style="color: #f0f0f0; font-size: 16px; font-weight: 400;
             padding-right: 16px"> Home </a>
@@ -62,7 +62,8 @@
             </a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i> </a>
-        </div>
+        </div> -->
+        <!-- <div class="topnav" id="myTopnav"></div> -->
     </header>
 
     <body>
@@ -134,38 +135,3 @@
         </div>
     </body>
 </html>
-
-<!-- <?php //startimi i sesionit
-session_start();
-
-//nese perdoruesi nuk eshte kycur ne sistem
-if (!isset($_SESSION['email'])) {
-    echo '<a href="login.html"> Log In </a>
-          <a href="signup.html"> Sign Up </a>';
-}
-//nese perdoruesi eshte kycur ne sistem
-else {
-    if (isset($_SESSION['isadmin'])) {
-        //administrator
-        if ($_SESSION['isadmin'] == 1) {
-            echo '<a href="users.html"
-            style="color: #f0f0f0; font-size: 16px; font-weight: 400;
-            padding-right: 16px"> Table Users
-            </a>
-            <a href="posts.html"
-            style="color: #f0f0f0; font-size: 16px; font-weight: 400;
-            padding-right: 16px"> Table Posts
-            </a>';
-        }
-
-        //klient
-        else if ($_SESSION['isadmin'] == 0) {
-            echo '<a href="post.html"
-            style="color: #f0f0f0; font-size: 16px; font-weight: 400;
-            padding-right: 16px"> Posts </a>';
-        }
-    }
-
-    echo '<a href = "database/logout.php"> Log Out </a>';
-}
-?> -->

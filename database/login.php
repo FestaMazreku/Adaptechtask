@@ -38,6 +38,12 @@ if (empty($email) || empty($password)) {
         $_SESSION['email'] = $email;
         $_SESSION['password'] = $row['password'];
 
+        if ($row['isadmin'] == 'admin') {
+            $_SESSION['isadmin'] = 1;
+        } else {
+            $_SESSION['isadmin'] = 0;
+        }
+
         echo "success";
     } else {
         echo $error_code . $error_message;

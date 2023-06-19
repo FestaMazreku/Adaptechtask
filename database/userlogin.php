@@ -1,12 +1,10 @@
-<?php
+<?php //startimi i sesionit
 session_start();
 
-// Check if the user is logged in
-if (isset($_SESSION['email'])) {
-	// User is logged in
-	$loggedIn = true;
-	// Redirect to the appropriate page for logged-in users
+//nese perdoruesi nuk eshte kycur, atehere paraqitja kete pamje te kesaj web faqeje
+if (!isset($_SESSION['email'])) {
+} else {
+	//nese perdoruesi eshte i kycur, atehere ridrejtoje ne faqen baze pas kycjes
 	header("Location: contactus.html");
-	exit(); // Make sure to exit after the redirect
 }
 ?>
