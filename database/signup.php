@@ -29,7 +29,7 @@ if (empty($name) || empty($email) || empty($password_1) || empty($password_2)) {
 
                 if (!$uppercase || !$lowercase || !$number || strlen($password_1) < 6) {
                     echo "error:password2";
-        
+
                 } else {
                     $queryEmail = mysqli_query($con, "SELECT email FROM users WHERE email='$email'");
                     $countEmail = mysqli_num_rows($queryEmail);
@@ -38,7 +38,7 @@ if (empty($name) || empty($email) || empty($password_1) || empty($password_2)) {
                         $errorEmail = "This user already exists!";
                         echo "error:email";
                     } else {
-                        
+
                         $querysql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password_1')";
                         if (mysqli_query($con, $querysql)) {
 

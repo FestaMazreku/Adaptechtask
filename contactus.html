@@ -29,7 +29,7 @@
         <script defer
             src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
         <!-- javascript -->
-        <script src="javascript/script.js"></script>
+        <script src="javascript/api.js"></script>
     </head>
 
     <header>
@@ -120,34 +120,46 @@
                     </p>
                 </div>
             </div>
+            <hr>
 
             <!-- Message -->
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <form method="post">
-                    <div class="mb-8">
-                        <label for="exampleFormControlInput1"
-                            class="form-label"> Title
-                        </label>
-                        <input type="text" class="form-control"
-                            id="exampleFormControlInput1"
-                            placeholder="Write a title."
-                            name="title">
-                    </div>
-                    <br>
-                    <div class="mb-8">
-                        <label for="exampleFormControlTextarea1"
-                            class="form-label"> Message
-                        </label>
-                        <textarea class="form-control"
-                            id="exampleFormControlTextarea1"
-                            placeholder="Write a message."
-                            rows="3" name="message"></textarea>
+                <div id="message">
+                    <form name="addmessageform" id="addmessageform"
+                        method="POST">
+                        <div class="mb-8">
+                            <label for="name"
+                                class="form-label"> Name & Surname
+                            </label>
+                            <input type="text" class="form-control"
+                                id="name" name="name">
+                        </div>
                         <br>
-                        <button id="add_btn2" class="btn5"> Send
-                        </button>
-                    </div>
-                </form>
+                        <div class="mb-8">
+                            <label for="email"
+                                class="form-label"> Email
+                            </label>
+                            <input type="text" class="form-control"
+                                id="email" name="email">
+                        </div>
+                        <br>
+                        <div class="mb-8">
+                            <label for="message"
+                                class="form-label"> What would you like to
+                                discuss?
+                            </label>
+                            <textarea class="form-control"
+                                id="message" name="message"
+                                placeholder="Write a message."
+                                rows="3"></textarea>
+                            <br>
+                            <input type="button" id="addmessageform"
+                                class="btn5" onclick="addMessage()" value="Send">
+                        </div>
+                    </form>
+                </div>
             </div>
+            <hr>
 
             <!-- Map-->
             <section id="contact" class="py-5">

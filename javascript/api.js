@@ -8,26 +8,79 @@ function myFunction() {
 }
 
 function addComment() {
-  var formdata = $('#addcommentform').serialize();
-  $.ajax({
-    type: "POST",
-    url: 'http://adaptechtask.test/database/addComment.php',
-    data: formdata,
-    success: function (response) {
-      console.log(response);
-      var result = JSON.parse(response);
-      if (result.success) {
-        alert("The comment has been added successfully!");
-        window.location.href = "post.html";
-      } else {
-        alert("The comment is not added!");
-      }
-    },
-    error: function (error) {
-      console.log(error);
-      alert("Error: The comment is not added! " + error.responseText);
-    }
-  });
+  const email = document.getElementById('email').value;
+  const comment = document.getElementById('comment').value;
+
+  if (email.trim() !== '' && comment.trim() !== '') {
+    const data = new FormData();
+    data.append('email', email);
+    data.append('comment', comment);
+
+    fetch('http://adaptechtask.test/database/addComment.php', {
+      method: 'POST',
+      body: data
+    })
+      .then(response => response.json())
+      .then(responseData => {
+
+        if (responseData.success) {
+          alert(responseData.message);
+
+          const newCommentElement = document.createElement('div');
+          newCommentElement.className = 'comment';
+          newCommentElement.innerHTML = `<strong>${email}</strong>: ${comment}`;
+
+          const commentsSection = document.getElementById('comments');
+          commentsSection.appendChild(newCommentElement);
+        } else {
+          alert(responseData.message);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  } else {
+    alert('The comment is not added! Please fill in the fields!');
+  }
+}
+
+function addMessage() {
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+
+  if (name !== '' && email !== '' && message !== '') {
+    const data = new FormData();
+    data.append('name', name);
+    data.append('email', email);
+    data.append('message', message);
+
+    fetch('http://adaptechtask.test/database/addMessage.php', {
+      method: 'POST',
+      body: data
+    })
+      .then(response => response.json())
+      .then(responseData => {
+
+        if (responseData.success) {
+          alert(responseData.message);
+
+          const newMessageElement = document.createElement('div');
+          newMessageElement.className = 'message';
+          newMessageElement.innerHTML = `<br> <p> Name: ${name} </p> <p> <strong> ${email} </strong> </p> <p> Message: ${message} </p>`;
+
+          const messageSection = document.getElementById('message');
+          messageSection.appendChild(newMessageElement);
+        } else {
+          alert(responseData.message);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  } else {
+    alert('The message is not sent! Please fill in the fields!');
+  }
 }
 
 function getPost(id) {
