@@ -7,7 +7,7 @@ function myFunction() {
     }
 }
 
-//delete post
+//Delete post
 function deletePost(postsid, button) {
     if (confirm("Are you sure you want to delete this post?")) {
         $.ajax({
@@ -32,7 +32,7 @@ function deletePost(postsid, button) {
     }
 }
 
-//get post data
+//Get post data
 function getpostdata(postid) {
     if (postid == null) {
         window.location.href = "posts.html";
@@ -50,7 +50,7 @@ function getpostdata(postid) {
     }
 }
 
-//update post
+//Update post
 function updatePost() {
     var formdata = $('#editpostform').serialize();
     $.ajax({
@@ -71,7 +71,7 @@ function updatePost() {
     });
 }
 
-//add post
+//Add post
 function addPost() {
     var formdata = $('#addpostform').serialize();
     $.ajax({

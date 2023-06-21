@@ -314,17 +314,6 @@ body {
     font-weight: bold;
 }
 
-.koment {
-    width: 570px;
-    height: 37px;
-    color: gray;
-    background-color: #efefef;
-    font-size: 14px;
-    font-weight: 520;
-    border: none;
-    border-radius: 16px;
-}
-
 .post {
     width: 360px;
     height: 40px;

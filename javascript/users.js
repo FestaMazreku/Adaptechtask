@@ -7,7 +7,7 @@ function myFunction() {
     }
 }
 
-//delete user
+//Delete user
 function deleteUser(id, button) {
     if (confirm("Are you sure you want to delete this user?")) {
         $.ajax({
@@ -32,7 +32,7 @@ function deleteUser(id, button) {
     }
 }
 
-//get user data
+//Get user data
 function getuserdata(userid) {
     if (userid == null) {
         window.location.href = "users.html";
@@ -52,7 +52,7 @@ function getuserdata(userid) {
     }
 }
 
-//update user
+//Update user
 function updateUser() {
     var formdata = $('#edituserform').serialize();
     $.ajax({
@@ -73,7 +73,7 @@ function updateUser() {
     });
 }
 
-//add user
+//Add user
 function addUser() {
     var formdata = $('#adduserform').serialize();
     $.ajax({

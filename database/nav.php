@@ -19,3 +19,17 @@
     }
     ?>
 </div>
+
+<?php //startimi i sesionit
+session_start();
+if (isset($_POST["loggedin"]))  {
+
+	//nese perdoruesi nuk eshte kycur, atehere paraqitja kete pamje te kesaj web faqeje
+	if (!isset($_SESSION['email'])) {
+		echo 0;
+	} else {
+		//nese perdoruesi eshte i kycur, atehere ridrejtoje ne faqen baze pas kycjes
+		echo 1;
+	}
+}
+?>

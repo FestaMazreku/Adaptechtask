@@ -54,7 +54,7 @@ if ($con) {
     exit();
   }
 
-  //Update User
+  //Update user
   if (isset($_POST['editid'])) {
     $id = $_POST['editid'];
     $name = $_POST['name'];

@@ -14,6 +14,7 @@ if (empty($email) || empty($password)) {
     $login = false;
     echo "error:empty ";
     $error_message = "User can't log in! Please enter email and password!";
+
 } else {
     $query = "SELECT * FROM users WHERE email = '$email'";
     $queryRes = mysqli_query($con, $query);

@@ -5,7 +5,7 @@ $response = array();
 
 if ($con) {
     if (isset($_GET['comments'])) {
-        $sql = "SELECT * from comments";
+        $sql = "SELECT * FROM comments";
         $result = mysqli_query($con, $sql);
         if ($result) {
             header("Content-Type: JSON");
@@ -24,7 +24,7 @@ if ($con) {
 
     if (isset($_GET['comment'])) {
         $id = $_GET['comment'];
-        $sql = "SELECT * from comments where commentsid = " . $id;
+        $sql = "SELECT * FROM comments where commentsid = " . $id;
         $result = mysqli_query($con, $sql);
         if ($result) {
             header("Content-Type: JSON");

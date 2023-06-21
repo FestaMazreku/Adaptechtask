@@ -47,13 +47,13 @@ function addComment() {
 function addMessage() {
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
-  const message = document.getElementById('message').value;
+  const usermessage = document.getElementById('usermessage').value;
 
-  if (name !== '' && email !== '' && message !== '') {
+  if (name !== '' && email !== '' && usermessage !== '') {
     const data = new FormData();
     data.append('name', name);
     data.append('email', email);
-    data.append('message', message);
+    data.append('usermessage', usermessage);
 
     fetch('http://adaptechtask.test/database/addMessage.php', {
       method: 'POST',
@@ -67,7 +67,7 @@ function addMessage() {
 
           const newMessageElement = document.createElement('div');
           newMessageElement.className = 'message';
-          newMessageElement.innerHTML = `<br> <p> Name: ${name} </p> <p> <strong> ${email} </strong> </p> <p> Message: ${message} </p>`;
+          newMessageElement.innerHTML = `<br> <p> ${name} </p> <p> <strong> ${email} </strong> </p> <p> Message: ${usermessage} </p>`;
 
           const messageSection = document.getElementById('message');
           messageSection.appendChild(newMessageElement);
