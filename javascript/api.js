@@ -28,7 +28,7 @@ function addComment() {
 
           const newCommentElement = document.createElement('div');
           newCommentElement.className = 'comment';
-          newCommentElement.innerHTML = `<strong>${email}</strong>: ${comment}`;
+          newCommentElement.innerHTML = `<strong>${email}</strong>: <br> Comment: ${comment}`;
 
           const commentsSection = document.getElementById('comments');
           commentsSection.appendChild(newCommentElement);
@@ -152,7 +152,6 @@ function getall() {
             shortenedDescription = fullDescription.substring(0, maxLength) + '...';
             showFullDescription = true;
           }
-
           postDiv.innerHTML = `
             <p style="font-weight: bold">Name: ${userData[post.postsid - 1].name}</p> 
             <p style="color: darkblue">Email: ${userData[post.postsid - 1].email}</p> 

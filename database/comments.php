@@ -9,6 +9,7 @@ if ($con) {
         $result = mysqli_query($con, $sql);
         if ($result) {
             header("Content-Type: JSON");
+
             $i = 0;
             while ($row = mysqli_fetch_assoc($result)) {
                 $response[$i]['commentsid'] = $row['commentsid'];

@@ -34,6 +34,5 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['usermessage
     $response['message'] = "Invalid request.";
     echo json_encode($response);
 }
-
 $con->close();
 ?>

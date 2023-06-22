@@ -33,9 +33,10 @@
         <script src="javascript/nav.js"></script>
     </head>
 
-    <header>
-        <!-- Navigation bar -->
-        <!-- <div class="topnav" id="myTopnav">
+    <body onload="setupNavigation()">
+        <header>
+            <!-- Navigation bar -->
+            <!-- <div class="topnav" id="myTopnav">
             <a href="#"
                 style="color: #f0f0f0; font-size: 16px; font-weight: 400;
             padding-right: 16px"> Home </a>
@@ -67,9 +68,9 @@
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i> </a>
         </div> -->
-    </header>
+            <div class="topnav" id="myTopnav"></div>
+        </header>
 
-    <body>
         <!-- Contact Us -->
         <img src="/images/contactus.jpg" class="img-fluid" alt="...">
         <center>
@@ -82,7 +83,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24"
                             height="24" fill="currentColor" class="bi
                             bi-geo-alt-fill" viewBox="0 0 16 16">
-                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6
+                            <path
+                                d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6
                                 10 6
                                 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
                         </svg>
@@ -155,7 +157,8 @@
                                 rows="3"></textarea>
                             <br>
                             <input type="button" id="addmessageform"
-                                class="btn5" onclick="addMessage()" value="Send">
+                                class="btn5" onclick="addMessage()"
+                                value="Send">
                         </div>
                     </form>
                 </div>

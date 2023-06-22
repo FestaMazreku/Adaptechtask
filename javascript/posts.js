@@ -98,6 +98,7 @@ function addPost() {
 let currentPage = 1;
 let totalPosts = 0;
 
+//Get all
 function GetAll(page, perPage) {
     const tableBody = document.getElementById('table-body');
     tableBody.innerHTML = '';
