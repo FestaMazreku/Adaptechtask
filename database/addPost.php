@@ -1,15 +1,20 @@
 <?php
 $con = mysqli_connect("localhost", "root", "", "adaptechtask");
 mysqli_select_db($con, "adaptechtask");
+require_once('IsLoggedIn.php');
 
 if (isset($_POST['userid']) && isset($_POST['title'])) {
+
+    if (!IsLoggedInAsAdmin())
+        die("No direct access!");
+
     $postsid = mysqli_real_escape_string($con, $_POST['postsid']);
     $userid = mysqli_real_escape_string($con, $_POST['userid']);
     $title = mysqli_real_escape_string($con, $_POST['title']);
     $body = mysqli_real_escape_string($con, $_POST['body']);
 
     if (!empty($userid) && !empty($title) && !empty($body)) {
-        $sql = $con->prepare("INSERT INTO posts (postsid, userid, title, body)  VALUES ('$postsid','$userid','$title','$body')");
+        $sql = $con->prepare("INSERT INTO posts (postsid, userid, title, body) VALUES ('$postsid','$userid','$title','$body')");
         $sql->execute();
 
         $response = array();

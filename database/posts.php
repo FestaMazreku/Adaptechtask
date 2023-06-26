@@ -2,10 +2,12 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+require_once('IsLoggedIn.php');
 
 $con = mysqli_connect("localhost", "root", "", "adaptechtask");
 mysqli_select_db($con, 'adaptechtask');
 $response = array();
+
 
 if ($con) {
   if (isset($_GET['posts'])) {
@@ -46,6 +48,10 @@ if ($con) {
 
   //Delete post
   if (isset($_POST['deleteid'])) {
+
+    if (!IsLoggedInAsAdmin())
+      die("No direct access!");
+
     $delete = $_POST['deleteid'];
     $sql = "DELETE FROM posts WHERE postsid = '" . $delete . "' ";
 
@@ -59,6 +65,10 @@ if ($con) {
 
   //Update post
   if (isset($_POST['editpostsid'])) {
+
+    if (!IsLoggedInAsAdmin())
+      die("No direct access!");
+
     $postsid = $_POST['editpostsid'];
     $userid = $_POST['userid'];
     $title = $_POST['title'];

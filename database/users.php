@@ -2,6 +2,7 @@
 $con = mysqli_connect("localhost", "root", "", "adaptechtask");
 mysqli_select_db($con, 'adaptechtask');
 $response = array();
+require_once('IsLoggedIn.php');
 
 if ($con) {
   if (isset($_GET['users'])) {
@@ -16,6 +17,7 @@ if ($con) {
         $response[$i]['email'] = $row['email'];
         $response[$i]['phone'] = $row['phone'];
         $response[$i]['city'] = $row['city'];
+
         $i++;
       }
       echo json_encode($response, JSON_PRETTY_PRINT);
@@ -41,8 +43,12 @@ if ($con) {
     exit();
   }
 
-  //Delete User
+  //Delete user
   if (isset($_POST['deleteid'])) {
+
+    if (!IsLoggedInAsAdmin())
+      die("No direct access!");
+
     $delete = $_POST['deleteid'];
     $sql = "DELETE FROM users WHERE id = '" . $delete . "' ";
 
@@ -54,8 +60,12 @@ if ($con) {
     exit();
   }
 
-  //Update User
+  //Update user
   if (isset($_POST['editid'])) {
+
+    if (!IsLoggedInAsAdmin())
+      die("No direct access!");
+
     $id = $_POST['editid'];
     $name = $_POST['name'];
     $age = $_POST['age'];

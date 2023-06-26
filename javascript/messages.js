@@ -7,94 +7,29 @@ function myFunction() {
     }
 }
 
-//Delete user
-function deleteUser(id, button) {
-    if (confirm("Are you sure you want to delete this user?")) {
+//Delete message
+function deleteMessage(id, button) {
+    if (confirm("Are you sure you want to delete this message?")) {
         $.ajax({
-            url: 'http://adaptechtask.test/database/users.php',
+            url: 'http://adaptechtask.test/database/messages.php',
             type: "POST",
             data: "deleteid=" + id,
             success: function (response) {
                 console.log(response);
                 if (response == "1") {
                     $(button).closest('tr').remove();
-                    alert("The user is deleted successfully!");
+                    alert("The message is deleted successfully!");
                 }
                 else {
-                    alert("The user is not deleted.");
+                    alert("The message is not deleted.");
                 }
             },
             error: function (error) {
                 console.log(error);
-                alert("Error: The user is not deleted. " + error);
+                alert("Error: The message is not deleted. " + error);
             },
         });
     }
-}
-
-//Get user data
-function getuserdata(userid) {
-    if (userid == null) {
-        window.location.href = "users.html";
-    } else {
-        $.ajax({
-            type: "GET",
-            url: `http://adaptechtask.test/database/users.php?user=${userid}`,
-            dataType: 'json',
-        }).then(post => {
-            $("#editid").val(post.id);
-            $("#name").val(post.name);
-            $("#age").val(post.age);
-            $("#email").val(post.email);
-            $("#phone").val(post.phone);
-            $("#city").val(post.city);
-        });
-    }
-}
-
-//Update user
-function updateUser() {
-    var formdata = $('#edituserform').serialize();
-    $.ajax({
-        type: "POST",
-        url: 'http://adaptechtask.test/database/users.php',
-        data: formdata,
-        success: function (response) {
-            console.log(response);
-            var result = JSON.parse(response);
-            alert(result.message);
-            if (result.status == 1)
-                window.location.href = "users.html";
-        },
-        error: function (error) {
-            console.log(error);
-            alert("Error: Failed to update the user." + error.responseText);
-        }
-    });
-}
-
-//Add user
-function addUser() {
-    var formdata = $('#adduserform').serialize();
-    $.ajax({
-        type: "POST",
-        url: 'http://adaptechtask.test/database/addUser.php',
-        data: formdata,
-        success: function (response) {
-            console.log(response);
-            var result = JSON.parse(response);
-            if (result.success) {
-                alert("New user has been added successfully!");
-                window.location.href = "users.html";
-            } else {
-                alert("New user is not added!");
-            }
-        },
-        error: function (error) {
-            console.log(error);
-            alert("Error: New user is not added! " + error.responseText);
-        }
-    });
 }
 
 //Get all
@@ -105,26 +40,22 @@ function GetAll(page, perPage) {
 
     $.ajax({
         type: 'GET',
-        url: 'http://adaptechtask.test/database/users.php?users',
+        url: 'http://adaptechtask.test/database/messages.php?messages',
         dataType: 'json',
-    }).then((userData) => {
-        const totalUsers = userData.length;
+    }).then((data) => {
+        const totalUsers = data.length;
         const totalPages = Math.ceil(totalUsers / perPage);
 
         const from = (page - 1) * perPage;
         const to = page * perPage;
-        const tableRows = userData.slice(from, to).map((post) => {
-            return `<tr id="row-${post.id}">
-          <td><p class="table-element1">${post.id}</p></td>
-          <td><p class="table-element2">${post.name}</p></td>
-          <td><p class="table-element4">${post.age}</p></td>
-          <td><p class="table-element5">${post.email}</p></td>
-          <td><p class="table-element6">${post.phone}</p></td>
-          <td><p class="table-element7">${post.city}</p></td>
+        const tableRows = data.slice(from, to).map((message) => {
+            return `<tr id="row-${message.messageid}">
+          <td><p class="table-element1">${message.messageid}</p></td>
+          <td><p class="table-element2">${message.name}</p></td>
+          <td><p class="table-element5">${message.email}</p></td>
+          <td><p class="table-element5">${message.usermessage}</p></td>
           <td>
-          <button class="btn12"><a href="http://adaptechtask.test/post.html?post=${post.id}">View</a></button>
-          <button class="btn10"><a href="editUser.html?userid=${post.id}">Update</a></button>
-          <button class="btn7" onclick="deleteUser(${post.id}, this)">Delete</button>
+          <button class="btn7" onclick="deleteMessage(${message.messageid}, this)">Delete</button>
           </td>
         </tr>`;
         });
@@ -191,16 +122,7 @@ function updatePagination(totalPages, currentPage) {
 $(document).ready(function () {
     const currentUrl = window.location.href;
     const searchParams = new URLSearchParams(new URL(currentUrl).search);
-    if (currentUrl.indexOf("editUser.html") > 0) {
-        const userid = searchParams.get('userid');
-        if (userid == null) {
-            window.location.href = "users.html";
-        } else {
-            getuserdata(userid);
-        }
-    }
-
-    if (currentUrl.indexOf("users.html") > 0) {
+    if (currentUrl.indexOf("messages.html") > 0) {
         const page = searchParams.get('page');
         if (page == null) {
             GetAll(1, 10);

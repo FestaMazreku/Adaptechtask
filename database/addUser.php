@@ -1,8 +1,13 @@
 <?php
 $con = mysqli_connect("localhost", "root", "", "adaptechtask");
 mysqli_select_db($con, "adaptechtask");
+require_once('IsLoggedIn.php');
 
 if (isset($_POST['name']) && isset($_POST['age']) && isset($_POST['email'])) {
+
+    if (!IsLoggedInAsAdmin())
+        die("No direct access!");
+
     $id = mysqli_real_escape_string($con, $_POST['id']);
     $name = mysqli_real_escape_string($con, $_POST['name']);
     $age = mysqli_real_escape_string($con, $_POST['age']);
@@ -11,7 +16,7 @@ if (isset($_POST['name']) && isset($_POST['age']) && isset($_POST['email'])) {
     $city = mysqli_real_escape_string($con, $_POST['city']);
 
     if (!empty($name) && !empty($age) && !empty($email)) {
-        $sql = $con->prepare("INSERT INTO users (id, name, age, email, phone, city)  VALUES ('$id','$name', '$age','$email','$phone','$city')");
+        $sql = $con->prepare("INSERT INTO users (id, name, age, email, phone, city) VALUES ('$id','$name', '$age','$email','$phone','$city')");
         $sql->execute();
 
         $response = array();

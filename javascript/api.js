@@ -7,43 +7,6 @@ function myFunction() {
   }
 }
 
-function addComment() {
-  const email = document.getElementById('email').value;
-  const comment = document.getElementById('comment').value;
-
-  if (email.trim() !== '' && comment.trim() !== '') {
-    const data = new FormData();
-    data.append('email', email);
-    data.append('comment', comment);
-
-    fetch('http://adaptechtask.test/database/addComment.php', {
-      method: 'POST',
-      body: data
-    })
-      .then(response => response.json())
-      .then(responseData => {
-
-        if (responseData.success) {
-          alert(responseData.message);
-
-          const newCommentElement = document.createElement('div');
-          newCommentElement.className = 'comment';
-          newCommentElement.innerHTML = `<strong>${email}</strong>: <br> Comment: ${comment}`;
-
-          const commentsSection = document.getElementById('comments');
-          commentsSection.appendChild(newCommentElement);
-        } else {
-          alert(responseData.message);
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  } else {
-    alert('The comment is not added! Please fill in the fields!');
-  }
-}
-
 function addMessage() {
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
@@ -83,6 +46,43 @@ function addMessage() {
   }
 }
 
+function addComment() {
+  const email = document.getElementById('email').value;
+  const comment = document.getElementById('comment').value;
+
+  if (email.trim() !== '' && comment.trim() !== '') {
+    const data = new FormData();
+    data.append('email', email);
+    data.append('comment', comment);
+
+    fetch('http://adaptechtask.test/database/comments.php', {
+      method: 'POST',
+      body: data
+    })
+      .then(response => response.json())
+      .then(responseData => {
+
+        if (responseData.success) {
+          alert(responseData.message);
+
+          const newCommentElement = document.createElement('div');
+          newCommentElement.className = 'comment';
+          newCommentElement.innerHTML = `<strong>${email}</strong>: <br> Comment: ${comment}`;
+
+          const commentsSection = document.getElementById('comments');
+          commentsSection.appendChild(newCommentElement);
+        } else {
+          alert(responseData.message);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  } else {
+    alert('The comment is not added! Please fill in the fields!');
+  }
+}
+
 function getPost(id) {
   fetch('http://adaptechtask.test/database/posts.php?post=' + id)
     .then(response => response.json())
@@ -111,24 +111,24 @@ function getPost(id) {
     });
 }
 
-function getComment(id) {
-  fetch('http://adaptechtask.test/database/comments.php?comment=' + id)
-    .then(response => response.json())
-    .then(data => {
-      $.ajax({
-        type: "GET",
-        url: 'http://adaptechtask.test/database/users.php?users',
-        dataType: 'json',
-      }).then(commentData => {
-        const jsonDataDiv = document.getElementById('comments');
-        const postDiv = document.createElement('div');
-        postDiv.innerHTML = `<hr>
-      <p> <b> Comment: </b> ${data.body} </p>`;
-        jsonDataDiv.appendChild(postDiv);
-        $("#comments").show();
-      });
-    });
-}
+// function getComment(id) {
+//   fetch('http://adaptechtask.test/database/comments.php?comment=' + id)
+//     .then(response => response.json())
+//     .then(data => {
+//       $.ajax({
+//         type: "GET",
+//         url: 'http://adaptechtask.test/database/users.php?users',
+//         dataType: 'json',
+//       }).then(commentData => {
+//         const jsonDataDiv = document.getElementById('comments');
+//         const postDiv = document.createElement('div');
+//         postDiv.innerHTML = `<hr>
+//       <p> <b> Comment: </b> ${data.body} </p>`;
+//         jsonDataDiv.appendChild(postDiv);
+//         $("#comments").show();
+//       });
+//     });
+// }
 
 function getall() {
   fetch('http://adaptechtask.test/database/posts.php?posts')

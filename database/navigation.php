@@ -1,9 +1,6 @@
 <?php
-session_start();
-
-$loggedIn = isset($_SESSION['email']);
-$isadmin = isset($_SESSION['isadmin']) && $_SESSION['isadmin'] == 1;
+require_once('IsLoggedIn.php');
 
 header('Content-Type: application/json');
-echo json_encode(['loggedIn' => $loggedIn, 'isadmin' => $isadmin]);
+echo json_encode(['loggedIn' => IsLoggedIn(), 'isadmin' => IsLoggedInAsAdmin()]);
 ?>
