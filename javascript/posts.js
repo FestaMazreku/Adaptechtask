@@ -57,12 +57,17 @@ function updatePost() {
         type: "POST",
         url: 'http://adaptechtask.test/database/posts.php',
         data: formdata,
+        dataType: 'json',
         success: function (response) {
             console.log(response);
-            var result = JSON.parse(response);
-            alert(result.message);
-            if (result.status == 1)
+            if (response.hasOwnProperty("status") && response.status == 1) {
+                alert(response.message);
                 window.location.href = "posts.html";
+            } else if (response.message === "No direct access!") {
+                alert("You don't have permission to update the post.");
+            } else {
+                alert("Error: Failed to update the post.");
+            }
         },
         error: function (error) {
             console.log(error);
@@ -78,19 +83,21 @@ function addPost() {
         type: "POST",
         url: 'http://adaptechtask.test/database/addPost.php',
         data: formdata,
+        dataType: 'json',
         success: function (response) {
             console.log(response);
-            var result = JSON.parse(response);
-            if (result.success) {
-                alert("New post has been added successfully!");
+            if (response.hasOwnProperty("success") && response.success) {
+                alert(response.message);
                 window.location.href = "posts.html";
+            } else if (response.message === "No direct access!") {
+                alert("You don't have permission to add a new post.");
             } else {
-                alert("New post is not added!");
+                alert("Error: Failed to add a new post.");
             }
         },
         error: function (error) {
             console.log(error);
-            alert("Error: New post is not added! " + error.responseText);
+            alert("Error: Failed to add a new post. " + error.responseText);
         }
     });
 }

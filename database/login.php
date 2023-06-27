@@ -49,5 +49,4 @@ if (empty($email) || empty($password)) {
         echo $error_code . $error_message;
     }
 }
-
 ?>

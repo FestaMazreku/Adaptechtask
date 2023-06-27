@@ -53,25 +53,54 @@ function getuserdata(userid) {
 }
 
 //Update user
+// function updateUser() {
+//     var formdata = $('#edituserform').serialize();
+//     $.ajax({
+//         type: "POST",
+//         url: 'http://adaptechtask.test/database/users.php',
+//         data: formdata,
+//         dataType: 'json',
+//         success: function (response) {
+//             console.log(response);
+//             if (response.hasOwnProperty("status") && response.status === 1) {
+//                 alert(response.message);
+//                 window.location.href = "users.html";
+//             } else if (response.message === "You don't have permission to update the user.") {
+//                 alert("No direct access!");
+//             }
+//         },
+//         error: function (error) {
+//             console.log(error);
+//             alert("Error: No direct access!" + error.responseText);
+//         }
+//     });
+// }
+
+//Update user
 function updateUser() {
     var formdata = $('#edituserform').serialize();
     $.ajax({
-        type: "POST",
-        url: 'http://adaptechtask.test/database/users.php',
-        data: formdata,
-        success: function (response) {
-            console.log(response);
-            var result = JSON.parse(response);
-            alert(result.message);
-            if (result.status == 1)
-                window.location.href = "users.html";
-        },
-        error: function (error) {
-            console.log(error);
-            alert("Error: Failed to update the user." + error.responseText);
+      type: "POST",
+      url: 'http://adaptechtask.test/database/users.php',
+      data: formdata,
+      dataType: 'json',
+      success: function (response) {
+        console.log(response);
+        if (response.hasOwnProperty("status") && response.status === 1) {
+          alert(response.message);
+          window.location.href = "users.html";
+        } else if (response.message === "No direct access!") {
+          alert("You don't have permission to update the user.");
+        } else {
+          alert("Error: Failed to update the user.");
         }
+      },
+      error: function (error) {
+        console.log(error);
+        alert("Error: Failed to update the user. " + error.responseText);
+      }
     });
-}
+  }
 
 //Add user
 function addUser() {
@@ -80,19 +109,21 @@ function addUser() {
         type: "POST",
         url: 'http://adaptechtask.test/database/addUser.php',
         data: formdata,
+        dataType: 'json',
         success: function (response) {
             console.log(response);
-            var result = JSON.parse(response);
-            if (result.success) {
-                alert("New user has been added successfully!");
+            if (response.hasOwnProperty("success") && response.success) {
+                alert(response.message);
                 window.location.href = "users.html";
+            } else if (response.message === "No direct access!") {
+                alert("You don't have permission to add a new user.");
             } else {
-                alert("New user is not added!");
+                alert("Error: Failed to add a new user.");
             }
         },
         error: function (error) {
             console.log(error);
-            alert("Error: New user is not added! " + error.responseText);
+            alert("Error: Failed to add a new user. " + error.responseText);
         }
     });
 }

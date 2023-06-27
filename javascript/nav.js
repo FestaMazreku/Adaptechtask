@@ -25,6 +25,9 @@ function setupNavigation() {
             <a href="posts.html"
             style="color: #f0f0f0; font-size: 16px; font-weight: 400;
             padding-right: 16px">Table Posts</a>
+            <a href="messages.html"
+            style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            padding-right: 16px">Messages</a>
             <a href="/database/logout.php" style="color: #f0f0f0; font-size: 16px; font-weight: 400;
             padding-right: 16px">Log Out</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">

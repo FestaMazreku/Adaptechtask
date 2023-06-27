@@ -105,30 +105,11 @@ function getPost(id) {
           <p> City: ${userData[data.postsid - 1].city} </p>
           <a href="post.html" onclick="getPost()"> <button class="btn1"> &laquo; Go back </button> </a>`
         jsonDataDiv.appendChild(postDiv);
-        getComment(id);
+
         $("#comments").show();
       });
     });
 }
-
-// function getComment(id) {
-//   fetch('http://adaptechtask.test/database/comments.php?comment=' + id)
-//     .then(response => response.json())
-//     .then(data => {
-//       $.ajax({
-//         type: "GET",
-//         url: 'http://adaptechtask.test/database/users.php?users',
-//         dataType: 'json',
-//       }).then(commentData => {
-//         const jsonDataDiv = document.getElementById('comments');
-//         const postDiv = document.createElement('div');
-//         postDiv.innerHTML = `<hr>
-//       <p> <b> Comment: </b> ${data.body} </p>`;
-//         jsonDataDiv.appendChild(postDiv);
-//         $("#comments").show();
-//       });
-//     });
-// }
 
 function getall() {
   fetch('http://adaptechtask.test/database/posts.php?posts')
@@ -204,6 +185,6 @@ $(document).ready(function () {
     null;
   }
   else {
-    getComment(comment);
+    addComment(comment);
   }
 });

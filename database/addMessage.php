@@ -29,6 +29,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['usermessage
         }
 
         $sql->close();
+
     } else {
         $response['success'] = false;
         $response['message'] = "Required fields are missing.";

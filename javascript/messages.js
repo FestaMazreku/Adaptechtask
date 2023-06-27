@@ -32,7 +32,6 @@ function deleteMessage(id, button) {
     }
 }
 
-//Get all
 function GetAll(page, perPage) {
     const tableBody = document.getElementById('table-body');
     tableBody.innerHTML = '';

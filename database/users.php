@@ -60,11 +60,15 @@ if ($con) {
     exit();
   }
 
-  //Update user
+  // Update user
   if (isset($_POST['editid'])) {
 
-    if (!IsLoggedInAsAdmin())
-      die("No direct access!");
+    if (!IsLoggedInAsAdmin()) {
+      $response['status'] = 0;
+      $response['message'] = "You don't have permission to update the user.";
+      echo json_encode($response);
+      exit();
+    }
 
     $id = $_POST['editid'];
     $name = $_POST['name'];
@@ -100,7 +104,6 @@ if ($con) {
         $response['status'] = 1;
         $response['message'] = "The user has been updated!";
         echo json_encode($response);
-
       } else {
         $response['status'] = 0;
         $response['message'] = "Failed to update the user.";

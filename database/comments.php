@@ -67,6 +67,7 @@ if ($con) {
             }
 
             $sql->close();
+            
         } else {
             $response['success'] = false;
             $response['message'] = "Required fields are missing.";

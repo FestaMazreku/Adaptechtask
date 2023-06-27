@@ -5,8 +5,12 @@ require_once('IsLoggedIn.php');
 
 if (isset($_POST['name']) && isset($_POST['age']) && isset($_POST['email'])) {
 
-    if (!IsLoggedInAsAdmin())
-        die("No direct access!");
+    if (!IsLoggedInAsAdmin()) {
+        $response['success'] = false;
+        $response['message'] = "No direct access!";
+        echo json_encode($response);
+        exit();
+    }
 
     $id = mysqli_real_escape_string($con, $_POST['id']);
     $name = mysqli_real_escape_string($con, $_POST['name']);

@@ -66,8 +66,12 @@ if ($con) {
   //Update post
   if (isset($_POST['editpostsid'])) {
 
-    if (!IsLoggedInAsAdmin())
-      die("No direct access!");
+    if (!IsLoggedInAsAdmin()) {
+      $response['status'] = 0;
+      $response['message'] = "You don't have permission to update the post.";
+      echo json_encode($response);
+      exit();
+    }
 
     $postsid = $_POST['editpostsid'];
     $userid = $_POST['userid'];
@@ -95,7 +99,6 @@ if ($con) {
         $response['status'] = 1;
         $response['message'] = "The post has been updated!";
         echo json_encode($response);
-
       } else {
         $response['status'] = 0;
         $response['message'] = "Failed to update the post.";
