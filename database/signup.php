@@ -9,7 +9,6 @@ $password_2 = $_POST['password_2'];
 
 if (empty($name) || empty($email) || empty($password_1) || empty($password_2)) {
     echo "All fields must be filled!";
-
 } else {
     if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
         echo "error:name";

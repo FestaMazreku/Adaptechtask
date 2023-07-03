@@ -68,7 +68,6 @@ function GetAll(page, perPage) {
 
         const currentPageLink = document.querySelector(`#pagination li.page-item:nth-child(${page})`);
         currentPageLink.classList.add('active');
-
         updatePagination(totalPages, page);
 
     }).catch((error) => {

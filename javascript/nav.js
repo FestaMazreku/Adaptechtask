@@ -33,6 +33,7 @@ function setupNavigation() {
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i> </a>
               `;
+              
           } else {
             navigation.innerHTML = `
             <a href="#" style="color: #f0f0f0; font-size: 16px; font-weight: 400;

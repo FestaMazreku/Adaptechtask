@@ -34,6 +34,7 @@ if (isset($_POST['name']) && isset($_POST['age']) && isset($_POST['email'])) {
             echo json_encode($response);
         }
         $sql->close();
+        
     } else {
         $response['success'] = false;
         $response['message'] = "Required fields are missing.";

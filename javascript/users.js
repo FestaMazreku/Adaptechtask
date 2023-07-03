@@ -53,30 +53,6 @@ function getuserdata(userid) {
 }
 
 //Update user
-// function updateUser() {
-//     var formdata = $('#edituserform').serialize();
-//     $.ajax({
-//         type: "POST",
-//         url: 'http://adaptechtask.test/database/users.php',
-//         data: formdata,
-//         dataType: 'json',
-//         success: function (response) {
-//             console.log(response);
-//             if (response.hasOwnProperty("status") && response.status === 1) {
-//                 alert(response.message);
-//                 window.location.href = "users.html";
-//             } else if (response.message === "You don't have permission to update the user.") {
-//                 alert("No direct access!");
-//             }
-//         },
-//         error: function (error) {
-//             console.log(error);
-//             alert("Error: No direct access!" + error.responseText);
-//         }
-//     });
-// }
-
-//Update user
 function updateUser() {
     var formdata = $('#edituserform').serialize();
     $.ajax({

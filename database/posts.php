@@ -8,7 +8,6 @@ $con = mysqli_connect("localhost", "root", "", "adaptechtask");
 mysqli_select_db($con, 'adaptechtask');
 $response = array();
 
-
 if ($con) {
   if (isset($_GET['posts'])) {
     $sql = "SELECT * from posts";

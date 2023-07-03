@@ -53,7 +53,7 @@ function LogIn() {
             } else if (response.startsWith('error:empty')) {
                 alert("User can't log in! Please enter email and password!");
             } else if (response.startsWith('error:nonexistent')) {
-                alert("This user does not exist!");
+                alert("This user doesn't exist!");
             } else if (response.startsWith('error:incorrect')) {
                 alert("The password is incorrect!");
             } else {

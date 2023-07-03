@@ -33,6 +33,7 @@ if (isset($_POST['userid']) && isset($_POST['title'])) {
         }
 
         $sql->close();
+        
     } else {
         $response['success'] = false;
         $response['message'] = "Required fields are missing.";

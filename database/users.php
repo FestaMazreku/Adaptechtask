@@ -60,7 +60,7 @@ if ($con) {
     exit();
   }
 
-  // Update user
+  //Update user
   if (isset($_POST['editid'])) {
 
     if (!IsLoggedInAsAdmin()) {
