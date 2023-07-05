@@ -28,7 +28,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['usermessage
             echo json_encode($response);
         } else {
             $response['success'] = false;
-            $response['message'] = "The message is not sent!";
+            $response['message'] = "The message can not be sent!";
             echo json_encode($response);
         }
 

@@ -21,46 +21,52 @@ USE `adaptechtask`;
 CREATE TABLE IF NOT EXISTS `comments` (
   `commentsid` int(11) NOT NULL AUTO_INCREMENT,
   `postid` int(11) DEFAULT NULL,
-  `userid` int(11) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
+  `user_name` varchar(50) DEFAULT NULL,
+  `title` varchar(50) DEFAULT NULL,
   `comment` text,
+  `date` datetime DEFAULT NULL,
   PRIMARY KEY (`commentsid`) USING BTREE,
   KEY `FK_comments_posts` (`postid`),
-  KEY `FK_comments_users` (`userid`),
+  KEY `FK_comments_users_2` (`user_name`),
   CONSTRAINT `FK_comments_posts` FOREIGN KEY (`postid`) REFERENCES `posts` (`postsid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_comments_users` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  CONSTRAINT `FK_comments_users_2` FOREIGN KEY (`user_name`) REFERENCES `users` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.comments: ~9 rows (approximately)
+-- Dumping data for table adaptechtask.comments: ~11 rows (approximately)
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-REPLACE INTO `comments` (`commentsid`, `postid`, `userid`, `email`, `comment`) VALUES
-	(1, 1, 1, NULL, NULL),
-	(2, 2, 2, NULL, NULL),
-	(3, 3, 3, NULL, NULL),
-	(5, 5, 5, NULL, NULL),
-	(6, 6, 6, NULL, NULL),
-	(7, 7, 7, NULL, NULL),
-	(8, 8, 8, NULL, NULL),
-	(9, 9, 9, NULL, NULL),
-	(10, 10, 10, NULL, NULL);
+REPLACE INTO `comments` (`commentsid`, `postid`, `user_name`, `title`, `comment`, `date`) VALUES
+	(1, 1, 'Emma Smith', 'optio molestias id quia eum', 'hbfghghjgj', '2023-07-01 10:35:02'),
+	(2, 2, 'Jack Styles', 'in quibusdam tempore odit est dolorem', 'sdfsgfgfgfd', '2023-07-02 09:38:07'),
+	(3, 3, 'Lily Gomez', 'dolorum ut in voluptas mollitia et saepe quo animi', 'ffsdfsdffsd', '2023-07-03 12:40:20'),
+	(4, 4, 'Festa Mazreku', 'adipisci placeat illum aut reiciendis qui', 'sdfdsfsdgg', '2023-07-04 14:45:33'),
+	(5, 5, 'Christina Campbell', 'maxime id vitae nihil numquam', 'sdfsggfg', '2023-07-05 13:25:37'),
+	(6, 6, 'Charlotte Moreau', 'delectus ullam et corporis nulla voluptas sequi', 'sdfsdfdfsdfsdf', '2023-07-06 15:20:58'),
+	(7, 7, 'Robert Williams', 'qui explicabo molestiae dolorem', 'sfdsgsdgsdgg', '2023-07-07 11:48:13'),
+	(8, 8, 'Vincenzo Ricci', 'provident vel ut sit ratione est', 'dfdsfggsddgs', '2023-07-08 06:27:32'),
+	(9, 9, 'Chloe Turner', 'ut numquam possimus omnis eius suscipit ', 'dfdsffsgsgdg', '2023-07-09 16:32:50'),
+	(10, 10, 'Peter Evans', 'aut quo modi neque nostrum ducimus', 'asdsdsddasd', '2023-07-10 17:42:03'),
+	(11, 7, 'Erman Cibo', 'qui et at rerum necessitatibus', 'zcfdfsdgsg', '2023-07-11 18:15:25');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.contactus
 CREATE TABLE IF NOT EXISTS `contactus` (
+  `messageid` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `usermessage` text,
+  PRIMARY KEY (`messageid`),
   KEY `FK_contactus_users` (`email`),
   CONSTRAINT `FK_contactus_users` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.contactus: ~4 rows (approximately)
+-- Dumping data for table adaptechtask.contactus: ~6 rows (approximately)
 /*!40000 ALTER TABLE `contactus` DISABLE KEYS */;
-REPLACE INTO `contactus` (`name`, `email`, `usermessage`) VALUES
-	('Festa Mazreku', 'festa.m@gmail.com', 'hi!!'),
-	('Charlotte Moreau', 'charlottemoreau@gmail.com', 'hello! i love your page!'),
-	('Fjolla Berisha', 'fjolla.b@gmail.com', 'best page!'),
-	('James Stewart', 'james.s@gmail.com', 'hi! i wanted to ask a question');
+REPLACE INTO `contactus` (`messageid`, `name`, `email`, `usermessage`) VALUES
+	(1, 'Festa Mazreku', 'festa.m@gmail.com', 'hi!!'),
+	(2, 'Charlotte Moreau', 'charlottemoreau@gmail.com', 'hello! i love your page!'),
+	(4, 'Erman Cibo', 'fjolla.b@gmail.com', 'sdfsdfsdfsdf'),
+	(5, 'Jack Styles', 'jackstyles@gmail.com', 'sdfsddfs'),
+	(6, 'Emma Smith', 'emma.s@gmail.com', 'asdsdasa');
 /*!40000 ALTER TABLE `contactus` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.posts
@@ -75,11 +81,11 @@ CREATE TABLE IF NOT EXISTS `posts` (
   CONSTRAINT `userid` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.posts: ~10 rows (approximately)
+-- Dumping data for table adaptechtask.posts: ~9 rows (approximately)
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
 REPLACE INTO `posts` (`postsid`, `userid`, `title`, `body`, `date`) VALUES
 	(1, 1, 'dolorem eum magni eos aperiam quia', 'repudiandae veniam quaerat sunt sed\\nalias aut fugiat sit autem sed est\\nvoluptatem omnis possimus esse voluptatibus quis\\nest aut tenetur dolor neque', '2023-05-19 15:22:10'),
-	(2, 2, 'et ea vero quia laudantium autem', 'ullam consequatur ut\\nomnis quis sit vel consequuntur\\nipsa eligendi ipsum molestiae et omnis error nostrum\\nmolestiae illo tempore quia et distinctio', '2023-05-20 18:25:28'),
+	(2, 2, 'et ea vero quia laudantium autem', 'ullam consequatur ut\nomnis quis sit vel consequuntur\nipsa eligendi ipsum molestiae et omnis error nostrum\nmolestiae illo tempore quia et distinction', '2023-05-20 18:25:28'),
 	(3, 3, 'iusto eius quod necessitatibus culpa ea', 'odio fugit voluptatum ducimus earum autem est incidunt voluptatem\\nodit reiciendis aliquam sunt sequi nulla dolorem\\nnon facere repellendus voluptates quia\\nratione harum vitae ut', '2023-05-21 16:18:57'),
 	(4, 4, 'magnam facilis autem', 'itaque id aut magnam\\npraesentium quia et ea odit et ea voluptas et\\nsapiente quia nihil amet occaecati quia id voluptatem\\nincidunt ea est distinctio odio', '2023-05-22 10:13:00'),
 	(5, 5, 'culpa eius tempora sit consequatur neque iure deserunt', 'id est iure occaecati quam similique enim\\nab repudiandae non\\nillum expedita quam excepturi soluta qui placeat\\nperspiciatis optio maiores non doloremque aut iusto sapiente', '2023-05-24 16:08:00'),
@@ -103,9 +109,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `username` (`name`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.users: ~13 rows (approximately)
+-- Dumping data for table adaptechtask.users: ~12 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 REPLACE INTO `users` (`id`, `name`, `age`, `email`, `phone`, `city`, `isadmin`, `password`) VALUES
 	(1, 'Emma Smith', 26, 'emma.s@gmail.com', '1-558-453-9856', 'California, US', 0, NULL),
@@ -117,10 +123,9 @@ REPLACE INTO `users` (`id`, `name`, `age`, `email`, `phone`, `city`, `isadmin`, 
 	(7, 'Robert Williams', 30, 'robertwilliams@gmail.com', '1-855-632-4135', 'Zurich, Switzerland', 0, NULL),
 	(8, 'Vincenzo Ricci', 33, 'vricci@gmail.com', '1-895-563-6582', 'Rome, Italy', 0, NULL),
 	(9, 'Chloe Turner', 22, 'chloe_t@gmail.com', '1-235-875-3552', 'London, UK', 0, 'Chloe22'),
-	(10, 'Peter Evans', 24, 'peter.evans@gmail.com', '1-157-333-9788', 'Madrid, Spain', 0, NULL),
-	(11, 'James Johnson', 27, 'james.s@gmail.com', '1-895-563-6582', 'Florida, US', 0, 'James34'),
-	(12, 'Erman Cibo', 32, 'erman.c@gmail.com', '1-157-333-9788', 'Prizren, Kosovo', 0, 'Erman123'),
-	(13, 'Fjolla Berisha', 25, 'fjolla.b@gmail.com', '045-855-986', 'Prishtina, Kosovo', 0, 'Fjolla89');
+	(10, 'Peter Evans', 23, 'peter.evans@gmail.com', '1-157-333-9788', 'Madrid, Spain', 0, NULL),
+	(11, 'Erman Cibo', 32, 'erman.c@gmail.com', '045-982-922', 'Prizren, Kosovo', 0, 'Erman123'),
+	(12, 'Fjolla Berisha', 29, 'fjolla.b@gmail.com', '045-855-986', 'Prishtina, Kosovo', 0, 'Fjolla89');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

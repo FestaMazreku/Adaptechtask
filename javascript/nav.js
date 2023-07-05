@@ -33,7 +33,7 @@ function setupNavigation() {
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i> </a>
               `;
-              
+
           } else {
             navigation.innerHTML = `
             <a href="#" style="color: #f0f0f0; font-size: 16px; font-weight: 400;
@@ -59,6 +59,9 @@ function setupNavigation() {
           padding-right: 16px">Home</a>
           <a href="#" style="color: #f0f0f0; font-size: 16px; font-weight: 400;
           padding-right: 16px">About Us</a>
+          <a href="post.html"
+          style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+          padding-right: 16px">Posts</a>
           <a href="signup.html" style="color: #f0f0f0; font-size: 16px; font-weight: 400;
           padding-right: 16px">Sign Up</a>
           <a href="login.html"

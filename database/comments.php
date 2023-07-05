@@ -15,9 +15,10 @@ if ($con) {
             while ($row = mysqli_fetch_assoc($result)) {
                 $response[$i]['commentsid'] = $row['commentsid'];
                 $response[$i]['postid'] = $row['postid'];
-                $response[$i]['userid'] = $row['userid'];
-                $response[$i]['email'] = $row['email'];
+                $response[$i]['user_name'] = $row['user_name'];
+                $response[$i]['title'] = $row['title'];
                 $response[$i]['comment'] = $row['comment'];
+                $response[$i]['date'] = $row['date'];
 
                 $i++;
             }
@@ -34,66 +35,24 @@ if ($con) {
             if ($row = mysqli_fetch_assoc($result)) {
                 $response['commentsid'] = $row['commentsid'];
                 $response['postid'] = $row['postid'];
-                $response['userid'] = $row['userid'];
-                $response['email'] = $row['email'];
+                $response['user_name'] = $row['user_name'];
+                $response['title'] = $row['title'];
                 $response['comment'] = $row['comment'];
+                $response['date'] = $row['date'];
+
             }
         }
         echo json_encode($response, JSON_PRETTY_PRINT);
     }
 
     //Add comment
-//     if (isset($_POST['email']) && isset($_POST['comment'])) {
-
-    //         if (IsLoggedInAsAdmin()) {
-//             $response['success'] = false;
-//             $response['message'] = "No direct access!";
-//             echo json_encode($response);
-//             exit();
-//         }
-
-    //         $email = mysqli_real_escape_string($con, $_POST['email']);
-//         $comment = mysqli_real_escape_string($con, $_POST['comment']);
-
-    //         if (!empty($email) && !empty($comment)) {
-//             $sql = $con->prepare("INSERT INTO comments (email, comment) VALUES ('$email','$comment')");
-//             $sql->execute();
-
-    //             $response = array();
-//             if ($sql->affected_rows > 0) {
-//                 $response['success'] = true;
-//                 $response['message'] = "The comment has been added successfully!";
-//                 echo json_encode($response);
-//             } else {
-//                 $response['success'] = false;
-//                 $response['message'] = "The comment is not added!";
-//                 echo json_encode($response);
-//             }
-
-    //             $sql->close();
-
-    //         } else {
-//             $response['success'] = false;
-//             $response['message'] = "Required fields are missing.";
-//             echo json_encode($response);
-//         }
-//     } else {
-//         $response['success'] = false;
-//         $response['message'] = "Invalid request.";
-//         echo json_encode($response);
-//     }
-// }
-
-    // $con->close();
-
-    //Add comment
-    if (isset($_POST['email']) && isset($_POST['comment'])) {
-        $email = mysqli_real_escape_string($con, $_POST['email']);
+    if (isset($_POST['title']) && isset($_POST['comment'])) {
+        $title = mysqli_real_escape_string($con, $_POST['title']);
         $comment = mysqli_real_escape_string($con, $_POST['comment']);
 
-        if (!empty($email) && !empty($comment)) {
-            $sql = $con->prepare("INSERT INTO comments (email, comment) VALUES (?, ?)");
-            $sql->bind_param("ss", $email, $comment);
+        if (!empty($title) && !empty($comment)) {
+            $sql = $con->prepare("INSERT INTO comments (title, comment) VALUES ($title, $comment)");
+            $sql->bind_param("ss", $title, $comment);
             $sql->execute();
 
             if ($sql->affected_rows > 0) {
@@ -101,7 +60,7 @@ if ($con) {
                 $response['message'] = "The comment has been added successfully!";
             } else {
                 $response['success'] = false;
-                $response['message'] = "The comment is not added!";
+                $response['message'] = "The comment cannot be added!";
             }
 
             $sql->close();

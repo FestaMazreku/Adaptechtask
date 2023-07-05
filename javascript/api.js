@@ -42,70 +42,16 @@ function addMessage() {
         console.error('Error:', error);
       });
   } else {
-    alert('The message is not sent! Please fill in the fields!');
+    alert('The message can not be sent! Please fill in the fields!');
   }
 }
 
-// function addComment() {
-//   const email = document.getElementById('email').value;
-//   const comment = document.getElementById('comment').value;
-
-//   if (email.trim() !== '' && comment.trim() !== '') {
-//     const data = new FormData();
-//     data.append('email', email);
-//     data.append('comment', comment);
-
-//     fetch('http://adaptechtask.test/database/comments.php', {
-//       method: 'POST',
-//       body: data
-//     })
-//       .then(response => response.json())
-//       .then(responseData => {
-
-//         if (responseData.success) {
-//           alert(responseData.message);
-
-//           const newCommentElement = document.createElement('div');
-//           newCommentElement.className = 'comment';
-//           newCommentElement.innerHTML = `<strong>${email}</strong>: <br> Comment: ${comment}`;
-
-//           const commentsSection = document.getElementById('comments');
-//           commentsSection.appendChild(newCommentElement);
-//         } else {
-//           alert(responseData.message);
-//         }
-//       })
-//       .catch(error => {
-//         console.error('Error:', error);
-//       });
-//   } else {
-//     alert('The comment is not added! Please fill in the fields!');
-//   }
-// }
-
-// function getComment(id) {
-//   $.ajax({
-//     type: "GET",
-//     url: 'http://adaptechtask.test/database/comments.php?comment=' + id,
-//     dataType: 'json',
-//   }).then(commentData => {
-//     const commentsSection = document.getElementById('comments');
-//     const newCommentElement = document.createElement('div');
-//     newCommentElement.innerHTML = `<hr>
-//         <p style="font-weight:bold"> Name: ${commentData.email} </p> 
-//         <p> Comment: ${commentData.comment} </p>`;
-//     commentsSection.appendChild(newCommentElement);
-//     $("#comments").show();
-//   });
-// };
-
 function addComment() {
-  const email = $('#email').val();
+  const title = $('#title').val();
   const comment = $('#comment').val();
 
-  if (email.trim() !== '' && comment.trim() !== '') {
-    const data = { email: email, comment: comment };
-
+  if (title.trim() !== '' && comment.trim() !== '') {
+    const data = { title: title, comment: comment };
     $.ajax({
       type: "POST",
       url: 'http://adaptechtask.test/database/comments.php',
@@ -123,7 +69,7 @@ function addComment() {
       }
     });
   } else {
-    alert('The comment is not added! Please fill in the fields!');
+    alert('The comment cannot be added! Please fill in the fields!');
   }
 }
 
@@ -139,7 +85,7 @@ $(document).ready(function () {
         comments.forEach(comment => {
           const newCommentElement = document.createElement('div');
           newCommentElement.className = 'comment';
-          newCommentElement.innerHTML = `<br> <strong> Email: ${comment.email} </strong> <br> Comment: ${comment.comment}`;
+          newCommentElement.innerHTML = `<br> <strong> Name & Surname: ${comment.user_name} </strong> <br> Title: ${comment.title} <br> Comment: ${comment.comment} <br> <p style="font-size: 12px"> ${comment.date} </p> `;
 
           $('#comments').append(newCommentElement);
         });
@@ -205,7 +151,6 @@ function getall() {
           }
           postDiv.innerHTML = `
             <p style="font-weight: bold">Name: ${userData[post.postsid - 1].name}</p> 
-    
             <p style="color: #333; font-size: 14px; font-weight: bold"> Date: ${post.date}</p>
             <a href="?post=${post.postsid}" style="font-size: 16px; font-weight: bold; color: #222"> 
             Title: ${post.title}

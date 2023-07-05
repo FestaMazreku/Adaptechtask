@@ -2,6 +2,7 @@
 $con = mysqli_connect("localhost", "root", "", "adaptechtask");
 mysqli_select_db($con, 'adaptechtask');
 $response = array();
+require_once('IsLoggedIn.php');
 
 if ($con) {
     $sql = "SELECT * FROM comments";
@@ -11,8 +12,10 @@ if ($con) {
 
         while ($row = mysqli_fetch_assoc($result)) {
             $comment = array(
-                'email' => $row['email'],
-                'comment' => $row['comment']
+                'user_name' => $row['user_name'],
+                'title' => $row['title'],
+                'comment' => $row['comment'],
+                'date' => $row['date']
             );
 
             $comments[] = $comment;
