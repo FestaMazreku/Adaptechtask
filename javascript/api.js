@@ -73,6 +73,11 @@ function addComment() {
   }
 }
 
+function getFormattedDateTime(dateString) {
+  const date = new Date(dateString);
+  const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+  return date.toLocaleDateString(undefined, options);
+}
 $(document).ready(function () {
   $.ajax({
     type: "GET",
@@ -85,8 +90,8 @@ $(document).ready(function () {
         comments.forEach(comment => {
           const newCommentElement = document.createElement('div');
           newCommentElement.className = 'comment';
-          newCommentElement.innerHTML = `<br> <strong> Name & Surname: ${comment.user_name} </strong> <br> Title: ${comment.title} <br> Comment: ${comment.comment} <br> <p style="font-size: 12px"> ${comment.date} </p> `;
-
+          newCommentElement.innerHTML = `<strong> Name & Surname: ${comment.user_name} </strong> <br> Title: ${comment.title} <br> Comment: ${comment.comment} <br> 
+          <br> <p style="font-size: 14px"> ${getFormattedDateTime(comment.date)} </p> `;
           $('#comments').append(newCommentElement);
         });
       } else {
@@ -127,6 +132,12 @@ function getPost(id) {
     });
 }
 
+function getFormattedDateTime(dateString) {
+  const date = new Date(dateString);
+  const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+  return date.toLocaleDateString(undefined, options);
+}
+
 function getall() {
   fetch('http://adaptechtask.test/database/posts.php?posts')
     .then(response => response.json())
@@ -151,7 +162,7 @@ function getall() {
           }
           postDiv.innerHTML = `
             <p style="font-weight: bold">Name: ${userData[post.postsid - 1].name}</p> 
-            <p style="color: #333; font-size: 14px; font-weight: bold"> Date: ${post.date}</p>
+            <p style="color: #333; font-size: 14px"> ${getFormattedDateTime(post.date)}</p>
             <a href="?post=${post.postsid}" style="font-size: 16px; font-weight: bold; color: #222"> 
             Title: ${post.title}
             </a>

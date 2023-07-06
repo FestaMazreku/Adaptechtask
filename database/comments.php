@@ -39,7 +39,6 @@ if ($con) {
                 $response['title'] = $row['title'];
                 $response['comment'] = $row['comment'];
                 $response['date'] = $row['date'];
-
             }
         }
         echo json_encode($response, JSON_PRETTY_PRINT);
@@ -47,12 +46,14 @@ if ($con) {
 
     //Add comment
     if (isset($_POST['title']) && isset($_POST['comment'])) {
+
         $title = mysqli_real_escape_string($con, $_POST['title']);
         $comment = mysqli_real_escape_string($con, $_POST['comment']);
 
         if (!empty($title) && !empty($comment)) {
-            $sql = $con->prepare("INSERT INTO comments (title, comment) VALUES ($title, $comment)");
+            $sql = $con->prepare("INSERT INTO comments (title, comment) VALUES (?, ?)");
             $sql->bind_param("ss", $title, $comment);
+
             $sql->execute();
 
             if ($sql->affected_rows > 0) {
@@ -72,11 +73,8 @@ if ($con) {
         $response['success'] = false;
         $response['message'] = "Invalid request.";
     }
-} else {
-    $response['success'] = false;
-    $response['message'] = "Failed to connect to the database.";
-}
 
-echo json_encode($response);
-$con->close();
+    echo json_encode($response);
+    $con->close();
+}
 ?>

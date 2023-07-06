@@ -58,6 +58,18 @@
                     <div id="comments">
                         <form name="addcommentform" id="addcommentform"
                             method="POST">
+
+                            <!-- <div
+                                style="font-weight: bold; font-size: 20px; color: black">
+                                Name & Surname:
+                            </div>
+                            <div class="mt-3">
+                                <input class="post2 p-2"
+                                    id="user_name"
+                                    name="user_name">
+                            </div>
+                            <br> -->
+
                             <div
                                 style="font-weight: bold; font-size: 20px; color: black">
                                 Title: </div>
@@ -65,52 +77,35 @@
                                 <input class="post2 p-2"
                                     id="title"
                                     name="title">
-                                <br> <br>
-                                <div class="card-title"
-                                    style="font-weight: bold; font-size: 20px; color: black">
-                                    Comment: </div>
-                                <div class="mt-3">
-                                    <textarea class="post1 p-2"
-                                        id="comment"
-                                        name="comment"> </textarea>
-                                    <br> <br>
-                                    <input type="button" class="btn8"
-                                        name="addcommentform"
-                                        id="submitCommentButton"
-                                        value="Submit"
-                                        onclick="addComment()">
-                                </div>
-                                <br>
-                                <hr>
-                                <h4> <b> Comments: </b> </h4>
                             </div>
+                            <br>
+
+                            <div class="card-title"
+                                style="font-weight: bold; font-size: 20px; color: black">
+                                Comment: </div>
+                            <div class="mt-3">
+                                <textarea class="post1 p-2"
+                                    id="comment"
+                                    name="comment"> </textarea>
+                                <br> <br>
+                                <input type="button" class="btn8"
+                                    name="addcommentform"
+                                    id="submitCommentButton"
+                                    value="Submit"
+                                    onclick="addComment()">
+                            </div>
+                            <br>
+                            <hr>
+                            <h4> <b> Comments: </b> </h4>
                         </form>
                     </div>
-                    <!-- <p> You have to log in to comment on a post </p>
-                    <button><a href="login.html">Log In</a></button> -->
-                    <p id="loginMessage" style="display: none;">You have to log
-                        in to comment on a post</p>
-                    <button id="loginButton" style="display: none;"><a
-                            href="login.html">Log In</a></button>
                 </div>
             </div>
         </center>
         <br>
 
-        <script>
-            // Check if the user is logged in
-            var isLoggedIn = false; // Replace with your login status check
-        
-            // Show login message and button if the user is not logged in
-            if (!isLoggedIn) {
-                var titleCommentContainer = document.getElementById("titleCommentContainer");
-                var loginMessage = document.getElementById("loginMessage");
-                var loginButton = document.getElementById("loginButton");
-                titleCommentContainer.style.display = "none";
-                loginMessage.style.display = "block";
-                loginButton.style.display = "block";
-            }
-        </script>
+        <!-- <p> You have to log in to comment on a post </p>
+                    <button><a href="login.html">Log In</a></button> -->
 
         <!-- Footer -->
         <div class="footer-clean">

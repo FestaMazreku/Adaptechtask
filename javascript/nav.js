@@ -72,7 +72,7 @@ function setupNavigation() {
             `;
         }
       } else {
-        console.log("Failed to check log in status");
+        header("Location: ../login.html");
       }
     }
   };

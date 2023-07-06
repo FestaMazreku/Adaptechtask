@@ -30,9 +30,9 @@ CREATE TABLE IF NOT EXISTS `comments` (
   KEY `FK_comments_users_2` (`user_name`),
   CONSTRAINT `FK_comments_posts` FOREIGN KEY (`postid`) REFERENCES `posts` (`postsid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_comments_users_2` FOREIGN KEY (`user_name`) REFERENCES `users` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.comments: ~11 rows (approximately)
+-- Dumping data for table adaptechtask.comments: ~13 rows (approximately)
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
 REPLACE INTO `comments` (`commentsid`, `postid`, `user_name`, `title`, `comment`, `date`) VALUES
 	(1, 1, 'Emma Smith', 'optio molestias id quia eum', 'hbfghghjgj', '2023-07-01 10:35:02'),
