@@ -39,6 +39,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['usermessage
         $response['message'] = "Required fields are missing.";
         echo json_encode($response);
     }
+
 } else {
     $response['success'] = false;
     $response['message'] = "Invalid request.";

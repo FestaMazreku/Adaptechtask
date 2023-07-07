@@ -24,6 +24,7 @@ if (empty($email) || empty($password)) {
         $login = false;
         echo "error:nonexistent ";
         $error_message = "This user doesn't exist!";
+
     } else {
         $row = mysqli_fetch_assoc($queryRes);
         $passwordDB = $row['password'];

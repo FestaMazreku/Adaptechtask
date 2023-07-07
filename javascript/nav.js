@@ -71,6 +71,7 @@ function setupNavigation() {
           <i class="fa fa-bars"></i> </a>
             `;
         }
+
       } else {
         header("Location: ../login.html");
       }

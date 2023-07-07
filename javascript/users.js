@@ -56,27 +56,27 @@ function getuserdata(userid) {
 function updateUser() {
     var formdata = $('#edituserform').serialize();
     $.ajax({
-      type: "POST",
-      url: 'http://adaptechtask.test/database/users.php',
-      data: formdata,
-      dataType: 'json',
-      success: function (response) {
-        console.log(response);
-        if (response.hasOwnProperty("status") && response.status === 1) {
-          alert(response.message);
-          window.location.href = "users.html";
-        } else if (response.message === "No direct access!") {
-          alert("You don't have permission to update the user.");
-        } else {
-          alert("Error: Failed to update the user.");
+        type: "POST",
+        url: 'http://adaptechtask.test/database/users.php',
+        data: formdata,
+        dataType: 'json',
+        success: function (response) {
+            console.log(response);
+            if (response.hasOwnProperty("status") && response.status === 1) {
+                alert(response.message);
+                window.location.href = "users.html";
+            } else if (response.message === "No direct access!") {
+                alert("You don't have permission to update the user.");
+            } else {
+                alert("Error: Failed to update the user.");
+            }
+        },
+        error: function (error) {
+            console.log(error);
+            alert("Error: Failed to update the user. " + error.responseText);
         }
-      },
-      error: function (error) {
-        console.log(error);
-        alert("Error: Failed to update the user. " + error.responseText);
-      }
     });
-  }
+}
 
 //Add user
 function addUser() {
@@ -104,7 +104,7 @@ function addUser() {
     });
 }
 
-//Get all
+//Get All
 function GetAll(page, perPage) {
     const tableBody = document.getElementById('table-body');
     tableBody.innerHTML = '';

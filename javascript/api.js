@@ -78,6 +78,7 @@ function getFormattedDateTime(dateString) {
   const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
   return date.toLocaleDateString(undefined, options);
 }
+
 $(document).ready(function () {
   $.ajax({
     type: "GET",
@@ -212,5 +213,14 @@ $(document).ready(function () {
   }
   else {
     addComment();
+  }
+
+  if (currentUrl.indexOf("users.html") > 0) {
+    const page = searchParams.get('page');
+    if (page == null) {
+      getall(1, 10);
+    } else {
+      getall(page, 10);
+    }
   }
 });

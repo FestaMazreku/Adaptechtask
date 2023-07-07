@@ -48,7 +48,6 @@ function LogIn() {
         success: function (response) {
             console.log(response);
             if (response === 'success') {
-                alert("User is logged in!");
                 window.location.href = "post.html";
             } else if (response.startsWith('error:empty')) {
                 alert("User can't log in! Please enter email and password!");

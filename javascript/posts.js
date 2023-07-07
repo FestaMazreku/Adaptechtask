@@ -102,7 +102,7 @@ function addPost() {
     });
 }
 
-//Get all
+//Get All
 let currentPage = 1;
 let totalPosts = 0;
 

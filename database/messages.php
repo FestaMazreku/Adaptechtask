@@ -39,7 +39,7 @@ if ($con) {
     exit();
   }
 
-  //Delete message
+  //Delete Message
   if (isset($_POST['deleteid'])) {
 
     if (!IsLoggedInAsAdmin())

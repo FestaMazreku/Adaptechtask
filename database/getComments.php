@@ -33,5 +33,6 @@ if ($con) {
 }
 
 echo json_encode($response);
+
 $con->close();
 ?>
