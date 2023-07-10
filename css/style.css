@@ -275,6 +275,27 @@ body {
     opacity: 0.9;
 }
 
+.btn13 {
+    width: 90px;
+    height: 30px;
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+    background: #1c1c1d;
+    padding: 2px;
+    margin-left: 5px;
+    box-shadow: 3px 3px 7px 3px black;
+}
+
+.btn13 a {
+    color: rgb(196, 196, 196);
+}
+
+.btn13:hover {
+    background: #494949;
+    opacity: 0.9;
+}
+
 .add {
     color: rgb(197, 196, 196);
     font-weight: 50%;
@@ -450,5 +471,4 @@ body {
     margin-bottom: 0;
     font-size: 13px;
     opacity: 0.6;
-
 }

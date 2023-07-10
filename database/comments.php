@@ -7,6 +7,10 @@ require_once('IsLoggedIn.php');
 if ($con) {
     if (isset($_GET['comments'])) {
         $sql = "SELECT * FROM comments";
+        if (isset($_GET['postId'])) {
+            $postId = $_GET['postId'];
+            $sql .= " WHERE postid = " . $postId;
+        }
         $result = mysqli_query($con, $sql);
         if ($result) {
             header("Content-Type: JSON");
@@ -45,14 +49,14 @@ if ($con) {
     }
 
     //Add comment
-    if (isset($_POST['title']) && isset($_POST['comment'])) {
-
+    if (isset($_POST['title']) && isset($_POST['comment']) && isset($_POST['postId'])) {
         $title = mysqli_real_escape_string($con, $_POST['title']);
         $comment = mysqli_real_escape_string($con, $_POST['comment']);
+        $postId = mysqli_real_escape_string($con, $_POST['postId']);
 
-        if (!empty($title) && !empty($comment)) {
-            $sql = $con->prepare("INSERT INTO comments (title, comment) VALUES (?, ?)");
-            $sql->bind_param("ss", $title, $comment);
+        if (!empty($title) && !empty($comment) && !empty($postId)) {
+            $sql = $con->prepare("INSERT INTO comments (title, comment, postid) VALUES (?, ?, ?)");
+            $sql->bind_param("sss", $title, $comment, $postId);
 
             $sql->execute();
 
@@ -78,4 +82,3 @@ if ($con) {
 
     $con->close();
 }
-?>

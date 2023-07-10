@@ -34,6 +34,9 @@ function setupNavigation() {
             <i class="fa fa-bars"></i> </a>
               `;
 
+            //Content for logged-in users
+            document.getElementById("contentLoggedIn").style.display = "block";
+            document.getElementById("contentLoggedOut").style.display = "none";
           } else {
             navigation.innerHTML = `
             <a href="#" style="color: #f0f0f0; font-size: 16px; font-weight: 400;
@@ -51,8 +54,10 @@ function setupNavigation() {
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i> </a>
               `;
-          }
 
+            document.getElementById("contentLoggedIn").style.display = "block";
+            document.getElementById("contentLoggedOut").style.display = "none";
+          }
         } else {
           navigation.innerHTML = `
           <a href="#" style="color: #f0f0f0; font-size: 16px; font-weight: 400;
@@ -70,10 +75,13 @@ function setupNavigation() {
           <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i> </a>
             `;
-        }
 
+          //Content for logged-out users
+          document.getElementById("contentLoggedIn").style.display = "none";
+          document.getElementById("contentLoggedOut").style.display = "block";
+        }
       } else {
-        header("Location: ../login.html");
+        window.location.href = "login.html";
       }
     }
   };

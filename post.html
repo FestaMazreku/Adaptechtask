@@ -31,6 +31,8 @@
         <!-- javascript -->
         <script src="javascript/api.js"></script>
         <script src="javascript/nav.js"></script>
+        <script
+            src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
     </head>
 
     <!-- Navigation -->
@@ -55,46 +57,66 @@
                         <div id="user"></div>
                     </div>
                     <br>
-                    <div id="comments">
-                        <form name="addcommentform" id="addcommentform"
-                            method="POST">
 
-                            <div
-                                style="font-weight: bold; font-size: 20px; color: black">
-                                Title: </div>
-                            <div class="mt-3">
-                                <input class="post2 p-2"
-                                    id="title"
-                                    name="title">
-                            </div>
-                            <br>
+                    <!-- Logged In -->
+                    <div id="contentLoggedIn" style="display: none;">
+                        <div id="comments">
+                            <form name="addcommentform" id="addcommentform"
+                                method="POST">
 
-                            <div class="card-title"
-                                style="font-weight: bold; font-size: 20px; color: black">
-                                Comment: </div>
-                            <div class="mt-3">
-                                <textarea class="post1 p-2"
-                                    id="comment"
-                                    name="comment"> </textarea>
-                                <br> <br>
-                                <input type="button" class="btn8"
-                                    name="addcommentform"
-                                    id="submitCommentButton"
-                                    value="Submit"
-                                    onclick="addComment()">
-                            </div>
-                            <br>
-                            <hr>
-                            <h4> <b> Comments: </b> </h4>
-                        </form>
+                                <div
+                                    style="font-weight: bold; font-size: 20px; color: black">
+                                    Title: </div>
+                                <div class="mt-3">
+                                    <input class="post2 p-2"
+                                        id="title"
+                                        name="title">
+                                </div>
+                                <br>
+
+                                <div class="card-title"
+                                    style="font-weight: bold; font-size: 20px; color: black">
+                                    Comment: </div>
+                                <div class="mt-3">
+                                    <!-- <textarea class="post1 p-2"
+                                        id="comment"
+                                        name="comment"> </textarea> -->
+
+                                    <textarea name="comment" id="comment">
+                                    </textarea>
+
+                                    <script>
+                                        ClassicEditor
+                                            .create( document.querySelector( '#comment' ) )
+                                            .catch( error => {
+                                                console.error( error );
+                                            } );
+                                    </script>
+
+                                    <br> <br>
+                                    <input type="button" class="btn8"
+                                        name="addcommentform"
+                                        id="submitCommentButton"
+                                        value="Submit"
+                                        onclick="addComment()">
+                                </div>
+                                <br>
+                                <hr>
+                                <h4> <b> Comments: </b> </h4>
+                            </form>
+                        </div>
                     </div>
+
+                    <!-- Logged Out -->
+                    <div id="contentLoggedOut">
+                        <p>You have to log in to comment on this post!</p>
+                        <button class="btn13"><a href="login.html">Log In</a></button>
+                    </div>
+                    <br>
                 </div>
             </div>
         </center>
         <br>
-
-        <!-- <p> You have to log in to comment on a post </p>
-                    <button><a href="login.html">Log In</a></button> -->
 
         <!-- Page navigation -->
         <nav aria-label="Page navigation">
@@ -105,8 +127,8 @@
                         onclick="getall(1, 10)">1</a></li>
                 <li class="page-item"><a class="page-link" href="?page=2"
                         onclick="getall(2, 10)">2</a></li>
-                <li class="page-item"><a class="page-link" href="?page=3"
-                        onclick="getall(3, 10)">3</a></li>
+                <!-- <li class="page-item"><a class="page-link" href="?page=3"
+                        onclick="getall(3, 10)">3</a></li> -->
                 <li class="page-item"><a class="page-link" href="#"
                         onclick="getall(currentPage + 1, 10)">&raquo;</a></li>
             </ul>

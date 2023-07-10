@@ -49,11 +49,12 @@ function addMessage() {
 function addComment() {
   const title = $('#title').val();
   const comment = $('#comment').val();
+  const postId = localStorage.getItem('currentPostId');
 
   if (title.trim() !== '' && comment.trim() !== '') {
-    const data = { title: title, comment: comment };
+    const data = { title: title, comment: comment, postId: postId };
     $.ajax({
-      type: "POST",
+      type: 'POST',
       url: 'http://adaptechtask.test/database/comments.php',
       data: data,
       dataType: 'json',
@@ -66,7 +67,7 @@ function addComment() {
       },
       error: function (error) {
         console.error('Error:', error);
-      }
+      },
     });
   } else {
     alert('The comment cannot be added! Please fill in the fields!');
@@ -81,14 +82,14 @@ function getFormattedDateTime(dateString) {
 
 $(document).ready(function () {
   $.ajax({
-    type: "GET",
+    type: 'GET',
     url: 'http://adaptechtask.test/database/getComments.php',
     dataType: 'json',
     success: function (response) {
       if (response.success) {
         const comments = response.comments;
 
-        comments.forEach(comment => {
+        comments.forEach((comment) => {
           const newCommentElement = document.createElement('div');
           newCommentElement.className = 'comment';
           newCommentElement.innerHTML = `<strong> Name & Surname: ${comment.user_name} </strong> <br> Title: ${comment.title} <br> Comment: ${comment.comment} <br> 
@@ -101,7 +102,7 @@ $(document).ready(function () {
     },
     error: function (error) {
       console.error('Error:', error);
-    }
+    },
   });
 
   $('#commentForm').submit(addComment);
@@ -109,13 +110,13 @@ $(document).ready(function () {
 
 function getPost(id) {
   fetch('http://adaptechtask.test/database/posts.php?post=' + id)
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       $.ajax({
-        type: "GET",
+        type: 'GET',
         url: 'http://adaptechtask.test/database/users.php?users',
         dataType: 'json',
-      }).then(userData => {
+      }).then((userData) => {
         const jsonDataDiv = document.getElementById('posts');
         const postDiv = document.createElement('div');
         postDiv.innerHTML = `
@@ -126,9 +127,11 @@ function getPost(id) {
           <p> Age: ${userData[data.postsid - 1].age} </p>
           <p> Phone: ${userData[data.postsid - 1].phone} </p>
           <p> City: ${userData[data.postsid - 1].city} </p>
-          <a href="post.html" onclick="getPost()"> <button class="btn1"> &laquo; Go back </button> </a> <hr>`
+          <a href="post.html" onclick="getPost()"> <button class="btn1"> &laquo; Go back </button> </a> <hr>`;
         jsonDataDiv.appendChild(postDiv);
-        $("#comments").show();
+        $('#comments').show();
+
+        localStorage.setItem('currentPostId', id);
       });
     });
 }
@@ -139,15 +142,20 @@ function getFormattedDateTime(dateString) {
   return date.toLocaleDateString(undefined, options);
 }
 
-function getall() {
-  fetch('http://adaptechtask.test/database/posts.php?posts')
+function getall(page = 1, perPage = 10) {
+  const startPost = (page - 1) * perPage + 1;
+  const endPost = page * perPage;
+
+  fetch(`http://adaptechtask.test/database/posts.php?posts&start=${startPost - 1}&end=${endPost - 1}`)
     .then(response => response.json())
     .then(data => {
       const jsonDataDiv = document.getElementById('posts');
+      jsonDataDiv.innerHTML = '';
+
       data.forEach(post => {
         $.ajax({
           type: "GET",
-          url: 'http://adaptechtask.test/database/users.php?users',
+          url: `http://adaptechtask.test/database/users.php?users`,
           dataType: 'json',
         }).then(userData => {
           const postDiv = document.createElement('div');
@@ -162,17 +170,17 @@ function getall() {
             showFullDescription = true;
           }
           postDiv.innerHTML = `
-            <p style="font-weight: bold">Name: ${userData[post.postsid - 1].name}</p> 
-            <p style="color: #333; font-size: 14px"> ${getFormattedDateTime(post.date)}</p>
-            <a href="?post=${post.postsid}" style="font-size: 16px; font-weight: bold; color: #222"> 
-            Title: ${post.title}
-            </a>
-            <p style="color: black; font-size: 15px"> Description: 
-            <span id="description-${post.postsid}" style="cursor: pointer;">
-            ${shortenedDescription}
-            </span>
-            </p>
-            <hr>`;
+          <p style="font-weight: bold">Name: ${userData[post.postsid - 1].name}</p> 
+          <p style="color: #333; font-size: 14px"> ${getFormattedDateTime(post.date)}</p>
+          <a href="?post=${post.postsid}" style="font-size: 16px; font-weight: bold; color: #222"> 
+          Title: ${post.title}
+          </a>
+          <p style="color: black; font-size: 15px"> Description: 
+          <span id="description-${post.postsid}" style="cursor: pointer;">
+          ${shortenedDescription}
+          </span>
+          </p>
+          <hr>`;
 
           jsonDataDiv.appendChild(postDiv);
 
@@ -185,7 +193,52 @@ function getall() {
           $("#comments").hide();
         });
       });
+
+      updatePagination(data.length, page, perPage);
     });
+}
+
+function updatePagination(totalPosts, currentPage, perPage) {
+  const pagination = document.getElementById('pagination');
+  pagination.innerHTML = '';
+
+  const totalPages = Math.ceil(totalPosts / perPage);
+
+  const prevPageLink = document.createElement('li');
+  prevPageLink.classList.add('page-item');
+  const prevPageButton = document.createElement('a');
+  prevPageButton.classList.add('page-link');
+  prevPageButton.href = 'javascript:void(0);';
+  prevPageButton.onclick = () => getall(currentPage - 1, perPage);
+  prevPageButton.innerHTML = '&laquo;';
+  prevPageLink.appendChild(prevPageButton);
+  pagination.appendChild(prevPageLink);
+
+  for (let i = 1; i <= totalPages; i++) {
+    const pageLink = document.createElement('li');
+    pageLink.classList.add('page-item');
+    const pageButton = document.createElement('a');
+    pageButton.classList.add('page-link');
+    pageButton.href = `?page=${i}`;
+    pageButton.onclick = () => getall(i, perPage);
+    pageButton.innerHTML = i;
+    pageLink.appendChild(pageButton);
+    pagination.appendChild(pageLink);
+
+    if (i === currentPage) {
+      pageLink.classList.add('active');
+    }
+  }
+
+  const nextPageLink = document.createElement('li');
+  nextPageLink.classList.add('page-item');
+  const nextPageButton = document.createElement('a');
+  nextPageButton.classList.add('page-link');
+  nextPageButton.href = 'javascript:void(0);';
+  nextPageButton.onclick = () => getall(currentPage + 1, perPage);
+  nextPageButton.innerHTML = '&raquo;';
+  nextPageLink.appendChild(nextPageButton);
+  pagination.appendChild(nextPageLink);
 }
 
 $(document).ready(function () {
