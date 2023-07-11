@@ -78,20 +78,12 @@
                                     style="font-weight: bold; font-size: 20px; color: black">
                                     Comment: </div>
                                 <div class="mt-3">
+
                                     <!-- <textarea class="post1 p-2"
                                         id="comment"
                                         name="comment"> </textarea> -->
 
-                                    <textarea name="comment" id="comment">
-                                    </textarea>
-
-                                    <script>
-                                        ClassicEditor
-                                            .create( document.querySelector( '#comment' ) )
-                                            .catch( error => {
-                                                console.error( error );
-                                            } );
-                                    </script>
+                                    <textarea name="comment" id="comment"></textarea>
 
                                     <br> <br>
                                     <input type="button" class="btn8"
@@ -109,7 +101,7 @@
 
                     <!-- Logged Out -->
                     <div id="contentLoggedOut">
-                        <p>You have to log in to comment on this post!</p>
+                        <p>You have to log in to comment on the post!</p>
                         <button class="btn13"><a href="login.html">Log In</a></button>
                     </div>
                     <br>
@@ -117,6 +109,14 @@
             </div>
         </center>
         <br>
+
+        <script>
+            ClassicEditor
+                .create( document.querySelector( '#comment' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+        </script>
 
         <!-- Page navigation -->
         <nav aria-label="Page navigation">
