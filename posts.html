@@ -32,6 +32,28 @@
         <!-- javascript -->
         <script src="javascript/posts.js"></script>
         <script src="javascript/nav.js"></script>
+
+        <script>
+            function preventBack(){window.history.forward()};
+            setTimeout("preventBack(), 0");
+            window.onunload = function(){null;}
+            </script>
+
+        <script>
+        function isLoggedIn() {
+            return localStorage.getItem('isLoggedIn') === 'true';
+        }
+        
+        function redirectToLogin() {
+            window.location.href = 'login.html';
+        }
+        
+        window.addEventListener('DOMContentLoaded', function() {
+            if (!isLoggedIn()) {
+                redirectToLogin();
+            }
+        });
+            </script>
     </head>
 
     <!-- Navigation -->
@@ -61,7 +83,7 @@
             </table>
         </div>
 
-        <!-- Page navigation -->
+        <!-- Pagination -->
         <nav aria-label="Page navigation">
             <ul id="pagination" class="pagination justify-content-center">
                 <li class="page-item"><a class="page-link" href="#"

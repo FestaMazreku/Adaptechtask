@@ -21,31 +21,22 @@ USE `adaptechtask`;
 CREATE TABLE IF NOT EXISTS `comments` (
   `commentsid` int(11) NOT NULL AUTO_INCREMENT,
   `postid` int(11) DEFAULT NULL,
-  `user_name` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
   `title` varchar(50) DEFAULT NULL,
   `comment` text,
   `date` datetime DEFAULT NULL,
   PRIMARY KEY (`commentsid`) USING BTREE,
   KEY `FK_comments_posts` (`postid`),
-  KEY `FK_comments_users_2` (`user_name`),
+  KEY `FK_comments_users` (`email`),
   CONSTRAINT `FK_comments_posts` FOREIGN KEY (`postid`) REFERENCES `posts` (`postsid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_comments_users_2` FOREIGN KEY (`user_name`) REFERENCES `users` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  CONSTRAINT `FK_comments_users` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.comments: ~13 rows (approximately)
+-- Dumping data for table adaptechtask.comments: ~7 rows (approximately)
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-REPLACE INTO `comments` (`commentsid`, `postid`, `user_name`, `title`, `comment`, `date`) VALUES
-	(1, 1, 'Emma Smith', 'optio molestias id quia eum', 'hbfghghjgj', '2023-07-01 10:35:02'),
-	(2, 2, 'Jack Styles', 'in quibusdam tempore odit est dolorem', 'sdfsgfgfgfd', '2023-07-02 09:38:07'),
-	(3, 3, 'Lily Gomez', 'dolorum ut in voluptas mollitia et saepe quo animi', 'ffsdfsdffsd', '2023-07-03 12:40:20'),
-	(4, 4, 'Festa Mazreku', 'adipisci placeat illum aut reiciendis qui', 'sdfdsfsdgg', '2023-07-04 14:45:33'),
-	(5, 5, 'Christina Campbell', 'maxime id vitae nihil numquam', 'sdfsggfg', '2023-07-05 13:25:37'),
-	(6, 6, 'Charlotte Moreau', 'delectus ullam et corporis nulla voluptas sequi', 'sdfsdfdfsdfsdf', '2023-07-06 15:20:58'),
-	(7, 7, 'Robert Williams', 'qui explicabo molestiae dolorem', 'sfdsgsdgsdgg', '2023-07-07 11:48:13'),
-	(8, 8, 'Vincenzo Ricci', 'provident vel ut sit ratione est', 'dfdsfggsddgs', '2023-07-08 06:27:32'),
-	(9, 9, 'Chloe Turner', 'ut numquam possimus omnis eius suscipit ', 'dfdsffsgsgdg', '2023-07-09 16:32:50'),
-	(10, 10, 'Peter Evans', 'aut quo modi neque nostrum ducimus', 'asdsdsddasd', '2023-07-10 17:42:03'),
-	(11, 7, 'Erman Cibo', 'qui et at rerum necessitatibus', 'zcfdfsdgsg', '2023-07-11 18:15:25');
+REPLACE INTO `comments` (`commentsid`, `postid`, `email`, `title`, `comment`, `date`) VALUES
+	(1, 1, 'erman.c@gmail.com', 'asddas', 'daasdasd', '2023-07-12 15:51:11'),
+	(2, 5, 'jackstyles@gmail.com', 'asdsds', 'assdaasd', '2023-07-12 15:53:03');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.contactus
@@ -57,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `contactus` (
   PRIMARY KEY (`messageid`),
   KEY `FK_contactus_users` (`email`),
   CONSTRAINT `FK_contactus_users` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table adaptechtask.contactus: ~6 rows (approximately)
 /*!40000 ALTER TABLE `contactus` DISABLE KEYS */;
@@ -65,8 +56,7 @@ REPLACE INTO `contactus` (`messageid`, `name`, `email`, `usermessage`) VALUES
 	(1, 'Festa Mazreku', 'festa.m@gmail.com', 'hi!!'),
 	(2, 'Charlotte Moreau', 'charlottemoreau@gmail.com', 'hello! i love your page!'),
 	(4, 'Erman Cibo', 'fjolla.b@gmail.com', 'sdfsdfsdfsdf'),
-	(5, 'Jack Styles', 'jackstyles@gmail.com', 'sdfsddfs'),
-	(6, 'Emma Smith', 'emma.s@gmail.com', 'asdsdasa');
+	(5, 'Jack Styles', 'jackstyles@gmail.com', 'sdfsddfs');
 /*!40000 ALTER TABLE `contactus` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.posts
@@ -79,9 +69,9 @@ CREATE TABLE IF NOT EXISTS `posts` (
   PRIMARY KEY (`postsid`),
   KEY `id` (`userid`) USING BTREE,
   CONSTRAINT `userid` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.posts: ~9 rows (approximately)
+-- Dumping data for table adaptechtask.posts: ~12 rows (approximately)
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
 REPLACE INTO `posts` (`postsid`, `userid`, `title`, `body`, `date`) VALUES
 	(1, 1, 'dolorem eum magni eos aperiam quia', 'repudiandae veniam quaerat sunt sed\\nalias aut fugiat sit autem sed est\\nvoluptatem omnis possimus esse voluptatibus quis\\nest aut tenetur dolor neque', '2023-05-19 15:22:10'),
@@ -93,7 +83,9 @@ REPLACE INTO `posts` (`postsid`, `userid`, `title`, `body`, `date`) VALUES
 	(7, 7, 'maxime id vitae nihil numquam', 'non et quaerat ex quae ad maiores\\nmaiores recusandae totam aut blanditiis mollitia quas illo\\nut voluptatibus voluptatem\\nsimilique nostrum eum', '2023-05-22 19:10:00'),
 	(8, 8, 'aut inventore non pariatur sit vitae voluptatem sapiente', 'veritatis voluptates necessitatibus maiores corrupti\\nneque et exercitationem amet sit et\\nullam velit sit magnam laborum\\nmagni ut molestias', '2023-05-19 14:14:00'),
 	(9, 9, 'id nihil consequatur molestias animi provident', 'debitis et eaque non officia sed nesciunt pariatur vel\\nvoluptatem iste vero et ea\\nnumquam aut expedita ipsum nulla in\\nvoluptates omnis consequatur aut enim officiis in quam qui', '2023-05-29 17:18:00'),
-	(10, 10, 'autem ab ea sit alias hic provident sit', 'tempora voluptatem est\nmagnam distinctio autem est dolorem\net ipsa molestiae odit rerum itaque corporis nihil nam\neaque rerum error', '2023-05-31 18:02:00');
+	(10, 10, 'autem ab ea sit alias hic provident sit', 'tempora voluptatem est\nmagnam distinctio autem est dolorem\net ipsa molestiae odit rerum itaque corporis nihil nam\neaque rerum error', '2023-05-31 18:02:00'),
+	(11, 11, 'quasi id et eos tenetur aut quo autem', 'rerum ut et numquam laborum odit est sit\\nid qui sint in\\nquasi tenetur tempore aperiam et quaerat qui in\\nrerum officiis sequi cumque quod', '2023-07-11 11:08:15'),
+	(12, 12, 'soluta aliquam aperiam consequatur illo quis voluptas', 'sunt dolores aut doloribus\\ndolore doloribus voluptates tempora et\\ndoloremque et quo\\ncum asperiores sit consectetur dolorem', '2023-07-12 16:40:12');
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.users

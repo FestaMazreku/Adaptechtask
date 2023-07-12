@@ -7,12 +7,22 @@ require_once('IsLoggedIn.php');
 if ($con) {
     $sql = "SELECT * FROM comments";
     $result = mysqli_query($con, $sql);
+
+    if (isset($_GET['comments'])) {
+        if (isset($_GET['postId'])) {
+          $postId = $_GET['postId'];
+          $sql = "SELECT * FROM comments WHERE postId = " . $postId;
+        } else {
+          $sql = "SELECT * FROM comments";
+        }
+      }
+      
     if ($result) {
         $comments = array();
 
         while ($row = mysqli_fetch_assoc($result)) {
             $comment = array(
-                'user_name' => $row['user_name'],
+                'email' => $row['email'],
                 'title' => $row['title'],
                 'comment' => $row['comment'],
                 'date' => $row['date']

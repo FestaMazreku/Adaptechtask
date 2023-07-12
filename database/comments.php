@@ -19,7 +19,7 @@ if ($con) {
             while ($row = mysqli_fetch_assoc($result)) {
                 $response[$i]['commentsid'] = $row['commentsid'];
                 $response[$i]['postid'] = $row['postid'];
-                $response[$i]['user_name'] = $row['user_name'];
+                $response[$i]['email'] = $row['email'];
                 $response[$i]['title'] = $row['title'];
                 $response[$i]['comment'] = $row['comment'];
                 $response[$i]['date'] = $row['date'];
@@ -39,7 +39,7 @@ if ($con) {
             if ($row = mysqli_fetch_assoc($result)) {
                 $response['commentsid'] = $row['commentsid'];
                 $response['postid'] = $row['postid'];
-                $response['user_name'] = $row['user_name'];
+                $response['email'] = $row['email'];
                 $response['title'] = $row['title'];
                 $response['comment'] = $row['comment'];
                 $response['date'] = $row['date'];
@@ -49,14 +49,15 @@ if ($con) {
     }
 
     //Add comment
-    if (isset($_POST['title']) && isset($_POST['comment']) && isset($_POST['postId'])) {
+    if (isset($_POST['title']) && isset($_POST['comment']) && isset($_POST['postId']) && isset($_POST['email'])) {
         $title = mysqli_real_escape_string($con, $_POST['title']);
         $comment = mysqli_real_escape_string($con, $_POST['comment']);
         $postId = mysqli_real_escape_string($con, $_POST['postId']);
+        $email = mysqli_real_escape_string($con, $_POST['email']);
 
         if (!empty($title) && !empty($comment) && !empty($postId)) {
-            $sql = $con->prepare("INSERT INTO comments (title, comment, postid) VALUES (?, ?, ?)");
-            $sql->bind_param("sss", $title, $comment, $postId);
+            $sql = $con->prepare("INSERT INTO comments (title, comment, postId, email) VALUES (?, ?, ?, ?)");
+            $sql->bind_param("ssss", $title, $comment, $postId, $email);
 
             $sql->execute();
 
@@ -82,3 +83,4 @@ if ($con) {
 
     $con->close();
 }
+?>

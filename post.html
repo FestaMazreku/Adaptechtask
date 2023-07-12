@@ -31,8 +31,14 @@
         <!-- javascript -->
         <script src="javascript/api.js"></script>
         <script src="javascript/nav.js"></script>
-        <script
-            src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+        <!-- Editor for textarea -->
+        <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+        <!-- When user is logged out -->
+        <script>
+        function preventBack(){window.history.forward()};
+        setTimeout("preventBack(), 0");
+        window.onunload = function(){null;}
+        </script>
     </head>
 
     <!-- Navigation -->
@@ -64,6 +70,18 @@
                             <form name="addcommentform" id="addcommentform"
                                 method="POST">
 
+                                <input type="hidden" id="postId" name="postId" value="">
+
+                                <div
+                                    style="font-weight: bold; font-size: 20px; color: black">
+                                    Email: </div>
+                                <div class="mt-3">
+                                    <input class="post2 p-2"
+                                        id="email"
+                                        name="email">
+                                </div>
+                                <br>
+
                                 <div
                                     style="font-weight: bold; font-size: 20px; color: black">
                                     Title: </div>
@@ -78,13 +96,9 @@
                                     style="font-weight: bold; font-size: 20px; color: black">
                                     Comment: </div>
                                 <div class="mt-3">
-
-                                    <!-- <textarea class="post1 p-2"
-                                        id="comment"
-                                        name="comment"> </textarea> -->
-
-                                    <textarea name="comment" id="comment"></textarea>
-
+                                    
+                                    <textarea id="comment" name="comment"></textarea>
+                                    
                                     <br> <br>
                                     <input type="button" class="btn8"
                                         name="addcommentform"
@@ -94,7 +108,7 @@
                                 </div>
                                 <br>
                                 <hr>
-                                <h4> <b> Comments: </b> </h4>
+                                <h4> <b> Comments: </b> </h4> <br>
                             </form>
                         </div>
                     </div>
@@ -104,22 +118,19 @@
                         <p>You have to log in to comment on the post!</p>
                         <button class="btn13"><a href="login.html">Log In</a></button>
                     </div>
-                    <br>
                 </div>
             </div>
         </center>
         <br>
 
-        <script>
-            ClassicEditor
-                .create( document.querySelector( '#comment' ) )
-                .catch( error => {
-                    console.error( error );
-                } );
-        </script>
+        <!-- <script>
+            $(document).ready(function () {
+                CKEDITOR.replace('comment');
+            });
+        </script> -->
 
-        <!-- Page navigation -->
-        <nav aria-label="Page navigation">
+        <!-- Pagination -->
+        <!-- <nav aria-label="Page navigation">
             <ul id="pagination" class="pagination justify-content-center">
                 <li class="page-item"><a class="page-link" href="#"
                         onclick="getall(1, 10)">&laquo;</a></li>
@@ -127,12 +138,12 @@
                         onclick="getall(1, 10)">1</a></li>
                 <li class="page-item"><a class="page-link" href="?page=2"
                         onclick="getall(2, 10)">2</a></li>
-                <!-- <li class="page-item"><a class="page-link" href="?page=3"
-                        onclick="getall(3, 10)">3</a></li> -->
+                <li class="page-item"><a class="page-link" href="?page=3"
+                        onclick="getall(3, 10)">3</a></li>
                 <li class="page-item"><a class="page-link" href="#"
                         onclick="getall(currentPage + 1, 10)">&raquo;</a></li>
             </ul>
-        </nav>
+        </nav> -->
 
         <!-- Footer -->
         <div class="footer-clean">

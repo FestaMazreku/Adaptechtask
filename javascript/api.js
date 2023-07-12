@@ -49,10 +49,16 @@ function addMessage() {
 function addComment() {
   const title = $('#title').val();
   const comment = $('#comment').val();
-  const postId = localStorage.getItem('currentPostId');
+  const email = $('#email').val();
+  const postId = $('#postId').val();
 
-  if (title.trim() !== '' && comment.trim() !== '') {
-    const data = { title: title, comment: comment, postId: postId };
+  console.log('Title:', title);
+  console.log('Comment:', comment);
+  console.log('Email:', email);
+  console.log('Post ID:', postId);
+
+  if (title.trim() !== '' && comment.trim() !== '' && email.trim() !== '') {
+    const data = { title: title, comment: comment, email: email, postId: postId };
     $.ajax({
       type: 'POST',
       url: 'http://adaptechtask.test/database/comments.php',
@@ -74,6 +80,7 @@ function addComment() {
   }
 }
 
+//Date and Time
 function getFormattedDateTime(dateString) {
   const date = new Date(dateString);
   const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
@@ -84,7 +91,9 @@ $(document).ready(function () {
   $.ajax({
     type: 'GET',
     url: 'http://adaptechtask.test/database/getComments.php',
+    data: { postId: localStorage.getItem('currentPostId') },
     dataType: 'json',
+
     success: function (response) {
       if (response.success) {
         const comments = response.comments;
@@ -92,7 +101,7 @@ $(document).ready(function () {
         comments.forEach((comment) => {
           const newCommentElement = document.createElement('div');
           newCommentElement.className = 'comment';
-          newCommentElement.innerHTML = `<strong> Name & Surname: ${comment.user_name} </strong> <br> Title: ${comment.title} <br> Comment: ${comment.comment} <br> 
+          newCommentElement.innerHTML = `<strong> Email: ${comment.email} </strong> <br> Title: ${comment.title} <br> Comment: ${comment.comment} <br> 
           <br> <p style="font-size: 14px"> ${getFormattedDateTime(comment.date)} </p> `;
           $('#comments').append(newCommentElement);
         });
@@ -132,30 +141,27 @@ function getPost(id) {
         $('#comments').show();
 
         localStorage.setItem('currentPostId', id);
+        document.getElementById('postId').value = id;
       });
     });
 }
 
+//Date and Time
 function getFormattedDateTime(dateString) {
   const date = new Date(dateString);
   const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
   return date.toLocaleDateString(undefined, options);
 }
 
-function getall(page = 1, perPage = 10) {
-  const startPost = (page - 1) * perPage + 1;
-  const endPost = page * perPage;
-
-  fetch(`http://adaptechtask.test/database/posts.php?posts&start=${startPost - 1}&end=${endPost - 1}`)
+function getall() {
+  fetch('http://adaptechtask.test/database/posts.php?posts')
     .then(response => response.json())
     .then(data => {
       const jsonDataDiv = document.getElementById('posts');
-      jsonDataDiv.innerHTML = '';
-
       data.forEach(post => {
         $.ajax({
           type: "GET",
-          url: `http://adaptechtask.test/database/users.php?users`,
+          url: 'http://adaptechtask.test/database/users.php?users',
           dataType: 'json',
         }).then(userData => {
           const postDiv = document.createElement('div');
@@ -170,17 +176,17 @@ function getall(page = 1, perPage = 10) {
             showFullDescription = true;
           }
           postDiv.innerHTML = `
-          <p style="font-weight: bold">Name: ${userData[post.postsid - 1].name}</p> 
-          <p style="color: #333; font-size: 14px"> ${getFormattedDateTime(post.date)}</p>
-          <a href="?post=${post.postsid}" style="font-size: 16px; font-weight: bold; color: #222"> 
-          Title: ${post.title}
-          </a>
-          <p style="color: black; font-size: 15px"> Description: 
-          <span id="description-${post.postsid}" style="cursor: pointer;">
-          ${shortenedDescription}
-          </span>
-          </p>
-          <hr>`;
+            <p style="font-weight: bold">Name: ${userData[post.postsid - 1].name}</p> 
+            <p style="color: #333; font-size: 14px"> ${getFormattedDateTime(post.date)}</p>
+            <a href="?post=${post.postsid}" style="font-size: 16px; font-weight: bold; color: #222"> 
+            Title: ${post.title}
+            </a>
+            <p style="color: black; font-size: 15px"> Description: 
+            <span id="description-${post.postsid}" style="cursor: pointer;">
+            ${shortenedDescription}
+            </span>
+            </p>
+            <hr>`;
 
           jsonDataDiv.appendChild(postDiv);
 
@@ -193,52 +199,7 @@ function getall(page = 1, perPage = 10) {
           $("#comments").hide();
         });
       });
-
-      updatePagination(data.length, page, perPage);
     });
-}
-
-function updatePagination(totalPosts, currentPage, perPage) {
-  const pagination = document.getElementById('pagination');
-  pagination.innerHTML = '';
-
-  const totalPages = Math.ceil(totalPosts / perPage);
-
-  const prevPageLink = document.createElement('li');
-  prevPageLink.classList.add('page-item');
-  const prevPageButton = document.createElement('a');
-  prevPageButton.classList.add('page-link');
-  prevPageButton.href = 'javascript:void(0);';
-  prevPageButton.onclick = () => getall(currentPage - 1, perPage);
-  prevPageButton.innerHTML = '&laquo;';
-  prevPageLink.appendChild(prevPageButton);
-  pagination.appendChild(prevPageLink);
-
-  for (let i = 1; i <= totalPages; i++) {
-    const pageLink = document.createElement('li');
-    pageLink.classList.add('page-item');
-    const pageButton = document.createElement('a');
-    pageButton.classList.add('page-link');
-    pageButton.href = `?page=${i}`;
-    pageButton.onclick = () => getall(i, perPage);
-    pageButton.innerHTML = i;
-    pageLink.appendChild(pageButton);
-    pagination.appendChild(pageLink);
-
-    if (i === currentPage) {
-      pageLink.classList.add('active');
-    }
-  }
-
-  const nextPageLink = document.createElement('li');
-  nextPageLink.classList.add('page-item');
-  const nextPageButton = document.createElement('a');
-  nextPageButton.classList.add('page-link');
-  nextPageButton.href = 'javascript:void(0);';
-  nextPageButton.onclick = () => getall(currentPage + 1, perPage);
-  nextPageButton.innerHTML = '&raquo;';
-  nextPageLink.appendChild(nextPageButton);
-  pagination.appendChild(nextPageLink);
 }
 
 $(document).ready(function () {
@@ -266,14 +227,5 @@ $(document).ready(function () {
   }
   else {
     addComment();
-  }
-
-  if (currentUrl.indexOf("users.html") > 0) {
-    const page = searchParams.get('page');
-    if (page == null) {
-      getall(1, 10);
-    } else {
-      getall(page, 10);
-    }
   }
 });
