@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `commentsid` int(11) NOT NULL AUTO_INCREMENT,
   `postid` int(11) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `title` varchar(50) DEFAULT NULL,
+  `title` varchar(80) DEFAULT NULL,
   `comment` text,
   `date` datetime DEFAULT NULL,
   PRIMARY KEY (`commentsid`) USING BTREE,
@@ -30,13 +30,16 @@ CREATE TABLE IF NOT EXISTS `comments` (
   KEY `FK_comments_users` (`email`),
   CONSTRAINT `FK_comments_posts` FOREIGN KEY (`postid`) REFERENCES `posts` (`postsid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_comments_users` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.comments: ~7 rows (approximately)
+-- Dumping data for table adaptechtask.comments: ~4 rows (approximately)
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
 REPLACE INTO `comments` (`commentsid`, `postid`, `email`, `title`, `comment`, `date`) VALUES
-	(1, 1, 'erman.c@gmail.com', 'asddas', 'daasdasd', '2023-07-12 15:51:11'),
-	(2, 5, 'jackstyles@gmail.com', 'asdsds', 'assdaasd', '2023-07-12 15:53:03');
+	(1, 1, 'erman.c@gmail.com', 'ea molestias quasi exercitationem repellat qui ipsa sit aut', 'itaque id aut magnam\\npraesentium quia et ea odit et ea voluptas et\\nsapiente quia nihil amet occaecati quia id voluptatem\\nincidunt ea est distinctio odio', '2023-07-12 14:50:10'),
+	(2, 5, 'jackstyles@gmail.com', 'nesciunt quas odio', 'fuga et accusamus dolorum perferendis illo voluptas\\nnon doloremque neque facere\\nad qui dolorum molestiae beatae\\nsed aut voluptas totam sit illum', '2023-07-12 15:53:03'),
+	(3, 7, 'festa.m@gmail.com', 'in quibusdam tempore odit est dolorem', 'illum quis cupiditate provident sit magnam\\nea sed aut omnis\\nveniam maiores ullam consequatur atque\\nadipisci quo iste expedita sit quos voluptas', '2023-07-13 11:50:47'),
+	(4, 2, 'robertwilliams@gmail.com', 'eveniet quod temporibus', 'ullam consequatur ut\\nomnis quis sit vel consequuntur\\nipsa eligendi ipsum molestiae et omnis error nostrum\\nmolestiae illo tempore quia et distinctio', '2023-07-14 16:25:15'),
+	(5, 3, 'fjolla.b@gmail.com', 'et ea vero quia laudantium autem', 'expedita sit quos voluptas', '2023-07-14 16:35:33');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.contactus
@@ -50,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `contactus` (
   CONSTRAINT `FK_contactus_users` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.contactus: ~6 rows (approximately)
+-- Dumping data for table adaptechtask.contactus: ~4 rows (approximately)
 /*!40000 ALTER TABLE `contactus` DISABLE KEYS */;
 REPLACE INTO `contactus` (`messageid`, `name`, `email`, `usermessage`) VALUES
 	(1, 'Festa Mazreku', 'festa.m@gmail.com', 'hi!!'),
@@ -82,7 +85,7 @@ REPLACE INTO `posts` (`postsid`, `userid`, `title`, `body`, `date`) VALUES
 	(6, 6, 'molestias expedita iste aliquid voluptates', 'repellat aliquid praesentium dolorem quosed totam minus non itaquenihil labore molestiae sunt dolor eveniet hic recusandae veniamtempora et tenetur expedita sunt', '2023-05-23 11:17:00'),
 	(7, 7, 'maxime id vitae nihil numquam', 'non et quaerat ex quae ad maiores\\nmaiores recusandae totam aut blanditiis mollitia quas illo\\nut voluptatibus voluptatem\\nsimilique nostrum eum', '2023-05-22 19:10:00'),
 	(8, 8, 'aut inventore non pariatur sit vitae voluptatem sapiente', 'veritatis voluptates necessitatibus maiores corrupti\\nneque et exercitationem amet sit et\\nullam velit sit magnam laborum\\nmagni ut molestias', '2023-05-19 14:14:00'),
-	(9, 9, 'id nihil consequatur molestias animi provident', 'debitis et eaque non officia sed nesciunt pariatur vel\\nvoluptatem iste vero et ea\\nnumquam aut expedita ipsum nulla in\\nvoluptates omnis consequatur aut enim officiis in quam qui', '2023-05-29 17:18:00'),
+	(9, 9, 'id nihil consequatur molestias animi provident', 'debitis et eaque non officia sed nesciunt pariatur vel\nvoluptatem iste vero et ea\nnumquam aut expedita ipsum nulla in\nvoluptates omnis consequatur aut enim officiis in quam qui', '2023-05-29 17:18:00'),
 	(10, 10, 'autem ab ea sit alias hic provident sit', 'tempora voluptatem est\nmagnam distinctio autem est dolorem\net ipsa molestiae odit rerum itaque corporis nihil nam\neaque rerum error', '2023-05-31 18:02:00'),
 	(11, 11, 'quasi id et eos tenetur aut quo autem', 'rerum ut et numquam laborum odit est sit\\nid qui sint in\\nquasi tenetur tempore aperiam et quaerat qui in\\nrerum officiis sequi cumque quod', '2023-07-11 11:08:15'),
 	(12, 12, 'soluta aliquam aperiam consequatur illo quis voluptas', 'sunt dolores aut doloribus\\ndolore doloribus voluptates tempora et\\ndoloremque et quo\\ncum asperiores sit consectetur dolorem', '2023-07-12 16:40:12');

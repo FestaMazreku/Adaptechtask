@@ -8,4 +8,5 @@ function IsLoggedInAsAdmin()
 {
     return isset($_SESSION['isadmin']) && $_SESSION['isadmin'] == 1;
 }
+
 ?>

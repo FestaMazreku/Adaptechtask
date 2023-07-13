@@ -52,4 +52,5 @@ if (empty($name) || empty($email) || empty($password_1) || empty($password_2)) {
         }
     }
 }
+
 ?>

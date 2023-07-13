@@ -10,13 +10,13 @@ if ($con) {
 
     if (isset($_GET['comments'])) {
         if (isset($_GET['postId'])) {
-          $postId = $_GET['postId'];
-          $sql = "SELECT * FROM comments WHERE postId = " . $postId;
+            $postId = $_GET['postId'];
+            $sql = "SELECT * FROM comments WHERE postId = " . $postId;
         } else {
-          $sql = "SELECT * FROM comments";
+            $sql = "SELECT * FROM comments";
         }
-      }
-      
+    }
+
     if ($result) {
         $comments = array();
 
@@ -43,6 +43,7 @@ if ($con) {
 }
 
 echo json_encode($response);
+
 
 $con->close();
 ?>

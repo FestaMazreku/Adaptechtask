@@ -45,7 +45,7 @@ if ($con) {
     echo json_encode($response, JSON_PRETTY_PRINT);
   }
 
-  //Delete Post
+  //Delete post
   if (isset($_POST['deleteid'])) {
 
     if (!IsLoggedInAsAdmin())
@@ -62,7 +62,7 @@ if ($con) {
     exit();
   }
 
-  //Update Post
+  //Update post
   if (isset($_POST['editpostsid'])) {
 
     if (!IsLoggedInAsAdmin()) {
@@ -106,4 +106,5 @@ if ($con) {
     }
   }
 }
+
 ?>

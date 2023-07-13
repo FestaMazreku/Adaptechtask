@@ -12,7 +12,7 @@ $error_message = "";
 
 if (empty($email) || empty($password)) {
     $login = false;
-    echo "error:empty ";
+    echo "error:empty";
     $error_message = "User can't log in! Please enter email and password!";
 
 } else {
@@ -22,7 +22,7 @@ if (empty($email) || empty($password)) {
 
     if ($count == 0) {
         $login = false;
-        echo "error:nonexistent ";
+        echo "error:nonexistent";
         $error_message = "This user doesn't exist!";
 
     } else {
@@ -31,7 +31,7 @@ if (empty($email) || empty($password)) {
 
         if ($passwordDB != $password) {
             $login = false;
-            echo "error:incorrect ";
+            echo "error:incorrect";
             $error_message = "The password is incorrect!";
         }
     }
