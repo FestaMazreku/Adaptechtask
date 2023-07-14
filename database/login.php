@@ -46,6 +46,7 @@ if (empty($email) || empty($password)) {
             $_SESSION['isadmin'] = 0;
         }
         echo "success";
+
     } else {
         echo $error_code . $error_message;
     }

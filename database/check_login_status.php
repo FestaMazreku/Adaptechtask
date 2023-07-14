@@ -6,5 +6,6 @@ function IsLoggedIn()
 }
 
 $response = array('isLoggedIn' => IsLoggedIn());
+
 echo json_encode($response);
 ?>
