@@ -52,11 +52,6 @@ function addComment() {
   const email = $('#email').val();
   const postId = $('#postId').val();
 
-  console.log('Title:', title);
-  console.log('Comment:', comment);
-  console.log('Email:', email);
-  console.log('Post ID:', postId);
-
   if (title.trim() !== '' && comment.trim() !== '' && email.trim() !== '') {
     const data = { title: title, comment: comment, email: email, postId: postId };
     $.ajax({
@@ -146,204 +141,18 @@ function getPost(id) {
     });
 }
 
-//Date and Time
-// function getFormattedDateTime(dateString) {
-//   const date = new Date(dateString);
-//   const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
-//   return date.toLocaleDateString(undefined, options);
-// }
-
-// function GetAll() {
-//   fetch('http://adaptechtask.test/database/posts.php?posts')
-//     .then(response => response.json())
-//     .then(data => {
-//       const jsonDataDiv = document.getElementById('posts');
-//       data.forEach(post => {
-//         $.ajax({
-//           type: "GET",
-//           url: 'http://adaptechtask.test/database/users.php?users',
-//           dataType: 'json',
-//         }).then(userData => {
-//           const postDiv = document.createElement('div');
-//           const fullDescription = post.body;
-//           const maxLength = 100;
-
-//           let shortenedDescription = fullDescription;
-//           let showFullDescription = false;
-
-//           if (fullDescription.length > maxLength) {
-//             shortenedDescription = fullDescription.substring(0, maxLength) + '...';
-//             showFullDescription = true;
-//           }
-//           postDiv.innerHTML = `
-//             <p style="font-weight: bold">Name: ${userData[post.postsid - 1].name}</p>
-//             <p style="color: #333; font-size: 14px"> ${getFormattedDateTime(post.date)}</p>
-//             <a href="?post=${post.postsid}" style="font-size: 16px; font-weight: bold; color: #222">
-//             Title: ${post.title}
-//             </a>
-//             <p style="color: black; font-size: 15px"> Description:
-//             <span id="description-${post.postsid}" style="cursor: pointer;">
-//             ${shortenedDescription}
-//             </span>
-//             </p>
-//             <hr>`;
-
-//           jsonDataDiv.appendChild(postDiv);
-
-//           if (showFullDescription) {
-//             const descriptionElement = document.getElementById(`description-${post.postsid}`);
-//             descriptionElement.addEventListener('click', () => {
-//               descriptionElement.textContent = fullDescription;
-//             });
-//           }
-//           $("#comments").hide();
-//         });
-//       });
-//     });
-// }
-
-//Date and Time
-// function getFormattedDateTime(dateString) {
-//   const date = new Date(dateString);
-//   const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
-//   return date.toLocaleDateString(undefined, options);
-// }
-
-// let currentPage = 1;
-// let totalPosts = 0;
-
-// //Get All
-// function GetAll(page, perPage) {
-//   const jsonDataDiv = document.getElementById('posts');
-//   jsonDataDiv.innerHTML = '';
-//   history.pushState({}, '', `?page=${page}`);
-
-//   $.ajax({
-//     type: 'GET',
-//     url: 'http://adaptechtask.test/database/posts.php?posts',
-//     dataType: 'json',
-//   }).then((postData) => {
-//     totalPosts = postData.length;
-//     const totalPages = Math.ceil(totalPosts / perPage);
-
-//     const from = (page - 1) * perPage;
-//     const to = page * perPage;
-//     const postPromises = postData.slice(from, to).map((post) => {
-//       return $.ajax({
-//         type: 'GET',
-//         url: 'http://adaptechtask.test/database/users.php?users',
-//         dataType: 'json',
-//       }).then((userData) => {
-//         const postDiv = document.createElement('div');
-//         const fullDescription = post.body;
-//         const maxLength = 100;
-
-//         let shortenedDescription = fullDescription;
-//         let showFullDescription = false;
-
-//         if (fullDescription.length > maxLength) {
-//           shortenedDescription = fullDescription.substring(0, maxLength) + '...';
-//           showFullDescription = true;
-//         }
-//         postDiv.innerHTML = `
-//           <p style="font-weight: bold">Name: ${userData[post.postsid - 1].name}</p>
-//           <p style="color: #333; font-size: 14px"> ${getFormattedDateTime(post.date)}</p>
-//           <a href="?post=${post.postsid}" style="font-size: 16px; font-weight: bold; color: #222">
-//           Title: ${post.title}
-//           </a>
-//           <p style="color: black; font-size: 15px"> Description:
-//           <span id="description-${post.postsid}" style="cursor: pointer;">
-//           ${shortenedDescription}
-//           </span>
-//           </p>
-//           <hr>`;
-
-//         jsonDataDiv.appendChild(postDiv);
-
-//         if (showFullDescription) {
-//           const descriptionElement = document.getElementById(`description-${post.postsid}`);
-//           descriptionElement.addEventListener('click', () => {
-//             descriptionElement.textContent = fullDescription;
-//           });
-//         }
-//         $("#comments").hide();
-//       });
-//     });
-
-//     Promise.all(postPromises).then(() => {
-//       const pagination = document.getElementById('pagination');
-//       pagination.innerHTML = '';
-
-//       const prevPageLink = document.createElement('li');
-//       prevPageLink.classList.add('page-item');
-//       prevPageLink.innerHTML = `<a class="page-link" href="#" onclick="prevPage()">&laquo;</a>`;
-//       pagination.appendChild(prevPageLink);
-
-//       for (let i = 1; i <= totalPages; i++) {
-//         const pageLink = document.createElement('li');
-//         pageLink.classList.add('page-item');
-//         pageLink.innerHTML = `<a class="page-link" href="#" onclick="getPage(${i})">${i}</a>`;
-//         pagination.appendChild(pageLink);
-//       }
-
-//       const nextPageLink = document.createElement('li');
-//       nextPageLink.classList.add('page-item');
-//       nextPageLink.innerHTML = `<a class="page-link" href="#" onclick="nextPage()">&raquo;</a>`;
-//       pagination.appendChild(nextPageLink);
-
-//       const paginationLinks = document.querySelectorAll('#pagination li.page-item');
-//       paginationLinks.forEach((link) => {
-//         link.classList.remove('active');
-//       });
-
-//       const currentPageLink = document.querySelector(`#pagination li.page-item:nth-child(${page + 1})`);
-//       currentPageLink.classList.add('active');
-//     });
-
-//   }).catch((error) => {
-//     console.error('Error retrieving post data:', error);
-//   });
-// }
-
-// // Previous page
-// function prevPage() {
-//   if (currentPage > 1) {
-//     currentPage--;
-//     GetAll(currentPage, 10);
-//   }
-// }
-
-// // Next page
-// function nextPage() {
-//   const totalPages = Math.ceil(totalPosts / 10);
-//   if (currentPage < totalPages) {
-//     currentPage++;
-//     GetAll(currentPage, 10);
-//   }
-// }
-
-// function getPage(page) {
-//   currentPage = page;
-//   GetAll(currentPage, 10);
-// }
-
-// Date and Time
+// //Date and Time
 function getFormattedDateTime(dateString) {
   const date = new Date(dateString);
   const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
   return date.toLocaleDateString(undefined, options);
 }
 
-function GetAll(page, perPage) {
-  const startIndex = (page - 1) * perPage;
-  const endIndex = startIndex + perPage;
-
-  fetch(`http://adaptechtask.test/database/posts.php?posts&start=${startIndex}&end=${endIndex}`)
+function GetAll() {
+  fetch('http://adaptechtask.test/database/posts.php?posts')
     .then(response => response.json())
     .then(data => {
       const jsonDataDiv = document.getElementById('posts');
-      jsonDataDiv.innerHTML = '';
-
       data.forEach(post => {
         $.ajax({
           type: "GET",
@@ -362,15 +171,15 @@ function GetAll(page, perPage) {
             showFullDescription = true;
           }
           postDiv.innerHTML = `
-            <p style="font-weight: bold">Name: ${userData[post.postsid - 1].name}</p> 
+            <p style="font-weight: bold">Name: ${userData[post.postsid - 1].name}</p>
             <p style="color: #333; font-size: 14px"> ${getFormattedDateTime(post.date)}</p>
-            <a href="?post=${post.postsid}" style="font-size: 16px; font-weight: bold; color: #222"> 
-              Title: ${post.title}
+            <a href="?post=${post.postsid}" style="font-size: 16px; font-weight: bold; color: #222">
+            Title: ${post.title}
             </a>
-            <p style="color: black; font-size: 15px"> Description: 
-              <span id="description-${post.postsid}" style="cursor: pointer;">
-                ${shortenedDescription}
-              </span>
+            <p style="color: black; font-size: 15px"> Description:
+            <span id="description-${post.postsid}" style="cursor: pointer;">
+            ${shortenedDescription}
+            </span>
             </p>
             <hr>`;
 
@@ -386,15 +195,6 @@ function GetAll(page, perPage) {
         });
       });
     });
-
-  // Update active class for pagination links
-  const paginationLinks = document.querySelectorAll('#pagination .page-item');
-  paginationLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.textContent === page.toString()) {
-      link.classList.add('active');
-    }
-  });
 }
 
 $(document).ready(function () {
@@ -422,14 +222,5 @@ $(document).ready(function () {
   }
   else {
     addComment();
-  }
-
-  if (currentUrl.indexOf("users.html") > -1) {
-    const page = searchParams.get('page');
-    if (page == null) {
-      GetAll(1, 10);
-    } else {
-      GetAll(parseInt(page), 10);
-    }
   }
 });

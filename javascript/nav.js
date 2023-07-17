@@ -13,7 +13,7 @@ function setupNavigation() {
         if (loggedIn) {
           if (isadmin == 1) {
             navigation.innerHTML = `
-            <a href="#" style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            <a href="home.html" style="color: #f0f0f0; font-size: 16px; font-weight: 400;
             padding-right: 16px">Home</a>
             <a href="#" style="color: #f0f0f0; font-size: 16px; font-weight: 400;
             padding-right: 16px">About Us</a>
@@ -39,7 +39,7 @@ function setupNavigation() {
             document.getElementById("contentLoggedOut").style.display = "none";
           } else {
             navigation.innerHTML = `
-            <a href="#" style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+            <a href="home.html" style="color: #f0f0f0; font-size: 16px; font-weight: 400;
             padding-right: 16px">Home</a>
             <a href="#" style="color: #f0f0f0; font-size: 16px; font-weight: 400;
             padding-right: 16px">About Us</a>
@@ -60,7 +60,7 @@ function setupNavigation() {
           }
         } else {
           navigation.innerHTML = `
-          <a href="#" style="color: #f0f0f0; font-size: 16px; font-weight: 400;
+          <a href="home.html" style="color: #f0f0f0; font-size: 16px; font-weight: 400;
           padding-right: 16px">Home</a>
           <a href="#" style="color: #f0f0f0; font-size: 16px; font-weight: 400;
           padding-right: 16px">About Us</a>

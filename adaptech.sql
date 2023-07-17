@@ -30,16 +30,16 @@ CREATE TABLE IF NOT EXISTS `comments` (
   KEY `FK_comments_users` (`email`),
   CONSTRAINT `FK_comments_posts` FOREIGN KEY (`postid`) REFERENCES `posts` (`postsid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_comments_users` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table adaptechtask.comments: ~4 rows (approximately)
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
 REPLACE INTO `comments` (`commentsid`, `postid`, `email`, `title`, `comment`, `date`) VALUES
 	(1, 1, 'erman.c@gmail.com', 'ea molestias quasi exercitationem repellat qui ipsa sit aut', 'itaque id aut magnam\\npraesentium quia et ea odit et ea voluptas et\\nsapiente quia nihil amet occaecati quia id voluptatem\\nincidunt ea est distinctio odio', '2023-07-12 14:50:10'),
-	(2, 5, 'jackstyles@gmail.com', 'nesciunt quas odio', 'fuga et accusamus dolorum perferendis illo voluptas\\nnon doloremque neque facere\\nad qui dolorum molestiae beatae\\nsed aut voluptas totam sit illum', '2023-07-12 15:53:03'),
-	(3, 7, 'festa.m@gmail.com', 'in quibusdam tempore odit est dolorem', 'illum quis cupiditate provident sit magnam\\nea sed aut omnis\\nveniam maiores ullam consequatur atque\\nadipisci quo iste expedita sit quos voluptas', '2023-07-13 11:50:47'),
-	(4, 2, 'robertwilliams@gmail.com', 'eveniet quod temporibus', 'ullam consequatur ut\\nomnis quis sit vel consequuntur\\nipsa eligendi ipsum molestiae et omnis error nostrum\\nmolestiae illo tempore quia et distinctio', '2023-07-14 16:25:15'),
-	(5, 3, 'fjolla.b@gmail.com', 'et ea vero quia laudantium autem', 'expedita sit quos voluptas', '2023-07-14 16:35:33');
+	(2, 1, 'charlottemoreau@gmail.com', 'sdsdsda', ' asdsadsadsadsa', '2023-07-17 15:40:10'),
+	(3, 7, 'fjolla.b@gmail.com', 'sdafr', 'afafasdfasdsdfdfds', '2023-07-17 15:45:35'),
+	(4, 10, 'charlottemoreau@gmail.com', 'dfdsgdhd', 'daasdfaf', '2023-07-17 15:50:25'),
+	(5, 12, 'jackstyles@gmail.com', 'asdsa', 'dsdads', '2023-07-17 16:35:07');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.contactus
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `contactus` (
   CONSTRAINT `FK_contactus_users` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.contactus: ~4 rows (approximately)
+-- Dumping data for table adaptechtask.contactus: ~6 rows (approximately)
 /*!40000 ALTER TABLE `contactus` DISABLE KEYS */;
 REPLACE INTO `contactus` (`messageid`, `name`, `email`, `usermessage`) VALUES
 	(1, 'Festa Mazreku', 'festa.m@gmail.com', 'hi!!'),
