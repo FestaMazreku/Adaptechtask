@@ -35,11 +35,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
 -- Dumping data for table adaptechtask.comments: ~4 rows (approximately)
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
 REPLACE INTO `comments` (`commentsid`, `postid`, `email`, `title`, `comment`, `date`) VALUES
-	(1, 1, 'erman.c@gmail.com', 'ea molestias quasi exercitationem repellat qui ipsa sit aut', 'itaque id aut magnam\\npraesentium quia et ea odit et ea voluptas et\\nsapiente quia nihil amet occaecati quia id voluptatem\\nincidunt ea est distinctio odio', '2023-07-12 14:50:10'),
-	(2, 1, 'charlottemoreau@gmail.com', 'sdsdsda', ' asdsadsadsadsa', '2023-07-17 15:40:10'),
-	(3, 7, 'fjolla.b@gmail.com', 'sdafr', 'afafasdfasdsdfdfds', '2023-07-17 15:45:35'),
-	(4, 10, 'charlottemoreau@gmail.com', 'dfdsgdhd', 'daasdfaf', '2023-07-17 15:50:25'),
-	(5, 12, 'jackstyles@gmail.com', 'asdsa', 'dsdads', '2023-07-17 16:35:07');
+	(1, 1, 'erman.c@gmail.com', 'ea molestias quasi exercitationem repellat qui ipsa sit aut', 'itaque id aut magnam\\npraesentium quia et ea odit et ea voluptas et\\nsapiente quia nihil amet occaecati quia id voluptatem\\nincidunt ea est distinctio odio', '2023-07-12 14:50:10');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.contactus
