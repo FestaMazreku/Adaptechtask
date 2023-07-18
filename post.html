@@ -33,12 +33,11 @@
         <script src="javascript/nav.js"></script>
         <!-- Editor for textarea -->
         <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
-        <!-- When user is logged out -->
-        <script>
+        <!-- <script>
         function preventBack(){window.history.forward()};
         setTimeout("preventBack(), 0");
         window.onunload = function(){null;}
-        </script>
+        </script> -->
     </head>
 
     <!-- Navigation -->
@@ -93,8 +92,8 @@
                                         name="title">
                                 </div>
                                 <br>
-                                <!-- 
-                                <div class="card-title"
+
+                                <!-- <div class="card-title"
                                     style="font-weight: bold; font-size: 20px; color: black">
                                     Comment: </div>
                                 <div class="mt-3">
@@ -102,7 +101,7 @@
                                     </textarea>
                                     <br> <br> -->
 
-                                <div class="card-title"
+                                    <div class="card-title"
                                     style="font-weight: bold; font-size: 20px; color: black">
                                     Comment: </div>
                                 <div class="mt-3">
@@ -118,7 +117,6 @@
                                         value="Submit"
                                         onclick="addComment()">
                                 </div>
-
                                 <br>
                                 <hr>
                                 <h4> <b> Comments: </b> </h4> <br>
@@ -136,8 +134,7 @@
         </center>
         <br>
 
-        <!-- 
-        <script>
+        <!-- <script>
             $(document).ready(function () {
                 CKEDITOR.replace('comment');
             });
