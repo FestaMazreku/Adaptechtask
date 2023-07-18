@@ -47,33 +47,37 @@ function addMessage() {
 }
 
 function addComment() {
-  const title = $('#title').val();
-  const comment = $('#comment').val();
-  const email = $('#email').val();
-  const postId = $('#postId').val();
+  // const title = $('#title').val();
+  // const comment = $('#comment').val();
+  // const email = $('#email').val();
+  // const postId = $('#postId').val();
 
-  if (title.trim() !== '' && comment.trim() !== '' && email.trim() !== '') {
-    const data = { title: title, comment: comment, email: email, postId: postId };
-    $.ajax({
-      type: 'POST',
-      url: 'http://adaptechtask.test/database/comments.php',
-      data: data,
-      dataType: 'json',
-      success: function (response) {
-        if (response.success) {
-          alert(response.message);
-        } else {
-          alert(response.message);
-        }
-      },
-      error: function (error) {
-        console.error('Error:', error);
-      },
-    });
-  } else {
-    alert('The comment cannot be added! Please fill in the fields!');
-  }
+  // if (title.trim() !== '' && comment.trim() !== '' && email.trim() !== '') {
+  // const data = { title: title, comment: comment, email: email, postId: postId };
+
+  e.preventDefault();
+  const data = $("#addcommentform").serialize();
+  console.log(data);
+  $.ajax({
+    type: 'POST',
+    url: 'http://adaptechtask.test/database/comments.php',
+    data: data,
+    dataType: 'json',
+    success: function (response) {
+      if (response.success) {
+        alert(response.message);
+      } else {
+        alert(response.message);
+      }
+    },
+    error: function (error) {
+      console.error('Error:', error);
+    },
+  });
 }
+// } else {
+//   alert('The comment cannot be added! Please fill in the fields!');
+
 
 //Date and Time
 function getFormattedDateTime(dateString) {

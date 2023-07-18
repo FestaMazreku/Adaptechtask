@@ -33,11 +33,11 @@
         <script src="javascript/nav.js"></script>
         <!-- Editor for textarea -->
         <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
-        <!-- <script>
+        <script>
         function preventBack(){window.history.forward()};
         setTimeout("preventBack(), 0");
         window.onunload = function(){null;}
-        </script> -->
+        </script>
     </head>
 
     <!-- Navigation -->
@@ -67,8 +67,8 @@
                     <div id="contentLoggedIn" style="display: none;">
                         <div class="comments" id="comments">
 
-                            <form name="addcommentform" id="addcommentform"
-                                method="POST">
+                            <form id="addcommentform"
+                                method="POST" onsubmit="addComment()">
 
                                 <input type="hidden" id="postId" name="postId"
                                     value="1">
@@ -93,14 +93,14 @@
                                 </div>
                                 <br>
 
-                                <!-- <div class="card-title"
+                                <div class="card-title"
                                     style="font-weight: bold; font-size: 20px; color: black">
                                     Comment: </div>
                                 <div class="mt-3">
                                     <textarea id="comment" name="comment">
                                     </textarea>
-                                    <br> <br> -->
-
+                                    <br> <br>
+                                    <!-- 
                                     <div class="card-title"
                                     style="font-weight: bold; font-size: 20px; color: black">
                                     Comment: </div>
@@ -109,7 +109,7 @@
                                         id="comment"
                                         name="comment">
                                     </textarea>
-                                    <br> <br>
+                                    <br> <br> -->
 
                                     <input type="button" class="btn8"
                                         name="addcommentform"
@@ -134,11 +134,11 @@
         </center>
         <br>
 
-        <!-- <script>
+        <script>
             $(document).ready(function () {
                 CKEDITOR.replace('comment');
             });
-        </script> -->
+        </script>
 
         <!-- Footer -->
         <div class="footer-clean">
