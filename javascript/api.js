@@ -54,8 +54,8 @@ function addComment() {
 
   // if (title.trim() !== '' && comment.trim() !== '' && email.trim() !== '') {
   // const data = { title: title, comment: comment, email: email, postId: postId };
-
-  e.preventDefault();
+alert("festa");
+  // e.preventDefault();
   const data = $("#addcommentform").serialize();
   console.log(data);
   $.ajax({
