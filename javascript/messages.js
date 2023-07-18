@@ -11,7 +11,7 @@ function myFunction() {
 function deleteMessage(id, button) {
     if (confirm("Are you sure you want to delete this message?")) {
         $.ajax({
-            url: 'http://adaptechtask.test/database/messages.php',
+            url: 'database/messages.php',
             type: "POST",
             data: "deleteid=" + id,
             success: function (response) {
@@ -40,7 +40,7 @@ function GetAll(page, perPage) {
 
     $.ajax({
         type: 'GET',
-        url: 'http://adaptechtask.test/database/messages.php?messages',
+        url: 'database/messages.php?messages',
         dataType: 'json',
     }).then((data) => {
         const totalUsers = data.length;

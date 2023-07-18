@@ -18,7 +18,7 @@ function addMessage() {
     data.append('email', email);
     data.append('usermessage', usermessage);
 
-    fetch('http://adaptechtask.test/database/addMessage.php', {
+    fetch('database/addMessage.php', {
       method: 'POST',
       body: data
     })
@@ -60,7 +60,7 @@ function addComment() {
   console.log(data);
   $.ajax({
     type: 'POST',
-    url: 'http://adaptechtask.test/database/comments.php',
+    url: 'database/comments.php',
     data: data,
     dataType: 'json',
     success: function (response) {
@@ -89,7 +89,7 @@ function getFormattedDateTime(dateString) {
 $(document).ready(function () {
   $.ajax({
     type: 'GET',
-    url: 'http://adaptechtask.test/database/getComments.php',
+    url: 'database/getComments.php',
     data: { postId: localStorage.getItem('currentPostId') },
     dataType: 'json',
 
@@ -117,12 +117,12 @@ $(document).ready(function () {
 });
 
 function getPost(id) {
-  fetch('http://adaptechtask.test/database/posts.php?post=' + id)
+  fetch('database/posts.php?post=' + id)
     .then((response) => response.json())
     .then((data) => {
       $.ajax({
         type: 'GET',
-        url: 'http://adaptechtask.test/database/users.php?users',
+        url: 'database/users.php?users',
         dataType: 'json',
       }).then((userData) => {
         const jsonDataDiv = document.getElementById('posts');
@@ -153,14 +153,14 @@ function getFormattedDateTime(dateString) {
 }
 
 function GetAll() {
-  fetch('http://adaptechtask.test/database/posts.php?posts')
+  fetch('database/posts.php?posts')
     .then(response => response.json())
     .then(data => {
       const jsonDataDiv = document.getElementById('posts');
       data.forEach(post => {
         $.ajax({
           type: "GET",
-          url: 'http://adaptechtask.test/database/users.php?users',
+          url: 'database/users.php?users',
           dataType: 'json',
         }).then(userData => {
           const postDiv = document.createElement('div');

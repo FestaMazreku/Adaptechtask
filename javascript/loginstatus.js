@@ -1,6 +1,6 @@
 function checkLoginStatus() {
     return $.ajax({
-        url: 'http://adaptechtask.test/database/check_login_status.php',
+        url: 'database/check_login_status.php',
         type: 'GET',
         dataType: 'json',
         async: false
@@ -13,7 +13,7 @@ function checkLoginStatus() {
   
   function logout() {
     $.ajax({
-        url: 'http://adaptechtask.test/database/logout.php',
+        url: 'database/logout.php',
         type: 'POST',
         success: function() {
             redirectToLogin();

@@ -11,7 +11,7 @@ function myFunction() {
 function deleteUser(id, button) {
     if (confirm("Are you sure you want to delete this user?")) {
         $.ajax({
-            url: 'http://adaptechtask.test/database/users.php',
+            url: 'database/users.php',
             type: "POST",
             data: "deleteid=" + id,
             success: function (response) {
@@ -39,7 +39,7 @@ function getuserdata(userid) {
     } else {
         $.ajax({
             type: "GET",
-            url: `http://adaptechtask.test/database/users.php?user=${userid}`,
+            url: `database/users.php?user=${userid}`,
             dataType: 'json',
         }).then(post => {
             $("#editid").val(post.id);
@@ -57,7 +57,7 @@ function updateUser() {
     var formdata = $('#edituserform').serialize();
     $.ajax({
         type: "POST",
-        url: 'http://adaptechtask.test/database/users.php',
+        url: 'database/users.php',
         data: formdata,
         dataType: 'json',
         success: function (response) {
@@ -83,7 +83,7 @@ function addUser() {
     var formdata = $('#adduserform').serialize();
     $.ajax({
         type: "POST",
-        url: 'http://adaptechtask.test/database/addUser.php',
+        url: 'database/addUser.php',
         data: formdata,
         dataType: 'json',
         success: function (response) {
@@ -112,7 +112,7 @@ function GetAll(page, perPage) {
 
     $.ajax({
         type: 'GET',
-        url: 'http://adaptechtask.test/database/users.php?users',
+        url: 'database/users.php?users',
         dataType: 'json',
     }).then((userData) => {
         const totalUsers = userData.length;
@@ -129,7 +129,7 @@ function GetAll(page, perPage) {
           <td><p class="table-element6">${post.phone}</p></td>
           <td><p class="table-element7">${post.city}</p></td>
           <td>
-          <button class="btn12"><a href="http://adaptechtask.test/post.html?post=${post.id}">View</a></button>
+          <button class="btn12"><a href="post.html?post=${post.id}">View</a></button>
           <button class="btn10"><a href="editUser.html?userid=${post.id}">Update</a></button>
           <button class="btn7" onclick="deleteUser(${post.id}, this)">Delete</button>
           </td>

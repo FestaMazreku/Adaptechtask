@@ -11,7 +11,7 @@ function myFunction() {
 function deletePost(postsid, button) {
     if (confirm("Are you sure you want to delete this post?")) {
         $.ajax({
-            url: 'http://adaptechtask.test/database/posts.php',
+            url: 'database/posts.php',
             type: "POST",
             data: "deleteid=" + postsid,
             success: function (response) {
@@ -39,7 +39,7 @@ function getpostdata(postid) {
     } else {
         $.ajax({
             type: "GET",
-            url: `http://adaptechtask.test/database/posts.php?post=${postid}`,
+            url: `database/posts.php?post=${postid}`,
             dataType: 'json',
         }).then(post => {
             $("#editpostsid").val(post.postsid);
@@ -55,7 +55,7 @@ function updatePost() {
     var formdata = $('#editpostform').serialize();
     $.ajax({
         type: "POST",
-        url: 'http://adaptechtask.test/database/posts.php',
+        url: 'database/posts.php',
         data: formdata,
         dataType: 'json',
         success: function (response) {
@@ -81,7 +81,7 @@ function addPost() {
     var formdata = $('#addpostform').serialize();
     $.ajax({
         type: "POST",
-        url: 'http://adaptechtask.test/database/addPost.php',
+        url: 'database/addPost.php',
         data: formdata,
         dataType: 'json',
         success: function (response) {
@@ -113,7 +113,7 @@ function GetAll(page, perPage) {
 
     $.ajax({
         type: 'GET',
-        url: 'http://adaptechtask.test/database/posts.php?posts',
+        url: 'database/posts.php?posts',
         dataType: 'json',
     }).then((postData) => {
         totalPosts = postData.length;
@@ -132,7 +132,7 @@ function GetAll(page, perPage) {
                 </p>
                 </td>
                 <td>
-                <button class="btn12"><a href="http://adaptechtask.test/post.html?post=${post.postsid}">View</a></button>
+                <button class="btn12"><a href="post.html?post=${post.postsid}">View</a></button>
                 <br>
                 <br>
                 <button class="btn10"><a href="editPost.html?postid=${post.postsid}">Update</a></button>

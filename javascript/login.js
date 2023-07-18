@@ -12,7 +12,7 @@ function SignUp() {
     var formdata = $('#signupform').serialize();
     $.ajax({
         type: "POST",
-        url: 'http://adaptechtask.test/database/signup.php',
+        url: 'database/signup.php',
         data: formdata,
         success: function (response) {
             console.log(response);
@@ -43,7 +43,7 @@ function LogIn() {
     var formdata = $('#loginform').serialize();
     $.ajax({
         type: "POST",
-        url: 'http://adaptechtask.test/database/login.php',
+        url: 'database/login.php',
         data: formdata,
         success: function (response) {
             console.log(response);
