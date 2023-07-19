@@ -30,12 +30,17 @@ CREATE TABLE IF NOT EXISTS `comments` (
   KEY `FK_comments_users` (`email`),
   CONSTRAINT `FK_comments_posts` FOREIGN KEY (`postid`) REFERENCES `posts` (`postsid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_comments_users` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.comments: ~4 rows (approximately)
+-- Dumping data for table adaptechtask.comments: ~5 rows (approximately)
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
 REPLACE INTO `comments` (`commentsid`, `postid`, `email`, `title`, `comment`, `date`) VALUES
-	(1, 1, 'erman.c@gmail.com', 'ea molestias quasi exercitationem repellat qui ipsa sit aut', 'itaque id aut magnam\\npraesentium quia et ea odit et ea voluptas et\\nsapiente quia nihil amet occaecati quia id voluptatem\\nincidunt ea est distinctio odio', '2023-07-12 14:50:10');
+	(1, 1, 'erman.c@gmail.com', 'ea molestias quasi exercitationem repellat qui ipsa sit aut', 'itaque id aut magnam\\npraesentium quia et ea odit et ea voluptas et\\nsapiente quia nihil amet occaecati quia id voluptatem\\nincidunt ea est distinctio odio', '2023-07-12 14:50:10'),
+	(2, 1, 'chloe_t@gmail.com', 'sdfsdf', 'sdfsdfsdf', '2023-07-18 15:53:48'),
+	(3, 2, 'chloe_t@gmail.com', 'dfgdfg', 'dfgdfgdfgdfg', '2023-07-18 15:54:09'),
+	(4, 1, 'jackstyles@gmail.com', 'sdd', 'aasdsaas', '2023-07-19 08:35:08'),
+	(5, 9, 'festa.m@gmail.com', 'reer', 'xcxcewewrew', '2023-07-19 09:50:34'),
+	(6, 5, 'jackstyles@gmail.com', 'asdasd', 'sadasdasdsad                                    ', '2023-07-19 09:58:02');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.contactus
@@ -54,8 +59,8 @@ CREATE TABLE IF NOT EXISTS `contactus` (
 REPLACE INTO `contactus` (`messageid`, `name`, `email`, `usermessage`) VALUES
 	(1, 'Festa Mazreku', 'festa.m@gmail.com', 'hi!!'),
 	(2, 'Charlotte Moreau', 'charlottemoreau@gmail.com', 'hello! i love your page!'),
-	(4, 'Erman Cibo', 'fjolla.b@gmail.com', 'sdfsdfsdfsdf'),
-	(5, 'Jack Styles', 'jackstyles@gmail.com', 'sdfsddfs');
+	(4, 'Fjolla Berisha', 'fjolla.b@gmail.com', 'hi! i had a question'),
+	(5, 'Jack Styles', 'jackstyles@gmail.com', 'hey Adaptech! i really like your work!');
 /*!40000 ALTER TABLE `contactus` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.posts
@@ -68,15 +73,15 @@ CREATE TABLE IF NOT EXISTS `posts` (
   PRIMARY KEY (`postsid`),
   KEY `id` (`userid`) USING BTREE,
   CONSTRAINT `userid` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table adaptechtask.posts: ~12 rows (approximately)
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
 REPLACE INTO `posts` (`postsid`, `userid`, `title`, `body`, `date`) VALUES
-	(1, 1, 'dolorem eum magni eos aperiam quia', 'repudiandae veniam quaerat sunt sed\\nalias aut fugiat sit autem sed est\\nvoluptatem omnis possimus esse voluptatibus quis\\nest aut tenetur dolor neque', '2023-05-19 15:22:10'),
-	(2, 2, 'et ea vero quia laudantium autem', 'ullam consequatur ut\nomnis quis sit vel consequuntur\nipsa eligendi ipsum molestiae et omnis error nostrum\nmolestiae illo tempore quia et distinction', '2023-05-20 18:25:28'),
+	(1, 1, 'dolorem eum magni eos aperiam quia', 'repudiandae veniam quaerat sunt sed\r\nalias aut fugiat sit autem sed est\r\nvoluptatem omnis possimus esse voluptatibus quis\r\nest aut tenetur dolor neque', '2023-05-19 15:22:10'),
+	(2, 2, 'et ea vero quia laudantium autem', 'ullam consequatur ut\r\nomnis quis sit vel consequuntur\r\nipsa eligendi ipsum molestiae et omnis error nostrum\r\nmolestiae illo tempore quia et distinction', '2023-05-20 18:25:28'),
 	(3, 3, 'iusto eius quod necessitatibus culpa ea', 'odio fugit voluptatum ducimus earum autem est incidunt voluptatem\\nodit reiciendis aliquam sunt sequi nulla dolorem\\nnon facere repellendus voluptates quia\\nratione harum vitae ut', '2023-05-21 16:18:57'),
-	(4, 4, 'magnam facilis autem', 'itaque id aut magnam\\npraesentium quia et ea odit et ea voluptas et\\nsapiente quia nihil amet occaecati quia id voluptatem\\nincidunt ea est distinctio odio', '2023-05-22 10:13:00'),
+	(4, 4, 'magnam facilis autem', 'itaque id aut magnam\npraesentium quia et ea odit et ea voluptas et\nsapiente quia nihil amet occaecati quia id voluptatem\nincidunt ea est distinctio odio\r\n\r\n<p style="color: red"> Festa </p>', '2023-05-22 10:13:00'),
 	(5, 5, 'culpa eius tempora sit consequatur neque iure deserunt', 'id est iure occaecati quam similique enim\\nab repudiandae non\\nillum expedita quam excepturi soluta qui placeat\\nperspiciatis optio maiores non doloremque aut iusto sapiente', '2023-05-24 16:08:00'),
 	(6, 6, 'molestias expedita iste aliquid voluptates', 'repellat aliquid praesentium dolorem quosed totam minus non itaquenihil labore molestiae sunt dolor eveniet hic recusandae veniamtempora et tenetur expedita sunt', '2023-05-23 11:17:00'),
 	(7, 7, 'maxime id vitae nihil numquam', 'non et quaerat ex quae ad maiores\\nmaiores recusandae totam aut blanditiis mollitia quas illo\\nut voluptatibus voluptatem\\nsimilique nostrum eum', '2023-05-22 19:10:00'),
@@ -106,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 REPLACE INTO `users` (`id`, `name`, `age`, `email`, `phone`, `city`, `isadmin`, `password`) VALUES
 	(1, 'Emma Smith', 26, 'emma.s@gmail.com', '1-558-453-9856', 'California, US', 0, NULL),
-	(2, 'Jack Styles', 21, 'jackstyles@gmail.com', '1-540-598-8532', 'Los Angeles, US', 0, 'Jack21'),
+	(2, 'Jack Styles', 21, 'jackstyles@gmail.com', '1-540-598-8532', 'Los Angeles, US', 1, 'Jack21'),
 	(3, 'Lily Gomez', 21, 'lily.g@gmail.com', '1-895-581-6653', 'Rio de Janeiro, Brazil', 0, NULL),
 	(4, 'Festa Mazreku', 23, 'festa.m@gmail.com', '045-852-635', 'Prizren, Kosovo', 1, 'Festa99'),
 	(5, 'Christina Campbell', 27, 'christina.c@gmail.com', '1-321-889-5458', 'Manchester, UK', 0, NULL),

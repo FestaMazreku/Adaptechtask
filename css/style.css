@@ -296,11 +296,33 @@ body {
     opacity: 0.9;
 }
 
-.border{  
-    width: 375px;
+.btn14 {
+    width: 130px;
+    height: 35px;
+    border-radius: 4px;
+    border: 0;
+    outline: 0;
+    color: #f0f0f0;
+    background: #1c1c1d;
+    padding: 2px;
+    margin-left: 5px;
+    box-shadow: 3px 3px 7px 3px black;
+}
+
+.btn14 a {
+    color: rgb(196, 196, 196);
+}
+
+.btn14:hover {
+    background: #494949;
+    opacity: 0.9;
+}
+
+#border {
+    width: 2000px;
     height: 460;
-    background: rgb(211, 214, 224);
-    opacity: 0.7;
+    color: #f0f0f0;
+    background: rgb(19, 20, 20);
 }
 
 .add {

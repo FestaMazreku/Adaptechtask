@@ -31,6 +31,9 @@
         <script src="javascript/posts.js"></script>
         <script src="javascript/nav.js"></script>
         <script src="javascript/loginstatus.js"></script>
+        <!-- Textarea editor -->
+        <script
+            src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
     </head>
 
     <!-- Navigation -->
@@ -53,26 +56,28 @@
                     <tr>
                         <td align="middle" class="add">ID:</td>
                         <td>
-                            <input type="text" name="postsid" size="50">
+                            <input type="text" name="postsid" id="postsid" size="50">
                         </td>
                     </tr>
                     <tr>
                         <td align="middle" class="add">User ID:</td>
                         <td>
-                            <input type="text" name="userid" size="50">
+                            <input type="text" name="userid" id="userid" size="50">
                         </td>
                     </tr>
                     <tr>
                         <td align="middle" class="add">Title</td>
                         <td>
-                            <input type="text" name="title" size="50">
+                            <input type="text" name="title" id="title" size="50">
                         </td>
                     </tr>
                     <tr>
                         <td align="middle" class="add">Description:</td>
                         <td>
-                            <textarea name="body" cols="53" rows="10"
-                                style="resize: vertical; vertical-align: top;"></textarea>
+                            <textarea name="body" id="body"></textarea>
+                            
+                            <!-- <textarea name="body" cols="53" rows="10"
+                            style="resize: vertical; vertical-align: top;"></textarea>  -->
                         </td>
                     </tr>
                     <div class="input-group">
@@ -85,11 +90,18 @@
                                 bold; border: 2px; border-radius: 2px;
                                 font-size: 20px; width: 40%"
                                     name="addpostform" value="Add"
-                                    onclick="addPost()">
+                                    onclick="addPost(event)">
                             </td>
                         </tr>
                     </div>
                 </table>
+                <script>
+                    ClassicEditor
+                        .create( document.querySelector( '#body' ) )
+                        .catch( error => {
+                            console.error( error );
+                        } );
+                </script>
             </form>
         </center>
 

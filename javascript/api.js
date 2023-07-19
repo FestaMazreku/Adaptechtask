@@ -46,6 +46,7 @@ function addMessage() {
   }
 }
 
+//Add a Comment
 function addComment() {
   const title = $('#title').val();
   const comment = $('#comment').val();

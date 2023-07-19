@@ -3,7 +3,7 @@ $con = mysqli_connect("localhost", "root", "", "adaptechtask");
 mysqli_select_db($con, "adaptechtask");
 require_once('IsLoggedIn.php');
 
-if (isset($_POST['userid']) && isset($_POST['title'])) {
+if (isset($_POST['userid']) && isset($_POST['title']) && isset($_POST['body'])) {
 
     if (!IsLoggedInAsAdmin()) {
         $response['success'] = false;
@@ -12,12 +12,12 @@ if (isset($_POST['userid']) && isset($_POST['title'])) {
         exit();
     }
 
-    $postsid = mysqli_real_escape_string($con, $_POST['postsid']);
-    $userid = mysqli_real_escape_string($con, $_POST['userid']);
-    $title = mysqli_real_escape_string($con, $_POST['title']);
-    $body = mysqli_real_escape_string($con, $_POST['body']);
+    $postsid = $_POST['postsid'];
+    $userid = $_POST['userid'];
+    $title = $_POST['title'];
+    $body = $_POST['body'];
 
-    if (!empty($userid) && !empty($title) && !empty($body)) {
+    // if (!empty($userid) && !empty($title) && !empty($body)) {
         $sql = $con->prepare("INSERT INTO posts (postsid, userid, title, body) VALUES ('$postsid','$userid','$title','$body')");
         $sql->execute();
 
@@ -40,11 +40,11 @@ if (isset($_POST['userid']) && isset($_POST['title'])) {
         echo json_encode($response);
     }
 
-} else {
-    $response['success'] = false;
-    $response['message'] = "Invalid request.";
-    echo json_encode($response);
-}
+// } else {
+//     $response['success'] = false;
+//     $response['message'] = "Invalid request.";
+//     echo json_encode($response);
+// }
 
 $con->close();
 ?>
