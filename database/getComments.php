@@ -5,8 +5,7 @@ $response = array();
 require_once('IsLoggedIn.php');
 
 if ($con) {
-    
-$sql = "SELECT comments.* FROM posts JOIN comments ON posts.postsid = comments.postid WHERE posts.postsid = 1";
+    $sql = "SELECT comments.* FROM posts JOIN comments ON posts.postsid = comments.postid WHERE posts.postsid = 1";
     $result = mysqli_query($con, $sql);
 
     if (isset($_GET['comments'])) {

@@ -46,14 +46,14 @@ function addMessage() {
   }
 }
 
-//Add a Comment
+// Add a Comment
 function addComment() {
   const title = $('#title').val();
   const comment = $('#comment').val();
   const email = $('#email').val();
   const postId = $('#postId').val();
 
-  if (title.trim() !== '' && comment.trim() !== '' && email.trim() !== '') {
+  if (title.trim() !== '' && comment.trim() !== '' && postId.trim() !== '') {
     const data = { title: title, comment: comment, email: email, postId: postId };
     $.ajax({
       type: 'POST',
@@ -63,6 +63,8 @@ function addComment() {
       success: function (response) {
         if (response.success) {
           alert(response.message);
+
+          loadComments();
         } else {
           alert(response.message);
         }
@@ -72,7 +74,7 @@ function addComment() {
       },
     });
   } else {
-    alert('The comment cannot be added! Please fill in the fields!');
+    alert('The comment cannot be added! Please fill in all the fields.');
   }
 }
 

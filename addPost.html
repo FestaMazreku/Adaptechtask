@@ -56,13 +56,15 @@
                     <tr>
                         <td align="middle" class="add">ID:</td>
                         <td>
-                            <input type="text" name="postsid" id="postsid" size="50">
+                            <input type="text" name="postsid" id="postsid"
+                                size="50">
                         </td>
                     </tr>
                     <tr>
                         <td align="middle" class="add">User ID:</td>
                         <td>
-                            <input type="text" name="userid" id="userid" size="50">
+                            <input type="text" name="userid" id="userid"
+                                size="50">
                         </td>
                     </tr>
                     <tr>
@@ -75,9 +77,6 @@
                         <td align="middle" class="add">Description:</td>
                         <td>
                             <textarea name="body" id="body"></textarea>
-                            
-                            <!-- <textarea name="body" cols="53" rows="10"
-                            style="resize: vertical; vertical-align: top;"></textarea>  -->
                         </td>
                     </tr>
                     <div class="input-group">
@@ -86,23 +85,23 @@
                                 <br>
                                 <input type="button"
                                     style="padding: 6px; background: black;
-                                opacity: 0.7; color: white; font-weight:
-                                bold; border: 2px; border-radius: 2px;
-                                font-size: 20px; width: 40%"
+                            opacity: 0.7; color: white; font-weight:
+                            bold; border: 2px; border-radius: 2px;
+                            font-size: 20px; width: 40%"
                                     name="addpostform" value="Add"
                                     onclick="addPost(event)">
                             </td>
                         </tr>
                     </div>
                 </table>
-                <script>
-                    ClassicEditor
-                        .create( document.querySelector( '#body' ) )
-                        .catch( error => {
-                            console.error( error );
-                        } );
-                </script>
             </form>
+            <script>
+                ClassicEditor
+                    .create( document.querySelector( '#body' ) )
+                    .catch( error => {
+                        console.error( error );
+                    } );
+            </script>
         </center>
 
         <br>

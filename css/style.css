@@ -319,7 +319,7 @@ body {
 }
 
 #border {
-    width: 2000px;
+    width: auto;
     height: 460;
     color: #f0f0f0;
     background: rgb(19, 20, 20);

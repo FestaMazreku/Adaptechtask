@@ -79,6 +79,11 @@ function updatePost() {
 //Add post
 // function addPost(e) {
 //     e.preventDefault();
+//     // const userid = document.getElementById('userid').value;
+//     // const postsid = document.getElementById('postsid').value;
+//     // const title = document.getElementById('title').value;
+//     // const body = document.getElementById('body').value;
+//     // console.log(userid, postsid, title, body);
 //     const data = $("#addpostform").serialize();
 //     $.ajax({
 //         type: "POST",
@@ -103,27 +108,33 @@ function updatePost() {
 //     });
 // }
 
+//Add post
 function addPost() {
-    const userid = document.getElementById('userid').value;
-    const postsid = document.getElementById('postsid').value;
-    const title = document.getElementById('title').value;
-    const body = document.getElementById('body').value;
-    console.log(userid, postsid, title, body);
-
-    const data = new FormData();
-    data.append('userid', userid);
-    data.append('postsid', postsid);
-    data.append('title ', title);
-    data.append('body ', body);
-
-    fetch('database/addPost.php', {
-        method: 'POST',
-        body: data
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-        });
+    //get content from ck-content class
+    // put in textarea 
+    // $('.ck-content').
+    var formdata = $('#addpostform').serialize();
+    $.ajax({
+        type: "POST",
+        url: 'database/addPost.php',
+        data: formdata,
+        dataType: 'json',
+        success: function (response) {
+            console.log(response);
+            if (response.hasOwnProperty("success") && response.success) {
+                alert(response.message);
+                window.location.href = "posts.html";
+            } else if (response.message === "No direct access!") {
+                alert("You don't have permission to add a new post.");
+            } else {
+                alert("Error: Failed to add a new post.");
+            }
+        },
+        // error: function (error) {
+        //     console.log(error);
+        //     alert("Error: Failed to add a new post. " + error.responseText);
+        // }
+    });
 }
 
 //Get All

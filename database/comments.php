@@ -48,38 +48,40 @@ if ($con) {
         echo json_encode($response, JSON_PRETTY_PRINT);
     }
 
-    //Add comment
-    if (isset($_POST['title']) && isset($_POST['comment']) && isset($_POST['postId']) && isset($_POST['email'])) {
-        $title = mysqli_real_escape_string($con, $_POST['title']);
-        $comment = mysqli_real_escape_string($con, $_POST['comment']);
-        $postId = mysqli_real_escape_string($con, $_POST['postId']);
-        $email = mysqli_real_escape_string($con, $_POST['email']);
+   //Add comment
+   if (isset($_POST['title']) && isset($_POST['comment']) && isset($_POST['postId'])) {
+    $title = mysqli_real_escape_string($con, $_POST['title']);
+    $comment = mysqli_real_escape_string($con, $_POST['comment']);
+    $postId = mysqli_real_escape_string($con, $_POST['postId']);
+    $email = $_SESSION['email'];
 
-        if (!empty($title) && !empty($comment) && !empty($postId)) {
-            $sql = $con->prepare("INSERT INTO comments (title, comment, postId, email) VALUES (?, ?, ?, ?)");
-            $sql->bind_param("ssss", $title, $comment, $postId, $email);
+    if (!empty($title) && !empty($comment) && !empty($postId)) {
+      $currentDate = date("Y-m-d H:i:s");
 
-            $sql->execute();
+      $sql = $con->prepare("INSERT INTO comments (title, comment, postId, email, date) VALUES (?, ?, ?, ?, ?)");
+      $sql->bind_param("sssss", $title, $comment, $postId, $email, $currentDate);
 
-            if ($sql->affected_rows > 0) {
-                $response['success'] = true;
-                $response['message'] = "The comment has been added successfully!";
-            } else {
-                $response['success'] = false;
-                $response['message'] = "The comment cannot be added!";
-            }
+      $sql->execute();
 
-            $sql->close();
-        } else {
-            $response['success'] = false;
-            $response['message'] = "Required fields are missing.";
-        }
-    } else {
+      if ($sql->affected_rows > 0) {
+        $response['success'] = true;
+        $response['message'] = "The comment has been added successfully!";
+      } else {
         $response['success'] = false;
-        $response['message'] = "Invalid request.";
-    }
+        $response['message'] = "The comment cannot be added!";
+      }
 
-    echo json_encode($response);
+      $sql->close();
+    } else {
+      $response['success'] = false;
+      $response['message'] = "Required fields are missing.";
+    }
+  } else {
+    $response['success'] = false;
+    $response['message'] = "Invalid request.";
+  }
+
+  echo json_encode($response);
 }
 
 $con->close();
