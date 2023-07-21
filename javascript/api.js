@@ -46,15 +46,15 @@ function addMessage() {
   }
 }
 
-//Add a Comment
+// Add a Comment
 function addComment() {
   const title = $('#title').val();
   const comment = $('#comment').val();
-  const userid = $('#userid').val();
   const postId = $('#postId').val();
 
   if (title.trim() !== '' && comment.trim() !== '' && postId.trim() !== '') {
-    const data = { title: title, comment: comment, userid: userid, postId: postId };
+    const data = { title: title, comment: comment, postId: postId };
+
     $.ajax({
       type: 'POST',
       url: 'database/comments.php',
@@ -64,7 +64,6 @@ function addComment() {
         if (response.success) {
           alert(response.message);
 
-          loadComments();
         } else {
           alert(response.message);
         }

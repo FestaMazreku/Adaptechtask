@@ -53,13 +53,12 @@ if ($con) {
     $title = mysqli_real_escape_string($con, $_POST['title']);
     $comment = mysqli_real_escape_string($con, $_POST['comment']);
     $postId = mysqli_real_escape_string($con, $_POST['postId']);
-    $userid = mysqli_real_escape_string($con, $_POST['userid']);
 
     if (!empty($title) && !empty($comment) && !empty($postId)) {
       $currentDate = date("Y-m-d H:i:s");
 
-      $sql = $con->prepare("INSERT INTO comments (title, comment, postId, userid, date) VALUES (?, ?, ?, ?, ?)");
-      $sql->bind_param("sssss", $title, $comment, $postId, $userid, $currentDate);
+      $sql = $con->prepare("INSERT INTO comments (title, comment, postId, date) VALUES (?, ?, ?, ?)");
+      $sql->bind_param("ssss", $title, $comment, $postId, $currentDate);
 
       $sql->execute();
 
