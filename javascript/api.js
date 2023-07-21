@@ -51,10 +51,10 @@ function addComment() {
   const title = $('#title').val();
   const comment = $('#comment').val();
   const postId = $('#postId').val();
+  const userid = $('#userid').val();
 
   if (title.trim() !== '' && comment.trim() !== '' && postId.trim() !== '') {
-    const data = { title: title, comment: comment, postId: postId };
-
+    const data = { title: title, comment: comment, postId: postId, userid: userid };
     $.ajax({
       type: 'POST',
       url: 'database/comments.php',
