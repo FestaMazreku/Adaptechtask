@@ -46,15 +46,15 @@ function addMessage() {
   }
 }
 
-// Add a Comment
+//Add a Comment
 function addComment() {
   const title = $('#title').val();
   const comment = $('#comment').val();
-  const email = $('#email').val();
+  const userid = getUserId();
   const postId = $('#postId').val();
 
-  if (title.trim() !== '' && comment.trim() !== '' && postId.trim() !== '') {
-    const data = { title: title, comment: comment, email: email, postId: postId };
+  if (title.trim() !== '' && comment.trim() !== '' && postId.trim() !== '' && userid !== '') {
+    const data = { title: title, comment: comment, userid: userid, postId: postId };
     $.ajax({
       type: 'POST',
       url: 'database/comments.php',
@@ -64,7 +64,6 @@ function addComment() {
         if (response.success) {
           alert(response.message);
 
-          loadComments();
         } else {
           alert(response.message);
         }
@@ -99,7 +98,7 @@ $(document).ready(function () {
         comments.forEach((comment) => {
           const newCommentElement = document.createElement('div');
           newCommentElement.className = 'comment';
-          newCommentElement.innerHTML = `<strong> Email: ${comment.email} </strong> <br> Title: ${comment.title} <br> Comment: ${comment.comment} <br> 
+          newCommentElement.innerHTML = `<strong> ID: ${comment.userid} </strong> <br> Title: ${comment.title} <br> Comment: ${comment.comment} <br> 
           <br> <p style="font-size: 14px"> ${getFormattedDateTime(comment.date)} </p> `;
           $('#comments').append(newCommentElement);
         });
@@ -114,6 +113,10 @@ $(document).ready(function () {
 
   $('#commentForm').submit(addComment);
 });
+
+function getUserId() {
+  return localStorage.getItem('userid');
+}
 
 function getPost(id) {
   fetch('database/posts.php?post=' + id)
