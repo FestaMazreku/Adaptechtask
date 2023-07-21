@@ -2,7 +2,7 @@ function setupNavigation() {
   var navigation = document.getElementById("myTopnav");
 
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "/database/navigation.php", true);
+  xhr.open("GET", "database/navigation.php", true);
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
