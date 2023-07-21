@@ -50,10 +50,10 @@ function addMessage() {
 function addComment() {
   const title = $('#title').val();
   const comment = $('#comment').val();
-  const userid = getUserId();
+  const userid = $('#userid').val();
   const postId = $('#postId').val();
 
-  if (title.trim() !== '' && comment.trim() !== '' && postId.trim() !== '' && userid !== '') {
+  if (title.trim() !== '' && comment.trim() !== '' && postId.trim() !== '') {
     const data = { title: title, comment: comment, userid: userid, postId: postId };
     $.ajax({
       type: 'POST',
@@ -64,6 +64,7 @@ function addComment() {
         if (response.success) {
           alert(response.message);
 
+          loadComments();
         } else {
           alert(response.message);
         }
@@ -113,10 +114,6 @@ $(document).ready(function () {
 
   $('#commentForm').submit(addComment);
 });
-
-function getUserId() {
-  return localStorage.getItem('userid');
-}
 
 function getPost(id) {
   fetch('database/posts.php?post=' + id)

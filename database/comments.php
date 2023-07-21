@@ -48,18 +48,19 @@ if ($con) {
     echo json_encode($response, JSON_PRETTY_PRINT);
   }
 
-  //Add comment
-  if (isset($_POST['title']) && isset($_POST['comment']) && isset($_POST['postId']) && isset($_POST['userid'])) {
+  //Add a comment
+  if (isset($_POST['title']) && isset($_POST['comment']) && isset($_POST['postId'])) {
     $title = mysqli_real_escape_string($con, $_POST['title']);
     $comment = mysqli_real_escape_string($con, $_POST['comment']);
     $postId = mysqli_real_escape_string($con, $_POST['postId']);
     $userid = mysqli_real_escape_string($con, $_POST['userid']);
 
-    if (!empty($title) && !empty($comment) && !empty($postId) && !empty($userid)) {
+    if (!empty($title) && !empty($comment) && !empty($postId)) {
       $currentDate = date("Y-m-d H:i:s");
 
       $sql = $con->prepare("INSERT INTO comments (title, comment, postId, userid, date) VALUES (?, ?, ?, ?, ?)");
       $sql->bind_param("sssss", $title, $comment, $postId, $userid, $currentDate);
+
       $sql->execute();
 
       if ($sql->affected_rows > 0) {
