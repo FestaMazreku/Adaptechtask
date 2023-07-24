@@ -19,7 +19,6 @@ if ($con) {
 
     if ($result) {
         $comments = array();
-
         while ($row = mysqli_fetch_assoc($result)) {
             $comment = array(
                 'userid' => $row['userid'],
@@ -30,7 +29,6 @@ if ($con) {
 
             $comments[] = $comment;
         }
-
         $response['success'] = true;
         $response['comments'] = $comments;
     } else {

@@ -4,7 +4,6 @@ mysqli_select_db($con, "adaptechtask");
 require_once('IsLoggedIn.php');
 
 if (isset($_POST['name']) && isset($_POST['age']) && isset($_POST['email'])) {
-
     if (!IsLoggedInAsAdmin()) {
         $response['success'] = false;
         $response['message'] = "No direct access!";

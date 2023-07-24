@@ -5,7 +5,6 @@ error_reporting(E_ALL);
 require_once('IsLoggedIn.php');
 
 if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['usermessage'])) {
-
     if (IsLoggedInAsAdmin()) {
         $response['success'] = false;
         $response['message'] = "No direct access!";

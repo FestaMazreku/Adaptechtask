@@ -39,10 +39,22 @@
     </head>
 
     <!-- Navigation -->
-    <body onload="setupNavigation()">
+    <!-- <body onload="setupNavigation()">
+        <header>
+            <div class="topnav" id="myTopnav"></div>
+        </header> -->
+
+    <!-- Navigation -->
+    <body>
         <header>
             <div class="topnav" id="myTopnav"></div>
         </header>
+
+        <script>
+            window.onload = function() {
+              setupNavigation();
+            };
+          </script>
 
         <img src="images/office.jpeg" class="img-fluid" alt="...">
         <center>
@@ -55,6 +67,8 @@
                 costs and increase productivity within the company. </p>
             <a href="contactus.html"><button class="btn14"> Contact Us
                 </button></a>
+            <a href="aboutus.html"><button class="btn14"> About Us
+                </button></a>
             <br> <br>
             <hr>
 
@@ -62,31 +76,46 @@
             <h4> What can we do for you? </h4>
             <br>
             <h3> <b> Our Services </b> </h3>
-            <br>
-            <h5 style="color: darkblue; font-weight: bold"> 1. Software
-                development </h5>
-            <p> Are you interested in a software solution that will help you
-                achieve your business goals? <br>
-                We are ready to help you. </p>
-            <h5 style="color: darkblue; font-weight: bold"> 2. Application
-                development </h5>
-            <p> Do you have an idea and want to implement your project? <br>
-                We are happy to accompany you in the development process.
-            </p>
-            <h5 style="color: darkblue; font-weight: bold"> 3. Digital
-                platforms
-            </h5>
-            <p> For digital platforms, like video courses, we are the right
-                partner and we will help you in the implementation. </p>
-            <h5 style="color: darkblue; font-weight: bold"> 4. ERP Systems
-            </h5>
-            <p> Are you interested in our ERP systems? Feel free to contact
-                our
-                sales team. </p>
-            <h5 style="color: darkblue; font-weight: bold"> 5. Consultation
-            </h5>
-            <p> Our experts will advise you on the digital transformation of
-                your business.</p>
+
+            <div class="card"
+                style="width: 27rem; box-shadow: 3px 3px 7px 3px gray; padding: 3px; border-radius: 7px; background-color: rgba(255, 255, 255, 0.315);">
+                <div class="card-body">
+                    <h5 class="card-title"> 1. Software development </h5>
+                    <p> Are you interested in a software solution that will help
+                        you
+                        achieve your business goals? <br>
+                        We are ready to help you. </p>
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title"> 2. Application development </h5>
+                    <p> Do you have an idea and want to implement your project?
+                        <br>
+                        We are happy to accompany you in the development
+                        process.
+                    </p>
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title"> 3. Digital platforms </h5>
+                    <p> For digital platforms, like video courses, we are the
+                        right
+                        partner and we will help you in the implementation. </p>
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title"> 4. ERP Systems </h5>
+                    <p> Are you interested in our ERP systems? <br>
+                        Feel free to contact our sales team. </p>
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title"> 5. Consultation </h5>
+                    <p> Our experts will advise you on the digital
+                        transformation of
+                        your business.</p>
+                </div>
+            </div>
             <hr>
 
             <!-- Projects -->
@@ -147,7 +176,7 @@
                             <h3>Services</h3>
                             <ul>
                                 <li><a href="home.html">Home</a></li>
-                                <li><a href="#">About Us</a></li>
+                                <li><a href="aboutus.html">About Us</a></li>
                                 <li><a href="contactus.html">Contact Us</a></li>
                             </ul>
                         </div>

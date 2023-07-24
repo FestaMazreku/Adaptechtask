@@ -37,11 +37,10 @@ if (empty($name) || empty($email) || empty($password_1) || empty($password_2)) {
                     if ($countEmail != 0) {
                         $errorEmail = "This user already exists!";
                         echo "error:email";
-                    } else {
 
+                    } else {
                         $querysql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password_1')";
                         if (mysqli_query($con, $querysql)) {
-
                             echo "success";
                         } else {
                             echo "error";

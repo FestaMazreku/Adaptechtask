@@ -7,6 +7,7 @@ function myFunction() {
   }
 }
 
+//Add a Message
 function addMessage() {
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
@@ -46,7 +47,7 @@ function addMessage() {
   }
 }
 
-// Add a Comment
+//Add a Comment
 function addComment() {
   const title = $('#title').val();
   const comment = $('#comment').val();
@@ -150,6 +151,7 @@ function getFormattedDateTime(dateString) {
   return date.toLocaleDateString(undefined, options);
 }
 
+//Get All
 function GetAll() {
   fetch('database/posts.php?posts')
     .then(response => response.json())

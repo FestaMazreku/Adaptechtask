@@ -33,10 +33,16 @@
     </head>
 
     <!-- Navigation -->
-    <body onload="setupNavigation()">
+    <body>
         <header>
             <div class="topnav" id="myTopnav"></div>
         </header>
+
+        <script>
+            window.onload = function() {
+              setupNavigation();
+            };
+          </script>          
 
         <!-- Posts and comments -->
         <center>
@@ -56,15 +62,15 @@
                     <br>
 
                     <!-- Logged In -->
-                    <div id="contentLoggedIn" style="display: none;">
+                    <div id="contentLoggedIn">
                         <div class="comments" id="comments">
-
                             <form name="addcommentform" id="addcommentform"
                                 method="POST">
 
                                 <input type="hidden" id="postId" name="postId">
 
-                                <input type="hidden" id="userid" name="userid">
+                                <input type="hidden" id="userid" name="userid"
+                                    value="11">
 
                                 <input type="hidden" id="date" name="date">
 
@@ -120,7 +126,7 @@
                             <h3>Services</h3>
                             <ul>
                                 <li><a href="home.html">Home</a></li>
-                                <li><a href="#">About Us</a></li>
+                                <li><a href="aboutus.html">About Us</a></li>
                                 <li><a href="contactus.html">Contact Us</a></li>
                             </ul>
                         </div>

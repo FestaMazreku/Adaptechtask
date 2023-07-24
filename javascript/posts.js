@@ -7,7 +7,7 @@ function myFunction() {
     }
 }
 
-//Delete post
+//Delete Post
 function deletePost(postsid, button) {
     if (confirm("Are you sure you want to delete this post?")) {
         $.ajax({
@@ -50,7 +50,7 @@ function getpostdata(postid) {
     }
 }
 
-//Update post
+//Update Post
 function updatePost() {
     var formdata = $('#editpostform').serialize();
     $.ajax({
@@ -76,11 +76,19 @@ function updatePost() {
     });
 }
 
-//Add post
 function addPost() {
-    //get content from ck-content class
-    // put in textarea 
-    // $('.ck-content').
+    if (!editorInstance) {
+        console.error("CKEditor instance not ready yet.");
+        return;
+    }
+    var bodyContent = editorInstance.getData();
+    document.getElementById("body").value = bodyContent;
+
+    //date
+    var currentDate = new Date();
+    var formattedDate = currentDate.toISOString().slice(0, 10);
+    document.getElementById("date").value = formattedDate;
+
     var formdata = $('#addpostform').serialize();
     $.ajax({
         type: "POST",
@@ -98,10 +106,10 @@ function addPost() {
                 alert("Error: Failed to add a new post.");
             }
         },
-        // error: function (error) {
-        //     console.log(error);
-        //     alert("Error: Failed to add a new post. " + error.responseText);
-        // }
+        error: function (error) {
+            console.log(error);
+            alert("Error: Failed to add a new post. " + error.responseText);
+        }
     });
 }
 
@@ -113,7 +121,6 @@ function GetAll(page, perPage) {
     const tableBody = document.getElementById('table-body');
     tableBody.innerHTML = '';
     history.pushState({}, '', `?page=${page}`);
-
     $.ajax({
         type: 'GET',
         url: 'database/posts.php?posts',
@@ -121,7 +128,6 @@ function GetAll(page, perPage) {
     }).then((postData) => {
         totalPosts = postData.length;
         const totalPages = Math.ceil(totalPosts / perPage);
-
         const from = (page - 1) * perPage;
         const to = page * perPage;
         const tableRows = postData.slice(from, to).map((post) => {
@@ -130,8 +136,6 @@ function GetAll(page, perPage) {
                 <td><p class="table-element2">${post.userid}</p></td>
                 <td><p class="table-element3">${post.title}</p></td>
                 <td>
-
-                
                 <p class="table-element4" id="body-${post.postsid}" style="cursor: pointer;">
                 ${post.body}
                 </p>

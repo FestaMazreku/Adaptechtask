@@ -3,6 +3,7 @@ setTimeout("preventBack(), 0");
 window.onunload = function () { null; }
 
 function checkLoginStatus() {
+  
   return $.ajax({
     url: 'database/check_login_status.php',
     type: 'GET',

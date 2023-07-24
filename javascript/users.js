@@ -7,7 +7,7 @@ function myFunction() {
     }
 }
 
-//Delete user
+//Delete User
 function deleteUser(id, button) {
     if (confirm("Are you sure you want to delete this user?")) {
         $.ajax({
@@ -52,7 +52,7 @@ function getuserdata(userid) {
     }
 }
 
-//Update user
+//Update User
 function updateUser() {
     var formdata = $('#edituserform').serialize();
     $.ajax({
@@ -78,7 +78,7 @@ function updateUser() {
     });
 }
 
-//Add user
+//Add User
 function addUser() {
     var formdata = $('#adduserform').serialize();
     $.ajax({

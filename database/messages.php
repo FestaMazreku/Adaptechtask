@@ -44,7 +44,6 @@ if ($con) {
 
     if (!IsLoggedInAsAdmin())
       die("No direct access!");
-
     $delete = $_POST['deleteid'];
     $sql = "DELETE FROM contactus WHERE messageid = '" . $delete . "' ";
 

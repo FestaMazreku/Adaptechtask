@@ -35,10 +35,16 @@
     </head>
 
     <!-- Navigation -->
-    <body onload="setupNavigation()">
+    <body>
         <header>
             <div class="topnav" id="myTopnav"></div>
         </header>
+
+        <script>
+            window.onload = function() {
+              setupNavigation();
+            };
+          </script>
 
         <!-- Table -->
         <div class="table-responsive-lg">
@@ -93,7 +99,7 @@
                             <h3>Services</h3>
                             <ul>
                                 <li><a href="home.html">Home</a></li>
-                                <li><a href="#">About Us</a></li>
+                                <li><a href="aboutus.html">About Us</a></li>
                                 <li><a href="contactus.html">Contact Us</a></li>
                             </ul>
                         </div>

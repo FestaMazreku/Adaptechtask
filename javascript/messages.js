@@ -7,7 +7,7 @@ function myFunction() {
     }
 }
 
-//Delete message
+//Delete Message
 function deleteMessage(id, button) {
     if (confirm("Are you sure you want to delete this message?")) {
         $.ajax({

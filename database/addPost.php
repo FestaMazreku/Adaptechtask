@@ -3,8 +3,7 @@ $con = mysqli_connect("localhost", "root", "", "adaptechtask");
 mysqli_select_db($con, "adaptechtask");
 require_once('IsLoggedIn.php');
 
-if (isset($_POST['userid']) && isset($_POST['title']) && isset($_POST['body'])) {
-
+if (isset($_POST['userid']) && isset($_POST['title']) && isset($_POST['body']) && isset($_POST['date'])) {
     if (!IsLoggedInAsAdmin()) {
         $response['success'] = false;
         $response['message'] = "No direct access!";
@@ -16,9 +15,13 @@ if (isset($_POST['userid']) && isset($_POST['title']) && isset($_POST['body'])) 
     $userid = $_POST['userid'];
     $title = $_POST['title'];
     $body = $_POST['body'];
+    $date = $_POST['date'];
 
-    // if (!empty($userid) && !empty($title) && !empty($body)) {
-        $sql = $con->prepare("INSERT INTO posts (postsid, userid, title, body) VALUES ('$postsid','$userid','$title','$body')");
+    if (!empty($userid) && !empty($title) && !empty($body) && !empty($date)) {
+        $currentDate = date("Y-m-d H:i:s");
+
+        $sql = $con->prepare("INSERT INTO posts (postsid, userid, title, body, date) VALUES (?, ?, ?, ?, ?)");
+        $sql->bind_param("sssss", $postsid, $userid, $title, $body, $currentDate);
         $sql->execute();
 
         $response = array();
@@ -40,11 +43,11 @@ if (isset($_POST['userid']) && isset($_POST['title']) && isset($_POST['body'])) 
         echo json_encode($response);
     }
 
-// } else {
-//     $response['success'] = false;
-//     $response['message'] = "Invalid request.";
-//     echo json_encode($response);
-// }
+} else {
+    $response['success'] = false;
+    $response['message'] = "Invalid request.";
+    echo json_encode($response);
+}
 
 $con->close();
 ?>

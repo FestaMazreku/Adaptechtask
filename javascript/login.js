@@ -7,7 +7,7 @@ function myFunction() {
     }
 }
 
-//Sign up
+//Sign Up
 function SignUp() {
     var formdata = $('#signupform').serialize();
     $.ajax({
@@ -38,7 +38,7 @@ function SignUp() {
     });
 }
 
-//Log in
+//Log In
 function LogIn() {
     var formdata = $('#loginform').serialize();
     $.ajax({

@@ -43,7 +43,7 @@ if ($con) {
     exit();
   }
 
-  //Delete user
+  //Delete User
   if (isset($_POST['deleteid'])) {
 
     if (!IsLoggedInAsAdmin())
@@ -60,7 +60,7 @@ if ($con) {
     exit();
   }
 
-  //Update user
+  //Update User
   if (isset($_POST['editid'])) {
 
     if (!IsLoggedInAsAdmin()) {

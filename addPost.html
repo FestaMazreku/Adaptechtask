@@ -27,20 +27,26 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <script defer
             src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+        <!-- Textarea editor -->
+        <script
+            src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
         <!-- javascript -->
         <script src="javascript/posts.js"></script>
         <script src="javascript/nav.js"></script>
         <script src="javascript/loginstatus.js"></script>
-        <!-- Textarea editor -->
-        <script
-            src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
     </head>
 
     <!-- Navigation -->
-    <body onload="setupNavigation()">
+    <body>
         <header>
             <div class="topnav" id="myTopnav"></div>
         </header>
+
+        <script>
+            window.onload = function() {
+              setupNavigation();
+            };
+          </script>
         <br>
 
         <!-- Add a new post -->
@@ -79,6 +85,10 @@
                             <textarea name="body" id="body"></textarea>
                         </td>
                     </tr>
+                    <td align="middle" class="add"></td>
+                    <td>
+                        <input type="hidden" name="date" id="date">
+                    </td>
                     <div class="input-group">
                         <tr>
                             <td align="center" colspan="8">
@@ -89,18 +99,23 @@
                             bold; border: 2px; border-radius: 2px;
                             font-size: 20px; width: 40%"
                                     name="addpostform" value="Add"
-                                    onclick="addPost(event)">
+                                    onclick="addPost()">
                             </td>
                         </tr>
                     </div>
                 </table>
             </form>
+
             <script>
-                ClassicEditor
-                    .create( document.querySelector( '#body' ) )
-                    .catch( error => {
-                        console.error( error );
-                    } );
+            ClassicEditor
+            .create(document.querySelector('#body'))
+            .then(editor => {
+                editorInstance = editor;
+                console.log("CKEditor instance assigned:", editorInstance);
+            })
+            .catch(error => {
+                console.error(error);
+            });
             </script>
         </center>
 
@@ -114,7 +129,7 @@
                             <h3>Services</h3>
                             <ul>
                                 <li><a href="home.html">Home</a></li>
-                                <li><a href="#">About Us</a></li>
+                                <li><a href="aboutus.html">About Us</a></li>
                                 <li><a href="contactus.html">Contact Us</a></li>
                             </ul>
                         </div>
