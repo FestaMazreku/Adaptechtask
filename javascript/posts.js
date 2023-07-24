@@ -77,38 +77,6 @@ function updatePost() {
 }
 
 //Add post
-// function addPost(e) {
-//     e.preventDefault();
-//     // const userid = document.getElementById('userid').value;
-//     // const postsid = document.getElementById('postsid').value;
-//     // const title = document.getElementById('title').value;
-//     // const body = document.getElementById('body').value;
-//     // console.log(userid, postsid, title, body);
-//     const data = $("#addpostform").serialize();
-//     $.ajax({
-//         type: "POST",
-//         url: 'database/addPost.php',
-//         data: data,
-//         dataType: 'json',
-//         success: function (response) {
-//             console.log(response);
-//             if (response.hasOwnProperty("success") && response.success) {
-//                 alert(response.message);
-//                 window.location.href = "posts.html";
-//             } else if (response.message === "No direct access!") {
-//                 alert("You don't have permission to add a new post.");
-//             } else {
-//                 alert("Error: Failed to add a new post.");
-//             }
-//         },
-//         error: function (error) {
-//             console.log(error);
-//             alert("Error: Failed to add a new post. " + error.responseText);
-//         }
-//     });
-// }
-
-//Add post
 function addPost() {
     //get content from ck-content class
     // put in textarea 

@@ -22,7 +22,7 @@ if ($con) {
 
         while ($row = mysqli_fetch_assoc($result)) {
             $comment = array(
-                'email' => $row['email'],
+                'userid' => $row['userid'],
                 'title' => $row['title'],
                 'comment' => $row['comment'],
                 'date' => $row['date']
