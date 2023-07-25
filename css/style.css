@@ -77,6 +77,12 @@ body {
     }
 }
 
+.circular-square {
+    position: relative;
+    border-radius: 50%;
+    width: 35%;
+}
+
 .card-title {
     font-weight: bold;
     color: darkblue;

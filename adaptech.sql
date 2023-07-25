@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   KEY `FK_comments_users` (`userid`),
   CONSTRAINT `FK_comments_posts` FOREIGN KEY (`postid`) REFERENCES `posts` (`postsid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_comments_users` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table adaptechtask.comments: ~5 rows (approximately)
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
@@ -39,7 +39,7 @@ REPLACE INTO `comments` (`commentsid`, `postid`, `userid`, `title`, `comment`, `
 	(2, 1, 6, 'sdfsdf', 'sdfsdfsdf', '2023-07-18 15:53:48'),
 	(3, 2, 7, 'dfgdfg', 'dfgdfgdfgdfg', '2023-07-18 15:54:10'),
 	(4, 1, 9, 'sdggsfh', 'aasdsaas', '2023-07-19 08:35:08'),
-	(5, 9, 8, 'dsfdfdfddsf', 'dfsdsdgdf', '2023-07-19 09:50:35');
+	(5, 9, 8, 'dsfdfdfddsf', 'dfsdsdgdf', '2023-07-20 09:50:35');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.contactus
@@ -51,14 +51,14 @@ CREATE TABLE IF NOT EXISTS `contactus` (
   PRIMARY KEY (`messageid`),
   KEY `FK_contactus_users` (`email`),
   CONSTRAINT `FK_contactus_users` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.contactus: ~4 rows (approximately)
+-- Dumping data for table adaptechtask.contactus: ~6 rows (approximately)
 /*!40000 ALTER TABLE `contactus` DISABLE KEYS */;
 REPLACE INTO `contactus` (`messageid`, `name`, `email`, `usermessage`) VALUES
 	(1, 'Festa Mazreku', 'festa.m@gmail.com', 'hi Adaptech!!'),
 	(2, 'Charlotte Moreau', 'charlottemoreau@gmail.com', 'hello! i love your page!'),
-	(4, 'Fjolla Berisha', 'fjolla.b@gmail.com', 'hi! ');
+	(3, 'Fjolla Berisha', 'fjolla.b@gmail.com', 'hi! ');
 /*!40000 ALTER TABLE `contactus` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.posts
@@ -71,9 +71,9 @@ CREATE TABLE IF NOT EXISTS `posts` (
   PRIMARY KEY (`postsid`),
   KEY `id` (`userid`) USING BTREE,
   CONSTRAINT `userid` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.posts: ~13 rows (approximately)
+-- Dumping data for table adaptechtask.posts: ~12 rows (approximately)
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
 REPLACE INTO `posts` (`postsid`, `userid`, `title`, `body`, `date`) VALUES
 	(1, 1, 'dolorem eum magni eos aperiam quia', 'repudiandae veniam quaerat sunt sed\r\nalias aut fugiat sit autem sed est\r\nvoluptatem omnis possimus esse voluptatibus quis\r\nest aut tenetur dolor neque', '2023-05-19 15:22:10'),
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `username` (`name`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table adaptechtask.users: ~12 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;

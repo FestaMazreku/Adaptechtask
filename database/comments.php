@@ -54,7 +54,6 @@ if ($con) {
     $comment = mysqli_real_escape_string($con, $_POST['comment']);
     $postId = mysqli_real_escape_string($con, $_POST['postId']);
     $userid = mysqli_real_escape_string($con, $_POST['userid']);
-    $_SESSION['userid'] = $userid; 
 
     if (!empty($title) && !empty($comment) && !empty($postId)) {
       $currentDate = date("Y-m-d H:i:s");

@@ -33,14 +33,8 @@ function setupNavigation() {
           `;
         }
 
-        const contentLoggedIn = document.getElementById("contentLoggedIn");
-        const contentLoggedOut = document.getElementById("contentLoggedOut");
-
-        if (contentLoggedIn && contentLoggedOut) {
-          contentLoggedIn.style.display = "block";
-          contentLoggedOut.style.display = "none";
-        }
-
+        document.getElementById("contentLoggedIn").style.display = "block";
+        document.getElementById("contentLoggedOut").style.display = "none";
       } else {
         navigation.innerHTML = `
         <a href="home.html" class="navigation">Home</a>
@@ -50,9 +44,11 @@ function setupNavigation() {
         <a href="login.html" class="navigation">Log In</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
         `;
+
+        document.getElementById("contentLoggedIn").style.display = "none";
+        document.getElementById("contentLoggedOut").style.display = "block";
       }
     })
-
     .catch(error => {
       console.error("Error fetching login status:", error);
     });
