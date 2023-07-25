@@ -22,7 +22,7 @@ function SignUp() {
             } else if (response === 'error:name') {
                 alert("Name must contain only letters.");
             } else if (response === 'error:email') {
-                alert("Wrong email format or user already exists.");
+                alert("Wrong email format.");
             } else if (response === 'error:password') {
                 alert("Wrong password or password confirmation mismatch.");
             } else if (response === 'error:password2') {
@@ -48,7 +48,7 @@ function LogIn() {
         success: function (response) {
             console.log(response);
             if (response === 'success') {
-                window.location.href = "home.html";
+                window.location.href = "index.html";
             } else if (response.startsWith('error:empty')) {
                 alert("User can't log in! Please enter email and password!");
             } else if (response.startsWith('error:nonexistent')) {

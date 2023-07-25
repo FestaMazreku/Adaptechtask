@@ -129,7 +129,6 @@ function GetAll(page, perPage) {
           <td><p class="table-element6">${post.phone}</p></td>
           <td><p class="table-element7">${post.city}</p></td>
           <td>
-          <button class="btn12"><a href="post.html?post=${post.id}">View</a></button>
           <button class="btn10"><a href="editUser.html?userid=${post.id}">Update</a></button>
           <button class="btn7" onclick="deleteUser(${post.id}, this)">Delete</button>
           </td>

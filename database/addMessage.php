@@ -5,13 +5,6 @@ error_reporting(E_ALL);
 require_once('IsLoggedIn.php');
 
 if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['usermessage'])) {
-    if (IsLoggedInAsAdmin()) {
-        $response['success'] = false;
-        $response['message'] = "No direct access!";
-        echo json_encode($response);
-        exit();
-    }
-
     $name = mysqli_real_escape_string($con, $_POST['name']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $usermessage = mysqli_real_escape_string($con, $_POST['usermessage']);

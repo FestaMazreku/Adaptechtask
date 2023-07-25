@@ -35,7 +35,7 @@ if (empty($name) || empty($email) || empty($password_1) || empty($password_2)) {
                     $countEmail = mysqli_num_rows($queryEmail);
 
                     if ($countEmail != 0) {
-                        $errorEmail = "This user already exists!";
+                        $errorEmail = "Wrong email format.";
                         echo "error:email";
 
                     } else {

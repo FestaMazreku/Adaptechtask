@@ -12,8 +12,9 @@ function setupNavigation() {
       if (loggedIn) {
         if (isAdmin) {
           navigation.innerHTML = `
-          <a href="home.html" class="navigation">Home</a>
+          <a href="index.html" class="navigation">Home</a>
           <a href="aboutus.html" class="navigation">About Us</a>
+          <a href="contactus.html" class="navigation">Contact Us</a>
           <a href="post.html" class="navigation">Posts</a>
           <a href="users.html" class="navigation">Table Users</a>
           <a href="posts.html" class="navigation">Table Posts</a>
@@ -24,7 +25,7 @@ function setupNavigation() {
 
         } else {
           navigation.innerHTML = `
-          <a href="home.html" class="navigation">Home</a>
+          <a href="index.html" class="navigation">Home</a>
           <a href="aboutus.html" class="navigation">About Us</a>
           <a href="contactus.html" class="navigation">Contact Us</a>
           <a href="post.html" class="navigation">Posts</a>
@@ -37,7 +38,7 @@ function setupNavigation() {
         document.getElementById("contentLoggedOut").style.display = "none";
       } else {
         navigation.innerHTML = `
-        <a href="home.html" class="navigation">Home</a>
+        <a href="index.html" class="navigation">Home</a>
         <a href="aboutus.html" class="navigation">About Us</a>
         <a href="post.html" class="navigation">Posts</a>
         <a href="signup.html" class="navigation">Sign Up</a>
