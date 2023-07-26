@@ -11,7 +11,6 @@ if (isset($_POST['name']) && isset($_POST['age']) && isset($_POST['email'])) {
         exit();
     }
 
-    $id = mysqli_real_escape_string($con, $_POST['id']);
     $name = mysqli_real_escape_string($con, $_POST['name']);
     $age = mysqli_real_escape_string($con, $_POST['age']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
@@ -19,7 +18,7 @@ if (isset($_POST['name']) && isset($_POST['age']) && isset($_POST['email'])) {
     $city = mysqli_real_escape_string($con, $_POST['city']);
 
     if (!empty($name) && !empty($age) && !empty($email)) {
-        $sql = $con->prepare("INSERT INTO users (id, name, age, email, phone, city) VALUES ('$id','$name', '$age','$email','$phone','$city')");
+        $sql = $con->prepare("INSERT INTO users (name, age, email, phone, city) VALUES ('$name', '$age','$email','$phone','$city')");
         $sql->execute();
 
         $response = array();

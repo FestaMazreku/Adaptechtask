@@ -52,7 +52,7 @@ function addComment() {
   const title = $('#title').val();
   const comment = $('#comment').val();
   const postId = $('#postId').val();
-  const userid = $('#userid').val();
+  const userid = $('#name').val();
 
   if (title.trim() !== '' && comment.trim() !== '' && postId.trim() !== '') {
     const data = { title: title, comment: comment, postId: postId, userid: userid };
@@ -99,7 +99,7 @@ $(document).ready(function () {
         comments.forEach((comment) => {
           const newCommentElement = document.createElement('div');
           newCommentElement.className = 'comment';
-          newCommentElement.innerHTML = `<strong> ID: ${comment.userid} </strong> <br> Title: ${comment.title} <br> Comment: ${comment.comment} <br> 
+          newCommentElement.innerHTML = `<strong> Name & Surname: ${comment.name} </strong> <br> Title: ${comment.title} <br> Comment: ${comment.comment} <br> 
           <br> <p style="font-size: 14px"> ${getFormattedDateTime(comment.date)} </p> `;
           $('#comments').append(newCommentElement);
         });
@@ -144,11 +144,20 @@ function getPost(id) {
     });
 }
 
-//Date and Time
-function getFormattedDateTime(dateString) {
-  const date = new Date(dateString);
-  const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
-  return date.toLocaleDateString(undefined, options);
+function getTimeElapsed(createdAt) {
+  const dateCreated = new Date(createdAt)
+  const now = new Date()
+  const timeElapsed = now - dateCreated
+  const minutes = Math.floor(timeElapsed / 60000)
+  const hours = Math.floor(minutes / 60)
+  const days = Math.floor(hours / 24)
+  if (days > 0) {
+    return `${days} day${days > 1 ? 's' : ''} ago`
+  } else if (hours > 0) {
+    return `${hours} hour${hours > 1 ? 's' : ''} ago`
+  } else {
+    return `${minutes} minute${minutes > 1 ? 's' : ''} ago`
+  }
 }
 
 //Get All
@@ -176,7 +185,7 @@ function GetAll() {
           }
           postDiv.innerHTML = `
             <p style="font-weight: bold">Name: ${userData[post.postsid - 1].name}</p>
-            <p style="color: #333; font-size: 14px"> ${getFormattedDateTime(post.date)}</p>
+            <p style="color: #333; font-size: 14px"> ${getTimeElapsed(post.date)}</p>
             <a href="?post=${post.postsid}" style="font-size: 16px; font-weight: bold; color: #222">
             Title: ${post.title}
             </a>

@@ -83,9 +83,11 @@ if ($con) {
     if (!empty($userid)) {
       $fields[] = "userid='$userid'";
     }
+
     if (!empty($title)) {
       $fields[] = "title='$title'";
     }
+
     if (!empty($body)) {
       $fields[] = "body='$body'";
     }

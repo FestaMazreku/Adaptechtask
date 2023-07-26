@@ -17,7 +17,7 @@ if ($con) {
 
       $i = 0;
       while ($row = mysqli_fetch_assoc($result)) {
-        $response[$i]['commentsid'] = $row['commentsid'];
+        $response[$i]['commentid'] = $row['commentid'];
         $response[$i]['postid'] = $row['postid'];
         $response[$i]['userid'] = $row['userid'];
         $response[$i]['title'] = $row['title'];
@@ -32,12 +32,12 @@ if ($con) {
 
   if (isset($_GET['comment'])) {
     $id = $_GET['comment'];
-    $sql = "SELECT * FROM comments where commentsid = " . $id;
+    $sql = "SELECT * FROM comments where commentid = " . $id;
     $result = mysqli_query($con, $sql);
     if ($result) {
       header("Content-Type: JSON");
       if ($row = mysqli_fetch_assoc($result)) {
-        $response['commentsid'] = $row['commentsid'];
+        $response['commentid'] = $row['commentid'];
         $response['postid'] = $row['postid'];
         $response['userid'] = $row['userid'];
         $response['title'] = $row['title'];

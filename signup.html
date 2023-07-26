@@ -43,7 +43,28 @@
         window.onload = function() {
           setupNavigation();
         };
-      </script>
+        
+        function checkLoginStatus() {
+            return $.ajax({
+                url: 'database/check_login_status.php',
+                type: 'GET',
+                dataType: 'json',
+            });
+        }
+        
+        function redirectToIndex() {
+            checkLoginStatus()
+            .done(function (loginStatus) {
+                if (loginStatus.isLoggedIn) {
+                    window.location.href = 'index.html';
+                }
+            })
+            .fail(function () {
+            });
+        }
+        
+        redirectToIndex();
+        </script>
 
         <!-- Sign Up -->
         <div class="card">

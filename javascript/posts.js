@@ -133,7 +133,7 @@ function GetAll(page, perPage) {
         const tableRows = postData.slice(from, to).map((post) => {
             return `<tr id="row-${post.postsid}">
                 <td><p class="table-element1">${post.postsid}</p></td>
-                <td><p class="table-element2">${post.userid}</p></td>
+                <td><p class="table-element1">${post.userid}</p></td>
                 <td><p class="table-element3">${post.title}</p></td>
                 <td>
                 <p class="table-element4" id="body-${post.postsid}" style="cursor: pointer;">
