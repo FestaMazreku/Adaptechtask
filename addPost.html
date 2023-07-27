@@ -28,8 +28,12 @@
         <script defer
             src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
         <!-- Textarea editor -->
+        <!-- <script
+            src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script> -->
+
         <script
-            src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+            src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor5/38.1.1/ckeditor.min.js">
+        </script>
         <!-- javascript -->
         <script src="javascript/posts.js"></script>
         <script src="javascript/nav.js"></script>
@@ -59,17 +63,17 @@
                             <h4>Add a new post:</h4>
                         </td>
                     </tr>
-                    <!-- <tr>
-                        <td align="middle" class="add">User:</td>
+                    <tr>
+                        <td align="middle" class="add">User ID:</td>
                         <td>
                             <input type="text" name="userid" id="userid"
-                                size="60">
+                                size="75">
                         </td>
-                    </tr> -->
+                    </tr>
                     <tr>
                         <td align="middle" class="add">Title:</td>
                         <td>
-                            <input type="text" name="title" id="title" size="60">
+                            <input type="text" name="title" id="title" size="75">
                         </td>
                     </tr>
                     <tr>
@@ -78,6 +82,7 @@
                             <textarea name="body" id="body"></textarea>
                         </td>
                     </tr>
+
                     <td align="middle" class="add"></td>
                     <td>
                         <input type="hidden" name="date" id="date">

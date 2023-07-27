@@ -52,7 +52,7 @@ function addComment() {
   const title = $('#title').val();
   const comment = $('#comment').val();
   const postId = $('#postId').val();
-  const userid = $('#name').val();
+  const userid = $('#userid').val();
 
   if (title.trim() !== '' && comment.trim() !== '' && postId.trim() !== '') {
     const data = { title: title, comment: comment, postId: postId, userid: userid };
@@ -95,7 +95,6 @@ $(document).ready(function () {
     success: function (response) {
       if (response.success) {
         const comments = response.comments;
-
         comments.forEach((comment) => {
           const newCommentElement = document.createElement('div');
           newCommentElement.className = 'comment';

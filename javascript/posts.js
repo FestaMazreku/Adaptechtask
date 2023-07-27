@@ -132,24 +132,22 @@ function GetAll(page, perPage) {
         const to = page * perPage;
         const tableRows = postData.slice(from, to).map((post) => {
             return `<tr id="row-${post.postsid}">
-                <td><p class="table-element1">${post.postsid}</p></td>
-                <td><p class="table-element1">${post.userid}</p></td>
-                <td><p class="table-element3">${post.title}</p></td>
-                <td>
-                <p class="table-element4" id="body-${post.postsid}" style="cursor: pointer;">
-                ${post.body}
-                </p>
-                </td>
-                <td>
-                <button class="btn12"><a href="post.html?post=${post.postsid}">View</a></button>
-                <br>
-                <br>
-                <button class="btn10"><a href="editPost.html?postid=${post.postsid}">Update</a></button>
-                <br>
-                <br>
-                <button class="btn7" onclick="deletePost(${post.postsid}, this)">Delete</button>
-                </td>
-                </tr>`;
+            <td><p class="table-element1">${post.postsid}</p></td>
+            <td><p class="table-element2">${post.userid}</p></td>
+            <td><p class="table-element3">${post.title}</p></td>
+            <td>
+            <p class="table-element4" id="body-${post.postsid}" style="cursor: pointer;">
+            ${post.body}
+            </p>
+            </td>
+            <td>
+            <button class="btn12"><a href="post.html?post=${post.postsid}">View</a></button>
+            <br><br>
+            <button class="btn10"><a href="editPost.html?postid=${post.postsid}">Update</a></button>
+            <br><br>
+            <button class="btn7" onclick="deletePost(${post.postsid}, this)">Delete</button>
+            </td>
+            </tr>`;
         });
 
         tableBody.innerHTML = tableRows.join('');

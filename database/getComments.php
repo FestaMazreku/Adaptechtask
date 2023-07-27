@@ -7,7 +7,6 @@ require_once('IsLoggedIn.php');
 if (isset($_GET['postId'])) {
     $postId = $_GET['postId'];
     $sql = "SELECT comments.*, users.name AS name FROM comments JOIN users ON users.id = comments.userid WHERE comments.postid =" . $postId;
-
     $result = mysqli_query($con, $sql);
 
     if ($result) {

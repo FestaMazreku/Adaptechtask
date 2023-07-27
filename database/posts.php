@@ -81,15 +81,15 @@ if ($con) {
     $fields = array();
 
     if (!empty($userid)) {
-      $fields[] = "userid='$userid'";
+      $fields[] = "userid ='$userid'";
     }
 
     if (!empty($title)) {
-      $fields[] = "title='$title'";
+      $fields[] = "title ='$title'";
     }
 
     if (!empty($body)) {
-      $fields[] = "body='$body'";
+      $fields[] = "body ='$body'";
     }
 
     if (!empty($fields)) {
