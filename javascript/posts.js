@@ -76,6 +76,7 @@ function updatePost() {
     });
 }
 
+//Add a post
 function addPost() {
     if (!editorInstance) {
         console.error("CKEditor instance not ready yet.");
