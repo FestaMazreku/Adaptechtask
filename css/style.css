@@ -19,6 +19,36 @@ body {
     padding-right: 16px
 }
 
+.btn-group {
+    position: absolute;
+    margin-left: 8px;
+}
+
+.dropdown-menu {
+    min-width: 150px;
+    background-color: #222;
+}
+
+.btn-group {
+    color: #f0f0f0;
+}
+
+.dropdown-toggle {
+    background-color: #222;
+    color: #f0f0f0;
+    width: 120%;
+    padding-top: 14%;
+    border: none;
+}
+
+.btn-group:hover {
+    background-color: rgb(106, 108, 112);
+}
+
+.dropdown-item {
+    color: #f0f0f0;
+}
+
 .topnav {
     overflow: hidden;
     background-color: #222;

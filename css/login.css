@@ -91,8 +91,8 @@ body {
     width: 100%;
     max-width: 420px;
     height: fit-content;
-    border-radius: 15px;
-    background: #dddee0;
+    border-radius: 4px;
+    background: #dddddf;
     padding: 50px 60px 70px;
     text-align: center;
     box-shadow: 3px 3px 8px 3px #666;

@@ -39,6 +39,7 @@ if (empty($email) || empty($password)) {
     if ($login) {
         $_SESSION['email'] = $email;
         $_SESSION['password'] = $row['password'];
+        $_SESSION['userid'] = $row['id'];
 
         if ($row['isadmin'] == 1) {
             $_SESSION['isadmin'] = 1;

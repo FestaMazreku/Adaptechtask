@@ -17,6 +17,9 @@
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
             crossorigin="anonymous"></script>
+        <!-- Font Awesome -->
+        <link rel="stylesheet"
+            href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
         <!-- jQuery -->
         <link rel="stylesheet"
             href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -44,6 +47,109 @@
             };
           </script>
 
+        <style>
+        .section {
+            width: 100%;
+            min-height: 80vh;
+            background-color: rgba(220, 220, 221, 0.445);
+        }
+        
+        .content-section {
+            float: left;
+            width: 55%;
+        }
+
+        .content-section .content p {
+            margin-top: 10px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .content-section .content .button {
+            margin-top: 30px;
+        }
+
+        .content-section .content .button a {
+            background-color: #1d1d1d;
+            padding: 12px 40px;
+            font-size: 18px;
+            color: whitesmoke;
+            border-radius: 5px;
+            letter-spacing: 1.0px;
+        }
+
+        .content-section .content .button a:hover {
+            background-color: #232324c4;
+        }
+
+        .content-section .social {
+            margin: 25px 25px;
+            font-size: 30px;
+            padding: 0px 10px;
+        }
+
+        .content-section .social i{
+            font-size: 30px;
+            padding: 0px 10px;
+        }
+
+        .content-section .social i:hover{
+            color: #7676889f;
+        }
+  
+        .image-section {
+            float: right;
+            width: 40%; 
+        }
+        
+        .image-section img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            width: 80%;
+            display: block;
+            margin: auto;
+            padding-top: 100px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+            width: 80%;
+            display: block;
+            margin: auto;
+            padding-top: 50px;
+        }
+
+        .content-section {
+            float: none;
+            width: 100%;
+            display: block;
+            margin: auto;
+        }
+
+        .image-section {
+            float: none;
+            width: 100%;
+            display: block;
+            margin: auto;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: auto;
+        }
+
+        .content-section .content .button a {
+            padding: 9px 30px;
+        }
+    
+    }
+    </style>
+
         <center>
             <div class="section">
                 <div class="container">
@@ -51,46 +157,75 @@
                         <div class="title">
                             <h3> AROUND US </h3>
                         </div>
+                        <br>
+                        <div class="content">
+                            <h4 style="font-weight: bold; color: darkblue"> Who
+                                are we?
+                            </h4>
+                            <p> We are a new company, founded in 2016 in Kosovo,
+                                that tries to
+                                create solutions for the needs of our customers,
+                                namely
+                                companies, at a reasonable price. <br>
+                                Outsourcing has proven to be successful, and we
+                                aim to create
+                                solutions to problems that are lower cost than
+                                in Europe, but
+                                with the same quality. <br>
+                                When considering the needs of companies, we know
+                                that there is
+                                no solution for everyone. <br>
+                                We create solutions that last longer because we
+                                create them with
+                                the latest technology and scalability in mind.</p>
+                            <div class="button">
+                                <a href="contactus.html"> Contact Us </a>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="social">
+                            <a href="https://www.facebook.com/adaptech.me/"
+                                style="color: #0305689f">
+                                <i class="fab fa-facebook"></i></a>
+                            <a
+                                href="https://www.instagram.com/adaptech_llc/"
+                                style="color: #0517819f">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/company/adaptech.me"
+                                style="color: #0e29c49f">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="image-section">
                         <img src="images/aboutus.png" class="img-fluid"
                             alt="...">
-                        <br>
-                        <h4 style="font-weight: bold; color: darkblue"> Who
-                            are we? </h4>
-                        <p> We are a new company, founded in 2016 in Kosovo,
-                            that tries to
-                            create solutions for the needs of our customers,
-                            namely
-                            companies, at a reasonable price. <br>
-                            Outsourcing has proven to be successful, and we
-                            aim to create
-                            solutions to problems that are lower cost than
-                            in Europe, but
-                            with the same quality. <br>
-                            When considering the needs of companies, we know
-                            that there is
-                            no solution for everyone. <br>
-                            We create solutions that last longer because we
-                            create them with
-                            the latest technology and scalability in mind.</p>
-                        <br>
+
+                        <br> <br>
+                        <div class="content">
+                            <h4 style="font-weight: bold"> OUR VALUES </h4>
+                            <p> ○ We believe that trust is the most important
+                                value of
+                                B2B.
+                                <br>
+                                ○ We value effective solutions and efficient use
+                                of
+                                resources.
+                                <br>
+                                ○ We believe in adapting technology to customer
+                                needs.
+                                <br>
+                                ○ We believe that outsourcing is a good way to
+                                create a
+                                competitive advantage.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <section style="background-color: rgb(218, 224, 238)">
-                <h4 style="font-weight: bold"> OUR VALUES </h4>
-                <p> ○ We believe that trust is the most important value of
-                    B2B.
-                    <br>
-                    ○ We value effective solutions and efficient use of
-                    resources.
-                    <br>
-                    ○ We believe in adapting technology to customer needs.
-                    <br>
-                    ○ We believe that outsourcing is a good way to create a
-                    competitive advantage.
-                </p>
-            </section>
         </center>
 
         <!-- Footer -->

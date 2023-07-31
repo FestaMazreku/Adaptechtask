@@ -30,15 +30,21 @@ CREATE TABLE IF NOT EXISTS `comments` (
   KEY `FK_comments_users` (`userid`),
   CONSTRAINT `FK_comments_posts` FOREIGN KEY (`postid`) REFERENCES `posts` (`postsid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_comments_users` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.comments: ~7 rows (approximately)
+-- Dumping data for table adaptechtask.comments: ~4 rows (approximately)
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
 REPLACE INTO `comments` (`commentid`, `postid`, `userid`, `title`, `comment`, `date`) VALUES
 	(1, 1, 3, 'asfasffa', ' fafsaafasf', '2023-07-25 08:27:03'),
 	(2, 3, 5, 'asdsdas', 'asdsdasda', '2023-07-26 14:30:07'),
 	(3, 5, 7, 'sdfsdgs', 'asdasdasdas', '2023-07-26 15:35:15'),
-	(4, 7, 8, 'ajksfkfhajkfh', 'dbajsfajkkfafh', '2023-07-28 09:15:20');
+	(4, 7, 8, 'ajksfkfhajkfh', 'dbajsfajkkfafh', '2023-07-28 09:15:20'),
+	(5, 6, 8, 'sdasdsd', 'asddsdsdds', '2023-07-31 06:25:05'),
+	(6, 2, 5, 'sasdsdasdas', 'dasdsadasd', '2023-07-31 12:26:30'),
+	(7, 5, 8, 'asdasdasdas', 'sdasdasdasd             ', '2023-07-31 12:32:35'),
+	(8, 8, 2, 'sdfsdf', 'asdasdsfasf', '2023-07-31 13:32:40'),
+	(9, 8, 9, 'sdasd', 'sdasdasd', '2023-07-31 13:32:50'),
+	(10, 2, 1, 'sdsadasd', 'dasdaasdsds         ', '2023-07-31 13:33:55');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.contactus
@@ -50,13 +56,14 @@ CREATE TABLE IF NOT EXISTS `contactus` (
   PRIMARY KEY (`messageid`),
   KEY `FK_contactus_users` (`email`),
   CONSTRAINT `FK_contactus_users` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table adaptechtask.contactus: ~3 rows (approximately)
 /*!40000 ALTER TABLE `contactus` DISABLE KEYS */;
 REPLACE INTO `contactus` (`messageid`, `name`, `email`, `usermessage`) VALUES
 	(1, 'Emma Smith', 'emma.s@gmail.com', 'Hi!'),
-	(2, 'Charlotte Moreau', 'charlottemoreau@gmail.com', 'Hello Adaptech! I just wanted to say that I love your work!');
+	(2, 'Charlotte Moreau', 'charlottemoreau@gmail.com', 'Hello Adaptech! I just wanted to say that I love your work!'),
+	(3, 'Chloe Turner', 'chloe_t@gmail.com', 'sdadasasdasd');
 /*!40000 ALTER TABLE `contactus` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.posts
@@ -101,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.users: ~12 rows (approximately)
+-- Dumping data for table adaptechtask.users: ~10 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 REPLACE INTO `users` (`id`, `name`, `age`, `email`, `phone`, `city`, `isadmin`, `password`) VALUES
 	(1, 'Emma Smith', 26, 'emma.s@gmail.com', '1-558-455-9658', 'California, US', 0, 'Emma97'),

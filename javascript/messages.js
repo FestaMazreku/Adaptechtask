@@ -7,6 +7,44 @@ function myFunction() {
     }
 }
 
+//Add a Message
+function addMessage() {
+    const name = document.getElementById('name').value;
+    const usermessage = document.getElementById('usermessage').value;
+
+    if (name !== '' && email !== '' && usermessage !== '') {
+        const data = new FormData();
+        data.append('name', name);
+        data.append('usermessage', usermessage);
+
+        fetch('database/addMessage.php', {
+            method: 'POST',
+            body: data
+        })
+            .then(response => response.json())
+            .then(responseData => {
+
+                if (responseData.success) {
+                    alert(responseData.message);
+
+                    const newMessageElement = document.createElement('div');
+                    newMessageElement.className = 'message';
+                    newMessageElement.innerHTML = `<br> <p> Name & Surname: ${name} </p>  <p> Message: ${usermessage} </p>`;
+
+                    const messageSection = document.getElementById('message');
+                    messageSection.appendChild(newMessageElement);
+                } else {
+                    alert(responseData.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    } else {
+        alert('The message can not be sent! Please fill in the fields!');
+    }
+}
+
 //Delete Message
 function deleteMessage(id, button) {
     if (confirm("Are you sure you want to delete this message?")) {

@@ -7,46 +7,6 @@ function myFunction() {
   }
 }
 
-//Add a Message
-function addMessage() {
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const usermessage = document.getElementById('usermessage').value;
-
-  if (name !== '' && email !== '' && usermessage !== '') {
-    const data = new FormData();
-    data.append('name', name);
-    data.append('email', email);
-    data.append('usermessage', usermessage);
-
-    fetch('database/addMessage.php', {
-      method: 'POST',
-      body: data
-    })
-      .then(response => response.json())
-      .then(responseData => {
-
-        if (responseData.success) {
-          alert(responseData.message);
-
-          const newMessageElement = document.createElement('div');
-          newMessageElement.className = 'message';
-          newMessageElement.innerHTML = `<br> <p> ${name} </p> <p> <strong> ${email} </strong> </p> <p> Message: ${usermessage} </p>`;
-
-          const messageSection = document.getElementById('message');
-          messageSection.appendChild(newMessageElement);
-        } else {
-          alert(responseData.message);
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  } else {
-    alert('The message can not be sent! Please fill in the fields!');
-  }
-}
-
 //Add a Comment
 function addComment() {
   const title = $('#title').val();
@@ -126,14 +86,14 @@ function getPost(id) {
         const jsonDataDiv = document.getElementById('posts');
         const postDiv = document.createElement('div');
         postDiv.innerHTML = `
-          <p style="font-size: 16px; font-weight: bold; color: #222"> Title: ${data.title} </p>
-          <p style="color: black; font-size: 15px"> Description: ${data.body} </p>
-          <p style="font-weight: bold"> Name: ${userData[data.postsid - 1].name} </p> 
-          <h6 style="color: darkblue"> Email: ${userData[data.postsid - 1].email} </h6> 
-          <p> Age: ${userData[data.postsid - 1].age} </p>
-          <p> Phone: ${userData[data.postsid - 1].phone} </p>
-          <p> City: ${userData[data.postsid - 1].city} </p>
-          <a href="post.html" onclick="getPost()"> <button class="btn1"> &laquo; Go back </button> </a> <hr>`;
+        <p style="font-size: 16px; font-weight: bold; color: #222"> Title: ${data.title} </p>
+        <p style="color: black; font-size: 15px"> Description: ${data.body} </p>
+        <p style="font-weight: bold"> Name: ${userData[data.postsid - 1].name} </p> 
+       <h6 style="color: darkblue"> Email: ${userData[data.postsid - 1].email} </h6> 
+       <p> Age: ${userData[data.postsid - 1].age} </p>
+       <p> Phone: ${userData[data.postsid - 1].phone} </p>
+       <p> City: ${userData[data.postsid - 1].city} </p>
+       <a href="post.html" onclick="getPost()"> <button class="btn1"> &laquo; Go back </button> </a> <hr>`;
         jsonDataDiv.appendChild(postDiv);
         $('#comments').show();
 
