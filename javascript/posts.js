@@ -77,25 +77,68 @@ function updatePost() {
 }
 
 //Add a Post
+// function addPost() {
+//     if (!editorInstance) {
+//         console.error("CKEditor instance not ready yet.");
+//         return;
+//     }
+//     var bodyContent = editorInstance.getData();
+//     document.getElementById("body").value = bodyContent;
+
+//     //date
+//     var currentDate = new Date();
+//     var formattedDate = currentDate.toISOString().slice(0, 10);
+//     document.getElementById("date").value = formattedDate;
+
+//     var formdata = $('#addpostform').serialize();
+//     $.ajax({
+//         type: "POST",
+//         url: 'database/addPost.php',
+//         data: formdata,
+//         dataType: 'json',
+//         success: function (response) {
+//             console.log(response);
+//             if (response.hasOwnProperty("success") && response.success) {
+//                 alert(response.message);
+//                 window.location.href = "posts.html";
+//             } else if (response.message === "No direct access!") {
+//                 alert("You don't have permission to add a new post.");
+//             } else {
+//                 alert("Error: Failed to add a new post.");
+//             }
+//         },
+//         error: function (error) {
+//             console.log(error);
+//             alert("Error: Failed to add a new post. " + error.responseText);
+//         }
+//     });
+// }
+
 function addPost() {
     if (!editorInstance) {
         console.error("CKEditor instance not ready yet.");
         return;
     }
+
+    var inputFile = document.getElementById('image');
+    var imageFile = inputFile.files[0];
+
     var bodyContent = editorInstance.getData();
     document.getElementById("body").value = bodyContent;
 
-    //date
-    var currentDate = new Date();
-    var formattedDate = currentDate.toISOString().slice(0, 10);
-    document.getElementById("date").value = formattedDate;
+    var formdata = new FormData();
+    formdata.append('title', document.getElementById('title').value);
+    formdata.append('body', bodyContent);
+    formdata.append('date', new Date().toISOString().slice(0, 10));
+    formdata.append('image', imageFile);
 
-    var formdata = $('#addpostform').serialize();
     $.ajax({
         type: "POST",
         url: 'database/addPost.php',
         data: formdata,
         dataType: 'json',
+        processData: false,
+        contentType: false,
         success: function (response) {
             console.log(response);
             if (response.hasOwnProperty("success") && response.success) {

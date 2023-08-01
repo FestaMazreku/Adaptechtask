@@ -55,7 +55,8 @@
 
         <!-- Add a new post -->
         <center>
-            <form name="addpostform" id="addpostform" method="POST">
+            <form name="addpostform" id="addpostform" method="POST"
+                enctype="multipart/form-data">
                 <table width="500" bgcolor="#333" align="center" border="2"
                     style="box-shadow: 3px 3px 3px gray;">
                     <tr>
@@ -63,8 +64,6 @@
                             <h4>Add a new post:</h4>
                         </td>
                     </tr>
-
-                    <input type="hidden" id="userid" name="userid">
 
                     <tr>
                         <td align="middle" class="add">Title:</td>
@@ -77,6 +76,13 @@
                         <td align="middle" class="add">Description:</td>
                         <td>
                             <textarea name="body" id="body"></textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="middle" class="add">Image:</td>
+                        <td>
+                            <input type="file" name="image" id="image">
                         </td>
                     </tr>
 
