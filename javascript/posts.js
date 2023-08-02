@@ -76,7 +76,7 @@ function updatePost() {
     });
 }
 
-//Add a Post
+//Add Post
 // function addPost() {
 //     if (!editorInstance) {
 //         console.error("CKEditor instance not ready yet.");
@@ -114,6 +114,7 @@ function updatePost() {
 //     });
 // }
 
+//Add Post
 function addPost() {
     if (!editorInstance) {
         console.error("CKEditor instance not ready yet.");
@@ -181,9 +182,9 @@ function GetAll(page, perPage) {
             <td><p class="table-element3">${post.title}</p></td>
             <td>
             <p class="table-element4" id="body-${post.postsid}" style="cursor: pointer;">
-            ${post.body}
-            </p>
+            ${post.body} </p>
             </td>
+            <td><p class="table-element5">${post.image}</p></td>
             <td>
             <button class="btn12"><a href="post.html?post=${post.postsid}">View</a></button>
             <br><br>

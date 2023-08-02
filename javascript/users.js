@@ -152,6 +152,7 @@ function GetAll(page, perPage) {
     });
 }
 
+//Pagination
 function updatePagination(totalPages, currentPage) {
     const pagination = document.getElementById('pagination');
     pagination.innerHTML = '';

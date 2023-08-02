@@ -9,6 +9,7 @@ if (isset($_GET['postId'])) {
     $sql = "SELECT comments.*, users.name AS name FROM comments JOIN users ON users.id = comments.userid WHERE comments.postid =" . $postId;
     $result = mysqli_query($con, $sql);
 
+}
     if ($result) {
         $comments = array();
         while ($row = mysqli_fetch_assoc($result)) {
@@ -28,10 +29,6 @@ if (isset($_GET['postId'])) {
         $response['success'] = false;
         $response['message'] = "Failed to fetch comments.";
     }
-} else {
-    $response['success'] = false;
-    $response['message'] = "Failed to connect to the database.";
-}
 
 echo json_encode($response);
 

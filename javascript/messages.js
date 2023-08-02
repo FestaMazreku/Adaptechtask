@@ -7,7 +7,7 @@ function myFunction() {
     }
 }
 
-//Add a Message
+//Add Message
 function addMessage() {
     const name = document.getElementById('name').value;
     const usermessage = document.getElementById('usermessage').value;

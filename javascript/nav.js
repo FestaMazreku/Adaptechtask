@@ -16,13 +16,12 @@ function setupNavigation() {
           <a href="aboutus.html" class="navigation">About Us</a>
           <a href="contactus.html" class="navigation">Contact Us</a>
           <a href="post.html" class="navigation">Posts</a>
-
           <a href="database/logout.php" class="navigation">Log Out</a>
           <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
           
           <div class="btn-group">
           <button class="btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Dropdown </button>
+          Services </button>
           <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="users.html">Table Users</a></li>
           <li><a class="dropdown-item" href="posts.html">Table Posts</a></li>

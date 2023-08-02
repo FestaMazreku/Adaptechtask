@@ -24,11 +24,11 @@
             src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
         </script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <!-- css -->
+        <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <script defer
             src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-        <!-- javascript -->
+        <!-- Javascript -->
         <script src="javascript/posts.js"></script>
         <script src="javascript/nav.js"></script>
         <script src="javascript/loginstatus.js"></script>
@@ -54,11 +54,13 @@
                         <th scope="col" style="font-size: 16px;
                         color: rgb(223, 222, 226)">Post ID</th>
                         <th scope="col" style="font-size: 16px;
-                        color: rgb(223, 222, 226)">User ID:</th>
+                        color: rgb(223, 222, 226)">User ID</th>
                         <th scope="col" style="font-size: 16px;
                         color: rgb(223, 222, 226)">Title</th>
                         <th scope="col" style="font-size: 16px;
                         color: rgb(223, 222, 226)">Description</th>
+                        <th scope="col" style="font-size: 16px;
+                        color: rgb(223, 222, 226)">Image</th>
                         <th><button class="btn11"><a href="addPost.html">
                                     Add a new post</a></button></th>
                     </tr>
@@ -80,6 +82,9 @@
                         onclick="GetAll(currentPage + 1, 10)">&raquo;</a></li>
             </ul>
         </nav>
+
+        <div id="contentLoggedIn"></div>
+        <div id="contentLoggedOut"></div>
 
         <!-- Footer -->
         <div class="footer-clean">

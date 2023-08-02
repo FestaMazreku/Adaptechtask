@@ -49,7 +49,7 @@ $(document).ready(function () {
   $.ajax({
     type: 'GET',
     url: 'database/getComments.php',
-    data: { postId: localStorage.getItem('currentPostId') },
+    data: { postId: localStorage.getItem('postId') },
     dataType: 'json',
 
     success: function (response) {
@@ -97,12 +97,13 @@ function getPost(id) {
         jsonDataDiv.appendChild(postDiv);
         $('#comments').show();
 
-        localStorage.setItem('currentPostId', id);
+        localStorage.setItem('postId', id);
         document.getElementById('postId').value = id;
       });
     });
 }
 
+//Time Elapse
 function getTimeElapsed(createdAt) {
   const dateCreated = new Date(createdAt)
   const now = new Date()

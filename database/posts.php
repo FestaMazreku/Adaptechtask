@@ -21,6 +21,7 @@ if ($con) {
         $response[$i]['title'] = $row['title'];
         $response[$i]['body'] = $row['body'];
         $response[$i]['date'] = $row['date'];
+        $response[$i]['image'] = $row['image'];
 
         $i++;
       }
@@ -40,6 +41,7 @@ if ($con) {
         $response['title'] = $row['title'];
         $response['body'] = $row['body'];
         $response['date'] = $row['date'];
+        $response['image'] = $row['image'];
       }
     }
     echo json_encode($response, JSON_PRETTY_PRINT);
