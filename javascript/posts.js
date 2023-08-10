@@ -1,161 +1,122 @@
 function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
 }
 
 //Delete Post
 function deletePost(postsid, button) {
-    if (confirm("Are you sure you want to delete this post?")) {
-        $.ajax({
-            url: 'database/posts.php',
-            type: "POST",
-            data: "deleteid=" + postsid,
-            success: function (response) {
-                console.log(response);
-                if (response == "1") {
-                    $(button).closest('tr').remove();
-                    alert("The post is deleted successfully!");
-                }
-                else {
-                    alert("The post is not deleted.");
-                }
-            },
-            error: function (error) {
-                console.log(error);
-                alert("Error: The post is not deleted. " + error);
-            },
-        });
-    }
+  if (confirm("Are you sure you want to delete this post?")) {
+    $.ajax({
+      url: "database/posts.php",
+      type: "POST",
+      data: "deleteid=" + postsid,
+      success: function (response) {
+        console.log(response);
+        if (response == "1") {
+          $(button).closest("tr").remove();
+          alert("The post is deleted successfully!");
+        } else {
+          alert("The post is not deleted.");
+        }
+      },
+      error: function (error) {
+        console.log(error);
+        alert("Error: The post is not deleted. " + error);
+      },
+    });
+  }
 }
 
 //Get post data
 function getpostdata(postid) {
-    if (postid == null) {
-        window.location.href = "posts.html";
-    } else {
-        $.ajax({
-            type: "GET",
-            url: `database/posts.php?post=${postid}`,
-            dataType: 'json',
-        }).then(post => {
-            $("#editpostsid").val(post.postsid);
-            $("#userid").val(post.userid);
-            $("#title").val(post.title);
-            $("#body").val(post.body);
-        });
-    }
+  if (postid == null) {
+    window.location.href = "posts.html";
+  } else {
+    $.ajax({
+      type: "GET",
+      url: `database/posts.php?post=${postid}`,
+      dataType: "json",
+    }).then((post) => {
+      $("#editpostsid").val(post.postsid);
+      $("#userid").val(post.userid);
+      $("#title").val(post.title);
+      $("#body").val(post.body);
+    });
+  }
 }
 
 //Update Post
 function updatePost() {
-    var formdata = $('#editpostform').serialize();
-    $.ajax({
-        type: "POST",
-        url: 'database/posts.php',
-        data: formdata,
-        dataType: 'json',
-        success: function (response) {
-            console.log(response);
-            if (response.hasOwnProperty("status") && response.status == 1) {
-                alert(response.message);
-                window.location.href = "posts.html";
-            } else if (response.message === "No direct access!") {
-                alert("You don't have permission to update the post.");
-            } else {
-                alert("Error: Failed to update the post.");
-            }
-        },
-        error: function (error) {
-            console.log(error);
-            alert("Error: Failed to update the post. " + error.responseText);
-        }
-    });
+  var formdata = $("#editpostform").serialize();
+  $.ajax({
+    type: "POST",
+    url: "database/posts.php",
+    data: formdata,
+    dataType: "json",
+    success: function (response) {
+      console.log(response);
+      if (response.hasOwnProperty("status") && response.status == 1) {
+        alert(response.message);
+        window.location.href = "posts.html";
+      } else if (response.message === "No direct access!") {
+        alert("You don't have permission to update the post.");
+      } else {
+        alert("Error: Failed to update the post.");
+      }
+    },
+    error: function (error) {
+      console.log(error);
+      alert("Error: Failed to update the post. " + error.responseText);
+    },
+  });
 }
 
 //Add Post
-// function addPost() {
-//     if (!editorInstance) {
-//         console.error("CKEditor instance not ready yet.");
-//         return;
-//     }
-//     var bodyContent = editorInstance.getData();
-//     document.getElementById("body").value = bodyContent;
-
-//     //date
-//     var currentDate = new Date();
-//     var formattedDate = currentDate.toISOString().slice(0, 10);
-//     document.getElementById("date").value = formattedDate;
-
-//     var formdata = $('#addpostform').serialize();
-//     $.ajax({
-//         type: "POST",
-//         url: 'database/addPost.php',
-//         data: formdata,
-//         dataType: 'json',
-//         success: function (response) {
-//             console.log(response);
-//             if (response.hasOwnProperty("success") && response.success) {
-//                 alert(response.message);
-//                 window.location.href = "posts.html";
-//             } else if (response.message === "No direct access!") {
-//                 alert("You don't have permission to add a new post.");
-//             } else {
-//                 alert("Error: Failed to add a new post.");
-//             }
-//         },
-//         error: function (error) {
-//             console.log(error);
-//             alert("Error: Failed to add a new post. " + error.responseText);
-//         }
-//     });
-// }
-
-//Add Post
 function addPost() {
-    if (!editorInstance) {
-        console.error("CKEditor instance not ready yet.");
-        return;
-    }
+  if (!editorInstance) {
+    console.error("CKEditor instance not ready yet.");
+    return;
+  }
 
-    var inputFile = document.getElementById('image');
-    var imageFile = inputFile.files[0];
+  var inputFile = document.getElementById("image");
+  var imageFile = inputFile.files[0];
 
-    var bodyContent = editorInstance.getData();
-    document.getElementById("body").value = bodyContent;
+  var bodyContent = editorInstance.getData();
+  document.getElementById("body").value = bodyContent;
 
-    var formdata = new FormData();
-    formdata.append('title', document.getElementById('title').value);
-    formdata.append('body', bodyContent);
-    formdata.append('date', new Date().toISOString().slice(0, 10));
-    formdata.append('image', imageFile);
+  var formdata = new FormData();
+  formdata.append("title", document.getElementById("title").value);
+  formdata.append("body", bodyContent);
+  formdata.append("date", new Date().toISOString().slice(0, 10));
+  formdata.append("image", imageFile);
 
-    $.ajax({
-        type: "POST",
-        url: 'database/addPost.php',
-        data: formdata,
-        dataType: 'json',
-        processData: false,
-        contentType: false,
-        success: function (response) {
-            console.log(response);
-            if (response.hasOwnProperty("success") && response.success) {
-                alert(response.message);
-                window.location.href = "posts.html";
-            } else if (response.message === "No direct access!") {
-                alert("You don't have permission to add a new post.");
-            } else {
-                alert("Error: Failed to add a new post.");
-            }
-        },
-        error: function (error) {
-            console.log(error);
-            alert("Error: Failed to add a new post. " + error.responseText);
-        }
-    });
+  $.ajax({
+    type: "POST",
+    url: "database/addPost.php",
+    data: formdata,
+    dataType: "json",
+    processData: false,
+    contentType: false,
+    success: function (response) {
+      console.log(response);
+      if (response.hasOwnProperty("success") && response.success) {
+        alert(response.message);
+        window.location.href = "posts.html";
+      } else if (response.message === "No direct access!") {
+        alert("You don't have permission to add a new post.");
+      } else {
+        alert("Error: Failed to add a new post.");
+      }
+    },
+    error: function (error) {
+      console.log(error);
+      alert("Error: Failed to add a new post. " + error.responseText);
+    },
+  });
 }
 
 //Get All
@@ -163,20 +124,21 @@ let currentPage = 1;
 let totalPosts = 0;
 
 function GetAll(page, perPage) {
-    const tableBody = document.getElementById('table-body');
-    tableBody.innerHTML = '';
-    history.pushState({}, '', `?page=${page}`);
-    $.ajax({
-        type: 'GET',
-        url: 'database/posts.php?posts',
-        dataType: 'json',
-    }).then((postData) => {
-        totalPosts = postData.length;
-        const totalPages = Math.ceil(totalPosts / perPage);
-        const from = (page - 1) * perPage;
-        const to = page * perPage;
-        const tableRows = postData.slice(from, to).map((post) => {
-            return `<tr id="row-${post.postsid}">
+  const tableBody = document.getElementById("table-body");
+  tableBody.innerHTML = "";
+  history.pushState({}, "", `?page=${page}`);
+  $.ajax({
+    type: "GET",
+    url: "database/posts.php?posts",
+    dataType: "json",
+  })
+    .then((postData) => {
+      totalPosts = postData.length;
+      const totalPages = Math.ceil(totalPosts / perPage);
+      const from = (page - 1) * perPage;
+      const to = page * perPage;
+      const tableRows = postData.slice(from, to).map((post) => {
+        return `<tr id="row-${post.postsid}">
             <td><p class="table-element1">${post.postsid}</p></td>
             <td><p class="table-element2">${post.userid}</p></td>
             <td><p class="table-element3">${post.title}</p></td>
@@ -184,7 +146,9 @@ function GetAll(page, perPage) {
             <p class="table-element4" id="body-${post.postsid}" style="cursor: pointer;">
             ${post.body} </p>
             </td>
-            <td><p class="table-element5">${post.image}</p></td>
+            <td>
+            <img src="database/${post.image}" class="table-element5" style="width: 20%; height: 30%;" />
+            </td>
             <td>
             <button class="btn12"><a href="post.html?post=${post.postsid}">View</a></button>
             <br><br>
@@ -193,102 +157,106 @@ function GetAll(page, perPage) {
             <button class="btn7" onclick="deletePost(${post.postsid}, this)">Delete</button>
             </td>
             </tr>`;
-        });
+      });
 
-        tableBody.innerHTML = tableRows.join('');
+      tableBody.innerHTML = tableRows.join("");
 
-        const pagination = document.getElementById('pagination');
-        pagination.innerHTML = '';
+      const pagination = document.getElementById("pagination");
+      pagination.innerHTML = "";
 
-        const prevPageLink = document.createElement('li');
-        prevPageLink.classList.add('page-item');
-        prevPageLink.innerHTML = `<a class="page-link" href="#" onclick="prevPage()">&laquo;</a>`;
-        pagination.appendChild(prevPageLink);
+      const prevPageLink = document.createElement("li");
+      prevPageLink.classList.add("page-item");
+      prevPageLink.innerHTML = `<a class="page-link" href="#" onclick="prevPage()">&laquo;</a>`;
+      pagination.appendChild(prevPageLink);
 
-        for (let i = 1; i <= totalPages; i++) {
-            const pageLink = document.createElement('li');
-            pageLink.classList.add('page-item');
-            pageLink.innerHTML = `<a class="page-link" href="#" onclick="getPage(${i})">${i}</a>`;
-            pagination.appendChild(pageLink);
-        }
+      for (let i = 1; i <= totalPages; i++) {
+        const pageLink = document.createElement("li");
+        pageLink.classList.add("page-item");
+        pageLink.innerHTML = `<a class="page-link" href="#" onclick="getPage(${i})">${i}</a>`;
+        pagination.appendChild(pageLink);
+      }
 
-        const nextPageLink = document.createElement('li');
-        nextPageLink.classList.add('page-item');
-        nextPageLink.innerHTML = `<a class="page-link" href="#" onclick="nextPage()">&raquo;</a>`;
-        pagination.appendChild(nextPageLink);
+      const nextPageLink = document.createElement("li");
+      nextPageLink.classList.add("page-item");
+      nextPageLink.innerHTML = `<a class="page-link" href="#" onclick="nextPage()">&raquo;</a>`;
+      pagination.appendChild(nextPageLink);
 
-        const paginationLinks = document.querySelectorAll('#pagination li.page-item');
-        paginationLinks.forEach((link) => {
-            link.classList.remove('active');
-        });
+      const paginationLinks = document.querySelectorAll(
+        "#pagination li.page-item"
+      );
+      paginationLinks.forEach((link) => {
+        link.classList.remove("active");
+      });
 
-        const currentPageLink = document.querySelector(`#pagination li.page-item:nth-child(${page + 1})`);
-        currentPageLink.classList.add('active');
+      const currentPageLink = document.querySelector(
+        `#pagination li.page-item:nth-child(${page + 1})`
+      );
+      currentPageLink.classList.add("active");
 
-        postData.slice(from, to).forEach((post) => {
-            const bodyElement = document.getElementById(`body-${post.postsid}`);
+      postData.slice(from, to).forEach((post) => {
+        const bodyElement = document.getElementById(`body-${post.postsid}`);
+        bodyElement.textContent = truncateString(post.body, 100);
+        bodyElement.addEventListener("click", () => {
+          if (bodyElement.textContent === truncateString(post.body, 100)) {
+            bodyElement.textContent = post.body;
+          } else {
             bodyElement.textContent = truncateString(post.body, 100);
-            bodyElement.addEventListener('click', () => {
-                if (bodyElement.textContent === truncateString(post.body, 100)) {
-                    bodyElement.textContent = post.body;
-                } else {
-                    bodyElement.textContent = truncateString(post.body, 100);
-                }
-            });
+          }
         });
-
-    }).catch((error) => {
-        console.error('Error retrieving post data:', error);
+      });
+    })
+    .catch((error) => {
+      console.error("Error retrieving post data:", error);
     });
 }
 
 function truncateString(str, maxLength) {
-    if (str.length <= maxLength) {
-        return str;
-    }
-    return str.substring(0, maxLength) + '...';
+  if (str.length <= maxLength) {
+    return str;
+  }
+  return str.substring(0, maxLength) + "...";
 }
 
 //Previous page
 function prevPage() {
-    if (currentPage > 1) {
-        currentPage--;
-        GetAll(currentPage, 10);
-    }
+  if (currentPage > 1) {
+    currentPage--;
+    GetAll(currentPage, 10);
+  }
 }
 
 //Next page
 function nextPage() {
-    const totalPages = Math.ceil(totalPosts / 10);
-    if (currentPage < totalPages) {
-        currentPage++;
-        GetAll(currentPage, 10);
-    }
+  const totalPages = Math.ceil(totalPosts / 10);
+  if (currentPage < totalPages) {
+    currentPage++;
+    GetAll(currentPage, 10);
+  }
 }
 
 function getPage(page) {
-    currentPage = page;
-    GetAll(currentPage, 10);
+  currentPage = page;
+  GetAll(currentPage, 10);
 }
 
 $(document).ready(function () {
-    const currentUrl = window.location.href;
-    const searchParams = new URLSearchParams(new URL(currentUrl).search);
-    if (currentUrl.indexOf("editPost.html") > 0) {
-        const postid = searchParams.get('postid');
-        if (postid == null) {
-            window.location.href = "posts.html";
-        } else {
-            getpostdata(postid);
-        }
+  const currentUrl = window.location.href;
+  const searchParams = new URLSearchParams(new URL(currentUrl).search);
+  if (currentUrl.indexOf("editPost.html") > 0) {
+    const postid = searchParams.get("postid");
+    if (postid == null) {
+      window.location.href = "posts.html";
+    } else {
+      getpostdata(postid);
     }
+  }
 
-    if (currentUrl.indexOf("posts.html") > 0) {
-        const page = searchParams.get('page');
-        if (page == null) {
-            GetAll(1, 10);
-        } else {
-            GetAll(page, 10);
-        }
+  if (currentUrl.indexOf("posts.html") > 0) {
+    const page = searchParams.get("page");
+    if (page == null) {
+      GetAll(1, 10);
+    } else {
+      GetAll(page, 10);
     }
+  }
 });

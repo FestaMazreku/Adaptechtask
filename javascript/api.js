@@ -7,7 +7,7 @@ function myFunction() {
   }
 }
 
-//Add a Comment
+// Add a Comment
 function addComment() {
   const title = $('#title').val();
   const comment = $('#comment').val();
@@ -25,6 +25,10 @@ function addComment() {
         if (response.success) {
           alert(response.message);
 
+          $('#title').val('');
+          $('#comment').val('');
+
+          location.reload();
         } else {
           alert(response.message);
         }

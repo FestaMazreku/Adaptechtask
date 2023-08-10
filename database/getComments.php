@@ -6,8 +6,12 @@ require_once('IsLoggedIn.php');
 
 if (isset($_GET['postId'])) {
     $postId = $_GET['postId'];
-    $sql = "SELECT comments.*, users.name AS name FROM comments JOIN users ON users.id = comments.userid WHERE comments.postid =" . $postId;
-    $result = mysqli_query($con, $sql);
+    $sql = "SELECT comments.*, users.name AS name FROM comments JOIN users ON users.id = comments.userid WHERE comments.postid = ?";
+
+    $stmt = mysqli_prepare($con, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $postId);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
     if ($result) {
         $comments = array();
@@ -26,11 +30,9 @@ if (isset($_GET['postId'])) {
         $response['comments'] = $comments;
     } else {
         $response['success'] = false;
-        $response['message'] = "Failed to fetch comments.";
+        $response['message'] = "Failed to fetch comments: " . mysqli_error($con);
     }
 
     echo json_encode($response);
 }
-
-$con->close();
 ?>

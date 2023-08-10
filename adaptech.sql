@@ -30,9 +30,9 @@ CREATE TABLE IF NOT EXISTS `comments` (
   KEY `FK_comments_users` (`userid`),
   CONSTRAINT `FK_comments_posts` FOREIGN KEY (`postid`) REFERENCES `posts` (`postsid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_comments_users` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.comments: ~10 rows (approximately)
+-- Dumping data for table adaptechtask.comments: ~15 rows (approximately)
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
 REPLACE INTO `comments` (`commentid`, `postid`, `userid`, `title`, `comment`, `date`) VALUES
 	(1, 1, 3, 'asfasffa', ' fafsaafasf', '2023-07-25 08:27:03'),
@@ -44,7 +44,12 @@ REPLACE INTO `comments` (`commentid`, `postid`, `userid`, `title`, `comment`, `d
 	(7, 5, 8, 'asdasdasdas', 'sdasdasdasd             ', '2023-07-31 12:32:35'),
 	(8, 8, 2, 'sdfsdf', 'asdasdsfasf', '2023-07-31 13:32:40'),
 	(9, 8, 9, 'sdasd', 'sdasdasd', '2023-07-31 13:32:50'),
-	(10, 2, 1, 'sdsadasd', 'dasdaasdsds         ', '2023-07-31 13:33:55');
+	(10, 2, 1, 'sdsadasd', 'dasdaasdsds         ', '2023-07-31 13:33:55'),
+	(11, 5, 9, 'assdasd', 'sdaasdasd', '2023-08-10 06:23:59'),
+	(12, 4, 9, 'qweqwe', 'wwewe', '2023-08-10 06:25:38'),
+	(13, 1, 9, 'assad', ' aasdasd', '2023-08-10 06:31:23'),
+	(14, 9, 2, 'dasasda', ' sdasdsdasd', '2023-08-10 08:00:52'),
+	(15, 3, 4, 'sds', ' assadsdasd', '2023-08-10 08:04:15');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.contactus
@@ -56,14 +61,15 @@ CREATE TABLE IF NOT EXISTS `contactus` (
   PRIMARY KEY (`messageid`),
   KEY `FK_contactus_users` (`email`),
   CONSTRAINT `FK_contactus_users` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.contactus: ~3 rows (approximately)
+-- Dumping data for table adaptechtask.contactus: ~10 rows (approximately)
 /*!40000 ALTER TABLE `contactus` DISABLE KEYS */;
 REPLACE INTO `contactus` (`messageid`, `name`, `email`, `usermessage`) VALUES
 	(1, 'Emma Smith', 'emma.s@gmail.com', 'Hi!'),
 	(2, 'Charlotte Moreau', 'charlottemoreau@gmail.com', 'Hello Adaptech! I just wanted to say that I love your work!'),
-	(3, 'Chloe Turner', 'chloe_t@gmail.com', 'sdadasasdasd');
+	(3, 'Chloe Turner', 'chloe_t@gmail.com', 'hey!'),
+	(4, 'Festa Mazreku', 'festa.m@gmail.com', 'hi!');
 /*!40000 ALTER TABLE `contactus` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.posts
@@ -77,21 +83,21 @@ CREATE TABLE IF NOT EXISTS `posts` (
   PRIMARY KEY (`postsid`),
   KEY `FK_posts_users` (`userid`),
   CONSTRAINT `FK_posts_users` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.posts: ~11 rows (approximately)
+-- Dumping data for table adaptechtask.posts: ~10 rows (approximately)
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
 REPLACE INTO `posts` (`postsid`, `userid`, `title`, `body`, `image`, `date`) VALUES
 	(1, 1, 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'quia et suscipit\r\nrecusandae consequuntur expedita et cum\r\nreprehenderit molestiae ut ut quas totam\r\nnostrum rerum est autem sunt eveniet architecto', 'upload/project2.png', '2023-07-18 15:15:25'),
-	(2, 2, 'qui est esse', 'est rerum tempore vitae\r\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\r\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\r\nqui aperiam non debitis possimus qui neque nisi nullaa', 'upload/project2.png', '2023-07-19 13:27:15'),
-	(3, 3, 'eum et est occaecati', 'ullam et saepe reiciendis voluptatem adipisci\r\nsit amet autem assumenda provident rerum culpa\r\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\r\nquis sunt voluptatem rerum illo velit', 'upload/project2.png', '2023-07-20 14:22:47'),
-	(4, 4, 'dolorem eum magni eos aperiam quia', 'ut aspernatur corporis harum nihil quis provident sequi\r\nmollitia nobis aliquid molestiae\r\nperspiciatis et ea nemo reprehenderit accusantium quas\r\nvoluptate dolores velit et doloremque molestiae', 'upload/project2.png', '2023-07-21 11:30:35'),
-	(5, 5, 'magnam facilis autem', 'dolore placeat quibusdam ea quo vitae\r\nmagni quis enim qui quis quo nemo aut saepe\r\nquidem repellat excepturi ut quia\r\nsunt ut sequi eos ea sed quas', 'upload/project2.png', '2023-07-22 09:40:20'),
-	(6, 6, 'dolorem dolore est ipsam', 'dignissimos aperiam dolorem qui eum\r\nfacilis quibusdam animi sint suscipit qui sint possimus\r\nquaerat magni maiores excepturi\r\nipsam ut commodi dolor voluptatum modi aut vitae', 'upload/project2.png', '2023-07-23 15:30:05'),
-	(7, 7, 'nesciunt iure omnis dolorem tempora et accusantium', 'consectetur animi nesciunt iure dolore\r\nenim quia ad\r\nveniam autem ut quam aut nobis\r\net est aut quod aut provident voluptas autem voluptas', 'upload/project2.png', '2023-07-24 18:43:55'),
-	(8, 8, 'optio molestias id quia eum', 'quo et expedita modi official vel magni\r\ndoloribus qui repudiandae\r\nvero nisi sit\r\nquos veniam quod sed accusamus veritatis error', 'upload/project2.png', '2023-07-25 20:50:50'),
-	(9, 9, 'dolorum ut in voluptas mollitia et saepe quo animi', 'itaque id aut magnam\r\npraesentium quia et ea odit et ea voluptas et\r\nsapiente quia nihil amet occaecati quia id voluptatem\r\nincidunt ea est distinctio odio', 'upload/project2.png', '2023-07-26 10:32:30'),
-	(10, 10, 'eveniet quod temporibus', 'veritatis unde neque eligendinque quod architecto quo neque vitae\nest illo sit tempora doloremque fugit quod\net et vel beatae sequi ullam sed tenetur perspiciatis', 'upload/project2.png', '2023-07-27 15:50:20');
+	(2, 2, 'qui est esse', 'est rerum tempore vitae\r\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\r\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\r\nqui aperiam non debitis possimus qui neque nisi nullaa', 'upload/background2.jpg', '2023-07-19 13:27:15'),
+	(3, 3, 'eum et est occaecati', 'ullam et saepe reiciendis voluptatem adipisci\r\nsit amet autem assumenda provident rerum culpa\r\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\r\nquis sunt voluptatem rerum illo velit', 'upload/contactus.jpg', '2023-07-20 14:22:47'),
+	(4, 4, 'dolorem eum magni eos aperiam quia', 'ut aspernatur corporis harum nihil quis provident sequi\r\nmollitia nobis aliquid molestiae\r\nperspiciatis et ea nemo reprehenderit accusantium quas\r\nvoluptate dolores velit et doloremque molestiae', 'upload/office.jpeg', '2023-07-21 11:30:35'),
+	(5, 5, 'magnam facilis autem', 'dolore placeat quibusdam ea quo vitae\r\nmagni quis enim qui quis quo nemo aut saepe\r\nquidem repellat excepturi ut quia\r\nsunt ut sequi eos ea sed quas', 'upload/project3.png', '2023-07-22 09:40:20'),
+	(6, 6, 'dolorem dolore est ipsam', 'dignissimos aperiam dolorem qui eum\r\nfacilis quibusdam animi sint suscipit qui sint possimus\r\nquaerat magni maiores excepturi\r\nipsam ut commodi dolor voluptatum modi aut vitae', 'upload/office2.jpg', '2023-07-23 15:30:05'),
+	(7, 7, 'nesciunt iure omnis dolorem tempora et accusantium', 'consectetur animi nesciunt iure dolore\r\nenim quia ad\r\nveniam autem ut quam aut nobis\r\net est aut quod aut provident voluptas autem voluptas', 'upload/office3.jpeg', '2023-07-24 18:43:55'),
+	(8, 8, 'optio molestias id quia eum', 'quo et expedita modi official vel magni\r\ndoloribus qui repudiandae\r\nvero nisi sit\r\nquos veniam quod sed accusamus veritatis error', 'upload/office4.jpeg', '2023-07-25 20:50:50'),
+	(9, 9, 'dolorum ut in voluptas mollitia et saepe quo animi', 'itaque id aut magnam\r\npraesentium quia et ea odit et ea voluptas et\r\nsapiente quia nihil amet occaecati quia id voluptatem\r\nincidunt ea est distinctio odio', 'upload/house.jpeg', '2023-07-26 10:32:30'),
+	(10, 10, 'eveniet quod temporibus', 'veritatis unde neque eligendinque quod architecto quo neque vitae\nest illo sit tempora doloremque fugit quod\net et vel beatae sequi ullam sed tenetur perspiciatis', 'upload/aboutus.png', '2023-07-27 15:50:20');
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.users

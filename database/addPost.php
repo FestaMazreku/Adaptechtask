@@ -25,12 +25,15 @@ if (isset($_POST['title']) && isset($_POST['body']) && isset($_POST['date'])) {
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $targetDir = "upload/";
             $filename = basename($_FILES["image"]["name"]);
-            $targetFilePath = $targetDir . $filename;
+            $imageFileType = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+            
+            $uniqueId = uniqid(); // Generate a unique ID
+            
+            $targetFilePath = $targetDir . pathinfo($filename, PATHINFO_FILENAME) . '_' . $uniqueId . '.' . $imageFileType;
             $uploadOk = 1;
-            $imageFileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
-
+            
             $check = getimagesize($_FILES["image"]["tmp_name"]);
-
+            
             if ($check !== false) {
                 if ($imageFileType == "jpg" || $imageFileType == "png" || $imageFileType == "jpeg" || $imageFileType == "gif") {
                     if (file_exists($targetFilePath)) {
@@ -56,6 +59,8 @@ if (isset($_POST['title']) && isset($_POST['body']) && isset($_POST['date'])) {
                 $uploadOk = 0;
             }
         }
+        
+        
 
         if ($uploadOk === 1) {
             $sql->execute();

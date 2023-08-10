@@ -6,8 +6,12 @@ function checkLoginStatus() {
   });
 }
 
-function redirectToLogin() {
-  window.location.href = 'login.html';
+function redirectToLogin(loginStatus) {
+  if (loginStatus.isLoggedIn) {
+    window.location.href = 'index.html'; 
+  } else {
+    window.location.href = 'login.html';
+  }
 }
 
 function handleLoginStatus(loginStatus) {
@@ -21,7 +25,7 @@ function logout() {
     url: 'database/logout.php',
     type: 'POST',
     success: function () {
-      redirectToLogin();
+      redirectToLogin({ isLoggedIn: false }); 
     }
   });
 }

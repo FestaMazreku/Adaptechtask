@@ -47,19 +47,31 @@ if ($con) {
     echo json_encode($response, JSON_PRETTY_PRINT);
   }
 
-  //Delete Post
+  // Delete Post
   if (isset($_POST['deleteid'])) {
-
-    if (!IsLoggedInAsAdmin())
+    if (!IsLoggedInAsAdmin()) {
       die("No direct access!");
+    }
 
     $delete = $_POST['deleteid'];
-    $sql = "DELETE FROM posts WHERE postsid = '" . $delete . "' ";
 
-    if (mysqli_query($con, $sql)) {
-      echo "1";
-    } else {
-      echo "0";
+    $sql_select = "SELECT image FROM posts WHERE postsid = $delete";
+    $result = mysqli_query($con, $sql_select);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+      $row = mysqli_fetch_assoc($result);
+      $imagePath = $row['image'];
+
+      if (unlink($imagePath)) {
+        $sql_delete = "DELETE FROM posts WHERE postsid = '" . $delete . "' ";
+        if (mysqli_query($con, $sql_delete)) {
+          echo "1";
+        } else {
+          echo "0";
+        }
+      } else {
+        echo "0";
+      }
     }
     exit();
   }

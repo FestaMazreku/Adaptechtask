@@ -9,13 +9,16 @@ function myFunction() {
 
 //Add Message
 function addMessage() {
-    const name = document.getElementById('name').value;
-    const usermessage = document.getElementById('usermessage').value;
+    const name = document.getElementById('name');
+    const usermessage = document.getElementById('usermessage');
 
-    if (name !== '' && email !== '' && usermessage !== '') {
+    const nameValue = name.value;
+    const usermessageValue = usermessage.value;
+
+    if (nameValue !== '' && usermessageValue !== '') {
         const data = new FormData();
-        data.append('name', name);
-        data.append('usermessage', usermessage);
+        data.append('name', nameValue);
+        data.append('usermessage', usermessageValue);
 
         fetch('database/addMessage.php', {
             method: 'POST',
@@ -23,16 +26,19 @@ function addMessage() {
         })
             .then(response => response.json())
             .then(responseData => {
-
                 if (responseData.success) {
                     alert(responseData.message);
 
                     const newMessageElement = document.createElement('div');
                     newMessageElement.className = 'message';
-                    newMessageElement.innerHTML = `<br> <p> Name & Surname: ${name} </p>  <p> Message: ${usermessage} </p>`;
+                    newMessageElement.innerHTML = `<br> <p style="color: red"> The message is sent successfully! </p>`;
 
                     const messageSection = document.getElementById('message');
                     messageSection.appendChild(newMessageElement);
+
+                    // Clear the input fields
+                    name.value = '';
+                    usermessage.value = '';
                 } else {
                     alert(responseData.message);
                 }
@@ -41,7 +47,7 @@ function addMessage() {
                 console.error('Error:', error);
             });
     } else {
-        alert('The message can not be sent! Please fill in the fields!');
+        alert('The message cannot be sent! Please fill in the fields!');
     }
 }
 
