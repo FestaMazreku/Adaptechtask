@@ -147,7 +147,7 @@ function GetAll(page, perPage) {
             ${post.body} </p>
             </td>
             <td>
-            <img src="database/${post.image}" class="table-element5" style="width: 20%; height: 30%;" />
+            <img src="database/${post.image}" class="table-element5" style="width: 15%; height: 15%;" />
             </td>
             <td>
             <button class="btn12"><a href="post.html?post=${post.postsid}">View</a></button>
