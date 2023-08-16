@@ -17,6 +17,22 @@
 CREATE DATABASE IF NOT EXISTS `adaptechtask` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `adaptechtask`;
 
+-- Dumping structure for table adaptechtask.books
+CREATE TABLE IF NOT EXISTS `books` (
+  `book_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `book_name` varchar(50) DEFAULT NULL,
+  `author_name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`book_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table adaptechtask.books: ~3 rows (approximately)
+/*!40000 ALTER TABLE `books` DISABLE KEYS */;
+REPLACE INTO `books` (`book_ID`, `book_name`, `author_name`) VALUES
+	(1, 'Harry Potter', 'J.K Rowling'),
+	(2, ' Anna Karenina', 'Leo Tolstoy'),
+	(3, 'The Odyssey', ' Homer');
+/*!40000 ALTER TABLE `books` ENABLE KEYS */;
+
 -- Dumping structure for table adaptechtask.comments
 CREATE TABLE IF NOT EXISTS `comments` (
   `commentid` int(11) NOT NULL AUTO_INCREMENT,
@@ -30,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   KEY `FK_comments_users` (`userid`),
   CONSTRAINT `FK_comments_posts` FOREIGN KEY (`postid`) REFERENCES `posts` (`postsid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_comments_users` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table adaptechtask.comments: ~15 rows (approximately)
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
@@ -61,9 +77,9 @@ CREATE TABLE IF NOT EXISTS `contactus` (
   PRIMARY KEY (`messageid`),
   KEY `FK_contactus_users` (`email`),
   CONSTRAINT `FK_contactus_users` FOREIGN KEY (`email`) REFERENCES `users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.contactus: ~10 rows (approximately)
+-- Dumping data for table adaptechtask.contactus: ~4 rows (approximately)
 /*!40000 ALTER TABLE `contactus` DISABLE KEYS */;
 REPLACE INTO `contactus` (`messageid`, `name`, `email`, `usermessage`) VALUES
 	(1, 'Emma Smith', 'emma.s@gmail.com', 'Hi!'),
@@ -71,6 +87,59 @@ REPLACE INTO `contactus` (`messageid`, `name`, `email`, `usermessage`) VALUES
 	(3, 'Chloe Turner', 'chloe_t@gmail.com', 'hey!'),
 	(4, 'Festa Mazreku', 'festa.m@gmail.com', 'hi!');
 /*!40000 ALTER TABLE `contactus` ENABLE KEYS */;
+
+-- Dumping structure for table adaptechtask.customers
+CREATE TABLE IF NOT EXISTS `customers` (
+  `customer_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`customer_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table adaptechtask.customers: ~3 rows (approximately)
+/*!40000 ALTER TABLE `customers` DISABLE KEYS */;
+REPLACE INTO `customers` (`customer_ID`, `customer_name`) VALUES
+	(1, 'Emma Williams'),
+	(2, 'Ethan Carter'),
+	(3, 'Christina Jackson');
+/*!40000 ALTER TABLE `customers` ENABLE KEYS */;
+
+-- Dumping structure for table adaptechtask.followers
+CREATE TABLE IF NOT EXISTS `followers` (
+  `follower_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `user_ID` int(11) DEFAULT NULL,
+  `follower_user_ID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`follower_ID`),
+  KEY `FK_followers_users` (`user_ID`),
+  CONSTRAINT `FK_followers_users` FOREIGN KEY (`user_ID`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dumping data for table adaptechtask.followers: ~0 rows (approximately)
+/*!40000 ALTER TABLE `followers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `followers` ENABLE KEYS */;
+
+-- Dumping structure for table adaptechtask.orders
+CREATE TABLE IF NOT EXISTS `orders` (
+  `order_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `order_amount` int(11) DEFAULT NULL,
+  `order_number` int(11) DEFAULT NULL,
+  `order_date` date DEFAULT NULL,
+  `book_ID` int(11) DEFAULT NULL,
+  `customer_ID` int(11) DEFAULT NULL,
+  `product_name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`order_ID`),
+  KEY `FK_orders_customers` (`customer_ID`),
+  KEY `FK_orders_books` (`book_ID`),
+  CONSTRAINT `FK_orders_books` FOREIGN KEY (`book_ID`) REFERENCES `books` (`book_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_orders_customers` FOREIGN KEY (`customer_ID`) REFERENCES `customers` (`customer_ID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table adaptechtask.orders: ~3 rows (approximately)
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+REPLACE INTO `orders` (`order_ID`, `order_amount`, `order_number`, `order_date`, `book_ID`, `customer_ID`, `product_name`) VALUES
+	(1, 170, 105, '2023-08-15', 1, 1, 'Mascara'),
+	(2, 200, 106, '2023-08-15', 2, 2, 'Perfume'),
+	(3, 300, 107, '2023-08-16', 3, 3, 'Lipstick');
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.posts
 CREATE TABLE IF NOT EXISTS `posts` (
@@ -83,9 +152,9 @@ CREATE TABLE IF NOT EXISTS `posts` (
   PRIMARY KEY (`postsid`),
   KEY `FK_posts_users` (`userid`),
   CONSTRAINT `FK_posts_users` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.posts: ~10 rows (approximately)
+-- Dumping data for table adaptechtask.posts: ~11 rows (approximately)
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
 REPLACE INTO `posts` (`postsid`, `userid`, `title`, `body`, `image`, `date`) VALUES
 	(1, 1, 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'quia et suscipit\r\nrecusandae consequuntur expedita et cum\r\nreprehenderit molestiae ut ut quas totam\r\nnostrum rerum est autem sunt eveniet architecto', 'upload/project2.png', '2023-07-18 15:15:25'),
