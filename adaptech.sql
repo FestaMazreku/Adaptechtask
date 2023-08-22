@@ -17,6 +17,65 @@
 CREATE DATABASE IF NOT EXISTS `adaptechtask` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `adaptechtask`;
 
+-- Dumping structure for table adaptechtask.accounts
+CREATE TABLE IF NOT EXISTS `accounts` (
+  `accounts_id` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(11) DEFAULT NULL,
+  `balance` decimal(20,6) DEFAULT NULL,
+  PRIMARY KEY (`accounts_id`),
+  KEY `FK_accounts_customers` (`customer_id`) USING BTREE,
+  CONSTRAINT `FK_accounts_customers` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_ID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table adaptechtask.accounts: ~4 rows (approximately)
+/*!40000 ALTER TABLE `accounts` DISABLE KEYS */;
+REPLACE INTO `accounts` (`accounts_id`, `customer_id`, `balance`) VALUES
+	(1, 1, 18.200000),
+	(2, 2, 20.200000),
+	(3, 3, 22.200000),
+	(4, 4, 15.650000);
+/*!40000 ALTER TABLE `accounts` ENABLE KEYS */;
+
+-- Dumping structure for table adaptechtask.articles
+CREATE TABLE IF NOT EXISTS `articles` (
+  `article_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `author_ID` int(11) DEFAULT NULL,
+  `title` varchar(50) DEFAULT NULL,
+  `content` text,
+  `published_date` date DEFAULT NULL,
+  `author_name` varchar(100) DEFAULT NULL,
+  `genre` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`article_ID`) USING BTREE,
+  KEY `idx_title` (`title`),
+  KEY `idx_author_id` (`author_ID`),
+  KEY `idx_article_title` (`title`),
+  CONSTRAINT `FK_articles_authors` FOREIGN KEY (`author_ID`) REFERENCES `authors` (`author_ID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table adaptechtask.articles: ~3 rows (approximately)
+/*!40000 ALTER TABLE `articles` DISABLE KEYS */;
+REPLACE INTO `articles` (`article_ID`, `author_ID`, `title`, `content`, `published_date`, `author_name`, `genre`) VALUES
+	(1, 1, 'Harry Potter', NULL, '2001-11-17', 'J.K Rowling', 'Fantasy'),
+	(2, 2, 'The Lord of the Rings', 'The Lord of the Rings is an epic high-fantasy novel by the English author and scholar J. R. R. Tolkien. Set in Middle-earth, the story began as a sequel to Tolkien\'s 1937 children\'s book The Hobbit, but eventually developed into a much larger work. ', '2001-12-19', 'J. R. R. Tolkien', 'Fantasy'),
+	(3, 3, 'Pride and Prejudice', 'Pride and Prejudice is an 1813 novel of manners by Jane Austen. The novel follows the character development of Elizabeth Bennet, the protagonist of the book, who learns about the repercussions of hasty judgments and comes to appreciate the difference between superficial goodness and actual goodness.', '2005-10-16', 'Jane Austen', 'Romance');
+/*!40000 ALTER TABLE `articles` ENABLE KEYS */;
+
+-- Dumping structure for table adaptechtask.authors
+CREATE TABLE IF NOT EXISTS `authors` (
+  `author_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `author_name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`author_ID`),
+  KEY `idx_author_name` (`author_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table adaptechtask.authors: ~3 rows (approximately)
+/*!40000 ALTER TABLE `authors` DISABLE KEYS */;
+REPLACE INTO `authors` (`author_ID`, `author_name`) VALUES
+	(2, 'J. R. R. Tolkien'),
+	(1, 'J.K Rowling'),
+	(3, 'Jane Austen');
+/*!40000 ALTER TABLE `authors` ENABLE KEYS */;
+
 -- Dumping structure for table adaptechtask.books
 CREATE TABLE IF NOT EXISTS `books` (
   `book_ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -92,16 +151,32 @@ REPLACE INTO `contactus` (`messageid`, `name`, `email`, `usermessage`) VALUES
 CREATE TABLE IF NOT EXISTS `customers` (
   `customer_ID` int(11) NOT NULL AUTO_INCREMENT,
   `customer_name` varchar(50) DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `role` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`customer_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.customers: ~3 rows (approximately)
+-- Dumping data for table adaptechtask.customers: ~6 rows (approximately)
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-REPLACE INTO `customers` (`customer_ID`, `customer_name`) VALUES
-	(1, 'Emma Williams'),
-	(2, 'Ethan Carter'),
-	(3, 'Christina Jackson');
+REPLACE INTO `customers` (`customer_ID`, `customer_name`, `username`, `email`, `password`, `role`) VALUES
+	(1, 'Emma Williams', 'emma', 'emma.w@gmail.com', 'hashed_password', 'customer'),
+	(2, 'Ethan Carter', 'ethan98', 'ethanc@gmail.com', 'hashed_password', 'customer'),
+	(3, 'Christina Jackson', 'christinajackson', 'christina98@gmail.com', 'hashed_password', 'customer'),
+	(4, 'John Doe', 'john_doe', 'john_d@gmail.com', 'hashed_password', 'customer'),
+	(5, 'Jane Smith', 'jane_smith', 'jane.smith@gmail.com', 'hashed_password', 'customer'),
+	(6, 'Admin', 'admin_user', 'adminemail@gmail.com', 'hashed_admin_password', 'administrator');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
+
+-- Dumping structure for view adaptechtask.denormalizedarticles
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `denormalizedarticles` (
+	`article_id` INT(11) NOT NULL,
+	`title` VARCHAR(50) NULL COLLATE 'utf8_general_ci',
+	`content` TEXT NULL COLLATE 'utf8_general_ci',
+	`author_name` VARCHAR(50) NULL COLLATE 'utf8_general_ci'
+) ENGINE=MyISAM;
 
 -- Dumping structure for table adaptechtask.followers
 CREATE TABLE IF NOT EXISTS `followers` (
@@ -109,12 +184,17 @@ CREATE TABLE IF NOT EXISTS `followers` (
   `user_ID` int(11) DEFAULT NULL,
   `follower_user_ID` int(11) DEFAULT NULL,
   PRIMARY KEY (`follower_ID`),
-  KEY `FK_followers_users` (`user_ID`),
-  CONSTRAINT `FK_followers_users` FOREIGN KEY (`user_ID`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `FK_followers_userss` (`user_ID`),
+  CONSTRAINT `FK_followers_userss` FOREIGN KEY (`user_ID`) REFERENCES `userss` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Dumping data for table adaptechtask.followers: ~0 rows (approximately)
+-- Dumping data for table adaptechtask.followers: ~4 rows (approximately)
 /*!40000 ALTER TABLE `followers` DISABLE KEYS */;
+REPLACE INTO `followers` (`follower_ID`, `user_ID`, `follower_user_ID`) VALUES
+	(1, 1, 1),
+	(2, 2, 2),
+	(3, 3, 3),
+	(4, 4, 4);
 /*!40000 ALTER TABLE `followers` ENABLE KEYS */;
 
 -- Dumping structure for table adaptechtask.orders
@@ -169,6 +249,25 @@ REPLACE INTO `posts` (`postsid`, `userid`, `title`, `body`, `image`, `date`) VAL
 	(10, 10, 'eveniet quod temporibus', 'veritatis unde neque eligendinque quod architecto quo neque vitae\nest illo sit tempora doloremque fugit quod\net et vel beatae sequi ullam sed tenetur perspiciatis', 'upload/aboutus.png', '2023-07-27 15:50:20');
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 
+-- Dumping structure for table adaptechtask.postss
+CREATE TABLE IF NOT EXISTS `postss` (
+  `post_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `post_content` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`post_id`),
+  KEY `FK_postss_userss` (`user_id`),
+  CONSTRAINT `FK_postss_userss` FOREIGN KEY (`user_id`) REFERENCES `userss` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table adaptechtask.postss: ~4 rows (approximately)
+/*!40000 ALTER TABLE `postss` DISABLE KEYS */;
+REPLACE INTO `postss` (`post_id`, `user_id`, `post_content`) VALUES
+	(1, 1, 'est rerum tempore vitae'),
+	(2, 2, 'dignissimos aperiam dolorem qui eum'),
+	(3, 3, 'itaque id aut magnam'),
+	(4, 4, 'quo et expedita modi official vel magni');
+/*!40000 ALTER TABLE `postss` ENABLE KEYS */;
+
 -- Dumping structure for table adaptechtask.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -197,6 +296,33 @@ REPLACE INTO `users` (`id`, `name`, `age`, `email`, `phone`, `city`, `isadmin`, 
 	(9, 'Chloe Turner', 27, 'chloe_t@gmail.com', '1-895-333-6596', 'London,UK', 0, 'Chloe98'),
 	(10, 'Erman Cibo', 32, 'erman.c@gmail.com', '045-987-245', 'Prizren, Kosovo', 0, 'Erman12');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+-- Dumping structure for table adaptechtask.userss
+CREATE TABLE IF NOT EXISTS `userss` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table adaptechtask.userss: ~4 rows (approximately)
+/*!40000 ALTER TABLE `userss` DISABLE KEYS */;
+REPLACE INTO `userss` (`user_id`, `username`) VALUES
+	(1, 'Christina Campbell'),
+	(2, 'Chloe Turner'),
+	(3, 'Jane Smith'),
+	(4, 'Festa Mazreku');
+/*!40000 ALTER TABLE `userss` ENABLE KEYS */;
+
+-- Dumping structure for view adaptechtask.denormalizedarticles
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `denormalizedarticles`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `denormalizedarticles` AS SELECT
+    A.article_id,
+    A.title,
+    A.content,
+    Au.author_name
+FROM Articles A
+JOIN Authors Au ON A.author_id = Au.author_id ;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
